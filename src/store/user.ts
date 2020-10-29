@@ -4,7 +4,11 @@ export const state = () => ({
   currentUser: null,
 });
 
-export const getters = () => ({});
+export const getters = () => ({
+  getCurrentUser(state) {
+    return state.currentUser;
+  },
+});
 
 export const mutations = () => ({
   setCurrentUser(state, user) {
@@ -16,7 +20,7 @@ export const mutations = () => ({
 export const actions = () => ({
   async login({ commit }, user) {
     //TODO type
-    const userRef = this.data.doc(`${COLLECTION_NAME}/${user.uid}`);
+    const userRef = this.$fireStore.doc(`${COLLECTION_NAME}/${user.uid}`);
 
     const data = {
       email: user.email,

@@ -26,3 +26,4 @@
 ._*
 *.synctex.gz
 !**/img/*.pdf
+node_modules/

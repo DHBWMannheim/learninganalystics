@@ -1,4 +1,4 @@
-export const IdMapperConverterFactory = <T extends { id: string }>() => ({
+export const getIdMapperConverter = <T extends { id: string }>() => ({
   toFirestore(element: T) /*: DocumentData*/ {
     const extractedData = { ...element };
     delete extractedData.id;
