@@ -1,6 +1,5 @@
 import { Todo } from "../models/todo.model";
 import { getIdMapperConverter } from "../converters/id-mapper.converter";
-import { stringify } from "querystring";
 
 const COLLECTION_NAME = "todos";
 
@@ -8,9 +7,9 @@ export const state = () => ({
   todos: new Map<string, Todo>(),
 });
 
-export const getters = () => ({});
+export const getters = ({})
 
-export const mutations = () => ({
+export const mutations = {
   upsert(state, todo: Todo) {
     if (!todo.id) throw new Error("Missing id");
     state.todos.set(todo.id, todo);
@@ -19,13 +18,15 @@ export const mutations = () => ({
     if (!todo.id) throw new Error("Missing id");
     state.todos.remove(todo.id, todo);
   },
-});
+};
 
-export const actions = () => ({
+export const actions = {
   async upsert({ commit, rootGetters }, todo: Todo) {
     let firebaseAccess = this.$fireStore
       .collection(`${COLLECTION_NAME}`)
       .withConverter(getIdMapperConverter());
+
+    //   rootGetters.user.getCurrentUser()
 
     let ref: DocumentRef;
     if (todo.id) {
@@ -48,4 +49,14 @@ export const actions = () => ({
       .delete();
     commit("delete", todo);
   },
-});
+  async fetch({ commit }) {
+    const a = await this.$fireStore
+      .collection(`${COLLECTION_NAME}`)
+      .withConverter(getIdMapperConverter())
+      .get();
+    const todos = await Promise.all(a.docs.map((doc) => doc.data()));
+    todos.forEach((v) => {
+      commit("upsert", v);
+    });
+  },
+};

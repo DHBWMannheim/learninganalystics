@@ -4,20 +4,20 @@ export const state = () => ({
   currentUser: null,
 });
 
-export const getters = () => ({
+export const getters = ({
   getCurrentUser(state) {
     return state.currentUser;
   },
 });
 
-export const mutations = () => ({
+export const mutations = ({
   setCurrentUser(state, user) {
     //TODO ist user richtig?
     state.currentUser = user;
   },
 });
 
-export const actions = () => ({
+export const actions = ({
   async login({ commit }, user) {
     //TODO type
     const userRef = this.$fireStore.doc(`${COLLECTION_NAME}/${user.uid}`);
