@@ -1,0 +1,36 @@
+// Workspace settings
+{
+    // The following will hide the js and map files in the editor
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.bak": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.out": true,
+        "**/*.lol": true,
+        "**/*.log": true,
+        "**/*.lof": true,
+        "**/*.glo": true,
+        "**/*.ist": true,
+        "**/*.lot": true,
+        "**/*.loa": true,
+        "**/*.toc": true,
+        "**/*.sav": true,
+        "**/*.blg": true,
+        "**/*.pdf": true,
+        "**/*.dvi": true,
+        "**/*.acn": true,
+        "**/*.acr": true,
+        "**/*.alg": true,
+        "**/*.bcf": true,
+        "**/*.glsdefs": true,
+        "**/*.xml": true,
+        "**/*.xdy ": true,
+        "**/._*": true,
+        "**/*.synctex.gz": true,
+        "**/*.idx": true,
+        "**/*.ilg": true,
+        "**/*.ind": true
+    }
+}
