@@ -3,4 +3,5 @@ export interface Todo {
   name: string;
   deadline: Date;
   user: DocumentRef;
+  completed: boolean;
 }

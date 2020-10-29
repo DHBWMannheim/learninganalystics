@@ -15,22 +15,37 @@ export const mutations = () => ({
     if (!todo.id) throw new Error("Missing id");
     state.todos.set(todo.id, todo);
   },
+  delete(state, todo: Todo) {
+    if (!todo.id) throw new Error("Missing id");
+    state.todos.remove(todo.id, todo);
+  },
 });
 
 export const actions = () => ({
-  async add({ commit, rootGetters }, todo: Todo) {
+  async upsert({ commit, rootGetters }, todo: Todo) {
     let firebaseAccess = this.$fireStore
       .collection(`${COLLECTION_NAME}`)
       .withConverter(getIdMapperConverter());
 
-    const firebaseResponse = await firebaseAccess.add(todo);
+    let ref: DocumentRef;
+    if (todo.id) {
+      await firebaseAccess.doc(todo.id).set(todo);
+      ref = todo.id;
+    } else {
+      ref = await firebaseAccess.add(todo);
+    }
+
     //TODO: current user
     commit("upsert", {
-      id: firebaseResponse.id,
+      id: ref.id,
       ...todo,
     });
   },
-  delete({ commit }, todo: Todo) {
-    this.$firebase.doc();
+  async delete({ commit }, todo: Todo) {
+    await this.$fireStore
+      .collection(`${COLLECTION_NAME}`)
+      .doc(todo.id)
+      .delete();
+    commit("delete", todo);
   },
 });
