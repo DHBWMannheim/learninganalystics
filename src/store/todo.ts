@@ -4,29 +4,33 @@ import { getIdMapperConverter } from "../converters/id-mapper.converter";
 const COLLECTION_NAME = "todos";
 
 export const state = () => ({
-  todos: new Map<string, Todo>(),
+  todos: {} as { [key: string]: Todo },
 });
 
-export const getters = ({})
+export const getters = {};
 
 export const mutations = {
   upsert(state, todo: Todo) {
     if (!todo.id) throw new Error("Missing id");
-    state.todos.set(todo.id, todo);
+    state.todos[todo.id] = todo;
+    state.todos = { ...state.todos };//TODO: Gibt es hier eine bessere Möglichkeit?
   },
   delete(state, todo: Todo) {
     if (!todo.id) throw new Error("Missing id");
-    state.todos.remove(todo.id, todo);
+    delete state.todos[todo.id];
+    state.todos = { ...state.todos };
   },
 };
 
 export const actions = {
-  async upsert({ commit, rootGetters }, todo: Todo) {
+  async upsert({ commit, rootState }, todo: Todo) {
     let firebaseAccess = this.$fireStore
       .collection(`${COLLECTION_NAME}`)
       .withConverter(getIdMapperConverter());
 
-    //   rootGetters.user.getCurrentUser()
+    todo.user = this.$fireStore
+      .collection(`users`)
+      .doc(rootState.user.currentUser.id);
 
     let ref: DocumentRef;
     if (todo.id) {
@@ -36,7 +40,6 @@ export const actions = {
       ref = await firebaseAccess.add(todo);
     }
 
-    //TODO: current user
     commit("upsert", {
       id: ref.id,
       ...todo,
@@ -44,14 +47,14 @@ export const actions = {
   },
   async delete({ commit }, todo: Todo) {
     await this.$fireStore
-      .collection(`${COLLECTION_NAME}`)
+      .collection(COLLECTION_NAME)
       .doc(todo.id)
       .delete();
     commit("delete", todo);
   },
   async fetch({ commit }) {
     const a = await this.$fireStore
-      .collection(`${COLLECTION_NAME}`)
+      .collection(COLLECTION_NAME)
       .withConverter(getIdMapperConverter())
       .get();
     const todos = await Promise.all(a.docs.map((doc) => doc.data()));

@@ -1,31 +1,26 @@
+import { User } from "../models/user.model";
+
 const COLLECTION_NAME = "users";
 
 export const state = () => ({
   currentUser: null,
 });
 
-export const getters = ({
-  getCurrentUser(state) {
-    return state.currentUser;
-  },
-});
+export const getters = {};
 
-export const mutations = ({
-  setCurrentUser(state, user) {
-    //TODO ist user richtig?
+export const mutations = {
+  setCurrentUser(state, user: User) {
     state.currentUser = user;
   },
-});
+};
 
-export const actions = ({
-  async login({ commit }, user) {
-    //TODO type
-    const userRef = this.$fireStore.doc(`${COLLECTION_NAME}/${user.uid}`);
-
-    const data = {
-      email: user.email,
-    };
-    const currentUser = await userRef.set(data, { merge: true });
-    commit("setCurrentUser", currentUser);
+export const actions = {
+  async upsert({ commit }, user: User) {
+    const { id, email, displayName } = user;
+    await this.$fireStore
+      .collection(COLLECTION_NAME)
+      .doc(id)
+      .set({ email, displayName });
+    commit("setCurrentUser", user);
   },
-});
+};

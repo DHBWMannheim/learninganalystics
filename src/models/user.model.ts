@@ -11,4 +11,6 @@ export interface User {
   };
   gender: Gender;
   matriculationNr: number;
+  //TODO: Lern Type
+  course: DocumentRef;
 }
