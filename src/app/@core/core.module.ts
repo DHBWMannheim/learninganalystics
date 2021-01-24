@@ -50,9 +50,11 @@ export const NB_CORE_PROVIDERS = [
     forms: {
       login: {
         socialLinks: socialLinks,
+        strategy: 'password'
       },
       register: {
         socialLinks: socialLinks,
+        strategy: 'password'
       },
     },
   }).providers,

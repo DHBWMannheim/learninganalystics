@@ -1,5 +1,5 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import {
   NbActionsModule,
   NbLayoutModule,
@@ -12,33 +12,32 @@ import {
   NbSelectModule,
   NbIconModule,
   NbThemeModule,
-} from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbSecurityModule } from '@nebular/security';
+} from "@nebular/theme";
+import { NbEvaIconsModule } from "@nebular/eva-icons";
+import { NbSecurityModule } from "@nebular/security";
 
 import {
   FooterComponent,
   HeaderComponent,
-  LayoutDirectionSwitcherComponent,
   SearchInputComponent,
   SwitcherComponent,
-} from './components';
+} from "./components";
 import {
   CapitalizePipe,
   PluralPipe,
   RoundPipe,
   TimingPipe,
   NumberWithCommasPipe,
-} from './pipes';
+} from "./pipes";
 import {
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
-} from './layouts';
-import { DEFAULT_THEME } from './styles/theme.default';
-import { COSMIC_THEME } from './styles/theme.cosmic';
-import { CORPORATE_THEME } from './styles/theme.corporate';
-import { DARK_THEME } from './styles/theme.dark';
+} from "./layouts";
+import { DEFAULT_THEME } from "./styles/theme.default";
+import { COSMIC_THEME } from "./styles/theme.cosmic";
+import { CORPORATE_THEME } from "./styles/theme.corporate";
+import { DARK_THEME } from "./styles/theme.dark";
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -56,7 +55,6 @@ const NB_MODULES = [
 ];
 const COMPONENTS = [
   SwitcherComponent,
-  LayoutDirectionSwitcherComponent,
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
@@ -84,9 +82,9 @@ export class ThemeModule {
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: 'default',
+            name: "default",
           },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
+          [DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME]
         ).providers,
       ],
     };
