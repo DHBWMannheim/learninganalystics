@@ -1,4 +1,9 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import {
+  ModuleWithProviders,
+  NgModule,
+  Optional,
+  SkipSelf,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
@@ -6,18 +11,14 @@ import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import {
-  LayoutService,
-  SeoService,
-  StateService,
-} from './utils';
-import { UserData } from './data/users';
+import { LayoutService, SeoService, StateService } from './utils';
 
-import { UserService } from './mock/users.service';
 import { RippleService } from './utils/ripple.service';
-import { MockDataModule } from './mock/mock-data.module';
-import { NbFirebasePasswordStrategy, NbFirebaseGoogleStrategy, NbFirebaseAuthModule} from '@nebular/firebase-auth';
-
+import {
+  NbFirebasePasswordStrategy,
+  NbFirebaseGoogleStrategy,
+  NbFirebaseAuthModule,
+} from '@nebular/firebase-auth';
 
 const socialLinks = [
   {
@@ -28,8 +29,7 @@ const socialLinks = [
 ];
 
 const DATA_SERVICES = [
-  { provide: UserData, useClass: UserService },
-  {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService},
+  { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService },
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
@@ -40,10 +40,8 @@ export class NbSimpleRoleProvider extends NbRoleProvider {
 }
 
 export const NB_CORE_PROVIDERS = [
-  ...MockDataModule.forRoot().providers,
   ...DATA_SERVICES,
   ...NbAuthModule.forRoot({
-
     strategies: [
       NbDummyAuthStrategy.setup({
         name: 'email',
@@ -53,17 +51,17 @@ export const NB_CORE_PROVIDERS = [
         name: 'password',
       }),
       NbFirebaseGoogleStrategy.setup({
-        name: 'google'
-      })
+        name: 'google',
+      }),
     ],
     forms: {
       login: {
         // socialLinks: socialLinks,  TODO: Google?   TODO: Fix: Terms & Condition
-        strategy: 'password'
+        strategy: 'password',
       },
       register: {
         // socialLinks: socialLinks,
-        strategy: 'password'
+        strategy: 'password',
       },
     },
   }).providers,
@@ -83,7 +81,8 @@ export const NB_CORE_PROVIDERS = [
   }).providers,
 
   {
-    provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
+    provide: NbRoleProvider,
+    useClass: NbSimpleRoleProvider,
   },
   LayoutService,
   SeoService,
@@ -91,13 +90,8 @@ export const NB_CORE_PROVIDERS = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    NbAuthModule,
-    NbFirebaseAuthModule
-  ],
+  imports: [CommonModule],
+  exports: [NbAuthModule, NbFirebaseAuthModule],
   declarations: [],
 })
 export class CoreModule {
@@ -108,9 +102,7 @@ export class CoreModule {
   static forRoot(): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
-      providers: [
-        ...NB_CORE_PROVIDERS,
-      ],
+      providers: [...NB_CORE_PROVIDERS],
     };
   }
 }

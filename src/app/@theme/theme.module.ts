@@ -13,6 +13,7 @@ import {
   NbSelectModule,
   NbIconModule,
   NbThemeModule,
+  NbBadgeModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -55,6 +56,7 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
+  NbBadgeModule,
 ];
 const COMPONENTS = [
   HeaderComponent,
@@ -87,7 +89,14 @@ export class ThemeModule {
           {
             name: 'default',
           },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME, MATERIAL_LIGHT_THEME, MATERIAL_DARK_THEME ],
+          [
+            DEFAULT_THEME,
+            COSMIC_THEME,
+            CORPORATE_THEME,
+            DARK_THEME,
+            MATERIAL_LIGHT_THEME,
+            MATERIAL_DARK_THEME,
+          ],
         ).providers,
       ],
     };

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogConfig, NbDialogService } from '@nebular/theme';
 import { AddComponent } from './add/add.component';
+import { Todo } from './todo.type';
 import { TodosService } from './todos.service';
 
 @Component({
@@ -32,10 +33,14 @@ export class TodosComponent implements OnInit {
 
   loadNext() {}
 
-  openAddDialog() {
-    this.dialogService.open(AddComponent).onClose.subscribe((v) => {
-      console.log(v);
-      this.reload();
+  openAddDialog(model?: Todo) {
+    const options: Partial<NbDialogConfig> = {};
+    if (model) {
+      options.context = { model };
+    }
+
+    this.dialogService.open(AddComponent, options).onClose.subscribe((v) => {
+      if (v) this.reload();
     });
   }
 }
