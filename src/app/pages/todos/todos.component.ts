@@ -10,7 +10,7 @@ import { TodosService } from './todos.service';
   styleUrls: ['./todos.component.scss'],
 })
 export class TodosComponent implements OnInit {
-  items = [];
+  items: Todo[] = [];
 
   loading = true;
 
@@ -42,5 +42,10 @@ export class TodosComponent implements OnInit {
     this.dialogService.open(AddComponent, options).onClose.subscribe((v) => {
       if (v) this.reload();
     });
+  }
+
+  async toggleCompleted(checked: boolean, todo: Todo) {//TODO: add delayed write?
+    todo.completed = checked;
+    await this.todosService.upsert(todo);
   }
 }

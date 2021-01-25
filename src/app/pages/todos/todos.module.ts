@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {
   NbButtonModule,
   NbCardModule,
+  NbCheckboxModule,
   NbIconModule,
   NbInputModule,
   NbListModule,
@@ -39,6 +40,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatInputModule,
     NbSpinnerModule,
     MatCheckboxModule,
+    NbCheckboxModule,
   ],
   declarations: [TodosComponent, AddComponent],
 })

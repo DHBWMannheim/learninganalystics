@@ -11,11 +11,16 @@
           (bottomThreshold)="loadNext()"
         >
           <nb-list-item *ngFor="let item of items">
-            <!-- <mat-checkbox class="align-middle">Check me!</mat-checkbox> TODO: eva icons-->
-            <div class="pointer w-100" (click)="openAddDialog(item)">
-              {{ item.title }}
+            <div>
+              <nb-checkbox
+                (checkedChange)="toggleCompleted($event, item)"
+                [checked]="item.completed"
+              ></nb-checkbox>
             </div>
-            <!-- TODO: Edit Button on the end -->
+            <div class="pointer w-100 ml-2" (click)="openAddDialog(item)">
+              <span *ngIf="!item.completed">{{ item.title }}</span>
+              <del *ngIf="item.completed">{{ item.title }}</del>
+            </div>
           </nb-list-item>
         </nb-list>
       </nb-card-body>

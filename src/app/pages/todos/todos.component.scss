@@ -3,3 +3,8 @@
     right: 15px;
     bottom: 100px;
 }//FIXME: Position
+
+::ng-deep .label {//TODO: Fix This
+    display: flex !important;
+}
+

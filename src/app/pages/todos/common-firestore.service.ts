@@ -19,8 +19,9 @@ interface Converter<T> {
 export const CommonConverter = {
   //TODO: keine anys verwenden
   toFirestore(u: any): DocumentData {
+    const { id, ...data } = u;
     return {
-      ...u,
+      ...data,
     };
   },
   fromFirestore(
@@ -37,9 +38,9 @@ export const CommonConverter = {
 
 export abstract class CommonFirestoreService<T extends { id?: string }> {
   constructor(
-      private readonly collectionName: string,
-      private readonly afs: AngularFirestore,
-      private readonly converter: Converter<T> = CommonConverter,
+    private readonly collectionName: string,
+    private readonly afs: AngularFirestore,
+    private readonly converter: Converter<T> = CommonConverter,
   ) {}
 
   //TODO: subscriptions?
