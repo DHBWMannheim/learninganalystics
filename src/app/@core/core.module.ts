@@ -1,12 +1,20 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import {
+  LayoutService,
+  SeoService,
+  StateService,
+} from './utils';
 import { UserData } from './data/users';
+
 import { UserService } from './mock/users.service';
+import { RippleService } from './utils/ripple.service';
 import { MockDataModule } from './mock/mock-data.module';
 import { NbFirebasePasswordStrategy, NbFirebaseGoogleStrategy, NbFirebaseAuthModule} from '@nebular/firebase-auth';
 
@@ -21,6 +29,7 @@ const socialLinks = [
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
+  {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService},
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
@@ -76,6 +85,9 @@ export const NB_CORE_PROVIDERS = [
   {
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
   },
+  LayoutService,
+  SeoService,
+  StateService,
 ];
 
 @NgModule({

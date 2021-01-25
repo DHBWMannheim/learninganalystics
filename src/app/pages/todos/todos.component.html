@@ -1,0 +1,11 @@
+<div class="row">
+  <nb-card>
+    <nb-card-body>
+      <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNext()">
+        <nb-list-item *ngFor="let item of items">
+            {{item|json}}
+        </nb-list-item>
+      </nb-list>
+    </nb-card-body>
+  </nb-card>
+</div>
