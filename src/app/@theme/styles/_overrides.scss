@@ -9,6 +9,14 @@
     }
   }
 
+  nb-sidebar {
+    transition: width 0.3s;
+
+    .main-container {
+      transition: width 0.3s;
+    }
+  }
+
   nb-card nb-list {
     @include nb-scrollbars(
       nb-theme(card-scrollbar-color),

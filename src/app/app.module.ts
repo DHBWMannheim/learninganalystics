@@ -19,7 +19,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { environment } from 'environments/environment';
+import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
@@ -38,6 +38,7 @@ import { AngularFireModule } from '@angular/fire';
     NbToastrModule.forRoot(),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    NbDialogModule.forRoot()
   ],
   bootstrap: [AppComponent],
 })

@@ -1,11 +1,17 @@
 <div class="row">
   <nb-card>
-    <nb-card-body>
+    <nb-card-body [nbSpinner]="loading">
       <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNext()">
         <nb-list-item *ngFor="let item of items">
-            {{item|json}}
+          {{ item.title }}
         </nb-list-item>
       </nb-list>
     </nb-card-body>
   </nb-card>
+</div>
+
+<div class="add-button-container">
+  <button mat-fab color="primary" (click)="openAddDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
