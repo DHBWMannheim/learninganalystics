@@ -16,7 +16,6 @@ import {
 })
 export class TinderUIComponent {
   @Input('cards') cards: Array<{
-    img: string;
     title: string;
     description: string;
   }>;
@@ -79,9 +78,9 @@ export class TinderUIComponent {
       this.toggleChoiceIndicator(true, false);
     }
 
-    let xMulti = event.deltaX * 0.03;
-    let yMulti = event.deltaY / 80;
-    let rotate = xMulti * yMulti;
+    const xMulti = event.deltaX * 0.03;
+    const yMulti = event.deltaY / 80;
+    const rotate = xMulti * yMulti;
 
     this.renderer.setStyle(
       this.tinderCardsArray[0].nativeElement,
@@ -105,7 +104,7 @@ export class TinderUIComponent {
 
     this.renderer.removeClass(this.tinderCardsArray[0].nativeElement, 'moving');
 
-    let keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
+    const keep = Math.abs(event.deltaX) < 5 || Math.abs(event.velocityX) < 0.5;
     if (keep) {
       this.renderer.setStyle(
         this.tinderCardsArray[0].nativeElement,
@@ -114,16 +113,16 @@ export class TinderUIComponent {
       );
       this.shiftRequired = false;
     } else {
-      let endX = Math.max(
+      const endX = Math.max(
         Math.abs(event.velocityX) * this.moveOutWidth,
         this.moveOutWidth,
       );
-      let toX = event.deltaX > 0 ? endX : -endX;
-      let endY = Math.abs(event.velocityY) * this.moveOutWidth;
-      let toY = event.deltaY > 0 ? endY : -endY;
-      let xMulti = event.deltaX * 0.03;
-      let yMulti = event.deltaY / 80;
-      let rotate = xMulti * yMulti;
+      const toX = event.deltaX > 0 ? endX : -endX;
+      const endY = Math.abs(event.velocityY) * this.moveOutWidth;
+      const toY = event.deltaY > 0 ? endY : -endY;
+      const xMulti = event.deltaX * 0.03;
+      const yMulti = event.deltaY / 80;
+      const rotate = xMulti * yMulti;
 
       this.renderer.setStyle(
         this.tinderCardsArray[0].nativeElement,

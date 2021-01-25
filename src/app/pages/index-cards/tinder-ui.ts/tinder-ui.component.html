@@ -18,12 +18,12 @@
       <p>{{ card.description }}</p>
     </div>
   </div>
-  <div class="tinder--buttons">
-    <button (click)="userClickedButton($event, false)">
+  <div class="tinder--buttons"><!--TODO:-->
+    <button (click)="userClickedButton($event, false)" class="p-0">
       <nb-icon icon="close-outline"></nb-icon>
     </button>
 
-    <button (click)="userClickedButton($event, true)">
+    <button (click)="userClickedButton($event, true)" class="p-0">
       <nb-icon icon="checkmark-outline"></nb-icon>
     </button>
   </div>
