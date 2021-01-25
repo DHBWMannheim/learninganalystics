@@ -1,0 +1,34 @@
+name: release
+on:
+  release:
+    types: [published]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: docs/master.tex
+      - uses: actions/upload-artifact@v2
+        with:
+          name: doc
+          path: docs/master.pdf
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        
