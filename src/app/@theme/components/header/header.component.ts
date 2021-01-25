@@ -56,7 +56,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [
+    {
+      title: 'Profile',
+      icon: 'person-outline',
+      link: '/pages/profile',
+    },
+    {
+      title: 'Log out',
+      icon: 'log-out-outline',//TODO: Logout Page?
+    },
+  ];
 
   public constructor(
     private sidebarService: NbSidebarService,
@@ -149,6 +159,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   areNewMessagesAvailable() {
-    return true; //TODO:
+    return true; //TODO: Anstehende Klausuren, Todos, ...
   }
 }

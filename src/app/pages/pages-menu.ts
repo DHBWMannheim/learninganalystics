@@ -12,6 +12,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Index Cards',
+    icon: 'book-outline',
+    link: '/pages/index-cards',
+  },
+  {
     title: 'Todos',
     icon: 'checkmark-square-outline',
     link: '/pages/todos',

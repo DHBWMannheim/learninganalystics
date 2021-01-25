@@ -22,7 +22,7 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {}
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close(this.model);
   }
 
   async submit() {

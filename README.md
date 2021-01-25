@@ -91,3 +91,92 @@ Visit [our homepage](https://www.akveo.com?utm_campaign=services%20-%20akveo%20w
 ### From Developers
 Made with :heart: by [Akveo team](https://www.akveo.com?utm_campaign=services%20-%20akveo%20website%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=from_developers_made_by). Follow us on [Twitter](https://twitter.com/akveo_inc) to get the latest news first!
 We're always happy to receive your feedback!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# TODOS:
+
+
+
+Gruppen
+
+
+
+
+Benutzergruppen:
+
+Student:
+ID
+Geschlecht
+Uni
+Studienrichtung
+Jahrgang
+Matrikelnummer
+opt. Name
+
+Dozent:
+ID
+Uni
+Studienrichtung
+Kurse
+
+Funktionen:
+Registrieren
+Login
+Klausurtermine einstellen
+Informationen zu Klausur (Inhalt der Klausur, usw. )
+Scriptlänge (kurz: 1-20; mittel: 21-100; lang: 101+)
+Scriptqualität (Schulnoten: 1-6)
+Schwerpunkte
+Schwierigkeit (leicht; mittel; schwer)
+Zeitplan bis Klausur?
+Lerninhalte, Zettel o.ä.
+Modul eines Dozierenden referenzieren?
+Übersicht über anstehende Klausuren und Prüfungen
+“Karteikarten” schreiben
+Mindmaps erstellen?
+TODO-Liste
+Datenexport für Dozierende
+Anonymisierte Daten eines Kurses exportieren
+
+
+Ausformuliert:
+
+
+Integrationsseminar: Team 3 - Learning Analytics
+
+Im Rahmen des Moduls “Integrationsseminar” wird unsere Gruppe eine Anwendung erstellen, welche es Studierenden ermöglicht sich für Klausuren zu organisieren. Es soll Dozierenden ermöglicht werden diese Daten abzurufen. Die Aufbereitung und Analyse dieser Daten soll jedoch nicht innerhalb dieses Projekts erfolgen.
+
+Funktionalitäten der Anwendung:
+Dozierende und Studierende sollen sich innerhalb der Anwendung registrieren und autorisieren können und mit Zugangsdaten ausgestattet werden.
+Sowohl Dozierende als auch Studierende sollen sich innerhalb der Anwendung mit einem eindeutigen, ihnen zuordenbaren, Zugang anmelden können.
+Eine Kernfunktionalität für Studierende soll das eigenständige Erstellen und organisieren von Klausurterminen (generell Prüfungsleistungen) eines Moduls sein, welches bei Erstellung angegeben werden muss. Hier sollen folgende Informationen gespeichert werden können:
+Informationen zur Prüfungsleistung (Inhalt, Datum, ...)
+Bewertung des Vorlesungsskriptes (Faktoren wären z.B. Qualität, Länge, ...)
+Lernschwerpunkte
+Subjektive Schwierigkeit
+Erstellung eines Lern-Zeitplans
+Organisation von Lerninhalten
+Studierende sollen eine Übersicht von anstehenden Prüfungsleistungen der einzelnen Module zur Verfügung stehen. Hierbei sollen die Daten der individuellen Lern-Zeitpläne integriert sein. Hierbei soll auch eine separate TODO-Liste oder eine Auflistung der ausstehenden Lerninhalte erstell-, generier- und bearbeitbar sein.
+Dozierenden soll es möglich sein, noch zu definierende anonymisierte Daten ihres Moduls eines gesamten Kurses als Rohdaten zu erhalten. Auf Basis dieser Daten kann der Dozent sich für Ihn und seine Vorlesung passende Auswertungen und Zusammenfassungen erstellen.
+
+Zeitplan:
+Uns ist bewusst, dass diese Funktionalitäten-Liste ein sehr ambitioniertes Vorhaben darstellt. Bezüglich Zeitplan können wir noch keine konkreten Aussagen treffen. Aufgrund der Corona-Pandemie sind gewisse Planungsunsicherheiten gegeben. Des Weiteren müssen wir im nächsten Praxissemester unsere Bachelorarbeit verfassen, bei welcher wir aktuell nicht bestimmen können, wie viel Zeit wir währenddessen haben um an dieser Anwendung weiter zu arbeiten.
+
+
+
+
