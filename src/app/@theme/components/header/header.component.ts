@@ -10,6 +10,7 @@ import { UserData } from "../../../@core/data/users";
 import { filter, map, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { NbAuthService } from "@nebular/auth";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "ngx-header",
@@ -53,7 +54,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private themeService: NbThemeService,
     private userService: UserData,
     private breakpointService: NbMediaBreakpointsService,
-    private authService: NbAuthService
+    private authService: NbAuthService,
+    private r: Router
   ) {}
 
   ngOnInit() {
@@ -91,7 +93,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((title) => {
         console.log(title)
         if(title.item.title==="Log out") {
-          this.authService.logout('password').subscribe()//TODO: Das ist total banane + TODO: navigation
+          this.authService.logout('password').subscribe(v=> {
+            this.r.navigate(['/auth/login'])
+          })//TODO: Das ist total banane + TODO: navigation
         }
       });//TODO: Logout, Profile
   }

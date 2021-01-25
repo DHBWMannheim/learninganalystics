@@ -49,11 +49,11 @@ export const NB_CORE_PROVIDERS = [
     ],
     forms: {
       login: {
-        socialLinks: socialLinks,
+        // socialLinks: socialLinks,  TODO: Google?   TODO: Fix: Terms & Condition
         strategy: 'password'
       },
       register: {
-        socialLinks: socialLinks,
+        // socialLinks: socialLinks,
         strategy: 'password'
       },
     },
