@@ -138,6 +138,6 @@ $nb-themes: nb-register-theme(
   cursor: pointer;
 }
 
-svg, .mat-fab {
+svg:focus, .mat-fab:focus {
   outline: 0;
 }

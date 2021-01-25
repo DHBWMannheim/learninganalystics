@@ -1,0 +1,30 @@
+<div class="tinder" [hidden]="!cards.length">
+  <div
+    class="tinder--cards"
+    (pan)="handlePan($event)"
+    (panend)="handlePanEnd($event)"
+  >
+    <div
+      #tinderCard
+      class="tinder--card"
+      (transitionend)="handleShift()"
+      *ngFor="let card of cards; let i = index"
+      [ngStyle]="{
+        zIndex: cards.length - i,
+        transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)'
+      }"
+    >
+      <h3>{{ card.title }}</h3>
+      <p>{{ card.description }}</p>
+    </div>
+  </div>
+  <div class="tinder--buttons">
+    <button (click)="userClickedButton($event, false)">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+
+    <button (click)="userClickedButton($event, true)">
+      <nb-icon icon="checkmark-outline"></nb-icon>
+    </button>
+  </div>
+</div>

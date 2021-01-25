@@ -9,7 +9,7 @@ import { TodosService } from '../todos.service';
   styleUrls: ['./add.component.scss'],
 })
 export class AddComponent implements OnInit {
-  model: Todo = {
+  model: Todo = {//TODO pass in id id and load here?
     title: '',
     description: '',
   };

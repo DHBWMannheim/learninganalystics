@@ -11,13 +11,15 @@
           (bottomThreshold)="loadNext()"
         >
           <nb-list-item *ngFor="let item of items">
-            <div>
-              <nb-checkbox
-                (checkedChange)="toggleCompleted($event, item)"
-                [checked]="item.completed"
-              ></nb-checkbox>
+            <div class="row">
+              <div class="col-start mr-2">
+                <nb-checkbox
+                  (checkedChange)="toggleCompleted($event, item)"
+                  [checked]="item.completed"
+                ></nb-checkbox>
+              </div>
             </div>
-            <div class="pointer w-100 ml-2" (click)="openAddDialog(item)">
+            <div class="col pointer" (click)="openAddDialog(item)">
               <span *ngIf="!item.completed">{{ item.title }}</span>
               <del *ngIf="item.completed">{{ item.title }}</del>
             </div>
@@ -30,7 +32,6 @@
 
 <div class="add-button-container">
   <button mat-fab color="primary" (click)="openAddDialog()">
-    <!-- <mat-icon>add</mat-icon> -->
     <nb-icon icon="plus-outline"></nb-icon>
   </button>
 </div>
