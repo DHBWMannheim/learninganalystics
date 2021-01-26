@@ -1,0 +1,57 @@
+<div class="tinder" [hidden]="!cards.length">
+  <div
+    class="tinder--cards"
+    (pan)="handlePan($event)"
+    (panend)="handlePanEnd($event)"
+  >
+    <nb-reveal-card
+      #tinderCard
+      class="tinder--card"
+      (transitionend)="handleShift()"
+      *ngFor="let card of cards; let i = index"
+      [ngStyle]="{
+        zIndex: cards.length - i,
+        transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)'
+      }"
+      ><!--TODO: ist flipcard besser?-->
+      <nb-card-front>
+        <nb-card>
+          <nb-card-header>
+            <h1>Question {{ i + 1 }}</h1>
+          </nb-card-header>
+          <nb-card-body>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+          </nb-card-body>
+        </nb-card>
+      </nb-card-front>
+      <nb-card-back>
+        <nb-card>
+          <nb-card-header>
+            <h1>Answer {{ i + 1 }}</h1>
+          </nb-card-header>
+          <nb-card-body>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+          </nb-card-body>
+        </nb-card>
+      </nb-card-back>
+    </nb-reveal-card>
+  </div>
+  <nb-actions size="giant" fullWidth>
+    <nb-action
+      icon="close-outline"
+      (click)="userClickedButton($event, false)"
+      badgeStatus="warning"
+      [badgeText]="crossCount"
+      badgeSize="giant"
+    ></nb-action>
+    <nb-action
+      icon="checkmark-outline"
+      (click)="userClickedButton($event, true)"
+      badgeStatus="success"
+      [badgeText]="heartCount"
+      badgeSize="giant"
+    ></nb-action>
+  </nb-actions>
+</div>

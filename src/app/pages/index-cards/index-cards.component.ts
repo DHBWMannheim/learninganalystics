@@ -6,32 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index-cards.component.scss'],
 })
 export class IndexCardsComponent implements OnInit {
-  cards = [
-    {
-      title: 'Demo card 1',
-      description: 'This is a demo for Tinder like swipe cards',
-    },
-    {
-      title: 'Demo card 2',
-      description: 'This is a demo for Tinder like swipe cards',
-    },
-    {
-      title: 'Demo card 3',
-      description: 'This is a demo for Tinder like swipe cards',
-    },
-    {
-      title: 'Demo card 4',
-      description: 'This is a demo for Tinder like swipe cards',
-    },
-    {
-      title: 'Demo card 5',
-      description: 'This is a demo for Tinder like swipe cards',
-    },
-  ];
+  cards = [];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    for (
+      let i = 0;
+      i < 10;
+      i++ //TODO: Max 20, 10 ist optimum
+    )
+      this.cards.push({
+        title: 'Demo',
+        description: 'Descript',
+      });
+  }
 
   logChoice(event: any) {
     console.log(event);

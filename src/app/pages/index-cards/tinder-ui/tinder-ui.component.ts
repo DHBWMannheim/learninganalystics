@@ -40,6 +40,9 @@ export class TinderUIComponent implements AfterViewInit {
   heartVisible: boolean;
   crossVisible: boolean;
 
+  crossCount = 0;
+  heartCount = 0;
+
   constructor(private readonly renderer: Renderer2) {}
 
   userClickedButton(event, heart) {
@@ -105,7 +108,7 @@ export class TinderUIComponent implements AfterViewInit {
 
     this.renderer.removeClass(this.tinderCardsArray[0].nativeElement, 'moving');
 
-    const keep = Math.abs(event.deltaX) < 5 || Math.abs(event.velocityX) < 0.5;
+    const keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
     if (keep) {
       this.renderer.setStyle(
         this.tinderCardsArray[0].nativeElement,
@@ -153,6 +156,11 @@ export class TinderUIComponent implements AfterViewInit {
   }
 
   emitChoice(heart: boolean, card: Card) {
+    if (heart) {
+      this.heartCount++;
+    } else {
+      this.crossCount++;
+    }
     this.choiceMade.emit({
       choice: heart,
       payload: card,
