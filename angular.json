@@ -58,7 +58,8 @@
               "lodash",
               "zrender/lib/svg/svg",
               "zrender/lib/vml/vml",
-              "style-loader!leaflet/dist/leaflet.css"
+              "style-loader!leaflet/dist/leaflet.css",
+              "hammerjs"
             ]
           },
           "configurations": {

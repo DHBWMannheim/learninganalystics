@@ -64,7 +64,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
     {
       title: 'Log out',
-      icon: 'log-out-outline',//TODO: Logout Page?
+      icon: 'log-out-outline',
+      link: '/auth/logout'
     },
   ];
 
@@ -89,8 +90,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.firebaseAuth.authState.subscribe((authState) => {
-      console.log(authState);
-      this.user = {
+      this.user = authState && {
         name: authState.displayName || 'Anonymous User',
         picture: authState.photoURL,
       };
@@ -120,21 +120,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.rippleService.toggle(themeName?.startsWith('material'));
       });
 
-    this.menuService
-      .onItemClick()
-      .pipe(
-        filter(({ tag }) => tag === 'profile-context-menu'),
-        takeUntil(this.destroy$),
-      )
-
-      .subscribe((title) => {
-        console.log(title);
-        if (title.item.title === 'Log out') {
-          this.authService.logout('password').subscribe((v) => {
-            this.router.navigate(['/auth/login']);
-          }); //TODO: Das ist total banane + TODO: navigation
-        }
-      }); //TODO: Logout, Profile
   }
 
   ngOnDestroy() {
