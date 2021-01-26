@@ -181,3 +181,5 @@ Uns ist bewusst, dass diese Funktionalitäten-Liste ein sehr ambitioniertes Vorh
 
 @nebular/moment 
 @nebular/date-fns
+Raumplan? https://www.akveo.com/ngx-admin/pages/iot-dashboard  nehir.cagan@dhbw-mannheim.de
+https://github.com/ngx-translate/core

@@ -7,8 +7,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
+  //---
   {
-    title: 'FEATURES',
+    title: 'COURSES',//TODO: Hier in der Gruppe Das Course Management unterbringen. Jeder Nutzer kann selber kurse anlegen und beliebig vielen joinen -> z.B. nachfilfe
     group: true,
   },
   {
@@ -16,9 +17,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'book-outline',
     link: '/pages/index-cards',
   },
+  //---
+  {
+    title: 'PERSONAL',
+    group: true,
+  },
   {
     title: 'Todos',
     icon: 'checkmark-square-outline',
     link: '/pages/todos',
   },
-]
+];

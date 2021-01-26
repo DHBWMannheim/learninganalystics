@@ -24,6 +24,7 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HammerModule,
     AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule.enablePersistence(),
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,

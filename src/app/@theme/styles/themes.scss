@@ -141,3 +141,7 @@ $nb-themes: nb-register-theme(
 nb-icon:focus, .mat-fab:focus {
   outline: 0;
 }
+
+router-outlet + * {
+  height: 100%;
+}

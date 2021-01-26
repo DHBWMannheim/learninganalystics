@@ -1,0 +1,8 @@
+.row,
+.col {
+  height: 100%;
+}
+
+nb-card {
+  height: calc(100% - 15px);
+}
