@@ -4,7 +4,7 @@
     (pan)="handlePan($event)"
     (panend)="handlePanEnd($event)"
   >
-    <div
+    <nb-card
       #tinderCard
       class="tinder--card"
       (transitionend)="handleShift()"
@@ -14,11 +14,17 @@
         transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)'
       }"
     >
-      <h3>{{ card.title }}</h3>
-      <p>{{ card.description }}</p>
-    </div>
+      <nb-card-header>
+        <h1>Question {{i+1}}</h1>
+      </nb-card-header>
+      <nb-card-body>
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.description }}</p>
+      </nb-card-body>
+    </nb-card>
   </div>
-  <div class="tinder--buttons"><!--TODO:-->
+  <div class="tinder--buttons"><!--TODO: Fab-buttons-->
+    <!--TODO:-->
     <button (click)="userClickedButton($event, false)" class="p-0">
       <nb-icon icon="close-outline"></nb-icon>
     </button>

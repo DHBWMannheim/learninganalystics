@@ -7,23 +7,32 @@ import {
   EventEmitter,
   Output,
   Renderer2,
+  AfterViewInit,
 } from '@angular/core';
+
+export interface Card {
+  title: string;
+  description: string;
+}
+
+export interface TinderChoice {
+  choice: boolean;
+  payload: Card;
+}
 
 @Component({
   selector: 'tinder-ui',
   templateUrl: 'tinder-ui.component.html',
   styleUrls: ['tinder-ui.component.scss'],
 })
-export class TinderUIComponent {
-  @Input('cards') cards: Array<{
-    title: string;
-    description: string;
-  }>;
+export class TinderUIComponent implements AfterViewInit {
+  @Input('cards') cards: Card[];
 
-  @ViewChildren('tinderCard') tinderCards: QueryList<ElementRef>;
-  tinderCardsArray: Array<ElementRef>;
+  @ViewChildren('tinderCard', { read: ElementRef })
+  tinderCards: QueryList<ElementRef>;
+  tinderCardsArray: ElementRef[];
 
-  @Output() choiceMade = new EventEmitter();
+  @Output() choiceMade = new EventEmitter<TinderChoice>();
 
   moveOutWidth: number;
   shiftRequired: boolean;
@@ -31,7 +40,7 @@ export class TinderUIComponent {
   heartVisible: boolean;
   crossVisible: boolean;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private readonly renderer: Renderer2) {}
 
   userClickedButton(event, heart) {
     event.preventDefault();
@@ -40,19 +49,17 @@ export class TinderUIComponent {
       this.renderer.setStyle(
         this.tinderCardsArray[0].nativeElement,
         'transform',
-        'translate(' + this.moveOutWidth + 'px, -100px) rotate(-30deg)',
+        `translate(${this.moveOutWidth}px,-100px) rotate(-30deg)`,
       );
-      this.toggleChoiceIndicator(false, true);
-      this.emitChoice(heart, this.cards[0]);
     } else {
       this.renderer.setStyle(
         this.tinderCardsArray[0].nativeElement,
         'transform',
-        'translate(-' + this.moveOutWidth + 'px, -100px) rotate(30deg)',
+        `translate(-${this.moveOutWidth}px,-100px) rotate(30deg)`,
       );
-      this.toggleChoiceIndicator(true, false);
-      this.emitChoice(heart, this.cards[0]);
     }
+    this.toggleChoiceIndicator(!heart, heart);
+    this.emitChoice(heart, this.cards[0]);
     this.shiftRequired = true;
     this.transitionInProgress = true;
   }
@@ -85,13 +92,7 @@ export class TinderUIComponent {
     this.renderer.setStyle(
       this.tinderCardsArray[0].nativeElement,
       'transform',
-      'translate(' +
-        event.deltaX +
-        'px, ' +
-        event.deltaY +
-        'px) rotate(' +
-        rotate +
-        'deg)',
+      `translate(${event.deltaX}px,${event.deltaY}px) rotate(${rotate}deg)`,
     );
 
     this.shiftRequired = true;
@@ -127,13 +128,7 @@ export class TinderUIComponent {
       this.renderer.setStyle(
         this.tinderCardsArray[0].nativeElement,
         'transform',
-        'translate(' +
-          toX +
-          'px, ' +
-          (toY + event.deltaY) +
-          'px) rotate(' +
-          rotate +
-          'deg)',
+        `translate(${toX}px,${toY + event.deltaY}px) rotate(${rotate}deg)`,
       );
 
       this.shiftRequired = true;
@@ -143,7 +138,7 @@ export class TinderUIComponent {
     this.transitionInProgress = true;
   }
 
-  toggleChoiceIndicator(cross, heart) {
+  toggleChoiceIndicator(cross: boolean, heart: boolean) {
     this.crossVisible = cross;
     this.heartVisible = heart;
   }
@@ -157,7 +152,7 @@ export class TinderUIComponent {
     }
   }
 
-  emitChoice(heart, card) {
+  emitChoice(heart: boolean, card: Card) {
     this.choiceMade.emit({
       choice: heart,
       payload: card,

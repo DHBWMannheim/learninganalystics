@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NbSearchService } from '@nebular/theme';
 
 import { MENU_ITEMS } from './pages-menu';
 
@@ -12,7 +13,13 @@ import { MENU_ITEMS } from './pages-menu';
     </ngx-one-column-layout>
   `,
 })
-export class PagesComponent {
-
+export class PagesComponent implements OnInit {
   menu = MENU_ITEMS;
+
+  constructor(private readonly search: NbSearchService) {}
+  ngOnInit(): void {
+    this.search.onSearchSubmit().subscribe(({ term }) => {
+      console.log('TODO: SEARCH:', term);
+    });
+  }
 }
