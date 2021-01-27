@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
-import { Todo } from '../todo.type';
-import { TodosService } from '../todos.service';
+import { Todo, TodosService } from '../../../@core/data/todos.service';
 
 @Component({
   selector: 'ngx-add',
@@ -9,7 +8,7 @@ import { TodosService } from '../todos.service';
   styleUrls: ['./add.component.scss'],
 })
 export class AddComponent implements OnInit {
-  model: Todo = {//TODO pass in id id and load here?
+  model: Omit<Todo, 'owner'> = { // TODO: ist omit ok oder sollte owner optional sein?
     title: '',
     description: '',
   };

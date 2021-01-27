@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogConfig, NbDialogService } from '@nebular/theme';
 import { AddComponent } from './add/add.component';
-import { Todo } from './todo.type';
-import { TodosService } from './todos.service';
+import { Todo, TodosService } from '../../@core/data/todos.service';
 
 @Component({
   selector: 'todos',
@@ -24,6 +23,7 @@ export class TodosComponent implements OnInit {
   }
 
   private reload() {
+    // TODO: add load limit, ...
     this.loading = true;
     this.todosService.get().then((v) => {
       this.items = v;
@@ -44,7 +44,8 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  async toggleCompleted(checked: boolean, todo: Todo) {//TODO: add delayed write?
+  async toggleCompleted(checked: boolean, todo: Todo) {
+    // TODO: add delayed write?
     todo.completed = checked;
     await this.todosService.upsert(todo);
   }

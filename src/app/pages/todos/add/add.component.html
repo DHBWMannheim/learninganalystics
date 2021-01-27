@@ -6,7 +6,8 @@
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
-          <mat-icon>close</mat-icon>
+          <nb-icon icon="close-outline"></nb-icon
+          ><!--TODO:-->
         </button>
       </div>
     </div>
@@ -23,8 +24,9 @@
           required
           [(ngModel)]="model.title"
           name="title"
-        /> </mat-form-field
-      ><!--TODO: Max length?-->
+        />
+      </mat-form-field>
+      <!--TODO: Max length?-->
 
       <mat-form-field class="w-100">
         <mat-label>Description</mat-label>
@@ -34,6 +36,7 @@
           required
           [(ngModel)]="model.description"
           name="description"
+          class="description-textarea"
         ></textarea>
       </mat-form-field>
     </form>

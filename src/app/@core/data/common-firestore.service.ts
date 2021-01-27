@@ -1,11 +1,10 @@
-//TODO: Converter?
-
 import {
   AngularFirestore,
   DocumentData,
   SnapshotOptions,
   QueryDocumentSnapshot,
   QuerySnapshot,
+  DocumentReference,
 } from '@angular/fire/firestore';
 
 interface Converter<T> {
@@ -17,7 +16,7 @@ interface Converter<T> {
 }
 
 export const CommonConverter = {
-  //TODO: keine anys verwenden
+  // TODO: keine anys verwenden
   toFirestore(u: any): DocumentData {
     const { id, ...data } = u;
     return {
@@ -43,7 +42,7 @@ export abstract class CommonFirestoreService<T extends { id?: string }> {
     private readonly converter: Converter<T> = CommonConverter,
   ) {}
 
-  //TODO: subscriptions?
+  // TODO: subscriptions?
   public async get(): Promise<T[]>;
   public async get(id: string): Promise<T>;
   public async get(id?: string): Promise<T | T[]> {
@@ -55,7 +54,7 @@ export abstract class CommonFirestoreService<T extends { id?: string }> {
     return this.getData(snap);
   }
 
-  public upsert(unit: T) {
+  public async upsert(unit: T) {
     return unit.id
       ? this.createRef(unit.id).set(unit)
       : this.getCollection().add(unit);
@@ -67,8 +66,8 @@ export abstract class CommonFirestoreService<T extends { id?: string }> {
       .ref.withConverter(this.converter);
   }
 
-  public createRef(id: string) {
-    return this.getCollection().doc(id);
+  public createRef(id: string): DocumentReference<T> {
+    return this.getCollection().doc(id); // TODO: stimmen die Typen?
   }
 
   public async getData(snapshot: QuerySnapshot<T> | Promise<QuerySnapshot<T>>) {

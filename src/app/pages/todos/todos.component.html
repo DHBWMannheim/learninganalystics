@@ -9,6 +9,7 @@
           nbInfiniteList
           [threshold]="500"
           (bottomThreshold)="loadNext()"
+          *ngIf="items"
         >
           <nb-list-item *ngFor="let item of items">
             <div class="row">
@@ -25,6 +26,9 @@
             </div>
           </nb-list-item>
         </nb-list>
+        <div *ngIf="!items.length">
+          Nothing here yet. Try adding a Todo with the button below :)
+        </div>
       </nb-card-body>
     </nb-card>
   </div>

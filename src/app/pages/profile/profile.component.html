@@ -6,6 +6,8 @@
       </nb-card-header>
       <nb-card-body>
 
+        {{(user|async)?.email}}
+
         <button nbButton
         fullWidth
         status="primary"

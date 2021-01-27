@@ -47,8 +47,8 @@
       <nb-user
         [nbContextMenu]="userMenu"
         [onlyPicture]="userPictureOnly"
-        [name]="user?.name"
-        [picture]="user?.picture"
+        [name]="(user|async)?.displayName||'Anonymous User'"
+        [picture]="(user|async)?.photoURL"
         nbContextMenuTag="profile-context-menu"
         shape="rectangle"
       >
