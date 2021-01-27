@@ -1,6 +1,7 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AuthGuard } from './auth.guard';
+import { ExperimentalComponent } from './experimental/experimental.component';
 
 export const routes: Routes = [
   {
@@ -15,10 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'experimental',
-    loadChildren: () =>
-      import('./experimental/experimental.module').then(
-        (m) => m.ExperimentalModule,
-      ),
+    component: ExperimentalComponent
   },
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },

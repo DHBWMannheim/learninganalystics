@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-new-course',
-  templateUrl: './new-course.component.html',
-  styleUrls: ['./new-course.component.scss'],
+  selector: 'ngx-experimental',
+  templateUrl: './experimental.component.html',
+  styleUrls: ['./experimental.component.scss']
 })
-export class NewCourseComponent implements OnInit {
+export class ExperimentalComponent implements OnInit {
+
   courses = [];
 
   constructor() {}
@@ -18,4 +19,5 @@ export class NewCourseComponent implements OnInit {
       });
     }
   }
+
 }

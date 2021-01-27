@@ -11,8 +11,11 @@ import { AngularFireModule } from '@angular/fire';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  NbCardModule,
   NbDatepickerModule,
   NbDialogModule,
+  NbIconModule,
+  NbLayoutModule,
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
@@ -24,11 +27,10 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { ExperimentalRoutingModule } from './experimental/experimental-routing.module';
+import { ExperimentalComponent } from './experimental/experimental.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ExperimentalComponent], //TODO:
   imports: [
     BrowserModule,
     HammerModule,
@@ -46,6 +48,9 @@ import { ExperimentalRoutingModule } from './experimental/experimental-routing.m
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     NbDialogModule.forRoot(),
+    NbIconModule,//TODO
+    NbCardModule,//TODO
+    NbLayoutModule//TODO
   ],
   bootstrap: [AppComponent],
 })
