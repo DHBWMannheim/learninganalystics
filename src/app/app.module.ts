@@ -25,6 +25,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ExperimentalRoutingModule } from './experimental/experimental-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
