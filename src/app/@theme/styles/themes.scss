@@ -138,10 +138,28 @@ $nb-themes: nb-register-theme(
   cursor: pointer;
 }
 
-nb-icon:focus, .mat-fab:focus {
+nb-icon:focus,
+.mat-fab:focus {
   outline: 0;
 }
 
 router-outlet + * {
   height: 100%;
+}
+
+nb-search-field {
+  &,
+  & > * {
+    background: #edf1f7 !important; //TODO: Color
+  }
+  .search input {
+    border-bottom: 1px solid #8f9bb3 !important; //TODO:
+  }
+}
+
+nb-layout.window-mode.rotate-layout nb-layout-header.fixed {
+  top: 0 !important;
+}
+nb-layout.window-mode.rotate-layout nb-sidebar .main-container-fixed {
+  top: 4.75rem !important;
 }
