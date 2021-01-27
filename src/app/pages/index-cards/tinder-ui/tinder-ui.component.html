@@ -1,8 +1,9 @@
-<div class="tinder" [hidden]="!cards.length">
+<div class="tinder">
   <div
     class="tinder--cards"
     (pan)="handlePan($event)"
     (panend)="handlePanEnd($event)"
+    [hidden]="!cards.length"
   >
     <nb-reveal-card
       #tinderCard
@@ -38,7 +39,7 @@
       </nb-card-back>
     </nb-reveal-card>
   </div>
-  <nb-actions size="giant" fullWidth>
+  <nb-actions size="giant" fullWidth  [@simpleFadeAnimation]="fadeState">
     <nb-action
       icon="close-outline"
       (click)="userClickedButton($event, false)"

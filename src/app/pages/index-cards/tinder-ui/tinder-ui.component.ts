@@ -1,4 +1,11 @@
 import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {
   Component,
   Input,
   ViewChildren,
@@ -24,15 +31,25 @@ export interface TinderChoice {
   selector: 'tinder-ui',
   templateUrl: 'tinder-ui.component.html',
   styleUrls: ['tinder-ui.component.scss'],
+  animations: [
+    trigger('simpleFadeAnimation', [
+      state('in', style({ opacity: 1 })),
+      state('out', style({ opacity: 0 })),
+      transition('*=>*', animate(100)),
+    ]),
+  ],
 })
 export class TinderUIComponent implements AfterViewInit {
-  @Input('cards') cards: Card[];
+  @Input('cards')
+  cards: Card[];
 
   @ViewChildren('tinderCard', { read: ElementRef })
   tinderCards: QueryList<ElementRef>;
+
   tinderCardsArray: ElementRef[];
 
-  @Output() choiceMade = new EventEmitter<TinderChoice>();
+  @Output()
+  choiceMade = new EventEmitter<TinderChoice>();
 
   moveOutWidth: number;
   shiftRequired: boolean;
@@ -43,9 +60,11 @@ export class TinderUIComponent implements AfterViewInit {
   crossCount = 0;
   heartCount = 0;
 
+  fadeState = 'in';
+
   constructor(private readonly renderer: Renderer2) {}
 
-  userClickedButton(event, heart) {
+  userClickedButton(event: Event, heart: boolean) {
     event.preventDefault();
     if (!this.cards.length) return false;
     if (heart) {
@@ -152,15 +171,13 @@ export class TinderUIComponent implements AfterViewInit {
     if (this.shiftRequired) {
       this.shiftRequired = false;
       this.cards.shift();
+      if (!this.cards.length) this.fadeState = 'out';
     }
   }
 
   emitChoice(heart: boolean, card: Card) {
-    if (heart) {
-      this.heartCount++;
-    } else {
-      this.crossCount++;
-    }
+    if (this.transitionInProgress) return;
+    heart ? this.heartCount++ : this.crossCount++;
     this.choiceMade.emit({
       choice: heart,
       payload: card,
