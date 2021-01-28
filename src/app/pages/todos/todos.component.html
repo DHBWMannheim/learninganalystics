@@ -2,7 +2,20 @@
   <div class="col">
     <nb-card>
       <nb-card-header>
-        <h1>Todos</h1>
+        Todo-Overview
+      </nb-card-header>
+      <nb-card-body>
+        <div echarts [options]="echartOptions" class="demo-chart"></div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <nb-card>
+      <nb-card-header>
+        <h1>All Todos</h1>
       </nb-card-header>
       <nb-card-body [nbSpinner]="loading">
         <nb-list

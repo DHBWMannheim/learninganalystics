@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
-import { take } from 'rxjs/operators';
 import { CommonFirestoreService } from './common-firestore.service';
 import { User, UserService } from './user.service';
 
 export interface Todo {
   id?: string;
   title: string;
-  description: string;
+  description?: string;
+  deadline?: Date;
   completed?: boolean;
   owner: DocumentReference<User>;
 }

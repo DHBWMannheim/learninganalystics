@@ -4765,12 +4765,13 @@ ecdsa-sig-formatter@1.0.11, ecdsa-sig-formatter@^1.0.11:
   dependencies:
     safe-buffer "^5.0.1"
 
-echarts@^4.0.2:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.9.0.tgz#a9b9baa03f03a2a731e6340c55befb57a9e1347d"
-  integrity sha512-+ugizgtJ+KmsJyyDPxaw2Br5FqzuBnyOWwcxPKO6y0gc5caYcfnEUIlNStx02necw8jmKmTafmpHhGo4XDtEIA==
+echarts@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-5.0.1.tgz#b999ff6f515b1aa851ed09576eaf89686b57ce97"
+  integrity sha512-JYn22Dolt2esY2jEzUsw1OxbobuW67oGjIoTjZO3rW89SWkfJ4kbrmC2OW9JjsBrD1rdkmaWBuZZ2HgmThyxJw==
   dependencies:
-    zrender "4.3.2"
+    tslib "2.0.3"
+    zrender "5.0.3"
 
 editions@^1.1.1, editions@^1.3.3:
   version "1.3.4"
@@ -8399,12 +8400,12 @@ ng2-smart-table@^1.6.0:
     lodash "^4.17.10"
     tslib "^2.0.0"
 
-ngx-echarts@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/ngx-echarts/-/ngx-echarts-4.2.2.tgz#9eb5f69f923084869ea014f117915cd6cc366343"
-  integrity sha512-iLxOFnfKhUYP8Qw22AUY2ugSEd1Uvt6AeYhiaSqpg/G6NDmM/NwpdLt+fGAjax2aY7e94ORuwhXnl2gxtNzt7Q==
+ngx-echarts@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-echarts/-/ngx-echarts-6.0.0.tgz#ba08f35e8acf880fb51105f43f68556b130468f9"
+  integrity sha512-tYN82ZZ5CrkmgKpcm/GupFDdf+OdAKxfid2FYoWDUDjabV1h6NApM2YRJaP91ElvG72/FJH35iicb/naD0PFzw==
   dependencies:
-    tslib "^1.9.0"
+    tslib "^2.0.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -8524,11 +8525,6 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
-
-normalize.css@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-6.0.0.tgz#22188c2707c911fb3ad3c1aac0677ff68661bea8"
-  integrity sha1-IhiMJwfJEfs608GqwGd/9oZhvqg=
 
 npm-bundled@^1.1.1:
   version "1.1.1"
@@ -10280,6 +10276,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -12771,7 +12772,9 @@ zone.js@~0.10.3:
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.10.3.tgz#3e5e4da03c607c9dcd92e37dd35687a14a140c16"
   integrity sha512-LXVLVEq0NNOqK/fLJo3d0kfzd4sxwn2/h67/02pjCjfKDxgx1i9QqpvtHD8CrBnSSwMw5+dy11O7FRX5mkO7Cg==
 
-zrender@4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.3.2.tgz#ec7432f9415c82c73584b6b7b8c47e1b016209c6"
-  integrity sha512-bIusJLS8c4DkIcdiK+s13HiQ/zjQQVgpNohtd8d94Y2DnJqgM1yjh/jpDb8DoL6hd7r8Awagw8e3qK/oLaWr3g==
+zrender@5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-5.0.3.tgz#5e04a55d36455067e4536c8ce9c25093f50f6b68"
+  integrity sha512-TVcN2IMdo7je3GEq/E4CER4AGBe/n50/izILdupppyHf/hVHuiXCRliqdu8+32Z1OmGg6RfKt5qQlkX+bOtU0g==
+  dependencies:
+    tslib "2.0.3"

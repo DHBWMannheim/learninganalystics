@@ -3,6 +3,21 @@ import { NbDialogConfig, NbDialogService } from '@nebular/theme';
 import { AddComponent } from './add/add.component';
 import { Todo, TodosService } from '../../@core/data/todos.service';
 
+function getVirtulData(year: string) {
+  year = year || '2017';
+  const date = +echarts.number.parseDate(year + '-01-01');
+  const end = +echarts.number.parseDate(+year + 1 + '-01-01');
+  const dayTime = 3600 * 24 * 1000;
+  const data = [];
+  for (let time = date; time < end; time += dayTime) {
+    data.push([
+      echarts.format.formatTime('yyyy-MM-dd', time),
+      Math.floor(Math.random() * 10000),
+    ]);
+  }
+  return data;
+}
+
 @Component({
   selector: 'todos',
   templateUrl: './todos.component.html',
@@ -10,6 +25,39 @@ import { Todo, TodosService } from '../../@core/data/todos.service';
 })
 export class TodosComponent implements OnInit {
   items: Todo[] = [];
+
+  echartOptions = {
+    title: {
+      top: 30,
+      left: 'center',
+      text: '2020-09-01' + ' - ' + '2021-03-30', //TODO:
+    },
+    tooltip: {},
+    visualMap: {
+      min: 0,
+      max: 10000, // TODO:
+      type: 'piecewise',
+      orient: 'horizontal',
+      left: 'center',
+      top: 65,
+    },
+    calendar: {
+      top: 120,
+      left: 30,
+      right: 30,
+      cellSize: ['auto', 18],
+      range: ['2020-09-01', '2021-03-30'], // TODO: Semester
+      itemStyle: {
+        borderWidth: 0.5,
+      },
+      yearLabel: { show: false },
+    },
+    series: {
+      type: 'heatmap',
+      coordinateSystem: 'calendar',
+      data: [],
+    },
+  };
 
   loading = true;
 
@@ -27,6 +75,15 @@ export class TodosComponent implements OnInit {
     this.loading = true;
     this.todosService.get().then((v) => {
       this.items = v;
+      this.echartOptions.series.data = v.map((todo) => {
+        // TODO: group by
+        if (!todo.deadline) return;
+        return [
+          echarts.format.formatTime('yyyy-MM-dd', todo.deadline),
+          Math.floor(Math.random() * 10000),
+        ];
+      });
+      this.echartOptions = { ...this.echartOptions }; // Forces change detection
       this.loading = false;
     });
   }

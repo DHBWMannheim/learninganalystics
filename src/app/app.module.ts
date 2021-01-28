@@ -25,6 +25,11 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,6 +50,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     NbDialogModule.forRoot(),
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
   ],
   bootstrap: [AppComponent],
 })

@@ -10,7 +10,6 @@ import { Todo, TodosService } from '../../../@core/data/todos.service';
 export class AddComponent implements OnInit {
   model: Omit<Todo, 'owner'> = { // TODO: ist omit ok oder sollte owner optional sein?
     title: '',
-    description: '',
   };
 
   constructor(

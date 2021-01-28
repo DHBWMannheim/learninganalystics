@@ -72,7 +72,15 @@ export abstract class CommonFirestoreService<T extends { id?: string }> {
 
   public async getData(snapshot: QuerySnapshot<T> | Promise<QuerySnapshot<T>>) {
     const snap = await snapshot;
-    return Promise.all(snap.docs.map((doc) => doc.data()));
+    return await Promise.all(
+      snap.docs.map((doc) => {
+        const data = doc.data() as any;//TODO: Fix for dates
+        for (const field in data) {
+          if (data[field].toDate) data[field] = data[field].toDate();
+        }
+        return data;
+      }),
+    );
   }
 
   public async exists(id: string) {

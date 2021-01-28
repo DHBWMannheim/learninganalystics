@@ -6,6 +6,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
+  NbDatepickerModule,
   NbIconModule,
   NbInputModule,
   NbListModule,
@@ -21,6 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
@@ -41,6 +44,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NbSpinnerModule,
     MatCheckboxModule,
     NbCheckboxModule,
+    MatDatepickerModule,
+    NgxEchartsModule.forChild(),
   ],
   declarations: [TodosComponent, AddComponent],
 })

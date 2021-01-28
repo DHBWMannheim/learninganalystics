@@ -33,11 +33,22 @@
         <textarea
           matInput
           placeholder="What do you want to do..."
-          required
           [(ngModel)]="model.description"
           name="description"
           class="description-textarea"
         ></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose an optional deadline</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="model.deadline"
+          name="deadline"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </form>
   </nb-card-body>
