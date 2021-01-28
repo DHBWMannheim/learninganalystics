@@ -3,6 +3,9 @@ import { NbDialogConfig, NbDialogService } from '@nebular/theme';
 import { AddComponent } from './add/add.component';
 import { Todo, TodosService } from '../../@core/data/todos.service';
 
+import { groupBy } from 'lodash';
+import { startOfDay } from 'date-fns';
+
 function getVirtulData(year: string) {
   year = year || '2017';
   const date = +echarts.number.parseDate(year + '-01-01');
@@ -32,11 +35,14 @@ export class TodosComponent implements OnInit {
       left: 'center',
       text: '2020-09-01' + ' - ' + '2021-03-30', //TODO:
     },
-    tooltip: {},
+    tooltip: {
+      formatter: '{c0}<br />',
+    },
     visualMap: {
       min: 0,
-      max: 10000, // TODO:
+      max: 0, // TODO:
       type: 'piecewise',
+      splitNumber: '2', // TODO:
       orient: 'horizontal',
       left: 'center',
       top: 65,
@@ -75,14 +81,21 @@ export class TodosComponent implements OnInit {
     this.loading = true;
     this.todosService.get().then((v) => {
       this.items = v;
-      this.echartOptions.series.data = v.map((todo) => {
-        // TODO: group by
-        if (!todo.deadline) return;
-        return [
-          echarts.format.formatTime('yyyy-MM-dd', todo.deadline),
-          Math.floor(Math.random() * 10000),
-        ];
-      });
+
+      const dategroup = groupBy(v, ({ deadline }) =>
+        startOfDay(deadline).toISOString(),
+      );
+      //TODO: undefined
+
+      let max = 0;
+      this.echartOptions.series.data = Object.entries(dategroup).map(
+        ([date, { length }]) => {
+          if (length > max) max = length;
+          return [echarts.format.formatTime('yyyy-MM-dd', date), length];
+        },
+      );
+      this.echartOptions.visualMap.max = max;
+
       this.echartOptions = { ...this.echartOptions }; // Forces change detection
       this.loading = false;
     });
