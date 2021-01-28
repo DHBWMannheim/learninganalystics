@@ -185,3 +185,7 @@ Raumplan? https://www.akveo.com/ngx-admin/pages/iot-dashboard  nehir.cagan@dhbw-
 https://github.com/ngx-translate/core
 fcm
 
+
+https://echarts.apache.org/examples/en/editor.html?c=radar-aqi sodwas für den lerntyp
+
+https://echarts.apache.org/examples/en/editor.html?c=gauge-speed sowas für karteikarten gewusst

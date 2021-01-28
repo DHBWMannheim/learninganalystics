@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NbActionsModule, NbCardModule, NbIconModule } from '@nebular/theme';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { IndexCardsRoutingModule } from './index-cards-routing.module';
@@ -15,6 +16,7 @@ import { TinderUIComponent } from './tinder-ui/tinder-ui.component';
     IndexCardsRoutingModule,
     NbIconModule,
     NbActionsModule,
+    NgxEchartsModule.forChild(),
   ],
   declarations: [IndexCardsComponent, TinderUIComponent],
 })

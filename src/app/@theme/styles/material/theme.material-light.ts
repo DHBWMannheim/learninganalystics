@@ -192,11 +192,6 @@ export const MATERIAL_LIGHT_THEME = {
       areaOpacity: '0.7',
     },
 
-    chartjs: {
-      axisLineColor: baseThemeVariables.separator,
-      textColor: baseThemeVariables.fgText,
-    },
-
     orders: {
       tooltipBg: baseThemeVariables.bg,
       tooltipLineColor: 'rgba(0, 0, 0, 0)',

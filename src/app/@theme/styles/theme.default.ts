@@ -145,10 +145,6 @@ export const DEFAULT_THEME = {
       areaOpacity: '0.7',
     },
 
-    chartjs: {
-      axisLineColor: baseThemeVariables.separator,
-      textColor: baseThemeVariables.fgText,
-    },
 
     orders: {
       tooltipBg: baseThemeVariables.bg,

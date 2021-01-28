@@ -2,12 +2,14 @@
   <div class="col">
     <nb-card>
       <nb-card-header>
-        <h1>Index Cards</h1>
+        Index Cards
       </nb-card-header>
       <nb-card-body>
 
         <tinder-ui [cards]="cards" (choiceMade)="logChoice($event)"></tinder-ui>
         
+        <h2 style="text-align: center;">Hooray!</h2>
+        <div echarts [options]="echartOptions" [@fadeAnimation]="gaugeState"></div>
       </nb-card-body>
     </nb-card>
   </div>

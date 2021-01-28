@@ -1,11 +1,4 @@
 import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import {
   Component,
   Input,
   ViewChildren,
@@ -16,6 +9,8 @@ import {
   Renderer2,
   AfterViewInit,
 } from '@angular/core';
+
+import { fade } from '../../../@theme/animations/fade.animation';
 
 export interface Card {
   title: string;
@@ -31,13 +26,7 @@ export interface TinderChoice {
   selector: 'tinder-ui',
   templateUrl: 'tinder-ui.component.html',
   styleUrls: ['tinder-ui.component.scss'],
-  animations: [
-    trigger('simpleFadeAnimation', [
-      state('in', style({ opacity: 1 })),
-      state('out', style({ opacity: 0 })),
-      transition('*=>*', animate(100)),
-    ]),
-  ],
+  animations: [fade(200)],
 })
 export class TinderUIComponent implements AfterViewInit {
   @Input('cards')

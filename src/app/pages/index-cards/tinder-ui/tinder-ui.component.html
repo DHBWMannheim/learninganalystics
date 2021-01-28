@@ -39,7 +39,7 @@
       </nb-card-back>
     </nb-reveal-card>
   </div>
-  <nb-actions size="giant" fullWidth  [@simpleFadeAnimation]="fadeState">
+  <nb-actions size="giant" fullWidth  [@fadeAnimation]="fadeState">
     <nb-action
       icon="close-outline"
       (click)="userClickedButton($event, false)"
@@ -55,4 +55,4 @@
       badgeSize="giant"
     ></nb-action>
   </nb-actions>
-</div>
+</div><!--TODO: Pointer-->
