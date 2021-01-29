@@ -17,6 +17,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { TermsComponent } from './terms/terms.component';
 import { FormsModule } from '@angular/forms';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   imports: [
@@ -30,13 +31,14 @@ import { FormsModule } from '@angular/forms';
     NbInputModule,
     NbCheckboxModule,
     NbButtonModule,
-    NbSpinnerModule
+    NbSpinnerModule,
   ],
   declarations: [
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
     TermsComponent,
+    ResetPasswordComponent,
   ],
 })
 export class AuthModule {}

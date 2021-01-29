@@ -20,14 +20,6 @@ import {
   NbFirebaseAuthModule,
 } from '@nebular/firebase-auth';
 
-const socialLinks = [
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'google',
-  },
-];
-
 const DATA_SERVICES = [
   { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService },
 ];
@@ -56,12 +48,29 @@ export const NB_CORE_PROVIDERS = [
     ],
     forms: {
       login: {
-        // socialLinks: socialLinks,  TODO: Google?   TODO: Fix: Terms & Condition
         strategy: 'password',
       },
       register: {
-        // socialLinks: socialLinks,
         strategy: 'password',
+      },
+      requestPassword: {
+        strategy: 'password',
+      },
+      resetPassword: {
+        strategy: 'password',
+      },
+      logout: {
+        strategy: 'password',
+      },
+      validation: {
+        password: {
+          required: true,
+          minLength: 6,
+          maxLength: 50,
+        },
+        email: {
+          required: true,
+        },
       },
     },
   }).providers,

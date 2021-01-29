@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TermsComponent } from './terms/terms.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -30,11 +31,11 @@ const routes: Routes = [
       },
       {
         path: 'request-password',
-        component: NbRequestPasswordComponent, //TODO:
+        component: NbRequestPasswordComponent, // TODO: ? überschreiben
       },
       {
         path: 'reset-password',
-        component: NbResetPasswordComponent, //TODO:
+        component: ResetPasswordComponent,
       },
       {
         path: 'terms',
