@@ -64,7 +64,7 @@ export class TodosComponent implements OnInit {
     this.todosService.get().then((v) => {
       this.items = v;
 
-      const dategroup = groupBy(v, ({ deadline }) =>
+      const dategroup = groupBy(v.filter(v=>v.deadline), ({ deadline }) =>
         format(startOfDay(deadline), 'yyyy-MM-dd'),
       );
       //TODO: undefined
