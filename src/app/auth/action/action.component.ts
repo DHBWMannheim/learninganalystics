@@ -20,7 +20,6 @@ const routes = [
 })
 export class ActionComponent implements OnInit {
   redirectDelay: number = 0;
-  strategy: string = '';
 
   state: 'working' | 'failed' = 'working';
 
@@ -30,8 +29,11 @@ export class ActionComponent implements OnInit {
     protected router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-    this.redirectDelay = this.getConfigValue('forms.action.redirectDelay');
-    this.strategy = this.getConfigValue('forms.action.strategy');
+    this.redirectDelay = getDeepFromObject(
+      this.options,
+      'forms.action.redirectDelay',
+      null,
+    );
   }
 
   ngOnInit(): void {
@@ -40,7 +42,7 @@ export class ActionComponent implements OnInit {
 
   redirect(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
-      const result = routes.find(({ action }) => action === params.mode); // TODO: error handling?
+      const result = routes.find(({ action }) => action === params.mode);
       if (result) {
         setTimeout(() => {
           return this.router.navigate([result.redirectTo], {
@@ -51,9 +53,5 @@ export class ActionComponent implements OnInit {
         this.state = 'failed';
       }
     });
-  }
-
-  getConfigValue(key: string): any {
-    return getDeepFromObject(this.options, key, null);
   }
 }
