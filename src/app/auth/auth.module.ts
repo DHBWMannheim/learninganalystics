@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { TermsComponent } from './terms/terms.component';
 import { FormsModule } from '@angular/forms';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ActionComponent } from './action/action.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegisterComponent,
     TermsComponent,
     ResetPasswordComponent,
+    ActionComponent,
   ],
 })
 export class AuthModule {}

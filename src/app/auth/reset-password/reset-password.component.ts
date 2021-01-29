@@ -8,9 +8,15 @@ import {
   ChangeDetectorRef,
   Component,
   Inject,
+  OnInit,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { getDeepFromObject, NbAuthResult, NbAuthService, NB_AUTH_OPTIONS } from '@nebular/auth';
+import {
+  getDeepFromObject,
+  NbAuthResult,
+  NbAuthService,
+  NB_AUTH_OPTIONS,
+} from '@nebular/auth';
 
 @Component({
   selector: 'nb-reset-password-page',
@@ -18,7 +24,7 @@ import { getDeepFromObject, NbAuthResult, NbAuthService, NB_AUTH_OPTIONS } from 
   templateUrl: './reset-password.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResetPasswordComponent {
+export class ResetPasswordComponent implements OnInit {
   redirectDelay: number = 0;
   showMessages: any = {};
   strategy: string = '';
@@ -35,12 +41,6 @@ export class ResetPasswordComponent {
     protected router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-
-    // TODO: Momentan verlink firebase immer auf password-reset. Eventuell zukünftig eine action-route haben, welche auf die passende Seite redirected!!!!
-
-
-
-
     this.redirectDelay = this.getConfigValue(
       'forms.resetPassword.redirectDelay',
     );
@@ -49,8 +49,8 @@ export class ResetPasswordComponent {
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const code = params['oobCode'];//TODO: Temporär  + TODO: Action-Url in Firebase anpassen
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const code = params['oobCode'];
       this.user.code = code;
     });
   }

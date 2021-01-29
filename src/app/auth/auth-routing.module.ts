@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { TermsComponent } from './terms/terms.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ActionComponent } from './action/action.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'terms',
         component: TermsComponent,
+      },
+      {
+        path: 'action',
+        component: ActionComponent,
       },
       {
         path: '',

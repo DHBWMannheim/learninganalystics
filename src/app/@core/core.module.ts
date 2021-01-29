@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthModule } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -16,7 +16,6 @@ import { LayoutService, SeoService, StateService } from './utils';
 import { RippleService } from './utils/ripple.service';
 import {
   NbFirebasePasswordStrategy,
-  NbFirebaseGoogleStrategy,
   NbFirebaseAuthModule,
 } from '@nebular/firebase-auth';
 
@@ -35,16 +34,12 @@ export const NB_CORE_PROVIDERS = [
   ...DATA_SERVICES,
   ...NbAuthModule.forRoot({
     strategies: [
-      NbDummyAuthStrategy.setup({
-        name: 'email',
-        delay: 3000,
-      }),
       NbFirebasePasswordStrategy.setup({
         name: 'password',
       }),
-      NbFirebaseGoogleStrategy.setup({
-        name: 'google',
-      }),
+      // NbFirebaseGoogleStrategy.setup({
+      //   name: 'google',
+      // }),  TODO: ? oder sagen wir, damit wäre eine nachverfolgung möglich
     ],
     forms: {
       login: {
@@ -62,6 +57,9 @@ export const NB_CORE_PROVIDERS = [
       logout: {
         strategy: 'password',
       },
+      action: {
+        redirectDelay: 2000,
+      },
       validation: {
         password: {
           required: true,
@@ -76,6 +74,7 @@ export const NB_CORE_PROVIDERS = [
   }).providers,
 
   NbSecurityModule.forRoot({
+    // TODO: ? brauchen wir das?
     accessControl: {
       guest: {
         view: '*',
@@ -90,12 +89,13 @@ export const NB_CORE_PROVIDERS = [
   }).providers,
 
   {
+    // TODO: ? brauchen wir das?
     provide: NbRoleProvider,
     useClass: NbSimpleRoleProvider,
   },
-  LayoutService,
-  SeoService,
-  StateService,
+  LayoutService, // TODO: ? brauchen wir das?
+  SeoService, // TODO: ? brauchen wir das?
+  StateService, // TODO: ? brauchen wir das?
 ];
 
 @NgModule({

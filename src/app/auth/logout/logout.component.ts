@@ -15,7 +15,7 @@ import {
 @Component({
   selector: 'nb-logout',
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss']
+  styleUrls: ['./logout.component.scss'],
 })
 export class LogoutComponent implements OnInit {
   redirectDelay: number = 0;

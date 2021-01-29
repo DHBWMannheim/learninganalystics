@@ -1,0 +1,16 @@
+<div class="row">
+  <!--TODO: Container?-->
+  <div class="col spinner-container">
+    <nb-spinner
+      *ngIf="state === 'working'"
+      [message]="'Hang on, we are working on it...'"
+      size="giant"
+    ></nb-spinner>
+    <nb-alert *ngIf="state === 'failed'" status="basic"style="text-align: center;"
+      >Oh No! Your request confused us. Are you sure this is the way?</nb-alert
+    >
+    <section *ngIf="state === 'failed'" class="another-action">
+      <a class="text-link" routerLink="../login">Back to Log In</a>
+    </section>
+  </div>
+</div>
