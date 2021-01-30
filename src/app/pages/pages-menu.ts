@@ -7,7 +7,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-  //---
+  //--- TODO: ist es besser ein collapsable menü zu machen?
   {
     title: 'COURSES',//TODO: Hier in der Gruppe Das Course Management unterbringen. Jeder Nutzer kann selber kurse anlegen und beliebig vielen joinen -> z.B. nachfilfe
     group: true,
@@ -26,5 +26,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Todos',
     icon: 'checkmark-square-outline',
     link: '/pages/todos',
+    badge: {
+      text: '30',//TODO:
+      status: 'primary',
+    },
   },
 ];

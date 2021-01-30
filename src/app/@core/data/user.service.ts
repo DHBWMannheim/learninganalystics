@@ -44,6 +44,7 @@ export class UserService extends CommonFirestoreService<User> {
             emailVerified: user.emailVerified,
             phoneNumber: user.phoneNumber,
             photoURL: user.photoURL,
+            // TODO: Course Participation
           },
       ),
       debounceTime(200), // Das ist total unnötig, dachte aber es spart etwas firebase bandbreite, da beim login 2x gefeuert
