@@ -5,6 +5,7 @@ import { Todo, TodosService } from '../../@core/data/todos.service';
 
 import { groupBy } from 'lodash';
 import { format, startOfDay } from 'date-fns';
+import { CourseService } from '../../@core/data/course.service';
 
 @Component({
   selector: 'todos',
@@ -52,10 +53,14 @@ export class TodosComponent implements OnInit {
   constructor(
     private readonly todosService: TodosService,
     private readonly dialogService: NbDialogService,
+    private readonly courseService: CourseService, // TODO: Nur für Test-zwecke
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.reload();
+    await this.courseService.upsert({
+      name: 'WWI',
+    });
   }
 
   private reload() {
@@ -64,8 +69,9 @@ export class TodosComponent implements OnInit {
     this.todosService.get().then((v) => {
       this.items = v;
 
-      const dategroup = groupBy(v.filter(v=>v.deadline), ({ deadline }) =>
-        format(startOfDay(deadline), 'yyyy-MM-dd'),
+      const dategroup = groupBy(
+        v.filter((v) => v.deadline),
+        ({ deadline }) => format(startOfDay(deadline), 'yyyy-MM-dd'),
       );
       //TODO: undefined
 

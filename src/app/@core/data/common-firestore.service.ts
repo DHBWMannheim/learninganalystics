@@ -6,6 +6,7 @@ import {
   QuerySnapshot,
   DocumentReference,
 } from '@angular/fire/firestore';
+import { CommonFirestoreDocument } from './common-document.interface';
 
 interface Converter<T> {
   toFirestore(u: T): DocumentData;
@@ -35,7 +36,7 @@ export const CommonConverter = {
   },
 };
 
-export abstract class CommonFirestoreService<T extends { id?: string }> {
+export abstract class CommonFirestoreService<T extends CommonFirestoreDocument> {
   constructor(
     private readonly collectionName: string,
     private readonly afs: AngularFirestore,

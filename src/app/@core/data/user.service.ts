@@ -8,13 +8,12 @@ import {
   map,
   shareReplay,
   take,
-  tap,
 } from 'rxjs/operators';
+import { CommonFirestoreDocument } from './common-document.interface';
 
 import { CommonFirestoreService } from './common-firestore.service';
 
-export interface User {
-  id?: string;
+export interface User extends CommonFirestoreDocument {
   displayName?: string;
   email: string;
   emailVerified: boolean;
@@ -44,7 +43,6 @@ export class UserService extends CommonFirestoreService<User> {
             emailVerified: user.emailVerified,
             phoneNumber: user.phoneNumber,
             photoURL: user.photoURL,
-            // TODO: Course Participation
           },
       ),
       debounceTime(200), // Das ist total unnötig, dachte aber es spart etwas firebase bandbreite, da beim login 2x gefeuert

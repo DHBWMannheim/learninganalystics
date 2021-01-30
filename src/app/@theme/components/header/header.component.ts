@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   NbMediaBreakpointsService,
+  NbMenuItem,
   NbMenuService,
   NbSidebarService,
   NbThemeService,
@@ -14,6 +15,7 @@ import { NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User, UserService } from '../../../@core/data/user.service';
+import { CourseService } from '../../../@core/data/course.service';
 
 @Component({
   selector: 'ngx-header',
@@ -56,11 +58,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [
+  userMenu: NbMenuItem[] = [
     {
       title: 'Profile',
       icon: 'person-outline',
       link: '/pages/profile',
+    },
+    {
+      title: 'Switch Course',
+      children: []
     },
     {
       title: 'Log out',
@@ -80,7 +86,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private router: Router,
     private firebaseAuth: AngularFireAuth,
     private readonly userService: UserService,
+    private readonly courseService: CourseService
   ) {
+
+    this.courseService.get().then(courses => { // TODO:
+      courses.forEach(course => {
+        console.log('pushing', course.name)
+        this.userMenu[1].children.push({title: course.name})
+      })
+    })
+
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map((theme) => {
         const themeName: string = theme?.name || '';

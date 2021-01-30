@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { CommonFirestoreDocument } from './common-document.interface';
 import { CommonFirestoreService } from './common-firestore.service';
 import { User, UserService } from './user.service';
 
-export interface Todo {
+export interface Todo extends CommonFirestoreDocument {
   id?: string;
   title: string;
   description?: string;
@@ -26,6 +27,7 @@ export class TodosService extends CommonFirestoreService<Todo> {
   public async get(): Promise<Todo[]>;
   public async get(id: string): Promise<Todo>;
   public async get(id?: string): Promise<Todo | Todo[]> {
+    //TODO: Ist es besser die todos an einem nutzer zu speichern?
     if (id) {
       const idResult = await this.createRef(id).get(); // TODO: firestore-rule protect
       return idResult.data();
