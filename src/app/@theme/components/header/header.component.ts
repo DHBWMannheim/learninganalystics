@@ -6,14 +6,14 @@ import {
   NbThemeService,
 } from '@nebular/theme';
 
-import { LayoutService } from '../../../@core/utils';
-import { filter, map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { RippleService } from '../../../@core/utils/ripple.service';
 import { NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User, UserService } from '../../../@core/data/user.service';
+import { LayoutService } from '../../../@core/utils/layout.service';
 
 @Component({
   selector: 'ngx-header',

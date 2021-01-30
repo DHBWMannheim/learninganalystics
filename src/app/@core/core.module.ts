@@ -10,14 +10,14 @@ import { NbAuthModule } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
-import { throwIfAlreadyLoaded } from './module-import-guard';
-import { LayoutService, SeoService, StateService } from './utils';
 
 import { RippleService } from './utils/ripple.service';
 import {
   NbFirebasePasswordStrategy,
   NbFirebaseAuthModule,
 } from '@nebular/firebase-auth';
+import { SeoService } from './utils/seo.service';
+import { LayoutService } from './utils/layout.service';
 
 const DATA_SERVICES = [
   { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService },
@@ -95,7 +95,6 @@ export const NB_CORE_PROVIDERS = [
   },
   LayoutService, // TODO: ? brauchen wir das?
   SeoService, // TODO: ? brauchen wir das?
-  StateService, // TODO: ? brauchen wir das?
 ];
 
 @NgModule({
@@ -104,9 +103,6 @@ export const NB_CORE_PROVIDERS = [
   declarations: [],
 })
 export class CoreModule {
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-    throwIfAlreadyLoaded(parentModule, 'CoreModule');
-  }
 
   static forRoot(): ModuleWithProviders<CoreModule> {
     return {

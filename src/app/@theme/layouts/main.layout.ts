@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngx-three-columns-layout',
-  styleUrls: ['./three-columns.layout.scss'],
+  selector: 'main-layout',
+  styleUrls: ['./main.layout.scss'],
   template: `
     <nb-layout windowMode>
       <nb-layout-header fixed>
@@ -13,14 +13,8 @@ import { Component } from '@angular/core';
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
-      <nb-layout-column class="small">
-      </nb-layout-column>
-
       <nb-layout-column>
         <ng-content select="router-outlet"></ng-content>
-      </nb-layout-column>
-
-      <nb-layout-column class="small">
       </nb-layout-column>
 
       <nb-layout-footer fixed>
@@ -29,4 +23,4 @@ import { Component } from '@angular/core';
     </nb-layout>
   `,
 })
-export class ThreeColumnsLayoutComponent {}
+export class MainLayoutComponent {}
