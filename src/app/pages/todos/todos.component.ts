@@ -64,8 +64,9 @@ export class TodosComponent implements OnInit {
     this.todosService.get().then((v) => {
       this.items = v;
 
-      const dategroup = groupBy(v.filter(v=>v.deadline), ({ deadline }) =>
-        format(startOfDay(deadline), 'yyyy-MM-dd'),
+      const dategroup = groupBy(
+        v.filter((v) => v.deadline),
+        ({ deadline }) => format(startOfDay(deadline), 'yyyy-MM-dd'),
       );
       //TODO: undefined
 
@@ -87,9 +88,7 @@ export class TodosComponent implements OnInit {
 
   openAddDialog(model?: Todo) {
     const options: Partial<NbDialogConfig> = {};
-    if (model) {
-      options.context = { model };
-    }
+    if (model) options.context = { model };
 
     this.dialogService.open(AddComponent, options).onClose.subscribe((v) => {
       if (v) this.reload();

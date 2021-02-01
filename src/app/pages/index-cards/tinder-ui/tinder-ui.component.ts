@@ -9,17 +9,13 @@ import {
   Renderer2,
   AfterViewInit,
 } from '@angular/core';
+import { IndexCard } from '../../../@core/data/index-cards.service';
 
 import { fade } from '../../../@theme/animations/fade.animation';
 
-export interface Card {
-  title: string;
-  description: string;
-}
-
 export interface TinderChoice {
   choice: boolean;
-  payload: Card;
+  payload: IndexCard;
 }
 
 @Component({
@@ -30,7 +26,7 @@ export interface TinderChoice {
 })
 export class TinderUIComponent implements AfterViewInit {
   @Input('cards')
-  cards: Card[];
+  cards: IndexCard[];
 
   @ViewChildren('tinderCard', { read: ElementRef })
   tinderCards: QueryList<ElementRef>;
@@ -164,7 +160,7 @@ export class TinderUIComponent implements AfterViewInit {
     }
   }
 
-  emitChoice(heart: boolean, card: Card) {
+  emitChoice(heart: boolean, card: IndexCard) {
     if (this.transitionInProgress) return;
     heart ? this.heartCount++ : this.crossCount++;
     this.choiceMade.emit({

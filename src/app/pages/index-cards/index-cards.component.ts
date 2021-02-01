@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
+import { IndexCardsService } from '../../@core/data/index-cards.service';
 import { fade } from '../../@theme/animations/fade.animation';
 import { AddComponent } from './add/add.component';
 import { TinderChoice } from './tinder-ui/tinder-ui.component';
@@ -69,19 +70,17 @@ export class IndexCardsComponent implements OnInit {
   cards = [];
 
   constructor(
-    private readonly dialogService: NbDialogService
+    private readonly dialogService: NbDialogService,
+    private readonly indexCardsService: IndexCardsService,
   ) {}
 
-  ngOnInit(): void {
-    for (
-      let i = 0;
-      i < this.TEMP_TOTAL_CARDS;
-      i++ //TODO: Max 20, 10 ist optimum
-    )
-      this.cards.push({
-        title: 'Demo',
-        description: 'Descript',
-      });
+  async ngOnInit(): Promise<void> {
+    await this.reload();
+  }
+
+  async reload() {
+    const cards = await this.indexCardsService.get();
+    this.cards = cards;
   }
 
   private readonly TEMP_TOTAL_CARDS = 20;
@@ -101,7 +100,8 @@ export class IndexCardsComponent implements OnInit {
   }
 
   openAddDialog() {
-    this.dialogService.open(AddComponent);
+    this.dialogService.open(AddComponent).onClose.subscribe(async () => {
+      await this.reload();
+    });
   }
-
 }

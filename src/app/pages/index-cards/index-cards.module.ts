@@ -1,6 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NbActionsModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbIconModule, NbInputModule, NbSpinnerModule } from '@nebular/theme';
+import {
+  NbActionsModule,
+  NbAlertModule,
+  NbButtonModule,
+  NbCardModule,
+  NbCheckboxModule,
+  NbIconModule,
+  NbInputModule,
+  NbSpinnerModule,
+} from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -13,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -32,6 +42,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NbSpinnerModule,
     MatCheckboxModule,
     NbCheckboxModule,
+    FormsModule,
+    NbAlertModule,
   ],
   declarations: [IndexCardsComponent, TinderUIComponent, AddComponent],
 })

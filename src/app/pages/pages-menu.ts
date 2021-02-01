@@ -1,5 +1,7 @@
 import { NbMenuItem } from '@nebular/theme';
 
+// TODO: mobile autoclose
+
 export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Dashboard',
