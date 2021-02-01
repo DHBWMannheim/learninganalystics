@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 import { fade } from '../../@theme/animations/fade.animation';
+import { AddComponent } from './add/add.component';
 import { TinderChoice } from './tinder-ui/tinder-ui.component';
 
 @Component({
@@ -66,7 +68,9 @@ export class IndexCardsComponent implements OnInit {
   };
   cards = [];
 
-  constructor() {}
+  constructor(
+    private readonly dialogService: NbDialogService
+  ) {}
 
   ngOnInit(): void {
     for (
@@ -95,4 +99,9 @@ export class IndexCardsComponent implements OnInit {
       }, 200);
     }
   }
+
+  openAddDialog() {
+    this.dialogService.open(AddComponent);
+  }
+
 }

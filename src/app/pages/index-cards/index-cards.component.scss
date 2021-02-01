@@ -6,3 +6,9 @@
 nb-card {
   height: calc(100% - 15px);
 }
+
+.add-button-container {
+  position: fixed;
+  right: 15px;
+  bottom: 100px;
+}//FIXME: Position
