@@ -68,6 +68,7 @@ export class IndexCardsComponent implements OnInit {
     ],
   };
   cards = [];
+  originalCardCount;
 
   constructor(
     private readonly dialogService: NbDialogService,
@@ -81,14 +82,14 @@ export class IndexCardsComponent implements OnInit {
   async reload() {
     const cards = await this.indexCardsService.get();
     this.cards = cards;
+    this.originalCardCount = cards.length;
   }
 
-  private readonly TEMP_TOTAL_CARDS = 20;
   private known = 0;
   private notKnown = 0;
   logChoice({ choice }: TinderChoice) {
     choice ? this.known++ : this.notKnown++; // TODO: besser als array und am schluss eine übersicht über nicht gewusste Fragen
-    if (this.known + this.notKnown === this.TEMP_TOTAL_CARDS) {
+    if (this.known + this.notKnown === this.originalCardCount) {
       setTimeout(() => {
         this.echartOptions.series[0].data[0].value = Math.round(
           (this.known / (this.notKnown + this.known)) * 100,

@@ -4,7 +4,18 @@ import { AddComponent } from './add/add.component';
 import { Todo, TodosService } from '../../@core/data/todos.service';
 
 import { groupBy } from 'lodash';
-import { format, startOfDay } from 'date-fns';
+import {
+  format,
+  startOfDay,
+  subMonths,
+  addMonths,
+  startOfMonth,
+  endOfMonth,
+} from 'date-fns';
+
+const today = new Date();
+const startDate = format(startOfMonth(subMonths(today, 1)), 'yyyy-MM-dd');
+const endDate = format(endOfMonth(addMonths(today, 2)), 'yyyy-MM-dd');
 
 @Component({
   selector: 'todos',
@@ -18,27 +29,43 @@ export class TodosComponent implements OnInit {
     title: {
       top: 30,
       left: 'center',
-      text: '2020-09-01' + ' - ' + '2021-03-30', //TODO:
+      text: `${startDate} - ${endDate}`,
     },
     tooltip: {
-      formatter: '{c0}<br />',
+      position: 'top',
+    },
+    legend: {
+      show: false
     },
     visualMap: {
-      min: 0,
-      max: 0, // TODO:
-      type: 'piecewise',
-      splitNumber: '2', // TODO:
-      orient: 'horizontal',
-      left: 'center',
-      top: 65,
+      max: 0,
+      show: false
     },
     calendar: {
-      top: 120,
+      // TODO: Einstellungen nach Sprache mit 'nameMap'
+      dayLabel: {
+        // firstDay: 1, // start on Monday
+      },
+      top: 85,
       left: 46,
       right: 46,
       cellSize: ['auto', 32],
-      range: ['2020-09-01', '2021-03-30'], // TODO: Semester
+      range: [startDate, endDate],
       yearLabel: { show: false },
+      itemStyle: {
+        borderWidth: 1,
+        borderColor: '#edf1f7',
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: '#8f9bb3',
+          width: 1,
+          type: 'solid',
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
+          shadowBlur: 10,
+        },
+      },
     },
     series: {
       type: 'heatmap',
@@ -46,6 +73,12 @@ export class TodosComponent implements OnInit {
       data: [],
     },
   };
+
+  mergedata: {
+    series: {
+      data: [],
+    },
+  }
 
   loading = true;
 
@@ -68,7 +101,6 @@ export class TodosComponent implements OnInit {
         v.filter((v) => v.deadline),
         ({ deadline }) => format(startOfDay(deadline), 'yyyy-MM-dd'),
       );
-      //TODO: undefined
 
       let max = 0;
       this.echartOptions.series.data = Object.entries(dategroup).map(
@@ -78,7 +110,6 @@ export class TodosComponent implements OnInit {
         },
       );
       this.echartOptions.visualMap.max = max;
-
       this.echartOptions = { ...this.echartOptions }; // Forces change detection
       this.loading = false;
     });

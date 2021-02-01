@@ -19,11 +19,6 @@ const routes: Routes = [
           import('./todos/todos.module').then((m) => m.TodosModule),
       },
       {
-        path: 'profile',
-        loadChildren: () =>
-          import('./profile/profile.module').then((m) => m.ProfileModule),
-      },
-      {
         path: 'index-cards',
         loadChildren: () =>
           import('./index-cards/index-cards.module').then(

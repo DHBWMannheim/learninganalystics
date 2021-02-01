@@ -1,22 +1,21 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header>
-        Todo-Overview
-      </nb-card-header>
+      <nb-card-header> Todo-Overview </nb-card-header>
       <nb-card-body>
-        <div echarts [options]="echartOptions" class="demo-chart"></div>
+        <div echarts [options]="echartOptions" class="overview--chart"></div>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
 
+<!--TODO: Chart completed?-->
+<!--TODO: course wide todos-->
+
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header>
-        All Todos
-      </nb-card-header>
+      <nb-card-header> All Todos </nb-card-header>
       <nb-card-body [nbSpinner]="loading">
         <nb-list
           nbInfiniteList
