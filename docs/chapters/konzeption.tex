@@ -20,6 +20,7 @@ Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgetei
 
 % TODO ER-Modell
 
+% FIXME: Das hier ist veraltet
 Die Datenhaltung ist wie bereits beschrieben im Modell als Zustand definiert. Für die Verwaltung der Daten wird \href{https://vuex.vuejs.org/}{VueX} verwendet.
 Das Modell wird hierbei als \enquote{Store} repräsentiert.
 Der gesamte Store ist dabei gekapselt und definiert Funktionen zur Manipulation des internen Zustandes. Der Aufbau des Stores ist dabei konstant und ändert sich nicht abhängig der gespeicherten Daten.
@@ -36,7 +37,9 @@ Der Store besteht dabei aus:
         Actions sind Funktionen, die asynchrone Aktionen ausführen können. Ein Beispiel hierfür ist das Laden von Daten aus der Datenbank. Da Änderungen am State nur über Mutations ausgeführt werden können, müssen Actions am Ende ihrer Ausführung die notwendige Mutation ausführen.
 \end{itemize}
 
-Die Ausführung der Funktionen geschieht durch ein Eventsystem. Der Controller muss so nur die notwendige Event mit Eventdaten zur Bearbeitung des Zustandes erzeugen und überlässt die Ausführung dem Store. Da die Anwendung den State überwacht und die Repräsentation bzw. die UI anpasst wird die Art und Weiße, wie Daten gespeichert sind entkoppelt vom Zugriff auf diese, sowie deren Darstellung.
+Die Ausführung der Funktionen geschieht durch ein Eventsystem.
+Der Controller muss so nur die notwendige Event mit Eventdaten zur Bearbeitung des Zustandes erzeugen und überlässt die Ausführung dem Store.
+Da die Anwendung den State überwacht und die Repräsentation bzw. die UI anpasst wird die Art und Weiße, wie Daten gespeichert sind entkoppelt vom Zugriff auf diese, sowie deren Darstellung.
 
 
 \subsection{Studierende}
