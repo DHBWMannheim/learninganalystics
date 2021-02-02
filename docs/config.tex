@@ -118,6 +118,9 @@
 }
 \setlength{\bibparsep}{\parskip}		%add some space between biblatex entries in the bibliography
 \addbibresource{bibliography.bib}	%Add file bibliography.bib as biblatex resource
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
 
 \newcommand{\setTitlepage}{
 	\input{titlepage}
