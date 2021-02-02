@@ -57,24 +57,41 @@ Sollte sich die Anwendung für Nutzer als Vorteilhaft erweisen, kann die Anwendu
 \subsection{Abgrenzung zu anderen Anwendungen}
 Im Hochschulkontext kommen bereits mehrere Systeme zum Einsatz.
 Die primäre Plattform bildet \enquote{Moodle}.
-% TODO: Moodle
-
-Eine weitere Plattform, die verwendet wird ist Dualis
-% TODO: Dualis
-
-% TODO: MyLA
-
-
-\section{Ist-Analyse}
-Grundlage dieser Arbeit ist die Vision der DHBW, Learning Analitics weiter voranzutreiben.
+Moodle ist eine Lernplattform, in dem Nutzer Kurse, Kalender, Foren und ähnliche Funktionen anbietet, die zur Steuerung und Verwaltung von Vorlesungen bietet.
+Trotz des recht umfangreichen Funktionsumfangs besitzt die Anwendung aber einige Nachteile.
+So berichten viele Nutzer (Studenten, Dozenten und Unternehmensbetreuer) von sehr schlechter Bedienbarkeit und Unübersichtlichkeit.
+Zusätzlich weißt die Datenschutzerklärung darauf hin, dass umfangreich Daten, z.\,B. \enquote{ob und wie sie [Nutzer] in Workshops mitgewirkt haben}, gesammelt werden können.\autocites{moodleTermsOfServiceDHBW}{moodleTermsOfService}
 Aus Datenschutzrechtlichen Gründen, wird aktuell die Learning Analytics Erweiterungen und Möglichkeiten der Kursmanagement und Lernplattform Moodle nicht genutzt.
-Aus einem bereits umgesetzten Projekt ist ein Prototyp entstanden, der es ermöglichen soll Daten im Verlauf der Vorlesungen mit der Hilfe von Umfragen zu generieren.
-Weitere Infos über das Projekt und deren Ergebnisse können hier (https://github.com/dhbw-myla/myla) nachgelesen werden. 
-Die dabei entsandene Webanwendung ermöglicht es Umfragen zu erstellen, zu verwalten und auszuwerten.
+
+Ein weiteres Werkzeug, welches von im Hochschulkontext verwendet wird ist \enquote{Dualis}.
+Diese Anwendung besitzt aber nur Auskunft über Bewertungen.
+Anwender können somit erste Feedback zu ihren Klausuren erhalten, sobald sie Klausuren bereits beschrieben haben.
+Somit besitzen die Studenen vor der Klausur oft kein Feedback zu der von ihnen geleisteten Arbeit.
+
+Darüber hinaus existieren Anstrengungen weitere Anwendungen umzusetzen, die aber nicht den Prototypstatus verlassen haben.
+Ein Beispiel hierfür ist die MyLA-Anwendung.\autocite{mylaGithub}
 Für Dozenten gibt es die Möglichkeit, Umfragen zu erstellen und mit ihren Studierenden zu teilen.
 Diese haben dadurch die Chance, ihre Meinung zur Vorlesung mitzuteilen, Gelerntes zu verinnerlichen oder auch um Anmerkungen zu gestellten Fragen zu geben.
 Die Plattform ermöglicht es dabei, Umfragen als Vorlage zu speichern, sodass diese in unterschiedlichen Kursen verwendet werden können und zeigt die Ergebnisse der Umfragen graphisch an.
-Allerdings ist anzumerken, dass wir in unserem Studium neben der Vorstellung der Anwendung für unser Projekt nie mit der Anwendung gearbeitet hatten und diese nach aktuellem Wissensstand auch nicht von der DHBW gehostet wird, was eine breite Nutzung eher unwahrscheinlich macht. 
+
+
+
+% TODO: Hier noch einen Satz, alle anderen Anwendungen sind Käse, und dass wir das alles super toll machen
+
+
+\section{Ist-Analyse} % TODO: Ist es besser die Ist-Analyse mit den funktionalen Anforderungen zusammen zu zeihen? Ich denke schon!
+Bevor die eigentliche Entwicklungs starten kann müssen die aktuellen Probleme und Verbesserungspotenziale analysiert werden.
+
+Dozierende haben aktuell wenig Möglichkeiten zu erfahren, wie ihre Vorlesung in verschiedenen Kursen angenommen wird.
+Besonders der Lernstand der Studierenden und die Stimmung innerhalb der Kurse sind nur schwer erfassbar.
+Nach Aussage eines Dozenten wurde uns gesagt, dass dies besonders in Online-Vorlesungen problematisch ist.
+Sofern man \enquote{nicht in fragende Gesichter schaut}, ist es ob schwer zu wissen, wann eine Fragestellung zu kompliziert ist.
+Besonders durch die anonyme Maße in Online-Vorlesungen, die auch keine Kameras besitzen dies ein erhebliches Problem.
+Dadurch entsteht eine Differenz, die sich in Klausuren negativ auswirken kann.
+Aktuell (Dezember '20) finden zum zweiten Mal ausschließlich Online-Vorlesungen statt, sodass diese Möglichkeiten für Dozierende nochmals relevanter sein könnten.
+
+
+
 
 
 
