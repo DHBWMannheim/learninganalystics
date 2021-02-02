@@ -1,37 +1,47 @@
 % !TEX root =  master.tex
 \chapter{Einleitung}
 \section{Motivation und Zielsetzung}
+In den letzten Jahren hat Computertechnologie rasant an Leistungsfähigkeit und Funktionsumfang zugenommen.
+Längst sind Computer oder Mobilgeräte nicht mehr aus dem Alltag wegzudenken.
+Umso wichtiger ist es, diese Technologien sinnvoll in die Tätigkeiten von Menschen zu integrieren und durch diesen einen wertvollen Mehrwert zu generieren.
+Immer mehr Themenbereiche sind und müssen digitalisiert werden.
 
-Mithilfe der Studypro-Webanwendung möchten wir allen Studierenden und Dozierenden an der DHBW eine Möglichkeit bieten, ihren Hochschulalltag zu organisieren. 
-Unsere Vision ist, dass für Studierende und Dozierende mit dieser Anwendung ein Mehrwert generiert wird. Daher sollen möglichst alle Aufgaben des Hochschulalltags mit unserer Webanwendung unterstützt werden. 
-Im Rahmen dieses Moduls soll ein Grundstein gelegt werden, auf dem weitere Entwicklung aufgebaut werden kann und auch soll. 
-Daher können wir innerhalb dieser begrenzten Zeit nicht alle Vorhaben umsetzen und weisen am Ende der Dokumentation auf weitere mögliche Vorgehensschritte hin, welche von unseren Nachfolgern angegangen werden können.
+Zum Anlass des aktuellen Weltgeschehens sehen wir die Notwendigkeit, solche Technologien auch in den Hochschul-Kontext einzubringen.
+Die aktuell \enquote{Corona-Krise} hat extreme Auswirkungen und macht sich in vielen Bereichen bemerkbar.
+Mit einer der Bereiche, die am stärksten betroffen sind, ist das Bildungswesen.
+So sind bereits im April 2020 die Schulen von 192 Ländern geschlossen worden.\autocite[S. 845]{Donohue2020}
+Die geänderten Anforderungen an Schüler und Studenten durch neue Konzepte wie \enquote{Home-Schooling} erfordern auch Anpassungen im Hochschulkontext.
 
-Dozierende haben aktuell wenig Möglichkeiten zu erfahren, wie ihre Vorlesung in verschiedenen Kursen angenommen wird, was der Lernstand der Studierenden der einzelnen Kurse ist und wie die Stimmung innerhalb der Kurse bezüglich der anstehenden Prüfungsleistung. 
-Aktuell (Dezember '20) finden zum zweiten Mal ausschließlich Online-Vorlesungen statt, sodass diese Möglichkeiten für Dozierende nochmals relevanter sein könnten.
+Mit der von uns entwickelten Anwendung beabsichtigen wir die entstandene Distanz zwischen Studenten und Dozenten zu verringern. 
+Mithilfe der Webanwendung möchten wir allen Studierenden und Dozierenden an der DHBW eine Möglichkeit bieten, ihren Hochschulalltag zu organisieren. 
+Unsere Vision ist, dass unsere Anwendung einen Mehrwert für Studierende und Dozierende generiert wird.
+Daher sollen möglichst alle Aufgaben des Hochschulalltags mit unserer Webanwendung unterstützt werden. 
+Im Rahmen dieses Moduls soll ein Grundstein gelegt werden, auf dem weitere Entwicklung aufgebaut werden kann und auch soll.
 
+\clearpage
+\section{Aufbau der Arbeit} % TODO: Dieses Kapitel anpassen
+In dieser Arbeit werden zunächst die Anforderungen an eine solche Anwendung betrachtet.
+Dafür wird der aktuelle Ist-Zustand analysiert um herauszufinden wie Studenten und Dozenten am besten unterstützt werden können.
+Ziel ist es festzustellen, welche funktionalen und welche nicht-funktionalen Anforderungen durch die Anwendung erfüllt werden sollten.
+Gleichzeitig soll das Thema dieses Projektes abgegrenzt werden, um den Fokus unseres Vorhabens ausführlich darzustellen.
 
-\section{Aufbau der Arbeit} % TODO: Das hier dann nochmal anpassen
+Basierend auf den festgestellten Anforderungen wird ein Konzept ausgearbeitet.
+Im Konzept wird nicht nur auf die Funktionalitäten, wie sie Nutzer verwenden können eingegangen, sondern auch auf die technischen Hintergründe.
 
-Diese Projektdokumentation beginnt mit einer Anforderungsanalyse. In dieser ist der aktuelle Ist-Zustand dargestellt.
-Unsere Anforderungen an das Ergebnis dieses Projekts sind darauffolgend genannt. Der letzte Teil der Anforderungsanalyse behandelt die thematische Abgrenzung dieses Projekts, um den Fokus unseres Vorhabens ausführlich darzustellen.
+Anschließend wird die Umsetzung des Konzeptes beschrieben.
+Der Fokus liegt dabei auf der Schaffung von Transparenz bezogen auf die verarbeiteten Daten.
+Als letztes Hauptkapitel wird die Nutzung der Anwendung durch dritte Personen wie Studenten und Dozenten beschrieben.
+% TODO: Hier noch schauen. Soll die Nutztung tatsächlich als eigenes Kapitel geschrieben werden? ist das nicht schon in der Konzeption, und Umsetzung?
 
-Im nächsten Kapitel sind einige Grundkonzepte er- und bearbeitet, auf welche dieses Projekt aufbaut. Diese sind von theoretischer oder technischer Natur.\\
-Die fachlichen Abschnitte befassen sind einerseits rund um die Thematik, wie Dozierenden passende und nützliche Daten zur Verfügung gestellt werden können, ohne datenschutzrelevante und persönliche Informationen von Studierenden Preis zu geben. 
-Andererseits wird der Hintergrund von Autorisierung und Authentisierung näher beleuchtet, um eine sichere Registrierung, Anmeldung und Kurseinschreibung von Dozierenden und Studierenden gewährleisten zu können.
+Das Nutzerhandbuch stellt eine eindeutige und verständliche Nutzeranleitung dar.
+Mithilfe dieser werden alle Funktionalitäten der Endanwendung erklärt.
+% TODO: Das auchnochmal reinschauen.   Brauchen wir wirklich ein Kapitel in dem nochmal die ganzen Anforderungen validiert werden? Das steht doch dann auch schon in Konzeption + Umsetzung ?
+% TODO: Hier nochmal sätze bauen
 
-Auf technischer Seite wird das Thema "Backend as a Service" betrachtet, welche Vor- und Nachteile das Konzept mit sich bringt und weshalb die Entscheidung gefallen ist, dies in unserem Projekt einzusetzen.\\
-Die Datenstrukturen sind besonders relevant, da hieraus die auswertbaren Analysedaten generiert werden sollen. Dabei ist es wichtig, bereits von Anfang an keine Designfehler einzubauen, die als permanente technische Schulden durch das Projekt geschleußt werden.\\
-Die Datenschutzthematik ist auf technischer Ebene gesichert, damit Studierenden dies versichert werden kann. 
-
-Im folgenden Konzeptionskapitel wird darauf eingegangen, wie konkret vorgeganen wird. 
-Hierbei werden die Frontendarchitektur, Datenmodell und Datenhaltung,  Datensicherheit, Datenschutz und Grundlage für die Datenauswertung genauer erklärt und klar dargestellt, was in welchen Programmabschnitten erreicht werden soll und was dabei zu beachten ist.
-
-Das Implementierungskapitel verdeutlicht, wie die verschiedenen Konzepte innerhalb des Konzeptionskapitels realiesiert werden können. Hier können die Themen Backend, Frontend, Tools und Datenauswertung für Dozenten unterschieden werden.
-
-Das Nutzerhandbuch stellt eine eindeutige und verständliche Nutzeranleitung dar. Mithilfe dieser werden alle Funktionalitäten der Endanwendung erklärt.
-
-Den Abschluss der Dokumentation ist die Zusammenfassung. Diese besteht aus zwei Teilen.
+Den Abschluss der Dokumentation ist die Zusammenfassung.
+Diese besteht aus zwei Teilen.
 Das Fazit betrachtet das Projekt als Ganzes und vergleicht die schlussendliche Form mit den in der Einleitung hervorgestellten Zielen. Damit werden alle Tätigkeiten innerhalb dieses Projekts abgerundet abgeschlossen dargestellt.
 Anschließend wird ein Ausblick hervorgestellt, an welchen Stellen Folgeprojekte aufbauen können. Was wir aus aktueller Sicht als sinnvoll betrachten, auf was dabei zu achten ist und was vermieden werden sollte.
 
+
+% TODO: Hier stand noch was drin, dass auch Datenschutz sachen und so beschrieben. Das weiß ich nicht. Das kann man hier reinschreiben, wenn wir das tatsächlich machen. 
