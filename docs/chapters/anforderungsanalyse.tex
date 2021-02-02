@@ -1,18 +1,69 @@
 % !TEX root =  ../master.tex
 \chapter{Anforderungsanalyse} % TODO: Das hier ist noch etwas durcheinander
 \section{Abgrenzung}
-Diese Arbeit wird sich nur mit der ersten Ebene, der Individual Ebene befassen. 
+\subsection{Abgrenzung des Funktionsumfangs}
+Im bereich Bildung gibt es viele Möglichkeiten, wie Hochschulen und Studenten unterstützt werdem können.
+Primär gibt es hierbei 4 Ebenen, auf der Aktionen stattfinden können:
+\begin{itemize}
+    \item Politische Ebene\\
+        Landesweite Veränderungen, die das gesamte Bildungssystem betreffen 
+    \item Institutionsebene\\
+        Veränderungen an der gesamten Bildungseinrichtung.
+    \item Kursebene\\
+        Aktionen innerhalb eines Kurses bzw. Vorlesung
+    \item Individualebene\\
+        Persönliche Veränderungen
+\end{itemize}
+Man kann ableiten, dass sich nicht alle Ebenen gleich für die zu entwickelnde Anwendung anbieten.
+Auf politischer Ebene veränderungen durchzusetzen benötigen in der Regel ein aufwändiges Genehmigungsverwähren, welches wertvolle Zeit in Anspruch nehmen.
+Da die Anwendung aber möglichst schnell Krisenbeeinträchtigte Studenten unterstützt werden sollen, muss diese Ebene bei der Entwicklung zunächst vernachlässigt werden.
 
-\includegraphics[width=\linewidth,keepaspectratio]{img/Ebenen}
-%TODO: Verweiß auf pptx Fr. Honal
+Die Institutionsebene beschreibt das Management von Ressourcen innerhalb der Hochschule.
+Besonders der Austauch und Weiterbildung zwischen Dozenten ist hierbei ein wichtiger Aspekt.
+Problematisch ist aber die Identifizierung von Anforderungen aller Studienrichtungen.
+So besitzen technische Studiengänge andere Bedürfnisse als wirtschaftlich orientierte Studiengänge.
+Aus diesem Grund kann auch diese Ebene nicht genauer beachtet werden.
 
-Um eine Fortführung und Integration der anderen Ebenen in Zukunft zu ermöglichen, soll die Datenhaltung und Architektur der Anwendung so konzipiert werden, dass eine Erweiterung leicht möglich ist.
-Durch die Schnittelle bzw. das zur Verfügung stellen der anonymen Lerndaten wird in diesem Projekt schon die Verbindung zur nächsten Ebene, der Kursebene geschlagen.
-Vordefinierte Auswertungen, Berechnungen wird es allerdings aufgrund der gewählten Abgrenzungen erst einmal nicht geben.
-Die vorhandenen Daten sollen im Ersten Schritt in einem auswertungstauglichen Format zur Verfügung gestellt werden.
-Die Auswertung selbst muss durch den Dozenten selbst erfolgen.
-Für die weiteren Ebene sehen wir jedoch die Möglichkeit in weiteren Projekten Ideen umzusetzen, die auf diesem Projekt aufbauen.
-Mit diesem Hintergedanken wird in den folgenden Abschnitten die Grundlagen und Konzeption geklärt bzw. erstellt.
+Stattdessen wird sich in dieser Arbeit auf die Entwicklung einer Anwendung mit dem Schwerpunkt auf der Kurs- und der Individualebene fokussiert.
+Die Kursebene dient zur Weitergabe Lernmaterialien, die eine Vorlesung ergänzen.
+Dies soll einen direkten Einfluss auf die Individualebene haben und den individuellen Studenten fördern.
+Ziel ist es den Studenten beim Lernen zur unterstützen und das Verständnis der in der Vorlesung vermittelten Informationen zu fördern.  
+
+\begin{figure}[]%FIXME:
+    \begin{center}
+        \includegraphics[width=.7\textwidth]{img/Ebenen.png}
+        \caption{Aktionsebenen}
+        \label{fig:ebenen}
+    \end{center}
+\end{figure}
+%TODO: Verweis auf pptx Fr. Honal % TODO: Gibt es hier noch Quellen?
+
+Durch diesen Fokus entfallen allerdings Vorteile, die sich durch eine größere Nutzer- und damit Datenbasis ergeben.
+Besonders die Möglichkeit für Datenanalysen als Teil des Data Minings ist aufgrund des geringen Datenumfangs nicht möglich.
+Gleichzeitig sind wir der Überzeugung, dass eine Auswertung des Lernfortschrittes nicht der primäre Grund für die Entwicklung einer Anwendung sein sollte, sondern der Mehrgewinn für Studenten.
+Sollte sich die Anwendung für Nutzer als Vorteilhaft erweisen, kann die Anwendung ohne Probleme um Funktionalitäten aus anderen Ebenen erweitert werden.
+
+
+
+% TODO: Können Wir vielleicht noch einen User Acceptance Test machen?
+
+% Um eine Fortführung und Integration der anderen Ebenen in Zukunft zu ermöglichen, soll die Datenhaltung und Architektur der Anwendung so konzipiert werden, dass eine Erweiterung leicht möglich ist.
+
+% TODO: Also bauen wir einen Export? Das wäre gut, dann können wir das schreiben. Aber da müssen wir mal schauen. Vordefinierte Auswertungen, Berechnungen wird es allerdings aufgrund der gewählten Abgrenzungen erst einmal nicht geben.
+% Die vorhandenen Daten sollen im Ersten Schritt in einem auswertungstauglichen Format zur Verfügung gestellt werden.
+% Die Auswertung selbst muss durch den Dozenten selbst erfolgen.
+
+% TODO: Abgrenzung zu anderen Werkzeugen
+\subsection{Abgrenzung zu anderen Anwendungen}
+Im Hochschulkontext kommen bereits mehrere Systeme zum Einsatz.
+Die primäre Plattform bildet \enquote{Moodle}.
+% TODO: Moodle
+
+Eine weitere Plattform, die verwendet wird ist Dualis
+% TODO: Dualis
+
+% TODO: MyLA
+
 
 \section{Ist-Analyse}
 Grundlage dieser Arbeit ist die Vision der DHBW, Learning Analitics weiter voranzutreiben.
@@ -70,3 +121,4 @@ Wichtig ist dabei anzumerken, dass diese Daten vollständig anonym ohne Verweise
 
 
 
+% TODO: Irgendwo auch ncohaml sagen, dass man erst einen nutzer nutzen haben buss, bevor man daten minen kann. Ohne nutzer /funktionen macht es gar keinen sinn
