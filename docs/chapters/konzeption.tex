@@ -20,23 +20,6 @@ Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgetei
 
 % TODO ER-Modell
 
-Die Datenhaltung ist wie bereits beschrieben im Modell als Zustand definiert. Für die Verwaltung der Daten wird \href{https://vuex.vuejs.org/}{VueX} verwendet.
-Das Modell wird hierbei als \enquote{Store} repräsentiert.
-Der gesamte Store ist dabei gekapselt und definiert Funktionen zur Manipulation des internen Zustandes. Der Aufbau des Stores ist dabei konstant und ändert sich nicht abhängig der gespeicherten Daten.
-Der Store besteht dabei aus:
-\begin{itemize}
-    \item State\\
-        Der State definiert alle gespeicherten Daten. Die Anwendung überwacht den State und aktualisiert die Präsentation sobald sich eine Änderung am State ergibt.
-    \item Getters\\
-        Getters sind Funktionen, die dynamisch Daten aus dem State errechnen.
-    \item Mutations\\
-        Mutations sind Funktionen, die den State manipulieren.
-        Durch die atomare, synchrone Weiße dieser Funktionen wird sichergestellt, dass nicht mehrere Änderungen gleichzeitig vorgenommen werden und der Zustand stets konsistent ist.
-    \item Actions\\
-        Actions sind Funktionen, die asynchrone Aktionen ausführen können. Ein Beispiel hierfür ist das Laden von Daten aus der Datenbank. Da Änderungen am State nur über Mutations ausgeführt werden können, müssen Actions am Ende ihrer Ausführung die notwendige Mutation ausführen.
-\end{itemize}
-
-Die Ausführung der Funktionen geschieht durch ein Eventsystem. Der Controller muss so nur die notwendige Event mit Eventdaten zur Bearbeitung des Zustandes erzeugen und überlässt die Ausführung dem Store. Da die Anwendung den State überwacht und die Repräsentation bzw. die UI anpasst wird die Art und Weiße, wie Daten gespeichert sind entkoppelt vom Zugriff auf diese, sowie deren Darstellung.
 
 
 \subsection{Studierende}
@@ -48,3 +31,183 @@ Die Ausführung der Funktionen geschieht durch ein Eventsystem. Der Controller m
 \section{Datenschutz}
 \section{Grundlage für Datenauswertung}
 % Hier Verweise auf Aubau und Bezug zum leichten Ausbau, etc.
+
+
+
+
+
+
+
+
+\section{Ich mach hier einen WIP Abschnitt :D}
+Aus den Anforderungen geht hervor, dass es zwei Nutzerrollen gibt: Dozenten und Studenten.
+Dozenten sollen in der Anwendung ihre Kurse verwalten können.
+Ein Kurs orientiert sich dabei an der Organisation, die in der Realität vorliegen.
+Auch in vorhandenen Tools wie beispielsweise \enquote{Moodle} sind Studenten anhand von Kursen organisiert.
+Aufgrund der Vielzahl an solchen Lösungen scheint sich eine solche Organisation zu bewähren.
+Aus diesem Grund liegt es nahe, das auch die zu entwickelnde Anwendung eine solche Struktur nutzen sollte.
+% TODO: Wie Werden Kurse erstellt
+
+Nachdem nun geklärt wurde, wie die Organisation von Studenten und Dozenten stattfindet, muss nun die Zuweisung von Studenten zu Kursen die Zuweisung von Dozenten konzipiert werden.
+Zunächst wird die Studentenzuweisung betrachtet.
+Für die Zuweisung von Studenten kommen mehrere Ansätze in betracht, die sich in der Person unterscheiden, die die Zuweisung durchfüht :
+\begin{enumerate}
+    \item Zuweisung durch Anwendungsadministrator
+    \item Zuweisung durch Dozenten
+    \item Zuweisung durch Studenten
+\end{enumerate}
+Als erster Ansatz kommt die Zuweisung durch einen Anwendungsadministrator in betracht.
+Ein solcher Administrator ist ein zentraler Mitarbeiter der DHBW, welcher komplette Autorität über die Anwendung besitzt.
+Von einem solchen Ansatz wird abgesehen, da der Verwaltungsaufwand sehr hoch ausfällt.
+Für jeden Kurs über 20 Studenten zuzuweisen, und das für mehrere Kurse pro Semester und Vorlesung, scheint nicht realistisch.
+
+Der zweite ist der Ansatz der Zuweisung durch einen Dozenten.
+In der aktuellen DHBW-Organisation besitzen Dozenten bereits eine Liste an Studenten für ihre Vorlesung.
+Diese Liste dient zur Anwesendheitskontrolle.
+Demnach können Dozenten diese Liste für die Zuweisung in der Anwendung nutzen.
+Der Nachteil eines solchen Ansatzes ist es aber, dass Studenten ihre Daten in der Anwendung hinterlassen müssen und diese durch andere Dozenten gegebenenfalls einsehbar wären.
+Zusätzlich geht die Anonymität, welche durch Matrikelnummern gegeben ist eventuell verloren.
+Insgesamt ist dieser Ansatz aus Datenschutzaspekten besonders kritisch. % TODO: Beim Admin nicht so, weil dhbw
+
+Als Letzter Ansatz ist die Zuweisung durch den Studenten.
+Denkbar sind hier mehrere Ansätze: Eine Liste aus Kursen oder über einen Kursidentifikator.
+Eine Liste mit Kursen vereinfacht die Zuweisung durch den Studenten, da Kurse schnell entdeckt werden können und eventuell zusätzliches Wissen vermittelt werden kann, wenn der Student sich für mehrere ähnliche Kurse einträgt.
+Nachteil ist aber die unmittelbare Verwaltung und Übersicht über die Kurse.
+Eine Zuweisung über einen Kursidentifikator (kurz: Schlüssel) hat den Nachteil, dass diese Schlüssel erst aufwändig über einen weiteren Kommunikationsweg (z.\,B. Email oder direkt in einer Vorlesung) mitgeteilt werden muss.
+Dafür besitzen Studenten aber nur Zugriff auf die für sie relevanten Vorlesungen.
+In \enquote{Moodle} ist die Zuweisung zu Kursen auf freiwilliger Basis anhand von Einschreibeschlüsseln gelöst.
+Aus diesem Grund ist dieser \enquote{Workflow} bereits für Studenten bekannt und eine Anpassung an die neue Anwendung ist schnell möglich.
+In der Tat nutzen viele existierende Anwendungen ein solches System.
+Beispiele hierfür sind Zoom oder Google Meets.
+
+
+
+
+
+
+
+
+Ein Einschreibeschlüssel besteht aus 6 Buchstaben, welche mehr als 300 Millionen Kurse zulassen und als ausreichend angesehen werden.
+Sollten weitere Kurse benötigt werden, kann dieses Limit im Quellcode schnell angepasst werden.
+
+
+
+
+
+% Authentifizierung
+Damit die Zuweisung von Nutzern, Dozenten und eine nutzerspezifische Speicherung von Daten (z.\,B. Todos) möglich ist, wird eine Authentifizierung notwendig.
+
+
+
+Bei der Entwicklung der Anwendung haben wir großen Wert auf Datensicherheit und der Einhaltung der DSGVO gelegt.
+Ein wesentlicher Bestandteil der unternommenen Maßnahmen ist die Anonymität innerhalb der Anwendung.
+Die Anwendung speichert keinerlei Informationen, worüber Nutzer identifiziert werden können.
+Bei einer Registrierung muss lediglich eine Email angegeben werden.
+Der Nutzer kann hierbei eine beliebige, sogar eine Wegwerf Email verwenden.
+Die Email wird intern lediglich für Authentifizierungszwecke benötigt.
+Das heißt die Email wird nur für das Login und für den Fall, dass ein Nutzer sein Passwort vergisst benötigt.
+Verwendet der Nutzer eine Wegwerf-Email kann der die Anwendung wie gewohnt nutzen, verliert aber die Möglichkeit sein Passwort zurückzusetzen. 
+% TODO: muss gar nicht mal in Firestore gespeichert werden, da google die einzeln speichert.
+Über diese Datenspeicherung wird der Nutzer in den Terms-of-Service vor einer Registrierung auch hingewiesen. % TODO:
+
+
+Nutzer der Anwendung können sich selbst registrieren.
+Daraus ergibt sich die eine Rollen Problematik: Woran kann die Anwendung erkennen, welcher Nutzer ein Student ist und welcher Nutzer ein Dozent ist.
+Sofern Nutzer dies selber angeben können, bräuchte es gegebenenfalls eine Validierung durch die DHBW, wodurch erneut die oben genannten Nachteile einer Zuweisung durch einen Administrator greifen.
+Ein Ansatz, bei dem Nutzer dies selber verwalten können wird auch hier als besser angesehen.
+Aus diesem Grund wird der folgende Ansatz verwendet:
+Statt festdefinierte Rollen (Student und Dozent) zu besitzen, kann jeder Student selbst sowohl Student, als auch Dozent sein.
+
+Jeder Nutzer ist zunächst keiner Rolle zugeordnet.
+Jeder Nutzer kann einen Kurs erstellen, wodurch dieser Nutzer automatisch zu einem Dozent für diesen Kurse.
+Sobald sich ein Nutzer mithilfe des Einschreibeschlüssels für einen Kurs anmeldet wird der Nutzer automatisch für diesen Kurs zu einem Studenten.
+Dadurch können auch zuvor nicht vorgesehene Nutzerbeziehungen entstehen.
+Beispielsweise kann ein Dozent sich in einen weiteren Kurs einschreiben, falls er sich in einer weiteren Richtung weiterbilden möchte.
+Oder die DHBW kann sich in für einen Kurs einschreiben um die Qualität einer Vorlesung zu validieren.
+
+
+Ein Vorteil eines solchen Ansatzes ist es, dass auch Studenten Kurse erstellen können und so Lerngruppen gefördert werden.
+Denkbar ist beispielsweise ein Student, welcher Nachhilfe anbietet.
+Dadurch wird die Nutzung der Anwendung gefördert.
+
+
+
+
+% TODO: Das besser mit den Anforderungen verknüpfen
+% TODO: Dokumentation über TODOS
+TODOs stellen einen elementaren Bestandteil einer Ausbildung dar.
+Schon in der Schule mussten Schüler eine Hausaufgabenheft oder Ähnliches führen um einen Überblick über ihre TODOs zu haben.
+Auch im Studium gibt es Unzähliche TODOs, ...
+
+TODOs können mithilfe des \enquote{Floating Action Button (FAB)} im rechten unterem Eck erstellt werden. % https://material.io/components/buttons-floating-action-button#usage
+Fabs stellen die primäre Action einer Ansicht, die konstruktiv ist und zu dem Inhalt der Ansicht passt.
+Inner
+
+
+% TODO: Die Material Principien besser herausarbeiten  https://material.io/components/dialogs#usage
+Nach dem Klick öffnet sich ein Modal, in dem alle relevanten Todos eingetragen werden können.
+Todos zeichnen sich durch einen Titel und eine optionale Beschreibung, sowie eine optionale Deadline aus.
+Sofern eine Deadline angegeben ist, wird dieses Todo in den Kalender über der Todo Übersicht dargestellt.
+Je roter ein Tag ist, desto mehr Todos müssen an diesem Tag erledigt sein.
+Der Kalender zeigt stets den Zeitraum zwischen Anfang des letzten Monates und Ende der nächsten zwei Monate  an.
+% TODO: ?
+Todos können schnell und einfach durch klicken auf die Checkbox vor einem Todo abgehackt werden.
+
+
+Index-Cards stellen eine Karteikarten-Funktion dar.
+Im Nutzer-Interface werden Karten ähnlich zu einem realen Karteikasten hintereinander dargestellt.
+Jede Karte zeigt zunächst die Frage an.
+Solle man die Antwort zu der Frage nicht wissen oder sich kontrollieren wollen, kann man mithilfe des Pfeils im Eck einer jeden Karte die Antwort einblenden.
+Anschließend können die Karten mit den Buttons am unteren Bildschirmrand als gewusst und nicht gewusst markiert werden.
+Durch die Zahlen an diesen Buttons kann der Nutzer leicht ablesen, wie viele Karten der Nutzer bereits wusste.
+Karten können aber auch durch einfaches ziehen der Karten zu gewusst oder nicht gewusst verschoben werden.
+Dies erleichtert die Handhabung.
+
+% TODO: Todos und index-cards auch löschbar und alles
+
+% TODO: Wie technisch?
+
+
+
+
+
+
+% TODO: Dokumentation über Authentifizierung
+% TODO: Dokumentation über Index-Cards
+% TODO: Screenshots
+% TODO: Aria?
+
+
+
+
+
+% Ein Dozent sollte dabei beispielshaft einen Kurs anlegen können
+
+Um eine möglichst gute Nutzererfahrungs zu ermöglichen wurden einige umfangreiche Maßnahmen ergriffen.
+
+Die Anwendung sollte auf jeden Gerät vollständig funktional sein.
+Studenten nuten häufig viele Geräte mit verschiedenen Bildschirmformaten.
+Besonders unterwegs oder in öffentlichen Verkehrsmitteln sind Mobilgeräte die primären Geräte.
+Aus diesem Grund muss sich die Anwendung dynamisch an solche Geräte anpassen.
+
+Bei der Entwicklung wurde auf die responsive Darstellung geachtet.
+So verhalten sich alle Funktionalitäten einer Anwendung wie es von einer nativen Anwendung erwartet wird.
+Dies macht sich besonders in der optimierten Darstellung bemerkbar, bei der der Nutzer nicht zu scrollen oder zoomen verpflichtet ist bemerkbar.
+Aber auch andere Funktionalitäten, wie das Wischen der Karteikarten funktioniert auf Geräten mit einem Touchscreen genauso, wie auf Geräten, welche eine Maus verwenden. 
+
+
+Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
+Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
+Besucht der Nutzer die Website der Anwendung werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
+Beispielsweise werden die Karteikarten, sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos nachschaut.
+
+
+% TODO: Caching
+
+
+% TODO: Lighthouse am schluss beschreiben, wenn wir alle unnötigen Abhängigkeiten entfernt haben?
+
+% TODO: Kann man nach offline machen?
+
+Der Ladefortschritt kann stets an der Leiste am oberen Bildschirmrand abgelesen werden.
+

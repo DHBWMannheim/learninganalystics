@@ -1,0 +1,59 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()">DHBW Learning</a>
+  </div>
+  <!-- <nb-select 
+    [selected]="currentTheme"
+    (selectedChange)="changeTheme($event)"
+    status="primary"
+  >
+    <nb-option *ngFor="let theme of themes" [value]="theme.value">
+      {{ theme.name }}</nb-option
+    >
+  </nb-select> -->
+</div>
+
+<div class="header-container">
+  <nb-actions size="small">
+    <!-- <nb-action class="control-item">
+      <nb-search
+        type="rotate-layout"
+        matRipple
+        [matRippleUnbounded]="true"
+        [matRippleCentered]="true"
+      ></nb-search
+    ></nb-action> -->
+    <!--TODO: SearchService das können wir lokal machen. Wir haben eh nicht so viele Daten, das wir algolie oder so nutzen müssen-->
+    <!-- <nb-action
+      class="control-item"
+      icon="bell-outline"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+      badgeDot="areNewMessagesAvailable()"
+      badgePosition="top right"
+      badgeStatus="info"
+    >
+    </nb-action> -->
+    <nb-action
+      class="user-action"
+      *nbIsGranted="['view', 'user']"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+    >
+      <nb-user
+        [nbContextMenu]="userMenu"
+        [onlyPicture]="userPictureOnly"
+        [name]="(user | async)?.displayName || 'Anonymous User'"
+        [picture]="(user | async)?.photoURL"
+        nbContextMenuTag="profile-context-menu"
+        shape="rectangle"
+      >
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+</div>

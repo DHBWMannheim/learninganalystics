@@ -1,0 +1,63 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col my-auto">
+        <h3>Add new Todo</h3>
+      </div>
+      <div class="col-end">
+        <button nbButton (click)="close()">
+          <nb-icon icon="close-outline"></nb-icon
+          ><!--TODO:-->
+        </button>
+      </div>
+    </div>
+    <div></div>
+    <div></div>
+  </nb-card-header>
+  <nb-card-body>
+    <form>
+      <mat-form-field class="w-100">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          placeholder="A short title..."
+          required
+          [(ngModel)]="model.title"
+          name="title"
+        />
+      </mat-form-field>
+      <!--TODO: Max length?-->
+
+      <mat-form-field class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="What do you want to do..."
+          [(ngModel)]="model.description"
+          name="description"
+          class="description-textarea"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose an optional deadline</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="model.deadline"
+          name="deadline"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-end">
+        <button nbButton status="primary" (click)="submit()">Submit</button>
+      </div>
+    </div>
+  </nb-card-footer>
+</nb-card>

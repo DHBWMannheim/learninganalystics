@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col">
+    <nb-card>
+      <nb-card-header> Index Cards </nb-card-header>
+      <nb-card-body>
+        <tinder-ui [cards]="cards" (choiceMade)="logChoice($event)"></tinder-ui>
+        <div
+          echarts
+          [options]="echartOptions"
+          [@fadeAnimation]="gaugeState"
+        ></div>
+
+        <!-- <nb-alert outline="basic" style="text-align: center"
+          >Seems like, there are no Index-Cards yet. Try creating on with the
+          button below.</nb-alert
+        > -->
+        <!--TODO:-->
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<!-- TODO: connect Gobal Search to index Cards  -->
+
+<div class="add-button-container">
+  <button mat-fab color="primary" (click)="openAddDialog()">
+    <nb-icon icon="plus-outline"></nb-icon>
+  </button>
+</div>

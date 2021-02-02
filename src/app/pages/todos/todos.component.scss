@@ -1,0 +1,14 @@
+.add-button-container {
+  position: fixed;
+  right: 15px;
+  bottom: 100px;
+} //FIXME: Position
+
+::ng-deep .label {
+  display: flex !important;
+}
+
+.overview--chart {
+  max-width: 800px;
+  margin: auto;
+}
