@@ -110,9 +110,7 @@
 \newcommand{\ArtDerArbeit}[1]{\def\DieArtDerArbeit{#1}}
 \newcommand{\Literaturverzeichnis}{Literaturverzeichnis}
 
-\usepackage[backend=biber, autocite=footnote, style=authoryear, dashed=false]{biblatex} 	%Use Author-Year-Cites with footnotes
-\AdaptNoteOpt\footcite\multfootcite   %will add  separators if footcite is called multiple consecutive times 
-\AdaptNoteOpt\autocite\multautocite % will add  separators if autocite is called multiple consecutive times
+\usepackage[backend=biber, autocite=footnote, style=authoryear, dashed=false]{biblatex}
 \DefineBibliographyStrings{ngerman}{  %Change u.a. to et al. (german only!)
 	andothers = {{et\,al\adddot}},
 }
