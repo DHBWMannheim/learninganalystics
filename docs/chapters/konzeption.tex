@@ -111,8 +111,67 @@ Verwendet der Nutzer eine Wegwerf-Email kann der die Anwendung wie gewohnt nutze
 Über diese Datenspeicherung wird der Nutzer in den Terms-of-Service vor einer Registrierung auch hingewiesen. % TODO:
 
 
+Nutzer der Anwendung können sich selbst registrieren.
+Daraus ergibt sich die eine Rollen Problematik: Woran kann die Anwendung erkennen, welcher Nutzer ein Student ist und welcher Nutzer ein Dozent ist.
+Sofern Nutzer dies selber angeben können, bräuchte es gegebenenfalls eine Validierung durch die DHBW, wodurch erneut die oben genannten Nachteile einer Zuweisung durch einen Administrator greifen.
+Ein Ansatz, bei dem Nutzer dies selber verwalten können wird auch hier als besser angesehen.
+Aus diesem Grund wird der folgende Ansatz verwendet:
+Statt festdefinierte Rollen (Student und Dozent) zu besitzen, kann jeder Student selbst sowohl Student, als auch Dozent sein.
 
+Jeder Nutzer ist zunächst keiner Rolle zugeordnet.
+Jeder Nutzer kann einen Kurs erstellen, wodurch dieser Nutzer automatisch zu einem Dozent für diesen Kurse.
+Sobald sich ein Nutzer mithilfe des Einschreibeschlüssels für einen Kurs anmeldet wird der Nutzer automatisch für diesen Kurs zu einem Studenten.
+Dadurch können auch zuvor nicht vorgesehene Nutzerbeziehungen entstehen.
+Beispielsweise kann ein Dozent sich in einen weiteren Kurs einschreiben, falls er sich in einer weiteren Richtung weiterbilden möchte.
+Oder die DHBW kann sich in für einen Kurs einschreiben um die Qualität einer Vorlesung zu validieren.
+
+
+Ein Vorteil eines solchen Ansatzes ist es, dass auch Studenten Kurse erstellen können und so Lerngruppen gefördert werden.
+Denkbar ist beispielsweise ein Student, welcher Nachhilfe anbietet.
+Dadurch wird die Nutzung der Anwendung gefördert.
+
+
+
+
+% TODO: Das besser mit den Anforderungen verknüpfen
 % TODO: Dokumentation über TODOS
+TODOs stellen einen elementaren Bestandteil einer Ausbildung dar.
+Schon in der Schule mussten Schüler eine Hausaufgabenheft oder Ähnliches führen um einen Überblick über ihre TODOs zu haben.
+Auch im Studium gibt es Unzähliche TODOs, ...
+
+TODOs können mithilfe des \enquote{Floating Action Button (FAB)} im rechten unterem Eck erstellt werden. % https://material.io/components/buttons-floating-action-button#usage
+Fabs stellen die primäre Action einer Ansicht, die konstruktiv ist und zu dem Inhalt der Ansicht passt.
+Inner
+
+
+% TODO: Die Material Principien besser herausarbeiten  https://material.io/components/dialogs#usage
+Nach dem Klick öffnet sich ein Modal, in dem alle relevanten Todos eingetragen werden können.
+Todos zeichnen sich durch einen Titel und eine optionale Beschreibung, sowie eine optionale Deadline aus.
+Sofern eine Deadline angegeben ist, wird dieses Todo in den Kalender über der Todo Übersicht dargestellt.
+Je roter ein Tag ist, desto mehr Todos müssen an diesem Tag erledigt sein.
+Der Kalender zeigt stets den Zeitraum zwischen Anfang des letzten Monates und Ende der nächsten zwei Monate  an.
+% TODO: ?
+Todos können schnell und einfach durch klicken auf die Checkbox vor einem Todo abgehackt werden.
+
+
+Index-Cards stellen eine Karteikarten-Funktion dar.
+Im Nutzer-Interface werden Karten ähnlich zu einem realen Karteikasten hintereinander dargestellt.
+Jede Karte zeigt zunächst die Frage an.
+Solle man die Antwort zu der Frage nicht wissen oder sich kontrollieren wollen, kann man mithilfe des Pfeils im Eck einer jeden Karte die Antwort einblenden.
+Anschließend können die Karten mit den Buttons am unteren Bildschirmrand als gewusst und nicht gewusst markiert werden.
+Durch die Zahlen an diesen Buttons kann der Nutzer leicht ablesen, wie viele Karten der Nutzer bereits wusste.
+Karten können aber auch durch einfaches ziehen der Karten zu gewusst oder nicht gewusst verschoben werden.
+Dies erleichtert die Handhabung.
+
+% TODO: Todos und index-cards auch löschbar und alles
+
+% TODO: Wie technisch?
+
+
+
+
+
+
 % TODO: Dokumentation über Authentifizierung
 % TODO: Dokumentation über Index-Cards
 % TODO: Screenshots
@@ -123,3 +182,32 @@ Verwendet der Nutzer eine Wegwerf-Email kann der die Anwendung wie gewohnt nutze
 
 
 % Ein Dozent sollte dabei beispielshaft einen Kurs anlegen können
+
+Um eine möglichst gute Nutzererfahrungs zu ermöglichen wurden einige umfangreiche Maßnahmen ergriffen.
+
+Die Anwendung sollte auf jeden Gerät vollständig funktional sein.
+Studenten nuten häufig viele Geräte mit verschiedenen Bildschirmformaten.
+Besonders unterwegs oder in öffentlichen Verkehrsmitteln sind Mobilgeräte die primären Geräte.
+Aus diesem Grund muss sich die Anwendung dynamisch an solche Geräte anpassen.
+
+Bei der Entwicklung wurde auf die responsive Darstellung geachtet.
+So verhalten sich alle Funktionalitäten einer Anwendung wie es von einer nativen Anwendung erwartet wird.
+Dies macht sich besonders in der optimierten Darstellung bemerkbar, bei der der Nutzer nicht zu scrollen oder zoomen verpflichtet ist bemerkbar.
+Aber auch andere Funktionalitäten, wie das Wischen der Karteikarten funktioniert auf Geräten mit einem Touchscreen genauso, wie auf Geräten, welche eine Maus verwenden. 
+
+
+Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
+Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
+Besucht der Nutzer die Website der Anwendung werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
+Beispielsweise werden die Karteikarten, sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos nachschaut.
+
+
+% TODO: Caching
+
+
+% TODO: Lighthouse am schluss beschreiben, wenn wir alle unnötigen Abhängigkeiten entfernt haben?
+
+% TODO: Kann man nach offline machen?
+
+Der Ladefortschritt kann stets an der Leiste am oberen Bildschirmrand abgelesen werden.
+

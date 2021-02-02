@@ -35,11 +35,11 @@ export class TodosComponent implements OnInit {
       position: 'top',
     },
     legend: {
-      show: false
+      show: false,
     },
     visualMap: {
       max: 0,
-      show: false
+      show: false,
     },
     calendar: {
       // TODO: Einstellungen nach Sprache mit 'nameMap'
@@ -76,9 +76,9 @@ export class TodosComponent implements OnInit {
 
   mergedata: {
     series: {
-      data: [],
-    },
-  }
+      data: [];
+    };
+  };
 
   loading = true;
 
