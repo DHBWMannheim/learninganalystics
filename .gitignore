@@ -71,3 +71,4 @@ testem.log
 Thumbs.db
 *.cache
 *.idx
+docs/master.synctex(busy)
