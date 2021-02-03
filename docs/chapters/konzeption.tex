@@ -6,7 +6,9 @@ Dadurch soll verhindert werden, dass die aufwendige Implementierung fehlschlägt
 
 % TODO: Wasserfall / Agile
 
-\section{Anwendungsaufbau}
+\section{Konzeption der Anwendungsarchitektur}
+
+\subsection{Infrastruktur}
 Die Grundlage jeder Anwendung ist der Aufbau und die Struktur der Infrastruktur, auf welcher die Anwendung später ausgeführt werden soll.
 Aus diesem Grund wird diese als erstes betrachtet.
 
@@ -40,41 +42,51 @@ Aus diesem Grund haben wir uns für einen modernen \enquote{Serverless}-Ansatz e
 
 % TODO: Serverless Computing
 % TODO: Das vielleicht in Grundlagen verschieben
+% TODO: Hier kann man noch super viel schreiben
+
+
+\subsection{Anwendungsaufbau}
+Für das Nutzerinterface werden verschiedene Technologien 
 
 
 
 
-\section{Frontendarchitektur}
-\section{Datenmodell und Datenhaltung}
-
-Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgeteilt in 3 Bereiche:
-\begin{itemize}%TODO: Hier kann man noch mehr schreiben
-    \item Model\\
-        Das Modell stellt den aktuellen Status bzw. den aktuellen Zustand der Anwendung dar.
-    \item View\\
-        Die Präsentation ist zuständig für die Darstellung der Daten und ermöglicht dem Benutzer die Interaktion mit diesen sowie die Steuerung der Anwendung.
-    \item Controller\\
-        Der Controller kümmert sich um die Steuerung der Anwendung. Er verwaltet die Präsentation und steuert den Datenfluss zwischen der Präsentation und dem Modell.
-\end{itemize}
-% \begin{wrapfigure}{r}{5.5cm}
-%     \includegraphics[width=.25\textwidth]{img/1024px-ModelViewControllerDiagram2.svg.png}
-%     \caption{}
-%     %TODO: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller#/media/File:MVC-Process.svg
-%   \end{wrapfigure} 
-
-% TODO ER-Modell
+\section{Konzeption der Funktionalitäten}
 
 
+% TODO: Mocks und alles
 
-\subsection{Studierende}
-\subsection{Dozierende}
-\subsection{Kurs erstellen}
-\subsection{Karteikarten-Lernsystem}
-\subsection{ToDo-Liste}
-\section{Datensicherheit}
-\section{Datenschutz}
-\section{Grundlage für Datenauswertung}
-% Hier Verweise auf Aubau und Bezug zum leichten Ausbau, etc.
+% \section{Frontendarchitektur}
+% \section{Datenmodell und Datenhaltung}
+
+% Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgeteilt in 3 Bereiche:
+% \begin{itemize}%TODO: Hier kann man noch mehr schreiben
+%     \item Model\\
+%         Das Modell stellt den aktuellen Status bzw. den aktuellen Zustand der Anwendung dar.
+%     \item View\\
+%         Die Präsentation ist zuständig für die Darstellung der Daten und ermöglicht dem Benutzer die Interaktion mit diesen sowie die Steuerung der Anwendung.
+%     \item Controller\\
+%         Der Controller kümmert sich um die Steuerung der Anwendung. Er verwaltet die Präsentation und steuert den Datenfluss zwischen der Präsentation und dem Modell.
+% \end{itemize}
+% % \begin{wrapfigure}{r}{5.5cm}
+% %     \includegraphics[width=.25\textwidth]{img/1024px-ModelViewControllerDiagram2.svg.png}
+% %     \caption{}
+% %     %TODO: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller#/media/File:MVC-Process.svg
+% %   \end{wrapfigure} 
+
+% % TODO ER-Modell
+
+
+
+% \subsection{Studierende}
+% \subsection{Dozierende}
+% \subsection{Kurs erstellen}
+% \subsection{Karteikarten-Lernsystem}
+% \subsection{ToDo-Liste}
+% \section{Datensicherheit}
+% \section{Datenschutz}
+% \section{Grundlage für Datenauswertung}
+% % Hier Verweise auf Aubau und Bezug zum leichten Ausbau, etc.
 
 
 
@@ -145,10 +157,9 @@ Bei der Entwicklung der Anwendung haben wir großen Wert auf Datensicherheit und
 Ein wesentlicher Bestandteil der unternommenen Maßnahmen ist die Anonymität innerhalb der Anwendung.
 Die Anwendung speichert keinerlei Informationen, worüber Nutzer identifiziert werden können.
 Bei einer Registrierung muss lediglich eine Email angegeben werden.
-Der Nutzer kann hierbei eine beliebige, sogar eine Wegwerf Email verwenden.
-Die Email wird intern lediglich für Authentifizierungszwecke benötigt.
-Das heißt die Email wird nur für das Login und für den Fall, dass ein Nutzer sein Passwort vergisst benötigt.
-Verwendet der Nutzer eine Wegwerf-Email kann der die Anwendung wie gewohnt nutzen, verliert aber die Möglichkeit sein Passwort zurückzusetzen. 
+
+
+
 % TODO: muss gar nicht mal in Firestore gespeichert werden, da google die einzeln speichert.
 Über diese Datenspeicherung wird der Nutzer in den Terms-of-Service vor einer Registrierung auch hingewiesen. % TODO:
 
