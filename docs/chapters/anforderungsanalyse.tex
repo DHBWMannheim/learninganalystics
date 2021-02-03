@@ -1,7 +1,7 @@
 % !TEX root =  ../master.tex
 \chapter{Anforderungsanalyse} % TODO: Das hier ist noch etwas durcheinander
 \section{Abgrenzung}
-\subsection{Abgrenzung des Funktionsumfangs}
+\subsection{Abgrenzung des Funktionsumfangs}\label{sub:abgrenzung}
 Im bereich Bildung gibt es viele Möglichkeiten, wie Hochschulen und Studenten unterstützt werdem können.
 Primär gibt es hierbei 4 Ebenen, auf der Aktionen stattfinden können:
 \begin{itemize}
@@ -92,50 +92,118 @@ Aktuell (Dezember '20) finden zum zweiten Mal ausschließlich Online-Vorlesungen
 
 
 
+\section{Anforderungsformulierung}
 
-
-
-\section{Funktionale Anforderungen} % TODO: Vielleicht stichpunkte? Ich fands etwas schwer zu lesen
-Problematisch bei der Meinungserhebung mittels Umfragen ist häufig die Art und Formulierung der Fragestellung, das Nichtbeantwortungsproblem und ggf. mangelnde Repräsentativität.
-Mehr Hintergründe und Lösungsansätze zu diesen und weiteren Problemen lassen sich in der Einschlägigen Fachliteratur nachlesen.
-Ziel dieser Arbeit ist es diesen Probleme entgegen zu Wirken, in dem wir eine Anwendung entwickeln, die auch einen direkten Mehrwert für die Studenten hat.
-Zwar erbringt die Datenerhebung und Auswertung mittels Umfragen langfristige Mehrwerte, bei der Teilnahme an der Umfrage entsteht jedoch erst einmal ein Aufwand, dessen Nutze ungewiss ist.
-Aus diesem Grund ist das Motto "Von Studenten für Studenten" entstanden.
+\subsection{Funktionale Anforderungen} 
+Bei der Anforderungsanalyse gehen wir nach dem Motto "Von Studenten für Studenten" vor.
 Wir als Studenten der DHBW können sehr gut einschätzen was uns das Studium erleichtern würde und wie wir uns in Bezug auf Klausuren und Prüfungen organisieren.
-Mit einer Prozessierung und Automatisierung können Synergien genutzt werden und auch andere Kommilitonen von den für diese Veranstaltungen eingebrachten Aufwänden profitieren. 
+Mit einer Prozessierung und Automatisierung können Synergien genutzt werden und auch andere Kommilitonen von den für diese Veranstaltungen eingebrachten Aufwänden profitieren.
 
 Ziel dieser Arbeit ist es eine App zu entwickeln, die Plattform unabhängig als Web-Applikation oder im Browser genutzt werden kann.
 Dabei sollen sowohl Studenten als auch Dozenten einen Zugang bekommen.
-Um eine möglichst hohe Nutzerzahl erreichen zu können, setzen wir auf eine freiwillige Teilnahme.
+Wir setzen auf eine freiwillige Teilnahme.
 Die Anwendungen soll durch ihre Funktionen und die intuitive Bedienbarkeit überzeugen und nicht durch einen Nutzungszwang.
-Zweiteres würde unserer Einschätzung nach nur zu einer halbherzigen Nutzung führen, was in einer schlechteren Datenqualität enden würde und damit Auswertungen und deren Interpretation erschweren würde. 
 
-Bei der Erstanmeldung sollen bereits erste Daten über den Lerntyp der Studenten gestellt und gespeichert werden.
-Besitzt ein Nutzer einen Account, soll er Kurse anlegen können, zu denen er Informationen wie Datum von Prüfungen erfassen kann.
-Für jeden Kurs besteht die TODOs mit Zeildatum zur Strukturierung der eigenen Arbeit anzulegen.
-Außerdem können für eine bessere Prüfungsvorbereitungen Karteikarten angelegt werden.
-Die Karteikarten können auch in der App gelernt werden.
-Dabei soll auf wissenschaftlich fundierte Algorithmen zurückgegriffen werden, die das Lernen erleichtern sollen und dafür sorgen, dass sich das gelernte auch im Langzeitgedächtnis festigt.
-Dies ist aus eigenen Erfahrungen in den meist Stressigen Klausurenphasen leider nicht der Fall.
-Außerdem sollen die eingetragenen TODOs graphisch angezeigt werden, sodass eine Art Kalender entsteht und Kapazitätsengpässe rechtzeitig erkannt und durch Umplanen verhindert werden können.
-Um zu verhindern, dass diese organisatorische Aufwand von jedem Studenten einzeln durchgeführt werden müssen soll es zusätzlich die Funktion geben, dass Dozenten einen Kurs anlegen können.
-Diesen können Sie dann mit der Hilfe eines Einschreibeschlüssels unter ihren Studierenden teilen.
-Den Kursen können initial bereits Prüfungstermine, TODOs und Karteikarten mitgegeben werden.
-Somit entfällt die initiale Erstellung.
-Die zu einem Kurs gehörenden Informationen können von den Studierenden weiterhin nach belieben angepasst und ergänzt werden ohne dabei für die anderen eingeschriebenen Kursteilnehmer Daten zu verändern.
-Das Erstellen eines Kurses hat für den Dozenten den Vorteil, dass für diesen Kurs Daten zur Verfügung gestellt bekommt, die er zur Anpassung oder Evaluation seiner Vorlesung nutzen kann.
-Beispiele hierfür können sein Lerntypen der Studenten, Fortschritt beim Lernen der Karteikarten, etc.
-Wichtig ist dabei anzumerken, dass diese Daten vollständig anonym ohne Verweise auf Personen oder andere Identifikationsmerkmale zur Verfügung gestellt werden, sodass auch keine Probleme mit dem Datenschutz vorliegen. 
+Wir konnten die folgenden funktionalen Anforderungen definieren:
+\begin{itemize}
+    \item Anmeldung                         \\
+        Es muss eine Möglichkeit geben, wie neue Studenten und Dozenten die Anwendung nutzen können.
+        In der DHBW kommen mit jedem Semester neue Studenten und neue Dozenten.
+        Aus diesem Grund muss es eine Möglichkeit geben, neue Nutzer für die Nutzung der Anwendung zu authorisieren.
+        Eine Anmeldung kapselt außerdem die Daten einzelner Nutzer.
+    \item Kurszuweisung                     \\
+        In \autoref{sub:abgrenzung} wurde bereits beschrieben, dass die Kursebene abgedeckt wird.
+        Aus diesem Grund muss es eine Möglichkeit geben, Studenten zu Kursen zuzuweisen.
+        Kurse sollen dabei eine logische Abgrenzung bilden, sodass Studenten nicht den Lernstoff zwischen verschiedenen Vorlesungen durcheinander bringen.
+    \item TODOs                             \\
+        Bisher ist es schwer einen Überblick über alle Aufgaben zu haben, die von Studenten zu erledigen sind.
+        Besonders die Vielzahl an Vorlesungen, die sich in ihrem Aufbau und in der Prüfungsweise unterscheiden brauchen unterschiedliche Vorbereitungen und damit TODOs.
+        TODOs können dabei optional ein Fälligkeitsdatum besitzen, welches zur besseren Organisation sollen die eingetragenen TODOs graphisch angezeigt werden.
+        So entsteht ein Kalender und Kapazitätsengpässe rechtzeitig erkannt und durch Umplanen verhindert werden können.
+
+    \item Karteikarten                      \\
+        Für eine bessere Prüfungsvorbereitungen Karteikarten angelegt werden.
+        Die Karteikarten sollen direkt in App gelernt werden, sodass kein zusätzlicher Aufwand für das Abschreiben der Karten notwendig ist.
+
+    \item Prüfungsterminübersicht           \\
+        In der Anwendung soll es eine Übersicht aller Klausuren und anderen Prüfungsleistungen geben.
+        Momentan wird dies über einen Google Kalender gehandhabt, welcher über eine Zwischeninstanz verwaltet wird.
+        In dem dies direkt in der Anwendung angegeben ist, können zusätzliche Informationen (z.\,B. zugelassene Hilfsmittel) leichter kommuniziert werden und die zeitliche Differenz wird aufgehoben.
+
+    \item Kursübergreifende Informationen   \\
+        Besitzt ein Nutzer einen Account, soll er Kurse anlegen können, zu denen er Informationen wie Datum von Prüfungen erfassen kann.
+        Um zu verhindern, dass diese organisatorische Aufwand von jedem Studenten einzeln durchgeführt werden müssen soll es zusätzlich die Funktion geben, dass Dozenten einen Kurs anlegen können.
+        Den Kursen können initial bereits Prüfungstermine, TODOs und Karteikarten mitgegeben werden.
+        Somit entfällt die initiale Erstellung.
+        Die zu einem Kurs gehörenden Informationen können von den Studierenden weiterhin nach belieben angepasst und ergänzt werden ohne dabei für die anderen eingeschriebenen Kursteilnehmer Daten zu verändern.
+        Das Erstellen eines Kurses hat für den Dozenten den Vorteil, dass für diesen Kurs Daten zur Verfügung gestellt bekommt, die er zur Anpassung oder Evaluation seiner Vorlesung nutzen kann.
+        Beispiele hierfür können sein Lerntypen der Studenten, Fortschritt beim Lernen der Karteikarten, etc.
+    \item Rollendifferenzierung             \\
+        Aus den bereits beschriebenen Anforderungen geht hervor, dass es eine Weise geben muss, wie Dozenten von Studenten unterschieden wird.
+        Es soll verhindert werden, dass Studenten falsche Informationen bereitstellen können und so andere Studenten des gleichen Kurses schädigen.
+        Aus diesem Grund sollen nur Dozenten Informationen bereitstellen können, die von mehreren Studenten eingesehen werden können.
+\end{itemize}
+
+% Das ist das was ich grad realistisch sehe. Wenn wir noch mehr implementiert haben, dann können wir das gerne noch erweitern
+
+% TODO: Wo kommen die Personas hin? vor die Anforderungen?
 
 
 
-\section{Nicht-Funktionale Anforderungen}
+\subsection{Nicht-Funktionale Anforderungen}
+Neben den funktionalen Anforderungen gibt es auch einige nicht-funktionale Anforderungen, die beachtet werden müssen.
+\begin{itemize}
+    \item Geschwindigkeit\\
+        Für Nutzer ist die Geschwindigkeit besonders wichtig.
+        Lang ladende Anwendungen sind nicht nur nervig in der Benutzung, sondern könnten sich in der hier entwickelten Anwendung negativ auf den Lernfortschritt auswirken. Lange Ladezeiten lenken beispielsweise ab und demotivieren die Nutzung der Anwendung.
+        Über lange Ladezeiten beschweren sich in einer Umfrage mehr als 70\%, wobei 25\% aller Nutzer bereits bei 4 Sekunden die Seite verlassen.\autocite{loadingTimes}
+        Aus diesem Grund sollte die Ladezeit gering gehalten werden.
+    \item Persistenter Speicher             \\
+        Informationen über Kurse müssen dauerhaft gespeichert sein und jederzeit abrufbar sein.
+        Besonders vor und nach Vorlesungen wird die Nutzung der Anwendung vorraussichtlich deutlich ansteigen.
+        Auch bei Spitzenlast müssen stets alle Informationen abrufbar sein.
+    \item Responsive Design\\
+        Die Anwendung sollte auf jeden Gerät vollständig funktional sein.
+        Studenten nuten häufig viele Geräte mit verschiedenen Bildschirmformaten.
+        Besonders unterwegs oder in öffentlichen Verkehrsmitteln sind Mobilgeräte die primären Geräte.
+        Aus diesem Grund muss sich die Anwendung dynamisch an solche Geräte anpassen.
+    \item Corporate Design\\
+        Die DHBW besitzt ein einheitliches Design, an der man alle DHBWs und DHBW-Anwendungen erkennt.
+        Damit die Anwendung sich an die DHBW angliedert, sollte die Anwendung nahe an diesem Design sein.
+        Besonders das Farbschema sollte dabei einheitlich sein.
+    \item Datenschutz\\
+        Das Thema Datenschutz ist so wichtig wie nie zuvor.
+        Besonders der Schutz von personenbezogenen Daten steht dabei im Vordergrund.
+        Wie oben bereits festgestellt wurde besitzen Anwendungen gegenwärtig problematische Datenschutzlagen.
+        Aus diesem Grund soll die entwickelte Anwendung einen hohen Wert auf den Datenschutz legen und die Verarbeitung dieser Daten auf ein Minimum reduzieren.
+\end{itemize}
 
 
 
+\subsection{Zusammenfassung}
+Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind noch übersichtlich und für die spätere Referenz in \autoref{tab:anforderungen} dargestellt.
 
-% TODO: Und dann am schluss noch eine Zusammenfassungstabelle
 
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{.8\textwidth}{l|X}
+        Nr.     & Beschreibung                              \\\hline
+        F1      & Neue Nutzer können sich für die Nutzung anmelden                    \\
+        F2      & Studenten können für Kurse eingeschrieben werden  \\
+        F3      & Es können TODOs erstellt werden   \\
+        F4      & Es kann mit Karteikarten gelernt werden  \\
+        F5      & Prüfungstermine können eingetragen werden  \\
+        F6      & Informationen können allen Studenten mitgeteilt werden  \\
+        F7      & Es gibt eine Unterscheidung zwischen Studenten und Dozenten  \\
+        NF1     & Anwendung lädt schnell                    \\
+        NF2     & Daten jederzeit einsehbar                 \\
+        NF3     & Anwendung funktioniert auf allen Geräten  \\
+        NF4     & Anwendung ist am DHBW Design orientiert   \\
+        NF5     & Personen Bezogene Daten werden geschützt  \\
+    \end{tabularx}
+    \caption{Zusammengefasste Anforderungen}
+    \label{tab:anforderungen}
+\end{table}
 
-
-% TODO: Irgendwo auch ncohaml sagen, dass man erst einen nutzer nutzen haben buss, bevor man daten minen kann. Ohne nutzer /funktionen macht es gar keinen sinn
+% TODO: Wenn das Dashboard fertig ist, stehen da ja dann Analysen drin? Dann kann man das alles noch erweitern
+% Generell Umfragen, .... alles erst reinschreiben, wenn wir das auch implementiert haben :)
