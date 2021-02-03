@@ -46,12 +46,79 @@ Aus diesem Grund haben wir uns für einen modernen \enquote{Serverless}-Ansatz e
 
 
 \subsection{Anwendungsaufbau}
-Für das Nutzerinterface werden verschiedene Technologien 
+Für das Nutzerinterface werden verschiedene Technologien verwendet.
 
 
 
 
 \section{Konzeption der Funktionalitäten}
+
+
+\subsection{Kurseinschreibung} %TODO: F2,   das hier vielleicht mit Rollenzuweisung tauschen von der Reihenfolge
+Aus den Anforderungen geht hervor, dass es zwei Nutzerrollen gibt: Dozenten und Studenten.
+Dozenten sollen in der Anwendung ihre Kurse verwalten können.
+Ein Kurs orientiert sich dabei an der Organisation, die in der Realität vorliegen.
+Auch in vorhandenen Tools wie beispielsweise \enquote{Moodle} sind Studenten anhand von Kursen organisiert.
+Aufgrund der Vielzahl an solchen Lösungen scheint sich eine solche Organisation zu bewähren.
+Aus diesem Grund liegt es nahe, das auch die zu entwickelnde Anwendung eine solche Struktur nutzen sollte.
+% TODO: Wie Werden Kurse erstellt
+
+Nachdem nun geklärt wurde, wie die Organisation von Studenten und Dozenten stattfindet, muss nun die Zuweisung von Studenten zu Kursen die Zuweisung von Dozenten konzipiert werden.
+Zunächst wird die Studentenzuweisung betrachtet.
+Für die Zuweisung von Studenten kommen mehrere Ansätze in betracht, die sich in der Person unterscheiden, die die Zuweisung durchführt:
+\begin{enumerate}
+    \item Zuweisung durch Anwendungsadministrator
+    \item Zuweisung durch Dozenten
+    \item Zuweisung durch Studenten
+\end{enumerate}
+Als erster Ansatz kommt die Zuweisung durch einen Anwendungsadministrator in betracht.
+Ein solcher Administrator ist ein zentraler Mitarbeiter der DHBW, welcher komplette Autorität über die Anwendung besitzt.
+Von einem solchen Ansatz wird abgesehen, da der Verwaltungsaufwand sehr hoch ausfällt.
+Für jeden Kurs über 20 Studenten zuzuweisen, und das für mehrere Kurse pro Semester und Vorlesung, scheint nicht realistisch.
+
+Der zweite ist der Ansatz der Zuweisung durch einen Dozenten.
+In der aktuellen DHBW-Organisation besitzen Dozenten bereits eine Liste an Studenten für ihre Vorlesung.
+Diese Liste dient zur Anwesendheitskontrolle.
+Demnach können Dozenten diese Liste für die Zuweisung in der Anwendung nutzen.
+Der Nachteil eines solchen Ansatzes ist es aber, dass Studenten ihre Daten in der Anwendung hinterlassen müssen und diese durch andere Dozenten gegebenenfalls einsehbar wären.
+Zusätzlich geht die Anonymität, welche durch Matrikelnummern gegeben ist eventuell verloren.
+Insgesamt ist dieser Ansatz aus Datenschutzaspekten besonders kritisch. % TODO: Beim Admin nicht so, weil dhbw
+
+Als Letzter Ansatz ist die Zuweisung durch den Studenten.
+Denkbar sind hier mehrere Ansätze: Eine Liste aus Kursen oder über einen Kursidentifikator.
+Eine Liste mit Kursen vereinfacht die Zuweisung durch den Studenten, da Kurse schnell entdeckt werden können und eventuell zusätzliches Wissen vermittelt werden kann, wenn der Student sich für mehrere ähnliche Kurse einträgt.
+Nachteil ist aber die unmittelbare Verwaltung und Übersicht über die Kurse.
+Eine Zuweisung über einen Kursidentifikator (kurz: Schlüssel) hat den Nachteil, dass diese Schlüssel erst aufwändig über einen weiteren Kommunikationsweg (z.\,B. Email oder direkt in einer Vorlesung) mitgeteilt werden muss.
+Dafür besitzen Studenten aber nur Zugriff auf die für sie relevanten Vorlesungen.
+In \enquote{Moodle} ist die Zuweisung zu Kursen auf freiwilliger Basis anhand von Einschreibeschlüsseln gelöst.
+Aus diesem Grund ist dieser \enquote{Workflow} bereits für Studenten bekannt und eine Anpassung an die neue Anwendung ist schnell möglich.
+In der Tat nutzen viele existierende Anwendungen ein solches System.
+Beispiele hierfür sind Zoom oder Google Meets.
+
+% TODO: Bei uns:
+Ein Einschreibeschlüssel besteht aus 6 Buchstaben, welche mehr als 300 Millionen Kurse zulassen und als ausreichend angesehen werden.
+
+
+\subsection{Rollenzuweisung} %TODO: Nochmal auf die Anforderungen F7 verweisen
+Nutzer der Anwendung können sich selbst registrieren.
+Daraus ergibt sich die eine Rollen Problematik: Woran kann die Anwendung erkennen, welcher Nutzer ein Student ist und welcher Nutzer ein Dozent ist.
+Sofern Nutzer dies selber angeben können, bräuchte es gegebenenfalls eine Validierung durch die DHBW, wodurch erneut die oben genannten Nachteile einer Zuweisung durch einen Administrator greifen.
+Ein Ansatz, bei dem Nutzer dies selber verwalten können wird auch hier als besser angesehen.
+Aus diesem Grund wird der folgende Ansatz verwendet:
+Statt festdefinierte Rollen (Student und Dozent) zu besitzen, kann jeder Student selbst sowohl Student, als auch Dozent sein.
+
+Jeder Nutzer ist zunächst keiner Rolle zugeordnet.
+Jeder Nutzer kann einen Kurs erstellen, wodurch dieser Nutzer automatisch zu einem Dozent für diesen Kurse.
+Sobald sich ein Nutzer mithilfe des Einschreibeschlüssels für einen Kurs anmeldet wird der Nutzer automatisch für diesen Kurs zu einem Studenten.
+Dadurch können auch zuvor nicht vorgesehene Nutzerbeziehungen entstehen.
+Beispielsweise kann ein Dozent sich in einen weiteren Kurs einschreiben, falls er sich in einer weiteren Richtung weiterbilden möchte.
+Oder die DHBW kann sich in für einen Kurs einschreiben um die Qualität einer Vorlesung zu validieren.
+
+
+Ein Vorteil eines solchen Ansatzes ist es, dass auch Studenten Kurse erstellen können und so Lerngruppen gefördert werden.
+Denkbar ist beispielsweise ein Student, welcher Nachhilfe anbietet.
+Dadurch wird die Nutzung der Anwendung gefördert.
+
 
 
 % TODO: Mocks und alles
@@ -96,53 +163,14 @@ Für das Nutzerinterface werden verschiedene Technologien
 
 
 \section{Ich mach hier einen WIP Abschnitt :D}
-Aus den Anforderungen geht hervor, dass es zwei Nutzerrollen gibt: Dozenten und Studenten.
-Dozenten sollen in der Anwendung ihre Kurse verwalten können.
-Ein Kurs orientiert sich dabei an der Organisation, die in der Realität vorliegen.
-Auch in vorhandenen Tools wie beispielsweise \enquote{Moodle} sind Studenten anhand von Kursen organisiert.
-Aufgrund der Vielzahl an solchen Lösungen scheint sich eine solche Organisation zu bewähren.
-Aus diesem Grund liegt es nahe, das auch die zu entwickelnde Anwendung eine solche Struktur nutzen sollte.
-% TODO: Wie Werden Kurse erstellt
-
-Nachdem nun geklärt wurde, wie die Organisation von Studenten und Dozenten stattfindet, muss nun die Zuweisung von Studenten zu Kursen die Zuweisung von Dozenten konzipiert werden.
-Zunächst wird die Studentenzuweisung betrachtet.
-Für die Zuweisung von Studenten kommen mehrere Ansätze in betracht, die sich in der Person unterscheiden, die die Zuweisung durchfüht :
-\begin{enumerate}
-    \item Zuweisung durch Anwendungsadministrator
-    \item Zuweisung durch Dozenten
-    \item Zuweisung durch Studenten
-\end{enumerate}
-Als erster Ansatz kommt die Zuweisung durch einen Anwendungsadministrator in betracht.
-Ein solcher Administrator ist ein zentraler Mitarbeiter der DHBW, welcher komplette Autorität über die Anwendung besitzt.
-Von einem solchen Ansatz wird abgesehen, da der Verwaltungsaufwand sehr hoch ausfällt.
-Für jeden Kurs über 20 Studenten zuzuweisen, und das für mehrere Kurse pro Semester und Vorlesung, scheint nicht realistisch.
-
-Der zweite ist der Ansatz der Zuweisung durch einen Dozenten.
-In der aktuellen DHBW-Organisation besitzen Dozenten bereits eine Liste an Studenten für ihre Vorlesung.
-Diese Liste dient zur Anwesendheitskontrolle.
-Demnach können Dozenten diese Liste für die Zuweisung in der Anwendung nutzen.
-Der Nachteil eines solchen Ansatzes ist es aber, dass Studenten ihre Daten in der Anwendung hinterlassen müssen und diese durch andere Dozenten gegebenenfalls einsehbar wären.
-Zusätzlich geht die Anonymität, welche durch Matrikelnummern gegeben ist eventuell verloren.
-Insgesamt ist dieser Ansatz aus Datenschutzaspekten besonders kritisch. % TODO: Beim Admin nicht so, weil dhbw
-
-Als Letzter Ansatz ist die Zuweisung durch den Studenten.
-Denkbar sind hier mehrere Ansätze: Eine Liste aus Kursen oder über einen Kursidentifikator.
-Eine Liste mit Kursen vereinfacht die Zuweisung durch den Studenten, da Kurse schnell entdeckt werden können und eventuell zusätzliches Wissen vermittelt werden kann, wenn der Student sich für mehrere ähnliche Kurse einträgt.
-Nachteil ist aber die unmittelbare Verwaltung und Übersicht über die Kurse.
-Eine Zuweisung über einen Kursidentifikator (kurz: Schlüssel) hat den Nachteil, dass diese Schlüssel erst aufwändig über einen weiteren Kommunikationsweg (z.\,B. Email oder direkt in einer Vorlesung) mitgeteilt werden muss.
-Dafür besitzen Studenten aber nur Zugriff auf die für sie relevanten Vorlesungen.
-In \enquote{Moodle} ist die Zuweisung zu Kursen auf freiwilliger Basis anhand von Einschreibeschlüsseln gelöst.
-Aus diesem Grund ist dieser \enquote{Workflow} bereits für Studenten bekannt und eine Anpassung an die neue Anwendung ist schnell möglich.
-In der Tat nutzen viele existierende Anwendungen ein solches System.
-Beispiele hierfür sind Zoom oder Google Meets.
 
 
 
 
 
 
-Ein Einschreibeschlüssel besteht aus 6 Buchstaben, welche mehr als 300 Millionen Kurse zulassen und als ausreichend angesehen werden.
-Sollten weitere Kurse benötigt werden, kann dieses Limit im Quellcode schnell angepasst werden.
+
+
 
 
 
@@ -160,61 +188,14 @@ Bei einer Registrierung muss lediglich eine Email angegeben werden.
 
 
 
-% TODO: muss gar nicht mal in Firestore gespeichert werden, da google die einzeln speichert.
-Über diese Datenspeicherung wird der Nutzer in den Terms-of-Service vor einer Registrierung auch hingewiesen. % TODO:
 
-
-Nutzer der Anwendung können sich selbst registrieren.
-Daraus ergibt sich die eine Rollen Problematik: Woran kann die Anwendung erkennen, welcher Nutzer ein Student ist und welcher Nutzer ein Dozent ist.
-Sofern Nutzer dies selber angeben können, bräuchte es gegebenenfalls eine Validierung durch die DHBW, wodurch erneut die oben genannten Nachteile einer Zuweisung durch einen Administrator greifen.
-Ein Ansatz, bei dem Nutzer dies selber verwalten können wird auch hier als besser angesehen.
-Aus diesem Grund wird der folgende Ansatz verwendet:
-Statt festdefinierte Rollen (Student und Dozent) zu besitzen, kann jeder Student selbst sowohl Student, als auch Dozent sein.
-
-Jeder Nutzer ist zunächst keiner Rolle zugeordnet.
-Jeder Nutzer kann einen Kurs erstellen, wodurch dieser Nutzer automatisch zu einem Dozent für diesen Kurse.
-Sobald sich ein Nutzer mithilfe des Einschreibeschlüssels für einen Kurs anmeldet wird der Nutzer automatisch für diesen Kurs zu einem Studenten.
-Dadurch können auch zuvor nicht vorgesehene Nutzerbeziehungen entstehen.
-Beispielsweise kann ein Dozent sich in einen weiteren Kurs einschreiben, falls er sich in einer weiteren Richtung weiterbilden möchte.
-Oder die DHBW kann sich in für einen Kurs einschreiben um die Qualität einer Vorlesung zu validieren.
-
-
-Ein Vorteil eines solchen Ansatzes ist es, dass auch Studenten Kurse erstellen können und so Lerngruppen gefördert werden.
-Denkbar ist beispielsweise ein Student, welcher Nachhilfe anbietet.
-Dadurch wird die Nutzung der Anwendung gefördert.
 
 
 
 
 % TODO: Das besser mit den Anforderungen verknüpfen
 % TODO: Dokumentation über TODOS
-TODOs stellen einen elementaren Bestandteil einer Ausbildung dar.
-Schon in der Schule mussten Schüler eine Hausaufgabenheft oder Ähnliches führen um einen Überblick über ihre TODOs zu haben.
-Auch im Studium gibt es Unzähliche TODOs, ...
 
-TODOs können mithilfe des \enquote{Floating Action Button (FAB)} im rechten unterem Eck erstellt werden. % https://material.io/components/buttons-floating-action-button#usage
-Fabs stellen die primäre Action einer Ansicht, die konstruktiv ist und zu dem Inhalt der Ansicht passt.
-Inner
-
-
-% TODO: Die Material Principien besser herausarbeiten  https://material.io/components/dialogs#usage
-Nach dem Klick öffnet sich ein Modal, in dem alle relevanten Todos eingetragen werden können.
-Todos zeichnen sich durch einen Titel und eine optionale Beschreibung, sowie eine optionale Deadline aus.
-Sofern eine Deadline angegeben ist, wird dieses Todo in den Kalender über der Todo Übersicht dargestellt.
-Je roter ein Tag ist, desto mehr Todos müssen an diesem Tag erledigt sein.
-Der Kalender zeigt stets den Zeitraum zwischen Anfang des letzten Monates und Ende der nächsten zwei Monate  an.
-% TODO: ?
-Todos können schnell und einfach durch klicken auf die Checkbox vor einem Todo abgehackt werden.
-
-
-Index-Cards stellen eine Karteikarten-Funktion dar.
-Im Nutzer-Interface werden Karten ähnlich zu einem realen Karteikasten hintereinander dargestellt.
-Jede Karte zeigt zunächst die Frage an.
-Solle man die Antwort zu der Frage nicht wissen oder sich kontrollieren wollen, kann man mithilfe des Pfeils im Eck einer jeden Karte die Antwort einblenden.
-Anschließend können die Karten mit den Buttons am unteren Bildschirmrand als gewusst und nicht gewusst markiert werden.
-Durch die Zahlen an diesen Buttons kann der Nutzer leicht ablesen, wie viele Karten der Nutzer bereits wusste.
-Karten können aber auch durch einfaches ziehen der Karten zu gewusst oder nicht gewusst verschoben werden.
-Dies erleichtert die Handhabung.
 
 % TODO: Todos und index-cards auch löschbar und alles
 
