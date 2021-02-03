@@ -1,5 +1,49 @@
 % !TEX root =  ../master.tex
 \chapter{Konzeption}
+Bevor mit der Implementierung gestartet werden kann wird ein Konzept erstellt, welches als Leitfaden für die Implementierung dienen soll.
+Ziel ist es ein Entwurf zu konkretisieren, welcher die technischen und grundlegenden Funktionalitäten beschreibt.
+Dadurch soll verhindert werden, dass die aufwendige Implementierung fehlschlägt oder mehrfach Änderungen durchgeführt werden müssen, welche den Implementierungsaufwand vergrößern würden.
+
+% TODO: Wasserfall / Agile
+
+\section{Anwendungsaufbau}
+Die Grundlage jeder Anwendung ist der Aufbau und die Struktur der Infrastruktur, auf welcher die Anwendung später ausgeführt werden soll.
+Aus diesem Grund wird diese als erstes betrachtet.
+
+Webanwendungen werden üblicherweise in einem Client-Server-Modell entwickelt.
+% TODO: \autocite{Leff}
+Der Client übernimmt dabei sämtliche Funktionalitäten, die das Nutzerinterface betreffen.
+Dazu zählt die Visualisierung und die Interaktion mit dem Nutzer.
+Der Server kümmert sich hingegen um die Geschäftslogik, Datenhaltung und Datenaustausch.
+In \autoref{fig:clientServerAufbau} ist eine solche Architektur vereinfacht dargestellt.
+
+% TODO: Thin-Client
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.9\textwidth]{img/ClientServer.png}
+    \caption{Vereinfachter Client-Server-Aufbau}
+    \label{fig:clientServerAufbau}
+\end{figure}
+
+Der Nutzer ruft die mithilfe seines Browsers die Webseite von einem Server ab.
+Frägt der Nutzer und in seiner Verlängerung der Browser Daten an, werden diese vom Anwendungsserver geladen.
+Dabei greift der Nutzer über eine \ac{API} auf den Anwendungsserver zu.
+Dieser läd die notwendigen Informationen auf ähnliche Weise von einem Datenbankserver und bereitet diese gegebenenfalls auf.
+
+Nach den Anforderungen ist eine hohe Leistungsfähigkeit benötigt wird, die auch mit Leistungsspitzen klar kommt.
+Der Nachteil von Client-Server-Modellen ist der hohe Aufwand im Bereich der Skalierung.
+Das heißt, sobald eine Leistungsspitze entsteht müssen erst aufwändig zusätzliche Server hochgefahren werden, welches die Anwendung kurzzeitig für viele Nutzer unnutzbar macht.
+Aus diesem Grund haben wir uns für einen modernen \enquote{Serverless}-Ansatz entschieden.
+
+% TODO: Cloud Computing
+
+% TODO: Serverless Computing
+% TODO: Das vielleicht in Grundlagen verschieben
+
+
+
+
 \section{Frontendarchitektur}
 \section{Datenmodell und Datenhaltung}
 
