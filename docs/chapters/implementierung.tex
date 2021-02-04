@@ -14,13 +14,6 @@
 
 \section{Allgemeine Implementierungsdetails}
 
-Bei der Entwicklung der Anwendung haben wir großen Wert auf Datensicherheit und der Einhaltung der DSGVO gelegt.
-Ein wesentlicher Bestandteil der unternommenen Maßnahmen ist die Anonymität innerhalb der Anwendung.
-Die Anwendung speichert keinerlei Informationen, worüber Nutzer identifiziert werden können.
-Bei einer Registrierung muss lediglich eine Email angegeben werden.
-
-\section{Lazy Loading} % Teil von NF1
-
 
 
 \section{Responsive Design} % NF3
@@ -32,3 +25,46 @@ Aber auch andere Funktionalitäten, wie das Wischen der Karteikarten funktionier
 
 
 % TODO: Vielleicht eher UX schreiben und dann alles sagen, wie z.B. Kontrast, ...
+
+
+
+
+\section{Zugangskontrolle}
+Nach der Anforderungen müssen zwei Rollen unterschieden werden: Studenten und Dozenten.
+Die Zugangskontrolle findet an mehrere Komponenten statt: Eine Zugangskontrolle auf Serverseite und eine Navigationskontrolle innerhalb des Nutzerinterfaces.
+
+
+\subsubsection*{Serverside}
+Eine Serverseitige Zugangskontrolle ist notwendig, da Nutzer das Nutzerinterface und den Netzwerkverkehr manipulieren kann und dadurch Zugang bekommen könnten.
+Aus diesem Grund werden sämtliche Serveranfragen validiert.
+Dafür sind auf dem Server Regeln hinterlegt, die die Authorität des Nutzers überprüfen.
+Die Regeln werden bei jeder Anfrage vor der Bearbeitung dieser überprüft.
+
+\begin{lstlisting}[caption={Einfaches Beispiel der Serverside Regeln}, label=lst:firestoreRules]
+rules_version = '2';
+service cloud.firestore {
+    match /databases/{database}/documents {
+        function getRole(role) {
+            return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles[role]
+        }
+        match /{document=**} {
+            allow read:  if request.auth != null;
+            allow write: if getRole('dozent')
+        }
+    }
+}\end{lstlisting}
+
+
+\subsubsection*{Userside}
+Auf der Nutzerseite existiert eine Zugangskontrolle, die verhindert, dass Nutzer Interfacezustände hervorrufen kann, für die er nicht authorisiert ist.
+Ein Beispiel hierfür ist die Navigation auf eine Maske, für deren Daten er Serverseitig nicht berechtigt ist.
+In diesem Fall würde der Nutzer Fehlermeldungen und eine schlechte User Experience erleben.
+Im Nutzerinterface ist dafür ein \enquote{Router-Guard} implementiert.
+Dieser Guard überprüft bei jedem Navigationsversuch, ob der Nutzer für die Zielroute berechtigt ist.
+Nur wenn der Nutzer die notwendigen Berechtigungen besitzt, wird die Navigation fortgesetzt.
+Nutzer ohne die notwendigen Berechtigungen werden automatisch auf das Dashboard bzw. die Login-Maske geleitet.
+
+
+
+
+% TODO: Die haben auch noch den ganzen Lebenszyklus von React erklärt wtf=

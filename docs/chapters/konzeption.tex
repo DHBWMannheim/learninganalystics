@@ -59,9 +59,22 @@ Aus diesem Grund haben wir uns für einen modernen \enquote{Serverless}-Ansatz e
 \subsection{Anwendungsaufbau}
 Für das Nutzerinterface werden verschiedene Technologien verwendet.
 % Firebase
-Die Frontend-Anwendung ist mit Angular, Nebular, Firebase, RxJS ... % Was muss hier tatsächlich erwähnt werden? Die anderen erzählen ja wirklich aaaallles
+Die Frontend-Anwendung ist mit Angular, Nebular, Firebase, RxJS ... % TODO: Was muss hier tatsächlich erwähnt werden? Die anderen erzählen ja wirklich aaaallles
 
 
+Angular ist ein von Google entwickeltes Javascript Framework zur Erstellung interaktiver 
+
+
+
+Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgeteilt in 3 Bereiche:
+\begin{itemize}%TODO: Hier kann man noch mehr schreiben
+    \item Model\\
+        Das Modell stellt den aktuellen Status bzw. den aktuellen Zustand der Anwendung dar.
+    \item View\\
+        Die Präsentation ist zuständig für die Darstellung der Daten und ermöglicht dem Benutzer die Interaktion mit diesen sowie die Steuerung der Anwendung.
+    \item Controller\\
+        Der Controller kümmert sich um die Steuerung der Anwendung. Er verwaltet die Präsentation und steuert den Datenfluss zwischen der Präsentation und dem Modell.
+\end{itemize}
 
 
 \section{Konzeption der Funktionalitäten}
@@ -137,24 +150,10 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 % TODO: Mocks und alles
 
 % \section{Frontendarchitektur}
-% \section{Datenmodell und Datenhaltung}
 
-% Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgeteilt in 3 Bereiche:
-% \begin{itemize}%TODO: Hier kann man noch mehr schreiben
-%     \item Model\\
-%         Das Modell stellt den aktuellen Status bzw. den aktuellen Zustand der Anwendung dar.
-%     \item View\\
-%         Die Präsentation ist zuständig für die Darstellung der Daten und ermöglicht dem Benutzer die Interaktion mit diesen sowie die Steuerung der Anwendung.
-%     \item Controller\\
-%         Der Controller kümmert sich um die Steuerung der Anwendung. Er verwaltet die Präsentation und steuert den Datenfluss zwischen der Präsentation und dem Modell.
-% \end{itemize}
-% % \begin{wrapfigure}{r}{5.5cm}
-% %     \includegraphics[width=.25\textwidth]{img/1024px-ModelViewControllerDiagram2.svg.png}
-% %     \caption{}
-% %     %TODO: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller#/media/File:MVC-Process.svg
-% %   \end{wrapfigure} 
 
-% % TODO ER-Modell
+
+% TODO: ER-Modell
 
 
 
@@ -204,17 +203,10 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 
 % Ein Dozent sollte dabei beispielshaft einen Kurs anlegen können
 
-Um eine möglichst gute Nutzererfahrungs zu ermöglichen wurden einige umfangreiche Maßnahmen ergriffen.
 
 
 
 
-
-
-Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
-Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
-Besucht der Nutzer die Website der Anwendung werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
-Beispielsweise werden die Karteikarten, sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos nachschaut.
 
 
 % TODO: Caching
@@ -239,9 +231,7 @@ Sobald eine Internetverbindung besteht werden alle Änderungen synchronisiert.
 Sofern die Anwendung offline gleichzeitig auf mehreren Geräten mit dem gleichen Nutzer verwendet wurde können bei Datenspeicherungen Konflikte auftreten.
 Solche Konflikte werden nach dem Last-Write-Wins-Prinzip aufgelöst.
 Das heißt die letzte Änderung an einem Datensatz wird übernommen.
-
-
-% TODO: Service Worker
+% TODO: IndexDB
 
 
 \section{DevOps}
@@ -275,8 +265,121 @@ Gleichzeitig ist stets dokumentiert wann und von wem welche Version bereitgestel
 
 
 
-% TODO: CI DevOps
+\section{Performance Optimierungen}
+% TODO: Irgendwo hab ich ja schon gesagt, das firebase spitzenlasten abfängt
+\subsection{Caching}
+In der Anwendung werden aus verschiedenen Gründen Caching eingesetzt.
+Caching beschreibt eine Methode, bei dem Daten in einem Puffer gehalten werden um Zugriffe auf langsame Ressourcen zu reduzieren.
+Im Falle der hier entwickelten Anwendung werden die Quelldaten für das Nutzerinterface lokal aufbewahrt um die Zugriffe auf den Server zu reduzieren.
+Dadurch wird die Ladezeit der Anwendung reduziert, mobile Daten gespart und die Serverlast reduziert.
 
-% TODO: Berechtigungen
 
+% \section{Verschlüsselung}
+% TODO:
+
+% Kompression
+
+% h2 protokol
+
+
+\subsection{Service Worker}
+
+
+
+\subsection{Lazy Loading}
+Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
+Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
+Besucht der Nutzer die Website der Anwendung werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
+Beispielsweise werden die Karteikarten, sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos nachschaut.
+
+
+\section{Datenschutz}
+Bei der Entwicklung der Anwendung haben wir großen Wert auf Datensicherheit und der Einhaltung der DSGVO gelegt.
+Ein wesentlicher Bestandteil der unternommenen Maßnahmen ist die Anonymität innerhalb der Anwendung.
+Die Anwendung speichert keinerlei Informationen, worüber Nutzer identifiziert werden können.
+Bei einer Registrierung muss lediglich eine Email angegeben werden.
+
+
+
+
+
+\section{Personas}
+
+
+% -------------------------------------------------------
+% 1. Student
+% 2. Dozent
+% -------------------------------------------------------
+% Keine Ahnung, irgendwelche Bilder halt :D
+% TODO: Das ist noch sehr kopiert
+
+% https://unsplash.com/photos/ZVo7vtXilCs
+\subsection{Beispiel Persona für Student}
+
+\begin{minipage}[t]{0.5\textwidth}
+	\vspace{-4cm}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{l l}
+		Name: & Stephan Student \\
+		Alter: & 21 \\
+		Tätigkeit: & Student Wirtschaftsinformatik \\
+		IT-Skills: & 4/5 \hspace{-1cm} \begin{barchart}{5.0}
+			\baritemNL{}{4}
+		\end{barchart} \\
+	\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+	\flushright
+	\includegraphics[width=0.70\textwidth]{img/carlos-lindner-ZVo7vtXilCs-unsplash.jpg}
+\end{minipage}
+
+
+Stephan ist ein typisches Beispiel für einen Studenten an der DHBW.
+Er ist viel aktiv und war in der Vor-Corona-Zeit eine Person, die zur DHBW gependelt ist.
+Demnach möchte er egal wo er ist stets eine Übersicht über seine anstehenden Klausuren haben und sich auch unterwegs auf diese Vorbereiten.
+Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht Weitergegeben werden und nicht zur Klausurbewertung oder Ähnliches herangezogen werden können.
+
+Das möchte ich gerne haben:
+\begin{itemize}
+	\item Übersicht über meine Klausuren
+	\item Auch unterwegs lernen können
+	\item Anonymität
+\end{itemize}
+
+
+\clearpage
+\subsection{Beispiel Persona für Dozent}
+% https://unsplash.com/photos/TXxiFuQLBKQ
+\begin{minipage}[t]{0.5\textwidth}
+	\vspace{-4cm}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{l l}
+		Name: & Dagmar Dozent \\
+		Alter: & 35 \\
+		Tätigkeit: & Dozentin für Finanzbuchhaltung \\
+		IT-Skills: & 2/5 \hspace{-1cm} \begin{barchart}{5.0}
+			\baritemNL{}{4}
+		\end{barchart} \\
+	\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+	\flushright
+	\includegraphics[width=0.70\textwidth]{img/thisisengineering-raeng-TXxiFuQLBKQ-unsplash.jpg}
+\end{minipage}
+
+Dagmar ist eine Dozentin für Wirtschaftsthemen, vorrangig Finanzbuchhaltung.
+Als verantwortungsbewusste Person ist es ihr wichtig, dass Studenten auch außerhalb ihrer Vorlesung Unterstützung erhalten.
+Aus diesem Grund möchte sie gerne weiterführende Informationen an Studenten weitergeben.
+Gleichzeitig möchte sie gerne Feedback zu ihrer Vorlesung erhalten um das Lernmaterial bestmöglich anzupassen.
+Da sich allerdings ihre Kernkompetenzen außerhalb der IT befinden ist es ihr wichtig, dass sie die Anwendung nutzen kann ohne eine lange Einführung erhalten zu müssen. 
+
+
+Das möchte ich gerne haben:
+\begin{itemize}
+	\item Informationen an alle Studenten des Kurses verteilen
+    \item Feedback zum Kurs erhalten %TODO: Sowas noch implementieren
+    \item Intuitives Interface
+\end{itemize}
 
