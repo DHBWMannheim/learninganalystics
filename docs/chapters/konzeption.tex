@@ -232,7 +232,47 @@ Der Ladefortschritt kann stets an der Leiste am oberen Bildschirmrand abgelesen 
 \section{Offline Synchronisation}
 Studenten sind oft unterwegs beispielsweise in öffentlichen Verkehrsmitteln, in dehnen Internet nicht immer verfügbar ist.
 Damit die Anwendung auch ohne Internet funktionsfähig ist, ist die Anwendung mit einer Offline-Synchronisation ausgestattet.
-% TODO:
+
+Sobald sich der Nutzer angemeldet hat, kann die Anwendung vollständig offline genutzt werden.
+Sobald eine Internetverbindung besteht werden alle Änderungen synchronisiert.
+
+Sofern die Anwendung offline gleichzeitig auf mehreren Geräten mit dem gleichen Nutzer verwendet wurde können bei Datenspeicherungen Konflikte auftreten.
+Solche Konflikte werden nach dem Last-Write-Wins-Prinzip aufgelöst.
+Das heißt die letzte Änderung an einem Datensatz wird übernommen.
+
+
+% TODO: Service Worker
+
+
+\section{DevOps}
+Für die Entwicklung und der Betrieb werden üblicherweiße viele verschiedene Parteien benötigt.
+Beispielsweise werden Entwickler, Administratoren und Netzwertechniker benötigt.
+Durch den Einsatz von DevOps-Praktiken ändert sich die Art und Weise wie Anwendungen entwickelt werden.
+
+DevOps verbindet die beiden Bereiche \enquote{Development} und \enquote{Operations}.
+Ziel ist es, die Entwicklung und den Betrieb von Softwaresystemen zu kombinieren und so den Organisationsaufwand sowie die Zeit zwischen Auslieferungszeitpunkten zu minimieren.\autocite[][S. 156]{Artac2018}
+
+Im Rahmen von DevOps-Prozessen werden üblicherweiße \ac{CI}- und \ac{CD}-Pipelines erstellt, welche die Bereitstellung einer Anwendung automatisieren.
+So wurde im Rahmen der hier entwickelten Anwendung eine automatisierte Deployment-Strategie ausgearbeitet.
+
+% TODO: Github erwähnen?
+% TODO: Changelog?
+Sobald ein Release erstellt wird, beginnen automatisch Pipelines.
+Diese bauen die Anwendung und stellen diese anschließend auf der Infrastruktur bereit, sodass dies von Anwendern genutzt werden kann.
+Die Bereitstellung findet dabei Unterbrechungsfrei statt.
+Bei klassischen Anwendungen müssen im Regelfall Wartungsarbeiten angekündigt werden und die Anwendungen sind währenddessen nicht nutzbar.
+In der hier entwickelten Anwendung ist dies hingegen nicht notwendig.
+Auch während eine neue Version bereitgestellt wird ist die Anwendung dauerhaft nutzbar.
+
+Gleichzeitig wird als Teil der Pipelines die Dokumentation erstellt.
+
+Durch die Pipelines können Deployments mit wenigen Klicks von jedem Computer oder Mobilgerät durchgeführt werden, egal wo oder welches System genutzt wird.
+Gleichzeitig ist stets dokumentiert wann und von wem welche Version bereitgestellt wurde.
+
+
+
+
+
 
 
 % TODO: CI DevOps
