@@ -2,8 +2,6 @@
 \chapter{Grundlage} % TODO: Kein Plan wo das hingehört
 \section{Theoretische Grundlagen}
 \subsection{Learning Analytics}
-\subsection{Firebase-Authentisierung}
-
 
 \section{Technische Grundlagen}
 
@@ -12,15 +10,50 @@
 Bei \ac{BaaS} handelt es sich um ein Cloud-Service-Modell, welches sich aus der steigenden Nutzung von Cloud-Computing und Serverless-Ansätzen ableitet.
 Dabei geht \ac{BaaS} einen Schritt weiter als andere Cloud-Ansätze wie \ac{IaaS}, \ac{CaaS} oder \ac{FaaS}.
 Stattdessen orientiert sich \ac{BaaS} mehr an einem \ac{SaaS}-Ansatz. % :D
-So wird in \ac{BaaS} nicht nur die gesamte Infrastruktur und Laufzeitumgebung, sondern sogar die gesamte Serverlogik von einem Cloud-Provider verwaltet.
-So können sich Anwendungsentwickler auf die Entwicklung der Nutzeranwendungen und um die Geschäftslogik kümmern ohne umfangreichen Boiler-Plate-Code schreiben zu müssen.
+So wird in \ac{BaaS} nicht nur die gesamte Infrastruktur und Laufzeitumgebung, sondern sogar Teile der Serverlogik von einem Cloud-Provider verwaltet.\autocite[Vgl.][]{cloudflareBaaS}
+So können sich Anwendungsentwickler auf die Entwicklung der Nutzeranwendungen und die Geschäftslogik kümmern ohne umfangreichen Boiler-Plate-Code schreiben zu müssen.
 Typische Beispiele für Services, die von einem \ac{BaaS}-Anbieter übernommen werden sind die Bereitstellung von Speicherressourcen, Nutzerauthentifizierung und das Hosting einer Website.
 Diese Themenbereiche sind Services, die in fast jeder Anwendung benötigt werden, wodurch ein großer Teil der Entwicklung eingespart werden kann.
 Dadurch spart es Kosten in Form von Serverequipment, Know-How und Entwicklungsressourcen.
 % TODO:?
 
 
+\subsection{Firebase}
+% TODO: hier irgendwie bei konzeption drauf verweisen?
+Firebase ist ein \ac{BaaS}-Dienst von Google LLC.
+Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung genutzt:
+\begin{itemize}
+    \item Datensicherheit\\
+        Nach einer Befragung von Tang und Liu stimmen 48\% zu, dass Cloud-Provider eine bessere Sicherheit liefern als eine eigene Implementierungen.\autocite[S. 63]{TANG}
+        Google als einer der größten IT-Dienstleister ist dabei weit vorne und ist konform mit den europäischen Datenschutzverordnungen.\autocite{firebaseDataprotection}
+        Die Authentifizierung ist sicher, da aktuelle Standards wie OAuth 2.0 verwendet wird.
+    \item Ausfallsicherheit\\
+        Da Server nicht mehr einzeln betrieben werden müssen entfällt die Gefähr eines \enquote{Single Point of Failure}. %TODO: in die Anforderungen
+        Dies würde dafür sorgen, dass die Anwendung ausfällt, sofern der Server abstürzen würde.
+        Firebase und Google bieten stattdessen ein \ac{SLA} an, die eine Ausfallsicherheit von mehr als 99,9\% garantieren.\autocite{firebaseSLA}
+    \item Komplexität\\
+        Da Entwickler nun nur noch das Frontend entwickeln müssen und sich nicht mehr um das Backend oder die Kommunikation zwischen den Komponenten kümmern müssen wird die Entwicklung vereinfacht und beschleunigt.
+        Die Entwicklung des Frontends kann vorranschreiten ohne auf die Entwicklung des Backends zu warten.
+    \item Kosten \\
+        Google bietet attraktive Preismodelle an, welches die Bereitstellung der Anwendung sehr kostengünstig macht.
+        Nicht nur entfallen Kosten für die Wartung der Server und Hardwareressourcen, sondern der gesamte Betrieb ist im \enquote{Spark}-Plan kostenlos.
+    \item Skalierung \\
+        Firebase kümmert sich um die gesamte Bereitstellung und Skalierung der Serverleistung.
+        Das heißt, sofern mehr Rechenleistung benötigt wird (wie beispielsweise in Lastspitzen) wird die Rechenleistung automatisch erhöht ohne das Anfragen fehlschlagen.
+\end{itemize}
+% TODO: Nochmal auf die Anfoderungen verweißen
 
 
-\subsection{Datenstruckturen}
+
+\subsection{Datenstrukturen}
+
+
+
 \subsection{Datenschutzthematik}
+
+
+
+
+\autocite{redHatServerless}
+
+
