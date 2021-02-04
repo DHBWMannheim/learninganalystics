@@ -304,6 +304,13 @@
   dependencies:
     tslib "^2.0.0"
 
+"@angular/service-worker@^11.0.9":
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/@angular/service-worker/-/service-worker-11.1.2.tgz#f26a9e32c7f8524e7a4453800130225e24d2d1e4"
+  integrity sha512-eluL0YcWjsJZVVe3tFyIPLwG20pYSQJLHbqBFtQmGGgopnweKpqrt/Ogtu1bO016FDvsjHJyKfATUVXyy6qU3A==
+  dependencies:
+    tslib "^2.0.0"
+
 "@asymmetrik/ngx-leaflet@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@asymmetrik/ngx-leaflet/-/ngx-leaflet-3.0.1.tgz#89a390f77dace1aefb7887162937b51c39571a24"

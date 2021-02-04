@@ -28,6 +28,8 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +37,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HammerModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule.enablePersistence(),
+    AngularFirestoreModule.enablePersistence(),
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -54,6 +56,7 @@ import { AppComponent } from './app.component';
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   bootstrap: [AppComponent],
 })
