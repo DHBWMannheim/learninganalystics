@@ -155,6 +155,23 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 
 % TODO: ER-Modell
 
+\section{Datenstruktur} % TODO: Das nach den Funktionen hinschreiben
+In \autoref{fig:erDiagramm} ist das zugrundeliegende Datenmodell abgebildet, welches in der Implementierung verwendet wird.
+
+\begin{figure}[h]%FIXME: Das hier erweitern, wenn alle Daten drin sind + das watermark abschneiden
+    \begin{center}
+        \includegraphics[width=.7\textwidth]{img/Integrationsseminar ER.png}
+        \caption{ER-Diagramm}
+        \label{fig:erDiagramm}
+    \end{center}
+\end{figure}
+
+Die Datenspeicherung findet vollständig innerhalb von Firebase statt.
+Der hierfür genutzte Service heißt \enquote{Firestore}.
+Dabei werden Daten nicht wie in einer klassischen relationalen Datenbank (\ac{RDB}) in Tabellen mit Spalten und Zeilen gespeichert, sondern in Collections aus Dokumenten.
+
+
+
 
 
 % \subsection{Studierende}
@@ -282,7 +299,12 @@ Dadurch wird die Ladezeit der Anwendung reduziert, mobile Daten gespart und die 
 % h2 protokol
 
 
-\subsection{Service Worker}
+\subsection{Service-Worker}
+% Vielleicht kann sowas sagen wie: Wir haben weniger funktionalität, dafür läuft alles stabil und ist schon bereitgestellt + Technik generell viel besser
+Die Anwendung ist mit einem Service-Worker ausgestattet.
+Der Service-Worker agiert als Zwischeninstanz zwischen der Webanwendung und dem Server.
+Durch den Service-Worker ist es möglich die Website als eigene Anwendung auf einem Mobilgerät oder auf Desktop-Computern installiert werden kann.
+Dadurch kann die Anwendung wie jede andere App verwendet werden.
 
 
 
