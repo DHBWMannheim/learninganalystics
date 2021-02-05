@@ -48,10 +48,11 @@
       <nb-user
         [nbContextMenu]="userMenu"
         [onlyPicture]="userPictureOnly"
-        [name]="(user | async)?.displayName || 'Anonymous User'"
+        [name]="(user | async)?.email"
         [picture]="(user | async)?.photoURL"
         nbContextMenuTag="profile-context-menu"
         shape="rectangle"
+        title="WWI18-SEA/C - Wirtschaftsinformatik"
       >
       </nb-user>
     </nb-action>

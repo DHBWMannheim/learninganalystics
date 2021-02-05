@@ -19,6 +19,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'book-outline',
     link: '/pages/index-cards',
   },
+  {
+    title: 'Files',
+    icon: 'file-outline',
+    link: '/pages/files',
+  },
+  {
+    title: 'Feedback',
+    icon: 'message-square-outline',
+    link: '/pages/feedback',
+  },
   //---
   {
     title: 'PERSONAL',

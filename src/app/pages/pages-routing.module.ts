@@ -2,6 +2,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
+import { FilesComponent } from './files/files.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,16 @@ const routes: Routes = [
           import('./index-cards/index-cards.module').then(
             (m) => m.IndexCardsModule,
           ),
+      },
+      {
+        path: 'files',
+        loadChildren: () =>
+          import('./files/files.module').then((m) => m.FilesModule),
+      },
+      {
+        path: 'feedback',
+        loadChildren: () =>
+          import('./feedback/feedback.module').then((m) => m.FeedbackModule),
       },
       {
         path: '',

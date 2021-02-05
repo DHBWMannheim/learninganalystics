@@ -1,0 +1,51 @@
+<nb-card>
+  <nb-card-header> Files </nb-card-header>
+  <nb-list>
+    <nb-list-item
+      ><!--*ngFor="let item of files"-->
+      <!-- {{ item.relativePath }} -->
+      <div class="w-100" style="flex-direction: column">
+        test.file
+        <nb-progress-bar
+          class="w-100"
+          [value]="50"
+          [status]="getStatus(50)"
+          size="tiny"
+        ></nb-progress-bar>
+      </div>
+    </nb-list-item>
+    <nb-list-item>
+      <ngx-file-drop
+        class="w-100"
+        dropZoneLabel="Drop files here"
+        directory="false"
+        [showBrowseBtn]="true"
+        (onFileDrop)="dropped($event)"
+        (onFileOver)="fileOver($event)"
+        (onFileLeave)="fileLeave($event)"
+        dropZoneClassName="drop-zone"
+      >
+        <ng-template
+          ngx-file-drop-content-tmp
+          let-openFileSelector="openFileSelector"
+          ><!--TODO: Das muss noch schön gemacht werden-->
+          <div style="text-align: center; color: black">
+            <div>
+              Drag File here or
+              <a
+                (click)="openFileSelector()"
+                class="pointer"
+                style="color: blue"
+                >browse</a
+              >
+            </div>
+          </div>
+        </ng-template>
+      </ngx-file-drop>
+    </nb-list-item>
+  </nb-list>
+</nb-card>
+
+<!-- <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+      <button type="button" (click)="openFileSelector()">Browse Files</button>
+    </ng-template> -->
