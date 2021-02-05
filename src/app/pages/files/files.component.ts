@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { NbToastrService } from '@nebular/theme';
 import {
-  NgxFileDropEntry,
-  FileSystemFileEntry,
   FileSystemDirectoryEntry,
+  FileSystemFileEntry,
+  NgxFileDropEntry,
 } from 'ngx-file-drop';
+import { last } from 'rxjs/operators';
 
-import { v4 } from 'uuid';
+import {
+  FilesService,
+  FireFile,
+  UploadQueueEntry,
+} from '../../@core/data/files.service';
+
+declare const browser;
 
 @Component({
   selector: 'ngx-files',
@@ -15,44 +23,51 @@ import { v4 } from 'uuid';
   styleUrls: ['./files.component.scss'],
 })
 export class FilesComponent implements OnInit {
+  files: FireFile[];
+
   constructor(
-    private readonly fireStorage: AngularFireStorage,
-    private readonly fireStore: AngularFirestore,
+    private readonly filesService: FilesService,
+    private readonly toastr: NbToastrService,
   ) {}
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+    this.files = await this.filesService.get();
+  }
 
-  public files: NgxFileDropEntry[] = [];
+  public fileUploadQueue: UploadQueueEntry[] = [];
 
-  public dropped(files: NgxFileDropEntry[]) {
-    this.files = files;
+  public async dropped(files: NgxFileDropEntry[]) {
     for (const droppedFile of files) {
-      const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-      fileEntry.file((file: File) => {
-        // Here you can access the real file
-        console.log(droppedFile.relativePath, file);
-        const path = 'uploads/' + v4();
-        this.fireStorage.upload(path, file);
-        this.fireStore.collection('TEMPFILES').add({ path });
-      });
+      if (droppedFile.fileEntry.isFile) {
+        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        const queueElement = await this.filesService.upload(fileEntry);
+        this.fileUploadQueue.push(queueElement);
+        queueElement.uploadProgress.pipe(last()).subscribe((_) => {
+          this.fileUploadQueue = this.fileUploadQueue.filter(
+            (element) => element !== queueElement,
+          );
+          this.files.push(queueElement);
+          this.toastr.show('Saved', 'Saved successfully', {
+            status: 'success',
+          });
+        });
+      }
     }
   }
 
-  public fileOver(event) {
-    console.log(event);
-  }
-
-  public fileLeave(event) {
-    console.log(event);
-  }
-
   getStatus(value: number) {
-    return value <= 25
-      ? 'danger'
-      : value <= 50
-      ? 'warning'
-      : value <= 75
-      ? 'info'
-      : 'success';
+    return value < 100 ? 'primary' : 'success';
+  }
+
+  async del(file: FireFile) {
+    this.files = this.files.filter((element) => element !== file);
+    await this.filesService.deleteWithStorage(file);
+    this.toastr.show('Deleted', 'Deleted successfully', {
+      status: 'success',
+    });
+  }
+
+  async download(file: FireFile) {
+    await this.filesService.download(file);
   }
 }

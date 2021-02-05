@@ -11,18 +11,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   //---
   {
-    title: 'COURSES',//TODO: Hier in der Gruppe Das Course Management unterbringen. Jeder Nutzer kann selber kurse anlegen und beliebig vielen joinen -> z.B. nachfilfe
+    title: 'COURSE',//TODO: Hier in der Gruppe Das Course Management unterbringen. Jeder Nutzer kann selber kurse anlegen und beliebig vielen joinen -> z.B. nachhilfe
     group: true,
   },
   {
-    title: 'Index Cards',
-    icon: 'book-outline',
-    link: '/pages/index-cards',
+    title: 'Exams',
+    icon: 'award-outline',
+    link: '/pages/exams',
   },
   {
     title: 'Files',
     icon: 'file-outline',
     link: '/pages/files',
+  },
+  {
+    title: 'Index Cards',
+    icon: 'book-outline',
+    link: '/pages/index-cards',
   },
   {
     title: 'Feedback',

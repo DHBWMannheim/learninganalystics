@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {
   NbButtonModule,
   NbCardModule,
+  NbIconModule,
   NbInputModule,
   NbListModule,
   NbProgressBarModule,
@@ -24,6 +25,7 @@ import { FilesComponent } from './files.component';
     NbButtonModule,
     NbListModule,
     NbProgressBarModule,
+    NbIconModule,
   ],
   declarations: [FilesComponent],
 })

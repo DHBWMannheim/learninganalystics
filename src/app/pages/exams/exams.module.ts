@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { NbCardModule, NbIconModule } from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { FeedbackRoutingModule } from './feedback-routing.module';
-import { FeedbackComponent } from './feedback.component';
+import { ExamsRoutingModule } from './exams-routing.module';
+import { ExamsComponent } from './exams.component';
 
 @NgModule({
   imports: [
     CommonModule,
     NbCardModule,
     ThemeModule,
-    FeedbackRoutingModule,
+    ExamsRoutingModule,
     NbIconModule,
   ],
-  declarations: [FeedbackComponent],
+  declarations: [ExamsComponent],
 })
-export class FeedbackModule {}
+export class ExamsModule {}

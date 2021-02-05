@@ -1,15 +1,35 @@
 <nb-card>
   <nb-card-header> Files </nb-card-header>
   <nb-list>
-    <nb-list-item
-      ><!--*ngFor="let item of files"-->
-      <!-- {{ item.relativePath }} -->
+    <nb-list-item *ngFor="let item of files">
+      <div class="w-100 row">
+        <div class="col">
+          {{ item.filename }}
+        </div>
+        <div class="col-end">
+          <nb-icon
+            icon="cloud-download-outline"
+            style="margin-right: 16px"
+            [options]="{ animation: { type: 'pulse' } }"
+            class="pointer"
+            (click)="download(item)"
+          ></nb-icon>
+          <nb-icon
+            icon="trash-outline"
+            [options]="{ animation: { type: 'pulse' } }"
+            class="pointer"
+            (click)="del(item)"
+          ></nb-icon>
+        </div>
+      </div>
+    </nb-list-item>
+    <nb-list-item *ngFor="let item of fileUploadQueue">
       <div class="w-100" style="flex-direction: column">
-        test.file
+        {{ item.filename }}
         <nb-progress-bar
           class="w-100"
-          [value]="50"
-          [status]="getStatus(50)"
+          [value]="(item.uploadProgress | async) || 0"
+          [status]="getStatus((item.uploadProgress | async) || 0)"
           size="tiny"
         ></nb-progress-bar>
       </div>
@@ -18,24 +38,21 @@
       <ngx-file-drop
         class="w-100"
         dropZoneLabel="Drop files here"
-        directory="false"
         [showBrowseBtn]="true"
         (onFileDrop)="dropped($event)"
-        (onFileOver)="fileOver($event)"
-        (onFileLeave)="fileLeave($event)"
         dropZoneClassName="drop-zone"
       >
         <ng-template
           ngx-file-drop-content-tmp
           let-openFileSelector="openFileSelector"
-          ><!--TODO: Das muss noch schön gemacht werden-->
-          <div style="text-align: center; color: black">
+          ><!--TODO: Das muss noch richtige Farben gemacht werden-->
+          <div class="text-basic" style="text-align: center;">
             <div>
               Drag File here or
               <a
                 (click)="openFileSelector()"
                 class="pointer"
-                style="color: blue"
+                style="color: #007bff"
                 >browse</a
               >
             </div>
@@ -45,7 +62,3 @@
     </nb-list-item>
   </nb-list>
 </nb-card>
-
-<!-- <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-      <button type="button" (click)="openFileSelector()">Browse Files</button>
-    </ng-template> -->

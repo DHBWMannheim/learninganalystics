@@ -38,6 +38,11 @@ const routes: Routes = [
           import('./feedback/feedback.module').then((m) => m.FeedbackModule),
       },
       {
+        path: 'exams',
+        loadChildren: () =>
+          import('./exams/exams.module').then((m) => m.ExamsModule),
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
