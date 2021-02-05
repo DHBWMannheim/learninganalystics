@@ -42,7 +42,7 @@ export class FilesComponent implements OnInit {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         const queueElement = await this.filesService.upload(fileEntry);
         this.fileUploadQueue.push(queueElement);
-        queueElement.uploadProgress.pipe(last()).subscribe((_) => {
+        queueElement.uploadProgress.pipe(last()).subscribe((_) => { // TODO: Error handling?
           this.fileUploadQueue = this.fileUploadQueue.filter(
             (element) => element !== queueElement,
           );

@@ -35,7 +35,7 @@ export const CommonConverter = {
   },
 };
 
-export abstract class CommonFirestoreService<T extends { id?: string }> {
+export abstract class CommonFirestoreService<T extends { id?: string }> { // TODO: das alles reaktiv mit subscriptions machen
   constructor(
     private readonly collectionName: string,
     private readonly afs: AngularFirestore,

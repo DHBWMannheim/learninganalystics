@@ -4,7 +4,7 @@ import { FileSystemFileEntry } from 'ngx-file-drop';
 import { Observable } from 'rxjs';
 import { CommonFirestoreService } from './common-firestore.service';
 
-import { last } from 'rxjs/operators';
+import { last, share } from 'rxjs/operators';
 import { v4 } from 'uuid';
 import { AngularFireStorage } from '@angular/fire/storage';
 
@@ -21,7 +21,6 @@ export interface UploadQueueEntry extends FireFile {
 
 @Injectable({ providedIn: 'root' })
 export class FilesService extends CommonFirestoreService<FireFile> {
-  //TODO: Nur Firestorage benutzen?
   constructor(
     firestore: AngularFirestore,
     private readonly fireStorage: AngularFireStorage,
@@ -39,10 +38,11 @@ export class FilesService extends CommonFirestoreService<FireFile> {
       filename: fileEntry.name,
       uploadProgress: this.fireStorage
         .upload(firebasePath, file)
-        .percentageChanges(),
+        .percentageChanges()
+        .pipe(share()),
       path: firebasePath,
     } as UploadQueueEntry;
-    
+
     dto.uploadProgress.pipe(last()).subscribe((_) =>
       this.upsert({
         id,

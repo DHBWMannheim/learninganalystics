@@ -180,8 +180,26 @@ Anschließend können die Dokumente von allen Studenten heruntergeladen werden.
 
 % TODO: Müssen die Toasts auch erklärt werden?
 
+Bei der Nutzung des Dateisystems ist darauf zu achten, dass aus Speichergründen nicht alle Dateien antizipierend heruntergeladen werden können.
+Dies würde es ermöglichen Geräte von Studenten zu überfordern.
+Besonders Mobilgeräte besitzen noch einen begrenzten Speicher.
+Aus diesem Grund muss während der Benutzung auf eine Internetverbindung geachtet werden.
+Offline können nur die existierenden Dateien angezeigt werden, aber weder neue hochgeladen noch bestehende heruntergeladen werden.
 
 
+Aus technischer Sicht werden mehrere Schritte unternommen, um die Dateiablage zu ermöglichen.
+Sobald Dateien ausgewählt wurden oder Dateien in das Fenster gezogen wurde wird der Upload dieser zu FireStorage angestoßen.
+Dabei handelt es sich um einen Bucket-basierte Speicherlösung ähnlich zu AWS S3. % TODO: Das genauer erklären?
+Während des Uploads wird der Zustand überwacht, wieviel der Datei bereits übertragen werden konnte.
+Dieser Wert wird automatisch in den Fortschrittsbalken weitergeleitet, welcher sich dadurch reaktiv aktualisiert.
+
+
+Konnte der Upload erfolgreich durchgeführt werden wird der Fortschrittsbalken grün und eine Benachrichtigung informiert informiert, dass die Datei erfolgreich hochgeladen werden konnte.
+Im Hintergrund wird anschließend ein Datenbankeintrag getätigt, ab welchem Zeitpunkt andere Nutzer auf die Datei zugreifen können.
+
+Wird eine Datei gelöscht wird der gleiche Vorgang rückwärts durchgeführt.
+Das heißt, zuerst wird der Datenbankeintrag gelöscht, wodurch Studenten nicht mehr darauf zugreifen können.
+Anschließend wird die eigentliche Datei aus dem Bucket-Speicher gelöscht.
 
 
 
