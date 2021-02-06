@@ -4,7 +4,7 @@ import { FileSystemFileEntry } from 'ngx-file-drop';
 import { Observable } from 'rxjs';
 import { CommonFirestoreService } from './common-firestore.service';
 
-import { last, share } from 'rxjs/operators';
+import { last, shareReplay } from 'rxjs/operators';
 import { v4 } from 'uuid';
 import { AngularFireStorage } from '@angular/fire/storage';
 
@@ -37,9 +37,11 @@ export class FilesService extends CommonFirestoreService<FireFile> {
       id,
       filename: fileEntry.name,
       uploadProgress: this.fireStorage
-        .upload(firebasePath, file)
+        .upload(firebasePath, file, {
+          contentDisposition: 'attachment; filename=' + fileEntry.name, // TODO: Muss der speziell encoded/escaped werden sein?
+        })
         .percentageChanges()
-        .pipe(share()),
+        .pipe(shareReplay(1)),
       path: firebasePath,
     } as UploadQueueEntry;
 
@@ -73,7 +75,7 @@ export class FilesService extends CommonFirestoreService<FireFile> {
       .toPromise();
     const a = document.createElement('a');
     a.href = url;
-    a.download = file.filename; //TODO: Fix Filename
+    a.download = file.filename;
     a.click();
   }
 }
