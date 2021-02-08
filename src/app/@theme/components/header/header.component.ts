@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User, UserService } from '../../../@core/data/user.service';
 import { LayoutService } from '../../../@core/utils/layout.service';
+import { CoursesService } from '../../../@core/data/course.service';
 
 @Component({
   selector: 'ngx-header',
@@ -71,10 +72,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
-    private authService: NbAuthService,
-    private router: Router,
-    private firebaseAuth: AngularFireAuth,
     private readonly userService: UserService,
+    private readonly coursesService: CoursesService,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map((theme) => {
@@ -135,5 +134,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   areNewMessagesAvailable() {
     return true; //TODO: Anstehende Klausuren, Todos, ...
+  }
+
+  get currentCourse() {
+    return this.coursesService.currentCourse;
   }
 }

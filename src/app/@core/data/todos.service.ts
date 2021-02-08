@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { CommonFirestoreDocument } from './common-firestore-document';
 import { CommonFirestoreService } from './common-firestore.service';
 import { User, UserService } from './user.service';
 
-export interface Todo {
-  id?: string;
+export interface Todo extends CommonFirestoreDocument{
   title: string;
   description?: string;
   deadline?: Date;

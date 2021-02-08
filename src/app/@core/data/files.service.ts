@@ -7,8 +7,9 @@ import { CommonFirestoreService } from './common-firestore.service';
 import { last, shareReplay } from 'rxjs/operators';
 import { v4 } from 'uuid';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { CommonFirestoreDocument } from './common-firestore-document';
 
-export interface FireFile {
+export interface FireFile extends CommonFirestoreDocument{
   id: string;
   filename: string;
   path: string;

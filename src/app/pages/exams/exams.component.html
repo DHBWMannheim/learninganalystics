@@ -1,13 +1,35 @@
 <nb-card>
-    <nb-card-header>
-        Exams
-    </nb-card-header>
-    <nb-card-body>
-        Hier kommen alle Prüfungen hin
+  <nb-card-header> Exams </nb-card-header>
+  <nb-card-body>
+    <nb-card *ngFor="let exam of exams">
+      <nb-card-header>
+        {{ exam.title }}
+      </nb-card-header>
+      <nb-card-body>
+        <strong>Description: </strong>{{ exam.description }}
+        <nb-calendar [(date)]="exam.deadline"></nb-calendar>
 
-        Also wann, wo
-        Klausuren
-        oder Protofolios
-        +Infos zu dehnen, also länge Themenschwerpunkte, ...
-    </nb-card-body>
+        <div *ngIf="exam.duration">
+          <strong>Duration: </strong>{{ exam.duration }} Minutes
+        </div>
+        <div *ngIf="exam.room"><strong>Room: </strong>{{ exam.room }}</div>
+
+        <div *ngIf="exam.tools">
+          <strong>Permitted Tools: </strong>
+          <ul>
+            <li *ngFor="let tool of exam.tools">{{tool}}</li>
+        </ul>
+        </div>
+        <div *ngIf="exam.additionalInformations">
+          <strong>Additional Informations: </strong>
+          <ul>
+              <li *ngFor="let info of exam.additionalInformations">{{info}}</li>
+          </ul>
+        </div>
+
+        <button nbButton>Create Todo</button
+        ><!--?-->
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
 </nb-card>
