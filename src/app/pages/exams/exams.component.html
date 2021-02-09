@@ -8,7 +8,7 @@
       <nb-card-body>
         <strong>Description: </strong>{{ exam.description }}
         <nb-calendar [(date)]="exam.deadline"></nb-calendar>
-
+<!--TODO: Hier noch etwas besser, damit uhrzeit-->
         <div *ngIf="exam.duration">
           <strong>Duration: </strong>{{ exam.duration }} Minutes
         </div>

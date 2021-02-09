@@ -74,7 +74,7 @@ export const NB_CORE_PROVIDERS = [
   }).providers,
 
   NbSecurityModule.forRoot({
-    // TODO: ? brauchen wir das?
+    // TODO: ? brauchen wir das? Ich glaube nicht, weil alle nutzer die gleichen rechte haben? Und das handlen kursübergreifend ist nicht wirklich drin glaube ich
     accessControl: {
       guest: {
         view: '*',

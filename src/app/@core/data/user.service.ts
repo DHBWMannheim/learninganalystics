@@ -21,7 +21,7 @@ export interface User extends CommonFirestoreDocument {
   providedIn: 'root',
 })
 export class UserService extends CommonFirestoreService<User> {
-  private _userObservable: Observable<User | null>; // TODO: muss das beim logout geleert werden?
+  private _userObservable: Observable<User | null>;
 
   constructor(
     firestore: AngularFirestore,
@@ -51,5 +51,3 @@ export class UserService extends CommonFirestoreService<User> {
     return this.userObservable.pipe(take(1)).toPromise();
   }
 }
-
-//

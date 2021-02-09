@@ -8,7 +8,7 @@ import { MENU_ITEMS } from './pages-menu';
   styleUrls: ['pages.component.scss'],
   template: `
     <main-layout>
-      <nb-menu [items]="menu"></nb-menu>
+      <nb-menu [items]="menu" autoCollapse="true"></nb-menu>
       <router-outlet></router-outlet>
     </main-layout>
   `,
