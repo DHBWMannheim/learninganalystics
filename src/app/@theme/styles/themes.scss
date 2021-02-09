@@ -5,7 +5,7 @@
 // material themes
 @import './material/material-dark';
 @import './material/material-light';
-
+// TODO: Irgendwas ist mit den imports komisch, das das mehrfach drin inst
 $nb-themes: nb-register-theme(
   (
     layout-padding-top: 2.25rem,
@@ -138,7 +138,7 @@ $nb-themes: nb-register-theme(
   cursor: pointer;
 }
 
-nb-icon:focus,
+nb-icon:focus, // TODO:
 .mat-fab:focus {
   outline: 0;
 }
@@ -157,15 +157,62 @@ nb-search-field {
   }
 }
 
-nb-layout.window-mode.rotate-layout nb-layout-header.fixed {
-  top: 0 !important;
-}
-nb-layout.window-mode.rotate-layout nb-sidebar .main-container-fixed {
-  top: 4.75rem !important;
+nb-layout.window-mode.rotate-layout {
+  nb-layout-header.fixed {
+    top: 0 !important;
+  }
+  nb-sidebar .main-container-fixed {
+    top: 4.75rem !important;
+  }
 }
 
 .drop-zone {
   border-radius: 4px;
   color: #edf1f7; //TODO:
   border: 2px solid;
+}
+
+nb-sidebar nb-menu .menu-item {
+  &.menu-group {
+    transition: border 0.3s ease, padding 0.3s ease, opacity 0.3s ease !important;
+    opacity: 1;
+    &,
+    nb-icon.menu-icon {
+      color: #8f9bb3 !important;
+    }
+  }
+  .menu-icon {
+    min-width: 1em;
+  }
+  span {
+    display: block !important;
+    opacity: 1 !important;
+    transition: opacity 0.3s ease;
+    height: 24px !important;
+  }
+  .menu-items {
+    transition: max-height 0.3s ease !important;
+    max-height: 200px; //Irgend ein großer wert, der nah am echten wert ist, workaround weil height=auto nicht animiert
+  }
+}
+
+nb-sidebar.compacted nb-menu {
+  width: 16rem !important;
+  .menu-item {
+    &.menu-group {
+      padding: 0 1rem !important;
+      width: unset !important;
+      opacity: 0;
+    }
+    span,
+    nb-badge,
+    .expand-state {
+      display: block !important;
+      opacity: 0 !important;
+    }
+    .expanded {
+      display: block !important;
+      max-height: 0;
+    }
+  }
 }
