@@ -2,8 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { FilesComponent } from './files/files.component';
-import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   {
@@ -21,27 +19,40 @@ const routes: Routes = [
           import('./todos/todos.module').then((m) => m.TodosModule),
       },
       {
-        path: 'index-cards',
+        path: 'new-course',
+        loadChildren: () =>
+          import('./new-course/new-course.module').then(
+            (m) => m.NewCourseModule,
+          ),
+      },
+
+      //----
+
+      {// TODO: Sollen die routen anders aussehen? also z.B. id/index-cards oder sowas?
+        path: 'index-cards/:courseId',
         loadChildren: () =>
           import('./index-cards/index-cards.module').then(
             (m) => m.IndexCardsModule,
           ),
       },
       {
-        path: 'files',
+        path: 'files/:courseId',
         loadChildren: () =>
           import('./files/files.module').then((m) => m.FilesModule),
       },
       {
-        path: 'feedback',
+        path: 'feedback/:courseId',
         loadChildren: () =>
           import('./feedback/feedback.module').then((m) => m.FeedbackModule),
       },
       {
-        path: 'exams',
+        path: 'exams/:courseId',
         loadChildren: () =>
           import('./exams/exams.module').then((m) => m.ExamsModule),
       },
+
+      //----
+
       {
         path: '',
         redirectTo: 'dashboard',

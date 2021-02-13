@@ -5,16 +5,12 @@ import {
   NbSidebarService,
   NbThemeService,
 } from '@nebular/theme';
-
+import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
-import { RippleService } from '../../../@core/utils/ripple.service';
-import { NbAuthService } from '@nebular/auth';
-import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
+
 import { User, UserService } from '../../../@core/data/user.service';
 import { LayoutService } from '../../../@core/utils/layout.service';
-import { CoursesService } from '../../../@core/data/course.service';
+import { RippleService } from '../../../@core/utils/ripple.service';
 
 @Component({
   selector: 'ngx-header',
@@ -73,7 +69,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
     private readonly userService: UserService,
-    private readonly coursesService: CoursesService,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map((theme) => {
@@ -134,9 +129,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   areNewMessagesAvailable() {
     return true; //TODO: Anstehende Klausuren, Todos, ...
-  }
-
-  get currentCourse() {
-    return this.coursesService.currentCourse;
   }
 }

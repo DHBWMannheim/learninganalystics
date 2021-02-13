@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 interface Exam {
   title: string;
@@ -21,7 +22,7 @@ export class ExamsComponent implements OnInit {
       title: 'Portfolio-Prüfung: Programmierung',
       description: 'TODO',
       deadline: new Date(),
-      additionalInformations: ['Kombiklausur mit irgendwas anderem']
+      additionalInformations: ['Kombiklausur mit irgendwas anderem'],
     },
     {
       title: 'Portfolio-Prüfung: Demonstration',
@@ -39,7 +40,11 @@ export class ExamsComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private readonly route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      console.log('params', params);
+    });
+  }
 }
