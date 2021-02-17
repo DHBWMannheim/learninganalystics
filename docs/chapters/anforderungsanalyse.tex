@@ -83,9 +83,18 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Besonders die Vielzahl an Vorlesungen, die sich in ihrem Aufbau und in der Prüfungsweise unterscheiden brauchen unterschiedliche Vorbereitungen und damit TODOs.
         TODOs können dabei optional ein Fälligkeitsdatum besitzen, welches zur besseren Organisation sollen die eingetragenen TODOs graphisch angezeigt werden.
         So entsteht ein Kalender und Kapazitätsengpässe rechtzeitig erkannt und durch Umplanen verhindert werden können.
-
+	% TODO: Hier ist ein Teil reingerutscht der eigentlich mehr Theorei als ANforderung ist!
     \item Karteikarten                      \\
-        Für eine bessere Prüfungsvorbereitungen können Karteikarten angelegt werden. Unterschiedliche wissenschaftliche Untersuchungen zeigen die Vorteile dieser Methode. Für das Lernen der Karteikarten gibt es eine vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung implementiert XXX weil YYY. 
+        Für eine bessere Prüfungsvorbereitungen können Karteikarten angelegt werden. Unterschiedliche wissenschaftliche Untersuchungen zeigen die Vorteile dieser Methode. Für das Lernen der Karteikarten gibt es eine Vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung implementiert einen Algorithmus aus dem Bereich der \enquote{Spaced Repetition Systems}. Ins deutsche übersetzt heißt das so viel wie Wiederholen ohne Lücken. Das System hinter diesen Algorithmen besteht darin, die entsprechenden Informationen genau dann zu wiederholen, wenn das menschliche Gehirn sie fast schon vergessen hätte. Die einzelnen Karteikarten werden nacheinander abgefragt und bei richtiger Antwort in zunehmenden Zeitintervallen immer wieder überprüft. Durch diesen Abstandseffekt soll gezielt das Langzeitgedächnis trainiert werden und die Inhalte damit auch über eine Prüfung hinaus gelernt werden. Die unterschiedlichen Algorithmen dieser Klasse unterscheiden sich lediglich in der Wahl der Zeitabstände. Diese Anwendung implementiert das Super-Memo System des polnischen Neurobiologen Piotr Wozniak. Diese definiert folgende Zeitabstände:
+        \begin{itemize}
+        	\item 20 Minuten
+        	\item 24 Stunden
+        	\item 48 Stunden
+        	\item 10 Tagen
+        	\item 30 Tagen
+        	\item 60 Tagen
+        \end{itemize}  
+    	Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und durchläuft die definierten Zeitintervalle von vorn. % TODO: wissenschaftliche Quelle? https://magazin.sofatutor.com/schueler/besser-lernen-mit-karteikarten/#:~:text=Alle%20Karteikarten%20befinden%20sich%20anfangs,gehst%20du%20immer%20weiter%20vor.
         Die Karteikarten sollen direkt in App gelernt werden, sodass kein zusätzlicher Aufwand für das Abschreiben der Karten notwendig ist.
 
     \item Prüfungsterminübersicht           \\
@@ -105,12 +114,13 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Aus den bereits beschriebenen Anforderungen geht hervor, dass es eine Weise geben muss, wie Dozenten von Studenten unterschieden wird.
         Es soll verhindert werden, dass Studenten falsche Informationen bereitstellen können und so andere Studenten des gleichen Kurses schädigen.
         Aus diesem Grund sollen nur Dozenten Informationen bereitstellen können, die von mehreren Studenten eingesehen werden können.
+    \item Übersichtliches Dashboard			\\
+   		Die Anwendung soll es leicht ermöglichen sich einen Überblick über die in nächster Zeit anstehenden Aufgaben und Tätigkeiten zu erhalten. Dies ermöglichen die anstehenden Klausuren, eingetragene ToDos und Karteikarten die am selben Tag empfohlen werden zu lernen.
+   	\item Barrierefreiheit		\\
+   		Um allen Nutzern unabhängig ihrer Einschränkungen oder technischen Möglichkeiten die uneingeschränkte Nutzung der Anwendung zu ermöglichen sind für diese Anwendung einige Überlegungen angestellt worden. So soll sich die Sprache der Anwendung an den Spracheinstellungen des Webbrowsers auf dem Gerät des jeweiligen Nutzers orientieren. Darüber hinaus soll diese auch in der Anwendung selbst umgestellt werden können. Das Standard-Design orientiert sich an dem Cooperate Design der Dualen Hochschule Württemberg. Diese soll jedoch einfach über ein Drop-Down Menü angepasst werden können, so dass auch Versionen mit erhöhten Kontrast, etc. vorliegen.  
 \end{itemize}
 
 % Das ist das was ich grad realistisch sehe. Wenn wir noch mehr implementiert haben, dann können wir das gerne noch erweitern
-
-% TODO: Wo kommen die Personas hin? vor die Anforderungen? Vielleicht über die Anforderungsanalyse
-
 
 
 \subsection{Nicht-Funktionale Anforderungen}
@@ -158,6 +168,7 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
         F5      & Prüfungstermine können eingetragen werden  \\
         F6      & Informationen können allen Studenten mitgeteilt werden  \\
         F7      & Es gibt eine Unterscheidung zwischen Studenten und Dozenten  \\
+        F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\
         NF1     & Anwendung lädt schnell                    \\
         NF2     & Daten jederzeit einsehbar                 \\
         NF3     & Anwendung funktioniert auf allen Geräten  \\
@@ -175,8 +186,6 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
 % 2. Dozent
 % -------------------------------------------------------
 % Keine Ahnung, irgendwelche Bilder halt :D
-% TODO: Das ist noch sehr kopiert
-
 % https://unsplash.com/photos/ZVo7vtXilCs
 \subsection{Beispiel Persona für Student}
 
@@ -198,11 +207,8 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
 	\includegraphics[width=0.70\textwidth]{img/carlos-lindner-ZVo7vtXilCs-unsplash.jpg}
 \end{minipage}
 
-
 Stephan ist ein typisches Beispiel für einen Studenten an der DHBW.
-Er ist viel aktiv und war in der Vor-Corona-Zeit eine Person, die zur DHBW gependelt ist.
-Demnach möchte er egal wo er ist stets eine Übersicht über seine anstehenden Klausuren haben und sich auch unterwegs auf diese Vorbereiten.
-Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht Weitergegeben werden und nicht zur Klausurbewertung oder Ähnliches herangezogen werden können.
+Er ist viel aktiv und und wohnt aufgrund des Standortes seines Dualen Partners nicht in der Metropolregion Rhein-Neckar. Aus diesem Grund pendelt er regelmäßig zu Präsenzveranstaltungen und Klausuren. Da er für die Anfahrt lange Zeit in öffentlichen Verkehrsmitteln verbringt, möchte er nicht auf ein bestimmtes Endgerät angewiesen sein und sowohl von daheim am PC als auch in der vollen Straßenbahn am Handy lernen können.  Demnach möchte er egal wo er ist stets eine Übersicht über seine anstehenden Klausuren haben und sich auch unterwegs auf diese Vorbereiten. Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht Weitergegeben werden und nicht zur Klausurbewertung oder Ähnliches herangezogen werden können.
 
 Das möchte ich gerne haben:
 \begin{itemize}
@@ -211,8 +217,6 @@ Das möchte ich gerne haben:
 	\item Anonymität
 \end{itemize}
 
-
-\clearpage
 \subsection{Beispiel Persona für Dozent}
 % https://unsplash.com/photos/TXxiFuQLBKQ
 \begin{minipage}[t]{0.5\textwidth}
@@ -235,16 +239,15 @@ Das möchte ich gerne haben:
 
 Dagmar ist eine Dozentin für Wirtschaftsthemen, vorrangig Finanzbuchhaltung.
 Als verantwortungsbewusste Person ist es ihr wichtig, dass Studenten auch außerhalb ihrer Vorlesung Unterstützung erhalten.
-Aus diesem Grund möchte sie gerne weiterführende Informationen an Studenten weitergeben.
+Aus diesem Grund möchte sie gerne weiterführende Informationen an ihre Studenten weitergeben.
 Gleichzeitig möchte sie gerne Feedback zu ihrer Vorlesung erhalten um das Lernmaterial bestmöglich anzupassen.
-Da sich allerdings ihre Kernkompetenzen außerhalb der IT befinden ist es ihr wichtig, dass sie die Anwendung nutzen kann ohne eine lange Einführung erhalten zu müssen. 
+Da sich allerdings ihre Kernkompetenzen außerhalb der IT befinden ist es ihr wichtig, dass sie die Anwendung unkompliziert und ohne lange Einführung nutzen kann. 
 
 
 Das möchte ich gerne haben:
 \begin{itemize}
 	\item Informationen an alle Studenten des Kurses verteilen
-	\item Feedback zum Kurs erhalten %TODO: Sowas noch implementieren
-	\item Intuitives Interface
+	\item Feedback zum Kurs erhalten
+	\item Intuitives Bedienung
 \end{itemize}
-% TODO: Wenn das Dashboard fertig ist, stehen da ja dann Analysen drin? Dann kann man das alles noch erweitern
 % Generell Umfragen, .... alles erst reinschreiben, wenn wir das auch implementiert haben :)
