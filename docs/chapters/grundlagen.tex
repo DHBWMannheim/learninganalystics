@@ -26,7 +26,7 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung g
     \item Datensicherheit\\
         Nach einer Befragung von Tang und Liu stimmen 48\% zu, dass Cloud-Provider eine bessere Sicherheit liefern als eine eigene Implementierungen.\autocite[S. 63]{TANG}
         Google als einer der größten IT-Dienstleister ist dabei weit vorne und ist konform mit den europäischen Datenschutzverordnungen.\autocite{firebaseDataprotection}
-        Die Authentifizierung ist sicher, da aktuelle Standards wie OAuth 2.0 verwendet wird.
+        Die Authentifizierung ist sicher, da aktuelle Standards wie OAuth 2.0 verwendet wird. Dieser wird im RFC 6749 und RFC 6750 beschrieben und ist ein Protokoll, dass eine sichere Autorisierung und Authentifizierung für Desktop-, Web- und Mobile Anwendungen über API Schnitstellen ermöglicht. 
     \item Ausfallsicherheit\\
         Da Server nicht mehr einzeln betrieben werden müssen entfällt die Gefähr eines \enquote{Single Point of Failure}. %TODO: in die Anforderungen
         Dies würde dafür sorgen, dass die Anwendung ausfällt, sofern der Server abstürzen würde.
@@ -36,18 +36,12 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung g
         Die Entwicklung des Frontends kann vorranschreiten ohne auf die Entwicklung des Backends zu warten.
     \item Kosten \\
         Google bietet attraktive Preismodelle an, welches die Bereitstellung der Anwendung sehr kostengünstig macht.
-        Nicht nur entfallen Kosten für die Wartung der Server und Hardwareressourcen, sondern der gesamte Betrieb ist im \enquote{Spark}-Plan kostenlos.
+        Nicht nur entfallen Kosten für die Wartung der Server und Hardwareressourcen, sondern der gesamte Betrieb ist im \enquote{Spark}-Plan kostenlos \autocite{firebasePrice}.
     \item Skalierung \\
         Firebase kümmert sich um die gesamte Bereitstellung und Skalierung der Serverleistung.
         Das heißt, sofern mehr Rechenleistung benötigt wird (wie beispielsweise in Lastspitzen) wird die Rechenleistung automatisch erhöht ohne das Anfragen fehlschlagen.
 \end{itemize}
-% TODO: Nochmal auf die Anfoderungen verweißen
-
-
-
-
-
-
+Die verwendete Technologie ermöglicht das Erfüllen der für unsere Anwendung bestehenden nichtfunktionalen Anforderungen.
 
 
 % TODO: Was soll noch alles in die Dokumentation? Auch sowas wie Quickstart und Ordneraufbau?
