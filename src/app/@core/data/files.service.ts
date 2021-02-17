@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { FileSystemFileEntry } from 'ngx-file-drop';
 import { Observable } from 'rxjs';
 import { CommonFirestoreService } from './common-firestore.service';
@@ -8,12 +8,13 @@ import { last, shareReplay } from 'rxjs/operators';
 import { v4 } from 'uuid';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { CommonFirestoreDocument } from './common-firestore-document';
+import { Course, CoursesService } from './course.service';
 
-export interface FireFile extends CommonFirestoreDocument{
+export interface FireFile extends CommonFirestoreDocument {
   id: string;
   filename: string;
   path: string;
-  // TODO: Kurs, user
+  course: DocumentReference<Course>;
 }
 
 export interface UploadQueueEntry extends FireFile {
@@ -25,11 +26,15 @@ export class FilesService extends CommonFirestoreService<FireFile> {
   constructor(
     firestore: AngularFirestore,
     private readonly fireStorage: AngularFireStorage,
+    private readonly coursesService: CoursesService,
   ) {
     super('files', firestore);
   }
 
-  async upload(fileEntry: FileSystemFileEntry): Promise<UploadQueueEntry> {
+  async upload(
+    fileEntry: FileSystemFileEntry,
+    courseId: string,
+  ): Promise<UploadQueueEntry> {
     const file = await this.getFile(fileEntry);
     const firebasePath = 'files/' + v4();
     const id = this.getCollection().doc().id;
@@ -51,6 +56,7 @@ export class FilesService extends CommonFirestoreService<FireFile> {
         id,
         path: firebasePath,
         filename: fileEntry.name,
+        course: this.coursesService.createRef(courseId),
       } as FireFile),
     );
     return dto;

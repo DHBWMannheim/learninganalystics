@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { ActivatedRoute } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import {
-  FileSystemDirectoryEntry,
-  FileSystemFileEntry,
-  NgxFileDropEntry,
-} from 'ngx-file-drop';
+import { FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
 import { last } from 'rxjs/operators';
+import { CoursesService } from '../../@core/data/course.service';
 
 import {
   FilesService,
@@ -24,14 +20,25 @@ declare const browser;
 })
 export class FilesComponent implements OnInit {
   files: FireFile[];
+  courseId: string;
 
   constructor(
     private readonly filesService: FilesService,
     private readonly toastr: NbToastrService,
+    private readonly route: ActivatedRoute,
+    private readonly coursesService: CoursesService,
   ) {}
 
   async ngOnInit() {
-    this.files = await this.filesService.get();
+    this.route.params.subscribe(async ({ courseId }) => {
+      this.courseId = courseId;
+      this.files = await this.filesService.getData(
+        await this.filesService
+          .getCollection()
+          .where('course', '==', this.coursesService.createRef(this.courseId))
+          .get(),
+      );
+    });
   }
 
   public fileUploadQueue: UploadQueueEntry[] = [];
@@ -40,9 +47,13 @@ export class FilesComponent implements OnInit {
     for (const droppedFile of files) {
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        const queueElement = await this.filesService.upload(fileEntry);
+        const queueElement = await this.filesService.upload(
+          fileEntry,
+          this.courseId,
+        );
         this.fileUploadQueue.push(queueElement);
-        queueElement.uploadProgress.pipe(last()).subscribe((_) => { // TODO: Error handling?
+        queueElement.uploadProgress.pipe(last()).subscribe((_) => {
+          // TODO: Error handling?
           this.fileUploadQueue = this.fileUploadQueue.filter(
             (element) => element !== queueElement,
           );
