@@ -2,7 +2,7 @@
   <nb-card-header>
     <div class="row">
       <div class="col my-auto">
-        <h3>Add an index card</h3>
+        <h3>Edit an index card</h3>
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
@@ -20,7 +20,7 @@
       <textarea
         matInput
         placeholder="Whats the question..."
-        [(ngModel)]="model.question"
+        [(ngModel)]="card.question"
         name="question"
         class="textarea"
         required
@@ -32,7 +32,7 @@
       <textarea
         matInput
         placeholder="What do you answer..."
-        [(ngModel)]="model.answer"
+        [(ngModel)]="card.answer"
         name="answer"
         class="textarea"
         required

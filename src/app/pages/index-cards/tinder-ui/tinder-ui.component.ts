@@ -10,7 +10,6 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { IndexCard } from '../../../@core/data/index-cards.service';
-
 import { fade } from '../../../@theme/animations/fade.animation';
 
 export interface TinderChoice {
@@ -35,6 +34,12 @@ export class TinderUIComponent implements AfterViewInit {
 
   @Output()
   choiceMade = new EventEmitter<TinderChoice>();
+
+  @Output()
+  edit = new EventEmitter<IndexCard>();
+
+  @Output()
+  delete = new EventEmitter<IndexCard>();
 
   moveOutWidth: number;
   shiftRequired: boolean;
@@ -175,5 +180,13 @@ export class TinderUIComponent implements AfterViewInit {
     this.tinderCards.changes.subscribe(() => {
       this.tinderCardsArray = this.tinderCards.toArray();
     });
+  }
+
+  editCard(card: IndexCard) {
+    this.edit.emit(card);
+  }
+
+  deleteCard(card: IndexCard) {
+    this.delete.emit(card);
   }
 }
