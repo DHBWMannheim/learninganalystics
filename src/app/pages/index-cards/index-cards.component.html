@@ -1,7 +1,13 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header>Index cards</nb-card-header>
+      <nb-card-header style="display: flex; justify-content: space-between;">
+        Index cards
+        <button nbButton outline color="primary" (click)="openAddDialog()">
+          <nb-icon icon="plus-outline"></nb-icon>
+          Add index card
+        </button>
+      </nb-card-header>
       <nb-card-body>
         <nb-card [nbSpinner]="loadingCards" style="margin-bottom: 0;" nbSpinnerStatus="primary">
           <div *ngIf="!loadingCards">
