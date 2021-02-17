@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem, NbSearchService } from '@nebular/theme';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 
 import { Course, CoursesService } from '../@core/data/course.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
@@ -38,6 +38,7 @@ export class PagesComponent implements OnInit {
             .concat(courses.participations)
             .flatMap((course) => this.mapCourseToMenu(course)),
         ),
+        mergeMap(v=>v)
       )
       .subscribe(async (menuItems) => {
         this.buildMenu(menuItems);
@@ -50,28 +51,28 @@ export class PagesComponent implements OnInit {
       .concat(await POST_COURSE_MENU_ITEMS(this.translate));
   }
 
-  private mapCourseToMenu(course: Course) {
+  private async mapCourseToMenu(course: Course) {
     return {
       title: course.name,
       icon: 'book-outline',
       children: [
         {
-          title: 'Exams',
+          title: await this.translate.get('menu.exams').toPromise(),
           icon: 'award-outline',
           link: '/pages/exams/' + course.id,
         },
         {
-          title: 'Files',
+          title: await this.translate.get('menu.files').toPromise(),
           icon: 'file-outline',
           link: '/pages/files/' + course.id,
         },
         {
-          title: 'Index Cards',
+          title: await this.translate.get('menu.indexCards').toPromise(),
           icon: 'bookmark-outline',
           link: '/pages/index-cards/' + course.id,
         },
         {
-          title: 'Feedback',
+          title: await this.translate.get('menu.feedback').toPromise(),
           icon: 'message-square-outline',
           link: '/pages/feedback/' + course.id,
         },

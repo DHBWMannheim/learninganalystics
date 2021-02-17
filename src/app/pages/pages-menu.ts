@@ -1,7 +1,9 @@
 import { NbMenuItem } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 
-export const PRE_COURSE_MENU_ITEMS = async (ts: TranslateService): Promise<NbMenuItem[]> => [
+export const PRE_COURSE_MENU_ITEMS = async (
+  ts: TranslateService,
+): Promise<NbMenuItem[]> => [
   {
     title: 'Dashboard',
     icon: 'home-outline',
@@ -10,26 +12,21 @@ export const PRE_COURSE_MENU_ITEMS = async (ts: TranslateService): Promise<NbMen
   },
 
   {
-    title: 'Courses',
+    title: await ts.get('menu.courses').toPromise(),
     group: true,
   },
-  
-
- 
 ];
 
-export const POST_COURSE_MENU_ITEMS = async (ts: TranslateService): Promise<NbMenuItem[]>  => [
+export const POST_COURSE_MENU_ITEMS = async (
+  ts: TranslateService,
+): Promise<NbMenuItem[]> => [
   {
-    title: 'Join or Create',
+    title: await ts.get('menu.joinCreate').toPromise(),
     icon: 'plus-square-outline',
     link: '/pages/new-course',
   },
-
-  //---
-
-  //---
   {
-    title: 'PERSONAL',
+    title: await ts.get('menu.personal').toPromise(),
     group: true,
   },
   {
@@ -37,6 +34,6 @@ export const POST_COURSE_MENU_ITEMS = async (ts: TranslateService): Promise<NbMe
     icon: 'checkmark-square-outline',
     link: '/pages/todos',
   },
-]
+];
 
 // TODO: Loggin wait -> actionpage?

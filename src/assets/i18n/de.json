@@ -22,7 +22,30 @@
             "submit": "Speichern"
         }
     },
+    "dashboard": {
+
+    },
+    "exams": {
+
+    },
+    "files": {
+
+    },
+    "indexCards": {
+
+    },
+    "feedback": {
+
+    },
     "menu": {
+        "dashboard": "Dashboard",
+        "courses": "Kurse",
+        "exams": "Prüfungen",
+        "files": "Dateien",
+        "feedback": "Feedback",
+        "indexCards": "Karteikarten",
+        "joinCreate": "Neuer Kurs",
+        "personal": "Persönlich",
         "todos": "Aufgaben"
     }
 }

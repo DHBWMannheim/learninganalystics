@@ -3,7 +3,6 @@
         "madeWith": "Created with ❤️ in Mannheim 2021"
     },
     "todos": {
-        "navigation": "Todos",
         "overview": "Todo-Overview",
         "all": "All Todos",
         "notFound": "No Todos found",
@@ -23,7 +22,30 @@
             "submit": "Save"
         }
     },
+    "dashboard": {
+
+    },
+    "exams": {
+
+    },
+    "files": {
+
+    },
+    "indexCards": {
+
+    },
+    "feedback": {
+
+    },
     "menu": {
+        "dashboard": "Dashboard",
+        "courses": "Courses",
+        "exams": "Exams",
+        "files": "Files",
+        "feedback": "Feedback",
+        "indexCards": "Index Cards",
+        "joinCreate": "Join or Create",
+        "personal": "Personal",
         "todos": "Todos"
     }
 }
