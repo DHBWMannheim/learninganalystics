@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {
   NbButtonModule,
@@ -8,10 +9,11 @@ import {
   NbListModule,
   NbProgressBarModule,
 } from '@nebular/theme';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxFileDropModule } from 'ngx-file-drop';
 
 import { ThemeModule } from '../../@theme/theme.module';
+import { createTranslateLoader } from '../../app.module';
 import { FilesRoutingModule } from './files-routing.module';
 import { FilesComponent } from './files.component';
 
@@ -27,7 +29,13 @@ import { FilesComponent } from './files.component';
     NbListModule,
     NbProgressBarModule,
     NbIconModule,
-    TranslateModule.forChild(),
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+    }
+    }),
   ],
   declarations: [FilesComponent],
 })

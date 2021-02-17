@@ -85,6 +85,31 @@
     "feedback": {
 
     },
+    "join": {
+        "join": {
+            "header": "An Kurs teilnehmen",
+            "key": {
+                "label": "Einschreibeschlüssel",
+                "placeholder": "Der Kurs-Einschreibeschlüssel...",
+                "errors": {
+                    "required": "Bitte geben Sie einen Schlüssel an",
+                    "minlength": "Bitte geben Sie alle 6 Zeichen des Schlüssels an"
+                }
+            },
+            "submit": "Teilnehmen"
+        },
+        "create": {
+            "header": "Kurs erstellen",
+            "name": {
+                "label": "Name",
+                "placeholder": "Der Name des Kurses...",
+                "errors": {
+                    "required": "Bitte geben Sie einen Namen an"
+                }
+            },
+            "submit": "Erstellen"
+        }
+    },
     "menu": {
         "dashboard": "Dashboard",
         "courses": "Kurse",
@@ -95,5 +120,11 @@
         "joinCreate": "Neuer Kurs",
         "personal": "Persönlich",
         "todos": "Aufgaben"
-    }
+    },
+    "action": {},
+    "login": {},
+    "terms": {},
+    "register": {},
+    "logout": {},
+    "resetPassword": {}
 }

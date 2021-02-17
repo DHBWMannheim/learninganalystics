@@ -28,6 +28,8 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+export const createTranslateLoader = (httpClient: HttpClient) =>
+  new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -59,8 +61,7 @@ import { AppComponent } from './app.component';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (httpClient: HttpClient) =>
-          new TranslateHttpLoader(httpClient),
+        useFactory: createTranslateLoader,
         deps: [HttpClient],
       },
     }),

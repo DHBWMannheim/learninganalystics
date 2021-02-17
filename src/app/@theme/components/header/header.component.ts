@@ -62,14 +62,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
-  languageMenu = [
-    {
-      title: 'DE',
-    },
-    {
-      title: 'EN',
-    },
-  ];
+  languageMenu = [];
 
   public constructor(
     private readonly sidebarService: NbSidebarService,
@@ -119,11 +112,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService
       .onItemClick()
       .pipe(filter(({ tag }) => tag === 'languageMenu'))
-      .subscribe(({item}) => {
-        console.log(item.title.toLowerCase());
-        this.translate.setDefaultLang(item.title.toLowerCase());
-        this.translate.use(item.title.toLowerCase())
+      .subscribe(({ item }) => {
+        console.log(item.title);
+        // this.translate.setDefaultLang(item.title.toLowerCase());
+        this.translate.use(item.title);
       });
+
+    this.languageMenu = this.translate.getLangs().map((lang) => ({
+      title: lang,
+    }));
+
+    console.log();
   }
 
   ngOnDestroy() {

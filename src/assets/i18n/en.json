@@ -82,7 +82,34 @@
             "submit": "Speichern"
         }
     },
-    "feedback": {},
+    "feedback": {
+
+    },
+    "join": {
+        "join": {
+            "header": "Join a Course",
+            "key": {
+                "label": "Key",
+                "placeholder": "The Course-Key...",
+                "errors": {
+                    "required": "Please enter a key",
+                    "minlength": "Please enter a 6-character key"
+                }
+            },
+            "submit": "Join"
+        },
+        "create": {
+            "header": "Create a Course",
+            "name": {
+                "label": "Name",
+                "placeholder": "The Course-Key...",
+                "errors": {
+                    "required": "Please enter a course name"
+                }
+            },
+            "submit": "Create"
+        }
+    },
     "menu": {
         "dashboard": "Dashboard",
         "courses": "Courses",
@@ -93,5 +120,11 @@
         "joinCreate": "Join or Create",
         "personal": "Personal",
         "todos": "Todos"
-    }
+    },
+    "action": {},
+    "login": {},
+    "terms": {},
+    "register": {},
+    "logout": {},
+    "resetPassword": {}
 }

@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,10 +18,11 @@ import {
   NbMenuModule,
   NbSpinnerModule,
 } from '@nebular/theme';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
+import { createTranslateLoader } from '../../app.module';
 import { AddComponent } from './add/add.component';
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';
@@ -46,7 +48,13 @@ import { TodosComponent } from './todos.component';
     NbCheckboxModule,
     MatDatepickerModule,
     NgxEchartsModule.forChild(),
-    TranslateModule.forChild()
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+    }
+    }),
   ],
   declarations: [TodosComponent, AddComponent],
 })
