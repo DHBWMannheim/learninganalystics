@@ -134,6 +134,8 @@ $nb-themes: nb-register-theme(
   material-dark
 );
 
+$nb-themes: nb-register-theme((), dhbw, dark);
+
 .pointer {
   cursor: pointer;
 }

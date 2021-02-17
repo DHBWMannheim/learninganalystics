@@ -83,7 +83,7 @@ export class ThemeModule {
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: 'default',
+            name: 'dhbw',
           },
           [
             DEFAULT_THEME,
