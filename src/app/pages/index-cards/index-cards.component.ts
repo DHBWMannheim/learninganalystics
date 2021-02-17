@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
+import { CoursesService } from '../../@core/data/course.service';
 import { IndexCardsService } from '../../@core/data/index-cards.service';
 import { fade } from '../../@theme/animations/fade.animation';
 import { AddComponent } from './add/add.component';
@@ -70,17 +72,31 @@ export class IndexCardsComponent implements OnInit {
   cards = [];
   originalCardCount;
 
+  courseId: string;
+  isLecturer: boolean;
+
   constructor(
     private readonly dialogService: NbDialogService,
     private readonly indexCardsService: IndexCardsService,
+    private readonly route: ActivatedRoute,
+    private readonly coursesService: CoursesService,
   ) {}
 
   async ngOnInit(): Promise<void> {
-    await this.reload();
+    this.route.params.subscribe(async ({ courseId }) => {
+      this.courseId = courseId;
+      this.isLecturer = await this.coursesService.isLecturer(courseId);
+      await this.reload();
+    });
   }
 
   async reload() {
-    const cards = await this.indexCardsService.get();
+    const cards = await this.indexCardsService.getData(
+      await this.indexCardsService
+        .getCollection()
+        .where('course', '==', this.coursesService.createRef(this.courseId))
+        .get(),
+    );
     this.cards = cards;
     this.originalCardCount = cards.length;
   }
@@ -101,8 +117,14 @@ export class IndexCardsComponent implements OnInit {
   }
 
   openAddDialog() {
-    this.dialogService.open(AddComponent).onClose.subscribe(async () => {
-      await this.reload();
-    });
+    this.dialogService
+      .open(AddComponent, {
+        context: {
+          courseId: this.courseId,
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload();
+      });
   }
 }

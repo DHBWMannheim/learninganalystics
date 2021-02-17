@@ -21,8 +21,9 @@
 </div>
 <!-- TODO: connect Gobal Search to index Cards  -->
 
-<div class="add-button-container">
+<div class="add-button-container" *ngIf="isLecturer">
   <button mat-fab color="primary" (click)="openAddDialog()">
     <nb-icon icon="plus-outline"></nb-icon>
   </button>
 </div>
+<!--TODO: Das in der Dokumentation anders schreiben. Wenn der Nutzer auch noch Karteikarten bearbeiten kann, wird das komplizierter-->

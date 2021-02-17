@@ -36,10 +36,10 @@ export class FilesComponent implements OnInit {
       this.files = await this.filesService.getData(
         await this.filesService
           .getCollection()
-          .where('course', '==', this.coursesService.createRef(this.courseId))
+          .where('course', '==', this.coursesService.createRef(this.courseId)) // TODO: solche sachen in den Service packen?
           .get(),
       );
-      this.isLecturer = await this.coursesService.isLecturer(this.courseId);
+      this.isLecturer = await this.coursesService.isLecturer(this.courseId); // Ja, Promise.all oder so wäre besser
     });
   }
 
