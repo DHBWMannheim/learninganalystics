@@ -89,4 +89,13 @@ export class CoursesService extends CommonFirestoreService<Course> {
   get currentCourses() {
     return this._currentCourses.asObservable();
   }
+
+  async isLecturer(course: string | Course): Promise<boolean> {
+    const user = await this.userService.currentUser;
+    if (typeof course === 'string') {
+      const dbCourse = await this.get(course);
+      return dbCourse.creator.id === user.id;
+    }
+    return course.creator.id === user.id;
+  }
 }

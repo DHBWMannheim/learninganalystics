@@ -34,7 +34,7 @@
         ></nb-progress-bar>
       </div>
     </nb-list-item>
-    <nb-list-item>
+    <nb-list-item *ngIf="isLecturer">
       <ngx-file-drop
         class="w-100"
         dropZoneLabel="Drop files here"

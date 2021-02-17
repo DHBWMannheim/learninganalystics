@@ -9,8 +9,8 @@ import {
   shareReplay,
   take,
 } from 'rxjs/operators';
-import { CommonFirestoreDocument } from './common-firestore-document';
 
+import { CommonFirestoreDocument } from './common-firestore-document';
 import { CommonFirestoreService } from './common-firestore.service';
 
 export interface User extends CommonFirestoreDocument {

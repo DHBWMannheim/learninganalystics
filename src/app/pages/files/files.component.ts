@@ -21,6 +21,7 @@ declare const browser;
 export class FilesComponent implements OnInit {
   files: FireFile[];
   courseId: string;
+  isLecturer: boolean;
 
   constructor(
     private readonly filesService: FilesService,
@@ -38,6 +39,7 @@ export class FilesComponent implements OnInit {
           .where('course', '==', this.coursesService.createRef(this.courseId))
           .get(),
       );
+      this.isLecturer = await this.coursesService.isLecturer(this.courseId);
     });
   }
 
