@@ -4,54 +4,24 @@
 \subsection{Abgrenzung des Funktionsumfangs}\label{sub:abgrenzung}
 Im bereich Bildung gibt es viele Möglichkeiten, wie Hochschulen und Studenten unterstützt werdem können.
 Primär gibt es hierbei 4 Ebenen, auf der Aktionen stattfinden können:
-\begin{itemize}
-    \item Politische Ebene\\
-        Landesweite Veränderungen, die das gesamte Bildungssystem betreffen 
-    \item Institutionsebene\\
-        Veränderungen an der gesamten Bildungseinrichtung.
-    \item Kursebene\\
-        Aktionen innerhalb eines Kurses bzw. Vorlesung
-    \item Individualebene\\
-        Persönliche Veränderungen
-\end{itemize}
-Man kann ableiten, dass sich nicht alle Ebenen gleich für die zu entwickelnde Anwendung anbieten.
-Auf politischer Ebene veränderungen durchzusetzen benötigen in der Regel ein aufwändiges Genehmigungsverwähren, welches wertvolle Zeit in Anspruch nehmen.
-Da die Anwendung aber möglichst schnell Krisenbeeinträchtigte Studenten unterstützt werden sollen, muss diese Ebene bei der Entwicklung zunächst vernachlässigt werden.
+\begin{center}
+	\includegraphics[width=\linewidth, keepaspectratio]{img/4LA.png}
+\end{center}
+Dieser Graphik kann entnommen werden, dass die Ebenen unterschiedliche Anforderungen mit sich bringen. Um auf politischer Ebene Daten miteinander zu verbinden braucht es entweder in den darunterliegenden Ebenen einheitliche Systeme oder ein weiteres System, dass die unterschiedlichen Daten zusammenführt. Die Umsetzung solcher Lösungen bringt in der Regel viel Abstimmungs- und Überzeugungsaufwand mit sich, sodass diese sehr zeitintensiv ist. Da die Anwendung aber möglichst schnell krisenbeeinträchtigte Studenten unterstützten soll, muss diese Ebene bei der Entwicklung zunächst vernachlässigt werden.
 
-Die Institutionsebene beschreibt das Management von Ressourcen innerhalb der Hochschule.
-Besonders der Austauch und Weiterbildung zwischen Dozenten ist hierbei ein wichtiger Aspekt.
-Problematisch ist aber die Identifizierung von Anforderungen aller Studienrichtungen.
-So besitzen technische Studiengänge andere Bedürfnisse als wirtschaftlich orientierte Studiengänge.
-Aus diesem Grund kann auch diese Ebene nicht genauer beachtet werden.
+Die Institutionsebene beschreibt das Management von Ressourcen innerhalb der Hochschule. Besonders der Austausch und die Weiterbildung zwischen Dozenten ist hierbei ein wichtiger Aspekt. Problematisch ist aber die Identifizierung von Anforderungen aller Studienrichtungen. So besitzen technische Studiengänge andere Bedürfnisse als wirtschaftlich orientierte Studiengänge. AUßerdem haben die einzelnen Fakultäten bereits unterschiedliche Erfahrungen mit dem Thema Learning Analytics gemacht haben und dementsprechend unterschiedliche Standpunkte und Fortschritte zu verzeichnen. Aus diesem Grund kann auch diese Ebene nicht genauer beachtet werden.
 
 Stattdessen wird sich in dieser Arbeit auf die Entwicklung einer Anwendung mit dem Schwerpunkt auf der Kurs- und der Individualebene fokussiert.
-Die Kursebene dient zur Weitergabe Lernmaterialien, die eine Vorlesung ergänzen.
-Dies soll einen direkten Einfluss auf die Individualebene haben und den individuellen Studenten fördern.
-Ziel ist es den Studenten beim Lernen zur unterstützen und das Verständnis der in der Vorlesung vermittelten Informationen zu fördern.  
+Die Kursebene dient zur Weitergabe von Lernmaterialien, die eine Vorlesung ergänzen. Außerdem bündelt sie für einen Kurs geltende Informationen, die ansonsten jeder Studierende einzeln für sich einarbeiten und berücksichtigen müsste. Dies soll einen direkten Einfluss auf die Individualebene haben und den individuellen Studenten fördern. Ziel ist es den Studenten beim Lernen zur unterstützen, administrative Aufwände zu reduzieren und das Verständnis der in der Vorlesung vermittelten Informationen zu fördern.  
 
-\begin{figure}[]%FIXME:
-    \begin{center}
-        \includegraphics[width=.7\textwidth]{img/Ebenen.png}
-        \caption{Aktionsebenen}
-        \label{fig:ebenen}
-    \end{center}
-\end{figure}
-%TODO: Verweis auf pptx Fr. Honal % TODO: Gibt es hier noch Quellen?
-
-Durch diesen Fokus entfallen allerdings Vorteile, die sich durch eine größere Nutzer- und damit Datenbasis ergeben.
-Besonders die Möglichkeit für Datenanalysen als Teil des Data Minings ist aufgrund des geringen Datenumfangs nicht möglich.
-Gleichzeitig sind wir der Überzeugung, dass eine Auswertung des Lernfortschrittes nicht der primäre Grund für die Entwicklung einer Anwendung sein sollte, sondern der Mehrgewinn für Studenten.
-Sollte sich die Anwendung für Nutzer als Vorteilhaft erweisen, kann die Anwendung ohne Probleme um Funktionalitäten aus anderen Ebenen erweitert werden.
+Durch diesen Fokus entfallen einige übergeordnete Auswertungsmöglichkeiten mit Methoden aus dem Bereich Data Mining, da für sie eine breitere Datengrundlage nötig wäre. Wir sind allerdings der Überzeugung, dass eine Auswertung des Lernfortschrittes nicht der primäre Grund für die Entwicklung einer Anwendung sein sollte. Dies lässt sich vor allem damit begründen, dass die Quantität und Qualität der erhobenen Daten stark mit dem Mehrwert und dem damit verbunden Nutzerverhalten der Studenten zusammenhängt. Aus diesem Grund verfolgen wir das Ziel eine auf die Anforderungen der Stundenten angepasste Anwendung zu liefern, die für die Studenten einen wirklichen Mehrwert darstellt und daher freiwillig und gerne von ihnen genutzt wird. Dadurch fallen implizit mehr Lerndaten an, die dann anonym ausgewertet werden können und eine höhere Repräsentativität ermöglichen. Sollte sich die Anwendung für Nutzer als Vorteilhaft erweisen, kann die Anwendung aufgrund ihres technischen Designs ohne Probleme um Funktionalitäten aus anderen Ebenen erweitert werden und somit kontinuierlich wachsen.
 
 
 
 % TODO: Können Wir vielleicht noch einen User Acceptance Test machen?
 
-% Um eine Fortführung und Integration der anderen Ebenen in Zukunft zu ermöglichen, soll die Datenhaltung und Architektur der Anwendung so konzipiert werden, dass eine Erweiterung leicht möglich ist.
-
 % TODO: Also bauen wir einen Export? Das wäre gut, dann können wir das schreiben. Aber da müssen wir mal schauen. Vordefinierte Auswertungen, Berechnungen wird es allerdings aufgrund der gewählten Abgrenzungen erst einmal nicht geben.
-% Die vorhandenen Daten sollen im Ersten Schritt in einem auswertungstauglichen Format zur Verfügung gestellt werden.
-% Die Auswertung selbst muss durch den Dozenten selbst erfolgen.
+Die von Beginn an zu verfügung stehenden Daten sollen im Ersten Schritt in einem auswertungstauglichen Format zur Verfügung gestellt werden. Die genauen Details werden später im Abschnitt Konzeption betrachtet. Wichtig ist uns hierbei jedoch das die Anonymität der einzelnen Nutzer geschützt bleibt und keine personenbezogenen Daten weitergegeben werden. Außerdem soll der Export dieser Daten nur den Dozenten eines Kurses vorbehlaten sein. Aufgrund der vorgenommenen Themenabgrenzung muss die Auswertung selbst inklusive der Auswahl der Daten und Methoden jedoch vorerst durch die Dozierenden vorgenommen werden. 
 
 % TODO: Abgrenzung zu anderen Werkzeugen
 \subsection{Abgrenzung zu anderen Anwendungen}
@@ -61,7 +31,7 @@ Moodle ist eine Lernplattform, in dem Nutzer Kurse, Kalender, Foren und ähnlich
 Trotz des recht umfangreichen Funktionsumfangs besitzt die Anwendung aber einige Nachteile.
 So berichten viele Nutzer (Studenten, Dozenten und Unternehmensbetreuer) von sehr schlechter Bedienbarkeit und Unübersichtlichkeit.
 Zusätzlich weißt die Datenschutzerklärung darauf hin, dass umfangreich Daten, z.\,B. \enquote{ob und wie sie [Nutzer] in Workshops mitgewirkt haben}, gesammelt werden können.\autocites{moodleTermsOfServiceDHBW}{moodleTermsOfService}
-Aus Datenschutzrechtlichen Gründen, wird aktuell die Learning Analytics Erweiterungen und Möglichkeiten der Kursmanagement und Lernplattform Moodle nicht genutzt.
+Aus Datenschutzrechtlichen Gründen, wird aktuell die Learning Analytics Erweiterungen und andere Möglichkeiten der Kursmanagement und Lernplattform Moodle nicht genutzt.
 
 Ein weiteres Werkzeug, welches von im Hochschulkontext verwendet wird ist \enquote{Dualis}.
 Diese Anwendung besitzt aber nur Auskunft über Bewertungen.
@@ -70,39 +40,32 @@ Somit besitzen die Studenen vor der Klausur oft kein Feedback zu der von ihnen g
 
 Darüber hinaus existieren Anstrengungen weitere Anwendungen umzusetzen, die aber nicht den Prototypstatus verlassen haben.
 Ein Beispiel hierfür ist die MyLA-Anwendung.\autocite{mylaGithub}
-Für Dozenten gibt es die Möglichkeit, Umfragen zu erstellen und mit ihren Studierenden zu teilen.
-Diese haben dadurch die Chance, ihre Meinung zur Vorlesung mitzuteilen, Gelerntes zu verinnerlichen oder auch um Anmerkungen zu gestellten Fragen zu geben.
-Die Plattform ermöglicht es dabei, Umfragen als Vorlage zu speichern, sodass diese in unterschiedlichen Kursen verwendet werden können und zeigt die Ergebnisse der Umfragen graphisch an.
+Für Dozenten gibt es die Möglichkeit, Umfragen zu erstellen und mit ihren Studierenden zu teilen. Diese haben dadurch die Chance, ihre Meinung zur Vorlesung mitzuteilen, Gelerntes zu verinnerlichen oder auch um Anmerkungen zu gestellten Fragen zu geben. Die Plattform ermöglicht es dabei, Umfragen als Vorlage zu speichern, sodass diese in unterschiedlichen Kursen verwendet werden können und zeigt die Ergebnisse der Umfragen graphisch an.
 
-% TODO: evasys   Dann kann man sagen, dass mehrer Anwendungen genutzt werden müssen
+Zur Evaluation von gehaltenen Vorlesungen kommt das System zur Automation von Befragungen und Prüfungen evasys zum Einsatz. \autocite{evasys} Hier wird jedoch nur Feedback zu bereits gehaltenen Vorlesungen stichprobenartig eingeholt. Kurzfristige Anpassungen des Inhaltes, Vorgehens oder anderen Aspekten einer Vorlesung an die Anforderungen und Wünsche der Studenten sind aufgrund des Abfragezeitpunktes nicht mehr möglich. Insgesamt lässt sich feststellen, dass viele unterschiedliche zum Lernen und erheben von Meinungsbildern an der DHBW Mannheim genutzt werden. Augenscheinlich scheinen diese nicht miteinander verknüpft und integriert zu sein. Zumindest können wir aus unserem Studienalltag von mehreren Beispielen berichten, wo die gleichen Daten mehrfach abgegeben werden mussten.
 
 % TODO: Hier noch einen Satz, alle anderen Anwendungen sind Käse, und dass wir das alles super toll machen
 
 
-\section{Ist-Analyse} % TODO: Ist es besser die Ist-Analyse mit den funktionalen Anforderungen zusammen zu zeihen? Ich denke schon!
-Bevor die eigentliche Entwicklungs starten kann müssen die aktuellen Probleme und Verbesserungspotenziale analysiert werden.
+\section{Ist-Analyse}
+Bevor die eigentliche Entwicklung starten kann müssen die aktuellen Probleme und Verbesserungspotenziale analysiert werden.
 
-Dozierende haben aktuell wenig Möglichkeiten zu erfahren, wie ihre Vorlesung in verschiedenen Kursen angenommen wird.
+Dozierende haben aktuell wenig Möglichkeiten zu erfahren, wie ihre Vorlesung in verschiedenen Kursen angenommen werden.
 Besonders der Lernstand der Studierenden und die Stimmung innerhalb der Kurse sind nur schwer erfassbar.
 Nach Aussage eines Dozenten wurde uns gesagt, dass dies besonders in Online-Vorlesungen problematisch ist.
-Sofern man \enquote{nicht in fragende Gesichter schaut}, ist es ob schwer zu wissen, wann eine Fragestellung zu kompliziert ist.
-Besonders durch die anonyme Maße in Online-Vorlesungen, die auch keine Kameras besitzen dies ein erhebliches Problem.
-Dadurch entsteht eine Differenz, die sich in Klausuren negativ auswirken kann.
-Aktuell (Dezember '20) finden zum zweiten Mal ausschließlich Online-Vorlesungen statt, sodass diese Möglichkeiten für Dozierende nochmals relevanter sein könnten.
-
-
+Sofern man \enquote{nicht in fragende Gesichter schaut}, ist es oft schwer zu wissen, wann eine Fragestellung zu kompliziert ist.
+Besonders die gegebene \enquote{Anonymität} der an der DHBW gehaltenen Online-Vorlesungen, bei denen im Regelfall kein Video der Teilnehmenden gestreamed wird, verschlechtert die Situation nochmals.
+Dadurch kann eine Differenz zwischen dem gefühlten und dem tatsächlichen Leistungsstand entstehen, die sich in Klausuren negativ auswirken kann.
+Aktuell (Dezember '20) finden das zweite Semester in Folge die Vorlesungen ausschließlich online statt, sodass eine Feedbackmöglichkeit für Dozierende nochmals relevanter sein könnten.
 
 \section{Anforderungsformulierung}
 
 \subsection{Funktionale Anforderungen} 
-Bei der Anforderungsanalyse gehen wir nach dem Motto "Von Studenten für Studenten" vor.
-Wir als Studenten der DHBW können sehr gut einschätzen was uns das Studium erleichtern würde und wie wir uns in Bezug auf Klausuren und Prüfungen organisieren.
-Mit einer Prozessierung und Automatisierung können Synergien genutzt werden und auch andere Kommilitonen von den für diese Veranstaltungen eingebrachten Aufwänden profitieren.
+Bei der Anforderungsanalyse gehen wir nach dem Motto "Von Studenten für Studenten" vor. Wir als Studenten der DHBW können sehr gut einschätzen was uns das Studium erleichtern würde und wie wir uns in Bezug auf Klausuren und Prüfungen organisieren. Mit einer Prozessierung und Automatisierung können Synergien genutzt werden und auch andere Kommilitonen von den für diese Veranstaltungen eingebrachten Aufwänden profitieren.
 
 Ziel dieser Arbeit ist es eine App zu entwickeln, die Plattform unabhängig als Web-Applikation oder im Browser genutzt werden kann.
 Dabei sollen sowohl Studenten als auch Dozenten einen Zugang bekommen.
-Wir setzen auf eine freiwillige Teilnahme.
-Die Anwendungen soll durch ihre Funktionen und die intuitive Bedienbarkeit überzeugen und nicht durch einen Nutzungszwang.
+Wir setzen auf eine freiwillige Teilnahme. Die Anwendungen soll durch ihre Funktionen und die intuitive Bedienbarkeit überzeugen und nicht durch einen Nutzungszwang.
 
 Wir konnten die folgenden funktionalen Anforderungen definieren:
 \begin{itemize}
@@ -122,7 +85,7 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         So entsteht ein Kalender und Kapazitätsengpässe rechtzeitig erkannt und durch Umplanen verhindert werden können.
 
     \item Karteikarten                      \\
-        Für eine bessere Prüfungsvorbereitungen Karteikarten angelegt werden.
+        Für eine bessere Prüfungsvorbereitungen können Karteikarten angelegt werden. Unterschiedliche wissenschaftliche Untersuchungen zeigen die Vorteile dieser Methode. Für das Lernen der Karteikarten gibt es eine vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung implementiert XXX weil YYY. 
         Die Karteikarten sollen direkt in App gelernt werden, sodass kein zusätzlicher Aufwand für das Abschreiben der Karten notwendig ist.
 
     \item Prüfungsterminübersicht           \\
@@ -134,7 +97,7 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Besitzt ein Nutzer einen Account, soll er Kurse anlegen können, zu denen er Informationen wie Datum von Prüfungen erfassen kann.
         Um zu verhindern, dass diese organisatorische Aufwand von jedem Studenten einzeln durchgeführt werden müssen soll es zusätzlich die Funktion geben, dass Dozenten einen Kurs anlegen können.
         Den Kursen können initial bereits Prüfungstermine, TODOs und Karteikarten mitgegeben werden.
-        Somit entfällt die initiale Erstellung.
+        Somit entfällt die vielfache initiale Erstellung.
         Die zu einem Kurs gehörenden Informationen können von den Studierenden weiterhin nach belieben angepasst und ergänzt werden ohne dabei für die anderen eingeschriebenen Kursteilnehmer Daten zu verändern.
         Das Erstellen eines Kurses hat für den Dozenten den Vorteil, dass für diesen Kurs Daten zur Verfügung gestellt bekommt, die er zur Anpassung oder Evaluation seiner Vorlesung nutzen kann.
         Beispiele hierfür können sein Lerntypen der Studenten, Fortschritt beim Lernen der Karteikarten, etc.
@@ -160,22 +123,22 @@ Neben den funktionalen Anforderungen gibt es auch einige nicht-funktionale Anfor
         Aus diesem Grund sollte die Ladezeit gering gehalten werden.
     \item Persistenter Speicher             \\
         Informationen über Kurse müssen dauerhaft gespeichert sein und jederzeit abrufbar sein.
-        Besonders vor und nach Vorlesungen wird die Nutzung der Anwendung vorraussichtlich deutlich ansteigen.
+        Besonders vor und nach Vorlesungen wird die Nutzung der Anwendung voraussichtlich deutlich ansteigen.
         Auch bei Spitzenlast müssen stets alle Informationen abrufbar sein.
     \item Responsive Design\\
         Die Anwendung sollte auf jeden Gerät vollständig funktional sein.
-        Studenten nuten häufig viele Geräte mit verschiedenen Bildschirmformaten.
-        Besonders unterwegs oder in öffentlichen Verkehrsmitteln sind Mobilgeräte die primären Geräte.
+        Studenten nutzen häufig viele Geräte mit verschiedenen Bildschirmformaten.
+        Besonders unterwegs oder in öffentlichen Verkehrsmitteln sind Mobilgeräte die primäre Wahl.
         Aus diesem Grund muss sich die Anwendung dynamisch an solche Geräte anpassen.
     \item Corporate Design\\
-        Die DHBW besitzt ein einheitliches Design, an der man alle DHBWs und DHBW-Anwendungen erkennt.
+        Die DHBW besitzt ein einheitliches Design, an der man alle DHBWs und DHBW-Anwendungen erkennt \autocite{CD-DHBW}.
         Damit die Anwendung sich an die DHBW angliedert, sollte die Anwendung nahe an diesem Design sein.
         Besonders das Farbschema sollte dabei einheitlich sein. % TODO: Muss das wirklich sein, das sieht halt echt nicht gut aus. Ich mag das cosmic theme ganz gern
     \item Datenschutz\\
         Das Thema Datenschutz ist so wichtig wie nie zuvor.
         Besonders der Schutz von personenbezogenen Daten steht dabei im Vordergrund.
         Wie oben bereits festgestellt wurde besitzen Anwendungen gegenwärtig problematische Datenschutzlagen.
-        Aus diesem Grund soll die entwickelte Anwendung einen hohen Wert auf den Datenschutz legen und die Verarbeitung dieser Daten auf ein Minimum reduzieren.
+        Aus diesem Grund soll die entwickelte Anwendung einen hohen Wert auf den Datenschutz legen und die Verarbeitung personenbezogener Daten auf ein Minimum reduzieren.
 \end{itemize}
 
 
@@ -204,6 +167,84 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
     \caption{Zusammengefasste Anforderungen}
     \label{tab:anforderungen}
 \end{table}
+\section{Personas}
 
+
+% -------------------------------------------------------
+% 1. Student
+% 2. Dozent
+% -------------------------------------------------------
+% Keine Ahnung, irgendwelche Bilder halt :D
+% TODO: Das ist noch sehr kopiert
+
+% https://unsplash.com/photos/ZVo7vtXilCs
+\subsection{Beispiel Persona für Student}
+
+\begin{minipage}[t]{0.5\textwidth}
+	\vspace{-4cm}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{l l}
+		Name: & Stephan Student \\
+		Alter: & 21 \\
+		Tätigkeit: & Student Wirtschaftsinformatik \\
+		IT-Skills: & 4/5 \hspace{-1cm} \begin{barchart}{5.0}
+			\baritemNL{}{4}
+		\end{barchart} \\
+	\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+	\flushright
+	\includegraphics[width=0.70\textwidth]{img/carlos-lindner-ZVo7vtXilCs-unsplash.jpg}
+\end{minipage}
+
+
+Stephan ist ein typisches Beispiel für einen Studenten an der DHBW.
+Er ist viel aktiv und war in der Vor-Corona-Zeit eine Person, die zur DHBW gependelt ist.
+Demnach möchte er egal wo er ist stets eine Übersicht über seine anstehenden Klausuren haben und sich auch unterwegs auf diese Vorbereiten.
+Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht Weitergegeben werden und nicht zur Klausurbewertung oder Ähnliches herangezogen werden können.
+
+Das möchte ich gerne haben:
+\begin{itemize}
+	\item Übersicht über meine Klausuren
+	\item Auch unterwegs lernen können
+	\item Anonymität
+\end{itemize}
+
+
+\clearpage
+\subsection{Beispiel Persona für Dozent}
+% https://unsplash.com/photos/TXxiFuQLBKQ
+\begin{minipage}[t]{0.5\textwidth}
+	\vspace{-4cm}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{l l}
+		Name: & Dagmar Dozent \\
+		Alter: & 35 \\
+		Tätigkeit: & Dozentin für Finanzbuchhaltung \\
+		IT-Skills: & 2/5 \hspace{-1cm} \begin{barchart}{5.0}
+			\baritemNL{}{4}
+		\end{barchart} \\
+	\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+	\flushright
+	\includegraphics[width=0.70\textwidth]{img/thisisengineering-raeng-TXxiFuQLBKQ-unsplash.jpg}
+\end{minipage}
+
+Dagmar ist eine Dozentin für Wirtschaftsthemen, vorrangig Finanzbuchhaltung.
+Als verantwortungsbewusste Person ist es ihr wichtig, dass Studenten auch außerhalb ihrer Vorlesung Unterstützung erhalten.
+Aus diesem Grund möchte sie gerne weiterführende Informationen an Studenten weitergeben.
+Gleichzeitig möchte sie gerne Feedback zu ihrer Vorlesung erhalten um das Lernmaterial bestmöglich anzupassen.
+Da sich allerdings ihre Kernkompetenzen außerhalb der IT befinden ist es ihr wichtig, dass sie die Anwendung nutzen kann ohne eine lange Einführung erhalten zu müssen. 
+
+
+Das möchte ich gerne haben:
+\begin{itemize}
+	\item Informationen an alle Studenten des Kurses verteilen
+	\item Feedback zum Kurs erhalten %TODO: Sowas noch implementieren
+	\item Intuitives Interface
+\end{itemize}
 % TODO: Wenn das Dashboard fertig ist, stehen da ja dann Analysen drin? Dann kann man das alles noch erweitern
 % Generell Umfragen, .... alles erst reinschreiben, wenn wir das auch implementiert haben :)
