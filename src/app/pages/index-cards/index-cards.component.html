@@ -1,29 +1,48 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header> Index Cards </nb-card-header>
+      <nb-card-header>Index cards</nb-card-header>
       <nb-card-body>
-        <tinder-ui [cards]="cards" (choiceMade)="logChoice($event)"></tinder-ui>
-        <div
-          echarts
-          [options]="echartOptions"
-          [@fadeAnimation]="gaugeState"
-        ></div>
-
-        <!-- <nb-alert outline="basic" style="text-align: center"
-          >Seems like, there are no Index-Cards yet. Try creating on with the
-          button below.</nb-alert
-        > -->
-        <!--TODO:-->
+        <nb-card [nbSpinner]="loadingCards" style="margin-bottom: 0;" nbSpinnerStatus="primary">
+          <div *ngIf="!loadingCards">
+            <div *ngIf="!roundFinished">
+              <tinder-ui *ngIf="cards.length; else alert" [cards]="cards" (choiceMade)="logChoice($event)" (edit)="edit($event)" (delete)="delete($event)"></tinder-ui>
+              <ng-template #alert>
+                <nb-alert outline="basic" style="text-align: center; margin: 50px 20px 0 20px;">
+                  Seems like, there are no index cards yet. Try creating on with the
+                  button below.
+                  <div style="margin-top: 20px">
+                    <button nbButton outline color="primary" (click)="openAddDialog()">
+                      <nb-icon icon="plus-outline"></nb-icon>
+                      Add index card
+                    </button>
+                  </div>
+                </nb-alert>
+              </ng-template>
+            </div>
+            <div *ngIf="roundFinished" style="text-align: center; font-size: large; font-weight: 600;">
+              <div
+                echarts
+                [options]="echartOptions"
+                [@fadeAnimation]="gaugeState"
+              ></div>
+              <div>You answered {{ echartOptions.series[0].data[0].value }}% correct!</div>
+              <button style="margin-top: 20px;" nbButton outline color="primary" (click)="repeat()">
+                <nb-icon icon="repeat-outline"></nb-icon>
+                Repeat
+              </button>
+            </div>
+          </div>
+        </nb-card>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
 <!-- TODO: connect Gobal Search to index Cards  -->
 
-<div class="add-button-container" *ngIf="isLecturer">
+<!-- <div class="add-button-container" *ngIf="isLecturer">
   <button mat-fab color="primary" (click)="openAddDialog()">
     <nb-icon icon="plus-outline"></nb-icon>
   </button>
-</div>
+</div> -->
 <!--TODO: Das in der Dokumentation anders schreiben. Wenn der Nutzer auch noch Karteikarten bearbeiten kann, wird das komplizierter-->
