@@ -28,6 +28,8 @@
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
+  margin: 0 40px;
+  max-width: 500px;
   &.moving {
     transition: none;
     cursor: -webkit-grabbing;
