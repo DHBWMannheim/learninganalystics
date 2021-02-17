@@ -35,6 +35,11 @@ export class PagesComponent implements OnInit {
             .concat(courses.participations)
             .flatMap((course) => this.mapCourseToMenu(course)),
         ),
+        map((courses) =>
+          courses.sort((a, b) =>
+            a.title < b.title ? -1 : a.title > b.title ? 1 : 0,
+          ),
+        ),
       )
       .subscribe((v) => {
         this.menu = PRE_COURSE_MENU_ITEMS.concat(v).concat(
