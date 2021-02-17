@@ -61,6 +61,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
+  languageMenu = [
+    {
+      title: 'DE',
+      icon: 'checkmark-outline'
+    },
+    {
+      title: 'EN',
+      icon: ''
+    },
+  ];
+
   public constructor(
     private sidebarService: NbSidebarService,
     private menuService: NbMenuService,

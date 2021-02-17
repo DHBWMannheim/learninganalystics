@@ -17,7 +17,7 @@
 </div>
 
 <div class="header-container">
-  <nb-actions size="small">
+  <nb-actions>
     <!-- <nb-action class="control-item">
       <nb-search
         type="rotate-layout"
@@ -39,8 +39,15 @@
     >
     </nb-action> -->
     <nb-action
+      class="control-action"
+      matRipple
+      [matRippleUnbounded]="true"
+      [matRippleCentered]="true"
+      [nbContextMenu]="languageMenu"
+    ><nb-icon icon="globe-2-outline"></nb-icon>
+    </nb-action>
+    <nb-action
       class="user-action"
-      *nbIsGranted="['view', 'user']"
       matRipple
       [matRippleUnbounded]="true"
       [matRippleCentered]="true"

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem, NbSearchService } from '@nebular/theme';
-import { map, mergeMap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+import { switchMap } from 'rxjs/operators';
 
 import { Course, CoursesService } from '../@core/data/course.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ngx-pages',
@@ -33,12 +33,13 @@ export class PagesComponent implements OnInit {
 
     this.coursesService.currentCourses
       .pipe(
-        map((courses) =>
-          courses.creations
-            .concat(courses.participations)
-            .flatMap((course) => this.mapCourseToMenu(course)),
+        switchMap((courses) =>
+          Promise.all(
+            courses.creations
+              .concat(courses.participations)
+              .flatMap((course) => this.mapCourseToMenu(course)),
+          ),
         ),
-        mergeMap(v=>v)
       )
       .subscribe(async (menuItems) => {
         this.buildMenu(menuItems);
