@@ -46,6 +46,7 @@ export class CoursesService extends CommonFirestoreService<Course> {
       participants: [],
     });
     await this.refreshCourses();
+    return document.id;
   }
 
   async joinCourse(key: string) {
@@ -66,6 +67,7 @@ export class CoursesService extends CommonFirestoreService<Course> {
 
     await this.upsert(course);
     await this.refreshCourses();
+    return course.id;
   }
 
   private async refreshCourses() {

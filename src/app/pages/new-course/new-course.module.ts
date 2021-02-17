@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NbButtonModule, NbCardModule, NbInputModule } from '@nebular/theme';
@@ -13,6 +13,7 @@ import { NewCourseComponent } from './new-course.component';
   declarations: [NewCourseComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     NbCardModule,
     ThemeModule,
     NewCourseRoutingModule,

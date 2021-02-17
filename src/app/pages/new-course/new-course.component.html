@@ -3,7 +3,7 @@
     <nb-card style="height: calc(100% - 16px)">
       <nb-card-header> Join a Course </nb-card-header>
       <nb-card-body>
-        <form>
+        <form [formGroup]="joinForm">
           <mat-form-field class="w-100">
             <mat-label>Key</mat-label>
             <input
@@ -12,10 +12,16 @@
               required
               name="key"
               maxlength="6"
-              [(ngModel)]="key"
+              formControlName="key"
             />
+            <mat-error *ngIf="joinForm.get('key').hasError('required')">
+              Please enter a key
+            </mat-error>
+            <mat-error *ngIf="joinForm.get('key').hasError('minlength')">
+              Please enter a 6-character key
+            </mat-error>
           </mat-form-field>
-          <button nbButton (click)="joinCourse()">Join</button>
+          <button nbButton (click)="joinCourse()" [disabled]="!joinForm.valid">Join</button>
         </form>
       </nb-card-body>
     </nb-card>
@@ -24,7 +30,7 @@
     <nb-card style="height: calc(100% - 16px)">
       <nb-card-header> Create a Course </nb-card-header>
       <nb-card-body>
-        <form>
+        <form [formGroup]="createForm">
           <mat-form-field class="w-100">
             <mat-label>Name</mat-label>
             <input
@@ -32,10 +38,13 @@
               placeholder="A short name..."
               required
               name="name"
-              [(ngModel)]="name"
+              formControlName="name"
             />
+            <mat-error *ngIf="createForm.get('name').hasError('required')">
+              Please enter a course name
+            </mat-error>
           </mat-form-field>
-          <button nbButton (click)="createCourse()">Create</button>
+          <button nbButton (click)="createCourse()" [disabled]="!createForm.valid">Create</button>
         </form>
       </nb-card-body>
     </nb-card>
