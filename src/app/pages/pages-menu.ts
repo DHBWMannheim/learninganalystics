@@ -10,21 +10,20 @@ export const PRE_COURSE_MENU_ITEMS = async (
     link: '/pages/dashboard',
     home: true,
   },
-
   {
     title: await ts.get('menu.courses').toPromise(),
     group: true,
   },
+  {
+    title: await ts.get('menu.joinCreate').toPromise(),
+    icon: 'plus-square-outline',
+    link: '/pages/new-course',
+  }
 ];
 
 export const POST_COURSE_MENU_ITEMS = async (
   ts: TranslateService,
 ): Promise<NbMenuItem[]> => [
-  {
-    title: await ts.get('menu.joinCreate').toPromise(),
-    icon: 'plus-square-outline',
-    link: '/pages/new-course',
-  },
   {
     title: await ts.get('menu.personal').toPromise(),
     group: true,

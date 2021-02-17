@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CoursesService } from '../../@core/data/course.service';
 
 @Component({
@@ -7,23 +9,47 @@ import { CoursesService } from '../../@core/data/course.service';
   styleUrls: ['./new-course.component.scss'],
 })
 export class NewCourseComponent implements OnInit {
-  key = '';
-  name = '';
+  joinForm = new FormGroup({
+    key: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  });
 
-  constructor(private readonly coursesService: CoursesService) {}
+  createForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(1)]),
+  });
+
+  loadingJoin = false;
+  loadingCreate = false;
+
+  constructor(
+    private readonly coursesService: CoursesService,
+    private readonly router: Router,
+  ) {}
 
   ngOnInit(): void {}
 
   async joinCourse() {
-    await this.coursesService.joinCourse(this.key);
-    this.key = '';
-    // TODO:
+    this.loadingJoin = true;
+    const key = this.joinForm.get('key').value;
+    this.joinForm.reset();
+    const courseId = await this.coursesService.joinCourse(key);
+    this.loadingJoin = false;
+    this.navigate(courseId);
   }
 
   async createCourse() {
-    await this.coursesService.createCourse(this.name);
-    this.name = '';
-    //TODO:
+    this.loadingCreate = true;
+    const name = this.createForm.get('name').value;
+    this.createForm.reset();
+    const courseId = await this.coursesService.createCourse(name);
+    this.loadingCreate = false;
+    this.navigate(courseId);
   }
-  //TODO: Redirect to course
+
+  private navigate(courseId: string|undefined) {
+    if(!courseId) return;
+    setTimeout(async () => {
+      // TODO: das ist dirty
+      await this.router.navigate(['pages', 'exams', courseId]);
+    });
+  }
 }

@@ -1,7 +1,13 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header>{{'indexCards.header'|translate}}</nb-card-header>
+      <nb-card-header style="display: flex; justify-content: space-between;">
+        {{'indexCards.header'|translate}}
+        <button nbButton outline color="primary" (click)="openAddDialog()">
+          <nb-icon icon="plus-outline"></nb-icon>
+          {{'indexCards.addButton'|translate}}
+        </button>
+      </nb-card-header>
       <nb-card-body>
         <nb-card [nbSpinner]="loadingCards" class="mb-0" nbSpinnerStatus="primary">
           <div *ngIf="!loadingCards">

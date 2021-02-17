@@ -48,7 +48,7 @@
         "question": "Frage",
         "answer": "Antwort",
         "notFound": "Es wurden keine Karteikarten gefunden",
-        "addButton": "Eine neue Karteikarte erstellen",
+        "addButton": "Neue Karteikarte",
         "repeat": "Wiederhohlen",
         "roundResultPre": "Du hast ",
         "roundResultPost": "% richtig beantwortet!",

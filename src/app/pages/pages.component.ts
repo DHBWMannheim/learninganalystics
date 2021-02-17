@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem, NbSearchService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { Course, CoursesService } from '../@core/data/course.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
@@ -38,6 +38,11 @@ export class PagesComponent implements OnInit {
             courses.creations
               .concat(courses.participations)
               .flatMap((course) => this.mapCourseToMenu(course)),
+          ),
+        ),
+        map((courses) =>
+          courses.sort((a, b) =>
+            a.title < b.title ? -1 : a.title > b.title ? 1 : 0,
           ),
         ),
       )
