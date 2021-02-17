@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { map, switchMap } from 'rxjs/operators';
 
 import { Course, CoursesService } from '../@core/data/course.service';
+import { MenuHelperService } from '../@theme/menu-helper.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
 
 @Component({
@@ -18,15 +19,15 @@ import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
 })
 export class PagesComponent implements OnInit {
   menu = [];
+  private currentItems: NbMenuItem[] = [];
 
   constructor(
     private readonly search: NbSearchService,
     private readonly coursesService: CoursesService,
     private readonly translate: TranslateService,
+    private readonly menuHelper: MenuHelperService,
   ) {}
   async ngOnInit(): Promise<void> {
-    this.buildMenu();
-
     this.search.onSearchSubmit().subscribe(({ term }) => {
       console.log('TODO: SEARCH:', term);
     });
@@ -46,7 +47,15 @@ export class PagesComponent implements OnInit {
           ),
         ),
       )
-      .subscribe((menuItems) => this.buildMenu(menuItems));
+      .subscribe((menuItems) => {
+        this.currentItems = menuItems;
+        this.menuHelper.reloadMenu();
+      });
+
+    this.menuHelper.onReload.subscribe(() => {
+      this.buildMenu(this.currentItems);
+    });
+    this.menuHelper.reloadMenu();
   }
 
   private async buildMenu(courses: NbMenuItem[] = []) {

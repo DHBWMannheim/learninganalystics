@@ -9,22 +9,16 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   constructor(
     private readonly swUpdate: SwUpdate,
-    private readonly translateService: TranslateService,
+    translateService: TranslateService,
   ) {
     const browserLang = translateService.getBrowserLang();
     translateService.addLangs(['en', 'de']);
     translateService.setDefaultLang('de');
-    translateService.use('de');
-    // translateService.use(browserLang.match(/en|de/) ? browserLang : 'de');
+    translateService.use(browserLang.match(/en|de/) ? browserLang : 'de');
   }
 
   ngOninit() {
-    this.swUpdate.available.subscribe((event) => {
-      console.log(
-        'A newer version is now available. Refresh the page now to update the cache',
-      );
-      location.reload();
-    });
+    this.swUpdate.available.subscribe(() => location.reload());
     this.swUpdate.checkForUpdate();
   }
 }

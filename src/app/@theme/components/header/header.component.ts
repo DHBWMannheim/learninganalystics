@@ -12,6 +12,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { User, UserService } from '../../../@core/data/user.service';
 import { LayoutService } from '../../../@core/utils/layout.service';
 import { RippleService } from '../../../@core/utils/ripple.service';
+import { MenuHelperService } from '../../menu-helper.service';
 
 @Component({
   selector: 'ngx-header',
@@ -73,6 +74,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private readonly rippleService: RippleService,
     private readonly userService: UserService,
     private readonly translate: TranslateService,
+    private readonly menuHelper: MenuHelperService,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map((theme) => {
@@ -113,16 +115,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .onItemClick()
       .pipe(filter(({ tag }) => tag === 'languageMenu'))
       .subscribe(({ item }) => {
-        console.log(item.title);
-        // this.translate.setDefaultLang(item.title.toLowerCase());
-        this.translate.use(item.title);
+        this.translate.use(item.title.toLowerCase());
+        this.menuHelper.reloadMenu();
       });
 
     this.languageMenu = this.translate.getLangs().map((lang) => ({
-      title: lang,
+      title: lang.toUpperCase(),
     }));
-
-    console.log();
   }
 
   ngOnDestroy() {
