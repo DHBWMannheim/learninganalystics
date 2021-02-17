@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NbSearchService } from '@nebular/theme';
-import { flatMap, map, mergeMap } from 'rxjs/operators';
+import { NbMenuItem, NbSearchService } from '@nebular/theme';
+import { map } from 'rxjs/operators';
+
 import { Course, CoursesService } from '../@core/data/course.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ngx-pages',
@@ -20,9 +22,10 @@ export class PagesComponent implements OnInit {
   constructor(
     private readonly search: NbSearchService,
     private readonly coursesService: CoursesService,
+    private readonly translate: TranslateService,
   ) {}
-  ngOnInit(): void {
-    this.menu = PRE_COURSE_MENU_ITEMS.concat(POST_COURSE_MENU_ITEMS);
+  async ngOnInit(): Promise<void> {
+    this.buildMenu();
 
     this.search.onSearchSubmit().subscribe(({ term }) => {
       console.log('TODO: SEARCH:', term);
@@ -36,11 +39,15 @@ export class PagesComponent implements OnInit {
             .flatMap((course) => this.mapCourseToMenu(course)),
         ),
       )
-      .subscribe((v) => {
-        this.menu = PRE_COURSE_MENU_ITEMS.concat(v).concat(
-          POST_COURSE_MENU_ITEMS,
-        );
+      .subscribe(async (menuItems) => {
+        this.buildMenu(menuItems);
       });
+  }
+
+  private async buildMenu(courses: NbMenuItem[] = []) {
+    this.menu = (await PRE_COURSE_MENU_ITEMS(this.translate))
+      .concat(courses)
+      .concat(await POST_COURSE_MENU_ITEMS(this.translate));
   }
 
   private mapCourseToMenu(course: Course) {

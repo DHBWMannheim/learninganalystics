@@ -1,6 +1,6 @@
 import 'hammerjs';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -18,6 +18,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { environment } from '../environments/environment';
@@ -53,6 +55,14 @@ import { AppComponent } from './app.component';
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (httpClient: HttpClient) =>
+          new TranslateHttpLoader(httpClient),
+        deps: [HttpClient],
+      },
     }),
   ],
   bootstrap: [AppComponent],

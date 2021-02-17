@@ -1,0 +1,28 @@
+{
+    "footer": {
+        "madeWith": "In Mannheim mit ❤️ erstellt, 2021"
+    },
+    "todos": {
+        "overview": "Aufgabenübersicht",
+        "all": "Alle Aufgaben",
+        "notFound": "Keine Aufgaben gefunden",
+        "add": {
+            "header": "Neue Aufgabe",
+            "title": {
+                "label": "Titel",
+                "placeholder": "Ein kurzer Titel..."
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Ausführliche Beschreibung"
+            },
+            "deadline": {
+                "label": "Optionale Deadline"
+            },
+            "submit": "Speichern"
+        }
+    },
+    "menu": {
+        "todos": "Aufgaben"
+    }
+}

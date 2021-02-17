@@ -1,46 +1,41 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header> Todo-Overview </nb-card-header>
+      <nb-card-header> {{ 'todos.overview' | translate }} </nb-card-header>
       <nb-card-body>
-        <div echarts [options]="echartOptions" class="overview--chart"></div>
-      </nb-card-body>
+        <div
+          echarts
+          [options]="echartOptions"
+          class="overview--chart"
+        ></div> </nb-card-body
+      ><!--TODO: Translate-->
     </nb-card>
   </div>
 </div>
 
-<!--TODO: Chart completed?-->
-<!--TODO: course wide todos-->
-
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header> All Todos </nb-card-header>
-        <nb-list
-          nbInfiniteList
-          [threshold]="500"
-          (bottomThreshold)="loadNext()"
-          *ngIf="items"
-          [nbSpinner]="loading"
-        >
-          <nb-list-item *ngFor="let item of items">
-            <div class="row">
-              <div class="col-start mr-2 todo-checkbox">
-                <nb-checkbox
-                  (checkedChange)="toggleCompleted($event, item)"
-                  [checked]="item.completed"
-                ></nb-checkbox>
-              </div>
+      <nb-card-header>{{ 'todos.all' | translate }}</nb-card-header>
+      <nb-list [nbSpinner]="loading">
+        <nb-list-item *ngFor="let item of items">
+          <div class="row">
+            <div class="col-start mr-2 todo-checkbox">
+              <nb-checkbox
+                (checkedChange)="toggleCompleted($event, item)"
+                [checked]="item.completed"
+              ></nb-checkbox>
             </div>
-            <div class="col pointer" (click)="openAddDialog(item)">
-              <span *ngIf="!item.completed">{{ item.title }}</span>
-              <del *ngIf="item.completed">{{ item.title }}</del>
-            </div>
-          </nb-list-item>
-        </nb-list>
-        <div *ngIf="!items.length">
-          Nothing here yet. Try adding a Todo with the button below :)
-        </div>
+          </div>
+          <div class="col pointer" (click)="openAddDialog(item)">
+            <span *ngIf="!item.completed">{{ item.title }}</span>
+            <del *ngIf="item.completed">{{ item.title }}</del>
+          </div>
+        </nb-list-item>
+        <nb-list-item *ngIf="!items.length">
+         {{'todos.notFound'|translate}}
+        </nb-list-item>
+      </nb-list>
     </nb-card>
   </div>
 </div>

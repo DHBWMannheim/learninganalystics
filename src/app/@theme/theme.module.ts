@@ -39,6 +39,7 @@ import { DARK_THEME } from './styles/theme.dark';
 import { MATERIAL_LIGHT_THEME } from './styles/material/theme.material-light';
 import { MATERIAL_DARK_THEME } from './styles/material/theme.material-dark';
 import { MainLayoutComponent } from './layouts/main.layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -55,6 +56,7 @@ const NB_MODULES = [
   NbEvaIconsModule,
   NbBadgeModule,
   NbCardModule,
+  TranslateModule.forChild()
 ];
 const COMPONENTS = [
   HeaderComponent,

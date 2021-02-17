@@ -1,7 +1,7 @@
 import { NbMenuItem } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
 
-// TODO: Wird das zu Moodle-Ähnlich??
-export const PRE_COURSE_MENU_ITEMS: NbMenuItem[] = [
+export const PRE_COURSE_MENU_ITEMS = async (ts: TranslateService): Promise<NbMenuItem[]> => [
   {
     title: 'Dashboard',
     icon: 'home-outline',
@@ -18,7 +18,7 @@ export const PRE_COURSE_MENU_ITEMS: NbMenuItem[] = [
  
 ];
 
-export const POST_COURSE_MENU_ITEMS = [
+export const POST_COURSE_MENU_ITEMS = async (ts: TranslateService): Promise<NbMenuItem[]>  => [
   {
     title: 'Join or Create',
     icon: 'plus-square-outline',
@@ -33,7 +33,7 @@ export const POST_COURSE_MENU_ITEMS = [
     group: true,
   },
   {
-    title: 'Todos',
+    title: await ts.get('menu.todos').toPromise(),
     icon: 'checkmark-square-outline',
     link: '/pages/todos',
   },

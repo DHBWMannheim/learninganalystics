@@ -1,29 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import {
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
-  NbDatepickerModule,
   NbIconModule,
   NbInputModule,
   NbListModule,
   NbMenuModule,
   NbSpinnerModule,
 } from '@nebular/theme';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
+import { AddComponent } from './add/add.component';
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';
-import { AddComponent } from './add/add.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
@@ -46,6 +46,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     NbCheckboxModule,
     MatDatepickerModule,
     NgxEchartsModule.forChild(),
+    TranslateModule.forChild()
   ],
   declarations: [TodosComponent, AddComponent],
 })

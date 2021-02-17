@@ -1,0 +1,29 @@
+{
+    "footer": {
+        "madeWith": "Created with ❤️ in Mannheim 2021"
+    },
+    "todos": {
+        "navigation": "Todos",
+        "overview": "Todo-Overview",
+        "all": "All Todos",
+        "notFound": "No Todos found",
+        "add": {
+            "header": "New Todo",
+            "title": {
+                "label": "Title",
+                "placeholder": "A short title..."
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "A long description"
+            },
+            "deadline": {
+                "label": "Optional Deadline"
+            },
+            "submit": "Save"
+        }
+    },
+    "menu": {
+        "todos": "Todos"
+    }
+}
