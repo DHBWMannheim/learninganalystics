@@ -8,26 +8,18 @@ export const PRE_COURSE_MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-
   {
     title: 'Courses',
     group: true,
   },
-  
-
- 
-];
-
-export const POST_COURSE_MENU_ITEMS = [
   {
     title: 'Join or Create',
     icon: 'plus-square-outline',
     link: '/pages/new-course',
   },
+];
 
-  //---
-
-  //---
+export const POST_COURSE_MENU_ITEMS = [
   {
     title: 'PERSONAL',
     group: true,

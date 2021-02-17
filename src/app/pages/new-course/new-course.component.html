@@ -1,11 +1,10 @@
 <div class="row" style="height: 100%">
   <div class="col-xs-12 col-md-6">
-    <nb-card style="height: calc(100% - 16px)" size="giant" [nbSpinner]="loadingJoin">
-      <nb-card-header> Join a Course </nb-card-header>
+    <nb-card [nbSpinner]="loadingJoin">
+      <nb-card-header>Join a Course</nb-card-header>
       <nb-card-body>
-        <img src="assets/img/undraw_Online_learning_re_qw08.svg" class="testbody"/>
         <form [formGroup]="joinForm">
-          <mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-label>Key</mat-label>
             <input
               matInput
@@ -22,20 +21,21 @@
               Please enter a 6-character key
             </mat-error>
           </mat-form-field>
-          <button nbButton (click)="joinCourse()" [disabled]="!joinForm.valid">
-            Join
-          </button>
+          <div style="text-align: right;">
+            <button nbButton outline (click)="joinCourse()" [disabled]="!joinForm.valid">
+              Join
+            </button>
+          </div>
         </form>
       </nb-card-body>
     </nb-card>
   </div>
   <div class="col-xs-12 col-md-6">
-    <nb-card style="height: calc(100% - 16px)"  size="giant" [nbSpinner]="loadingCreate">
+    <nb-card [nbSpinner]="loadingCreate">
       <nb-card-header> Create a Course </nb-card-header>
       <nb-card-body>
-        <img src="assets/img/undraw_teaching_f1cm.svg" class="testbody" />
         <form [formGroup]="createForm">
-          <mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
             <input
               matInput
@@ -48,13 +48,17 @@
               Please enter a course name
             </mat-error>
           </mat-form-field>
-          <button
-            nbButton
-            (click)="createCourse()"
-            [disabled]="!createForm.valid"
-          >
-            Create
-          </button>
+          <div style="text-align: right;">
+            <button
+              nbButton
+              outline
+              nbButton
+              (click)="createCourse()"
+              [disabled]="!createForm.valid"
+            >
+              Create
+            </button>
+          </div>
         </form>
       </nb-card-body>
     </nb-card>
