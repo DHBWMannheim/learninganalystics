@@ -8,6 +8,7 @@ import {
   NbListModule,
   NbProgressBarModule,
 } from '@nebular/theme';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxFileDropModule } from 'ngx-file-drop';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -26,6 +27,7 @@ import { FilesComponent } from './files.component';
     NbListModule,
     NbProgressBarModule,
     NbIconModule,
+    TranslateModule.forChild(),
   ],
   declarations: [FilesComponent],
 })

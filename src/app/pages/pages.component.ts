@@ -41,9 +41,7 @@ export class PagesComponent implements OnInit {
           ),
         ),
       )
-      .subscribe(async (menuItems) => {
-        this.buildMenu(menuItems);
-      });
+      .subscribe((menuItems) => this.buildMenu(menuItems));
   }
 
   private async buildMenu(courses: NbMenuItem[] = []) {

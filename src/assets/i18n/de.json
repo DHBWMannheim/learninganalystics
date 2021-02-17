@@ -3,7 +3,7 @@
         "madeWith": "In Mannheim mit ❤️ erstellt, 2021"
     },
     "todos": {
-        "overview": "Aufgabenübersicht",
+        "header": "Aufgabenübersicht",
         "all": "Alle Aufgaben",
         "notFound": "Keine Aufgaben gefunden",
         "add": {
@@ -23,16 +23,64 @@
         }
     },
     "dashboard": {
-
+        
     },
     "exams": {
-
+        "header": "Prüfungen",
+        "title": "Titel",
+        "description": "Beschreibung",
+        "deadline": "Deadline",
+        "duration": "Dauer",
+        "minutes": "Minuten",
+        "room": "Raum",
+        "tools": "Zugelassene Hilfsmittel",
+        "additionalInformations": "Zusätzliche Informationen",
+        "createTodo": "Aufgabe erstellen"
     },
     "files": {
-
+        "header": "Dateien",
+        "browseText": "Hier kannst du Dateien hinziehen oder welche ",
+        "browseButton": "vom Gerät auswählen",
+        "dropLabel": "Hier Dateien ablegen"
     },
     "indexCards": {
-
+        "header": "Karteikarten",
+        "question": "Frage",
+        "answer": "Antwort",
+        "notFound": "Es wurden keine Karteikarten gefunden",
+        "addButton": "Eine neue Karteikarte erstellen",
+        "repeat": "Wiederhohlen",
+        "roundResultPre": "Du hast ",
+        "roundResultPost": "% richtig beantwortet!",
+        "add": {
+            "header": "Neue Karteikarte",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern"
+        },
+        "delete": {
+            "header": "Neue Karteikarte",
+            "text": "Wollen Sie diese Karteikarte wirklich löschen",
+            "submit": "Ja"
+        },
+        "edit": {
+            "header": "Karteikarte bearbeiten",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern"
+        }
     },
     "feedback": {
 

@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -46,7 +47,14 @@ import { DeleteComponent } from './delete/delete.component';
     NbCheckboxModule,
     FormsModule,
     NbAlertModule,
+    TranslateModule.forChild(),
   ],
-  declarations: [IndexCardsComponent, TinderUIComponent, AddComponent, EditComponent, DeleteComponent],
+  declarations: [
+    IndexCardsComponent,
+    TinderUIComponent,
+    AddComponent,
+    EditComponent,
+    DeleteComponent,
+  ],
 })
 export class IndexCardsModule {}

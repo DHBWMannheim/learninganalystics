@@ -1,20 +1,19 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header>Index cards</nb-card-header>
+      <nb-card-header>{{'indexCards.header'|translate}}</nb-card-header>
       <nb-card-body>
-        <nb-card [nbSpinner]="loadingCards" style="margin-bottom: 0;" nbSpinnerStatus="primary">
+        <nb-card [nbSpinner]="loadingCards" class="mb-0" nbSpinnerStatus="primary">
           <div *ngIf="!loadingCards">
             <div *ngIf="!roundFinished">
               <tinder-ui *ngIf="cards.length; else alert" [cards]="cards" (choiceMade)="logChoice($event)" (edit)="edit($event)" (delete)="delete($event)"></tinder-ui>
               <ng-template #alert>
                 <nb-alert outline="basic" style="text-align: center; margin: 50px 20px 0 20px;">
-                  Seems like, there are no index cards yet. Try creating on with the
-                  button below.
+                  {{'indexCards.notFound'|translate}}
                   <div style="margin-top: 20px">
                     <button nbButton outline color="primary" (click)="openAddDialog()">
                       <nb-icon icon="plus-outline"></nb-icon>
-                      Add index card
+                      {{'indexCards.addButton'|translate}}
                     </button>
                   </div>
                 </nb-alert>
@@ -26,10 +25,10 @@
                 [options]="echartOptions"
                 [@fadeAnimation]="gaugeState"
               ></div>
-              <div>You answered {{ echartOptions.series[0].data[0].value }}% correct!</div>
+              <div>{{'indexCards.roundResultPre'|translate}}{{ echartOptions.series[0].data[0].value }}{{'indexCards.roundResultPost'|translate}}</div>
               <button style="margin-top: 20px;" nbButton outline color="primary" (click)="repeat()">
                 <nb-icon icon="repeat-outline"></nb-icon>
-                Repeat
+                {{'indexCards.repeat'|translate}}
               </button>
             </div>
           </div>
@@ -40,9 +39,5 @@
 </div>
 <!-- TODO: connect Gobal Search to index Cards  -->
 
-<!-- <div class="add-button-container" *ngIf="isLecturer">
-  <button mat-fab color="primary" (click)="openAddDialog()">
-    <nb-icon icon="plus-outline"></nb-icon>
-  </button>
-</div> -->
+
 <!--TODO: Das in der Dokumentation anders schreiben. Wenn der Nutzer auch noch Karteikarten bearbeiten kann, wird das komplizierter-->

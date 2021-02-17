@@ -3,7 +3,7 @@
         "madeWith": "Created with ❤️ in Mannheim 2021"
     },
     "todos": {
-        "overview": "Todo-Overview",
+        "header": "Todo-Overview",
         "all": "All Todos",
         "notFound": "No Todos found",
         "add": {
@@ -23,20 +23,66 @@
         }
     },
     "dashboard": {
-
+        
     },
     "exams": {
-
+        "header": "Exams",
+        "title": "Title",
+        "description": "Description",
+        "deadline": "Deadline",
+        "duration": "Duration",
+        "minutes": "Minutes",
+        "room": "Room",
+        "tools": "Permitted Tools",
+        "additionalInformations": "Additional Informations",
+        "createTodo": "Create Todo"
     },
     "files": {
-
+        "header": "Files",
+        "browseText": "Drag files here or ",
+        "browseButton": "browse",
+        "dropLabel": "Drop files here"
     },
     "indexCards": {
-
+        "header": "Index Cards",
+        "question": "Frage",
+        "answer": "Antwort",
+        "notFound": "Seems like, there are no index cards yet.",
+        "addButton": "Add index card",
+        "repeat": "Repeat",
+        "roundResultPre": "You answered ",
+        "roundResultPost": "% correct!",
+        "add": {
+            "header": "Neue Karteikarte",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern"
+        },
+        "delete": {
+            "header": "Neue Karteikarte",
+            "text": "Wollen Sie diese Karteikarte wirklich löschen",
+            "submit": "Ja"
+        },
+        "edit": {
+            "header": "Karteikarte bearbeiten",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern"
+        }
     },
-    "feedback": {
-
-    },
+    "feedback": {},
     "menu": {
         "dashboard": "Dashboard",
         "courses": "Courses",
