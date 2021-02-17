@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { NbToastrService } from '@nebular/theme';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { CommonFirestoreDocument } from './common-firestore-document';
@@ -28,6 +29,7 @@ export class CoursesService extends CommonFirestoreService<Course> {
   constructor(
     firestore: AngularFirestore,
     private readonly userService: UserService,
+    private readonly toastr: NbToastrService,
   ) {
     super('courses', firestore);
     this.refreshCourses();
@@ -45,20 +47,22 @@ export class CoursesService extends CommonFirestoreService<Course> {
       key: document.id.substring(0, 6).toLowerCase(),
       participants: [],
     });
+    this.toastr.success('Course created', 'Saved');
     await this.refreshCourses();
     return document.id;
   }
 
-  async joinCourse(key: string) {
+  async joinCourse(key: string): Promise<string | undefined> {
     const relevant = await this.getCollection()
       .where('key', '==', key.toLowerCase())
       .limit(1)
       .get();
-    // TODO: gibt es da eine bessere Möglichkeit? z.B. als seperate Join-tabelle
-    // + Rules darf student keinen namen ändern
+
     const doc = relevant.docs[0];
-    if (!doc) throw new Error('TODO_ERROR'); //TODO: Toast
-    // TODO: Already Joined/not student/dozent mix
+    if (!doc) {
+      this.toastr.danger('There is no course with this key', 'Not Found');
+      return;
+    }
     const course = doc.data();
 
     const currentUser = await this.userService.currentUser;
@@ -66,6 +70,7 @@ export class CoursesService extends CommonFirestoreService<Course> {
     course.participants.push(this.userService.createRef(currentUser.id));
 
     await this.upsert(course);
+    this.toastr.success('You joined a course', 'Saved');
     await this.refreshCourses();
     return course.id;
   }

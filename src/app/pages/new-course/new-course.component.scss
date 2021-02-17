@@ -1,0 +1,17 @@
+.testbody {
+    filter: opacity(.05);
+    position: absolute;
+    width: calc( 100% - 32px);
+    pointer-events: none;
+}
+
+
+nb-card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form,mat-form-field {
+    width: 100%;
+}
