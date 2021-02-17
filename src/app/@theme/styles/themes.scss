@@ -134,7 +134,21 @@ $nb-themes: nb-register-theme(
   material-dark
 );
 
-$nb-themes: nb-register-theme((), dhbw, dark);
+$nb-themes: nb-register-theme(
+  (
+    color-primary-100: #fdd8cb,
+    color-primary-200: #fca998,
+    color-primary-300: #f67063,
+    color-primary-400: #ec3c3d,
+    color-primary-500: #e10217,
+    color-primary-600: #c10125,
+    color-primary-700: #a2012d,
+    color-primary-800: #820030,
+    color-primary-900: #6c0031,
+  ),
+  dhbw,
+  default
+);
 
 .pointer {
   cursor: pointer;
