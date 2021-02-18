@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem, NbSearchService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
+import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { Course, CoursesService } from '../@core/data/course.service';
+import {
+  Course,
+  CoursesService,
+  RelevantCourses,
+} from '../@core/data/course.service';
 import { MenuHelperService } from '../@theme/menu-helper.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
 
@@ -19,7 +24,7 @@ import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
 })
 export class PagesComponent implements OnInit {
   menu = [];
-  private currentItems: NbMenuItem[] = [];
+  private currentCourses: RelevantCourses;
 
   constructor(
     private readonly search: NbSearchService,
@@ -32,35 +37,40 @@ export class PagesComponent implements OnInit {
       console.log('TODO: SEARCH:', term);
     });
 
-    this.coursesService.currentCourses
-      .pipe(
-        switchMap((courses) =>
-          Promise.all(
-            courses.creations
-              .concat(courses.participations)
-              .flatMap((course) => this.mapCourseToMenu(course)),
-          ),
-        ),
-        map((courses) =>
-          courses.sort((a, b) =>
-            a.title < b.title ? -1 : a.title > b.title ? 1 : 0,
-          ),
-        ),
-      )
-      .subscribe((menuItems) => {
-        this.currentItems = menuItems;
-        this.menuHelper.reloadMenu();
-      });
+    this.coursesService.currentCourses.subscribe((courses) => {
+      this.currentCourses = courses;
+      this.menuHelper.reloadMenu();
+    });
 
     this.menuHelper.onReload.subscribe(() => {
-      this.buildMenu(this.currentItems);
+      this.buildMenu(this.currentCourses);
     });
     this.menuHelper.reloadMenu();
   }
 
-  private async buildMenu(courses: NbMenuItem[] = []) {
+  private async buildMenu(relevantCourses: RelevantCourses) {
+    let courseItems: NbMenuItem[] = [];
+    if (relevantCourses) {
+      courseItems = await of(relevantCourses)
+        .pipe(
+          switchMap((courses) =>
+            Promise.all(
+              courses.creations
+                .concat(courses.participations)
+                .flatMap((course) => this.mapCourseToMenu(course)),
+            ),
+          ),
+          map((courses) =>
+            courses.sort((a, b) =>
+              a.title < b.title ? -1 : a.title > b.title ? 1 : 0,
+            ),
+          ),
+        )
+        .toPromise();
+    }
+
     this.menu = (await PRE_COURSE_MENU_ITEMS(this.translate))
-      .concat(courses)
+      .concat(courseItems)
       .concat(await POST_COURSE_MENU_ITEMS(this.translate));
   }
 
