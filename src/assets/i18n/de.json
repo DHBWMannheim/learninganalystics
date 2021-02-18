@@ -83,7 +83,30 @@
         }
     },
     "feedback": {
-
+        "header": "Feedback",
+        "value": {
+            "0": "sehr schlecht",
+            "1": "schlecht",
+            "2": "gut",
+            "3": "sehr gut"
+        },
+        "comment": {
+            "label": "Anmerkungen",
+            "placeholder": "Hast du weitere Anmerkungen?..."
+        },
+        "fun": {
+            "label": "Wie hat ihnen die Vorlesung gefallen?"
+        },
+        "informations": {
+            "label": "Wie empfangen die Informationsversorgung?"
+        },
+        "quality": {
+            "label": "Wurden Sachverhalte verständlich dargestellt?"
+        },
+        "transfer": {
+            "label": "Wurden neue Inhalte vermittelt?"
+        },
+        "submit": "Speichern"
     },
     "join": {
         "join": {

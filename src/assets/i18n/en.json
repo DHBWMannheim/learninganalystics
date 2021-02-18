@@ -83,7 +83,30 @@
         }
     },
     "feedback": {
-
+        "header": "Feedback",
+        "value": {
+            "0": "awful",
+            "1": "bad",
+            "2": "good",
+            "3": "great"
+        },
+        "comment": {
+            "label": "Additional Remarks",
+            "placeholder": "What do you want to add..."
+        },
+        "fun": {
+            "label": "How did you enjoy the course?"
+        },
+        "informations": {
+            "label": "Amount of Informations?"
+        },
+        "quality": {
+            "label": "How was the information quality?"
+        },
+        "transfer": {
+            "label": "How was Knowledge conveyed?"
+        },
+        "submit": "Save"
     },
     "join": {
         "join": {

@@ -21,7 +21,6 @@ export class IndexCardsComponent implements OnInit {
   echartOptions = {
     series: [
       {
-        // TODO:
         type: 'gauge',
         progress: {
           show: true,

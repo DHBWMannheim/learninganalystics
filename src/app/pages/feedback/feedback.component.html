@@ -1,58 +1,58 @@
 <nb-card>
-  <nb-card-header> Feedback </nb-card-header>
+  <nb-card-header>{{'feedback.header'|translate}} </nb-card-header>
   <nb-card-body>
-    <!--TODO: Übersetzungen kommen, sobald wir hier was machen-->
     <div class="w-100 radio-container">
-      <div>Wie empfangen die Informationsversorgung?</div>
-      <mat-radio-group>
-        <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-        <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-        <mat-radio-button value="4">great</mat-radio-button>
+      <div>{{'feedback.informations.label'|translate}}</div>
+      <mat-radio-group [(ngModel)]="model.informations">
+        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
+        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
+        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
+        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <div class="w-100 radio-container">
-      <div>Wurden neue Inhalte vermittelt?</div>
-      <mat-radio-group>
-        <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-        <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-        <mat-radio-button value="4">great</mat-radio-button>
+      <div>{{'feedback.transfer.label'|translate}}</div>
+      <mat-radio-group [(ngModel)]="model.transfer">
+        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
+        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
+        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
+        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <div class="w-100 radio-container">
-      <div>Wurden Sachverhalte verständlich dargestellt?</div>
-      <mat-radio-group>
-        <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-        <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-        <mat-radio-button value="4">great</mat-radio-button>
+      <div>{{'feedback.quality.label'|translate}}</div>
+      <mat-radio-group [(ngModel)]="model.quality">
+        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
+        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
+        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
+        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <div class="w-100 radio-container">
-      <div>Wie hat ihnen die Vorlesung gefallen?</div>
-      <mat-radio-group>
-        <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-        <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-        <mat-radio-button value="4">great</mat-radio-button>
+      <div>{{'feedback.fun.label'|translate}}</div>
+      <mat-radio-group [(ngModel)]="model.fun">
+        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
+        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
+        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
+        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <mat-form-field class="w-100">
-      <mat-label>Additional Remarks</mat-label>
+      <mat-label>{{'feedback.comment.label'|translate}}</mat-label>
       <textarea
         matInput
-        placeholder="What do you want to add..."
+        [placeholder]="'feedback.comment.placeholder'|translate"
         name="Additional remarks"
         class="textarea"
         required
+        [(ngModel)]="model.comment"
       ></textarea>
     </mat-form-field>
+    <button nbButton (click)="save()">{{'feedback.submit'|translate}}</button>
   </nb-card-body>
 </nb-card>
 
-<!-- TODO: Wenn wir die Funktionalitäten haben, können wir noch analysen dran packen. z.B. Lernzeit pro Karteikarte und so sachen -->
