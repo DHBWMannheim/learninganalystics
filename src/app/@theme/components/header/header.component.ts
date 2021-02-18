@@ -28,8 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   themes = [
     {
-      value: 'default',
-      name: 'Light',
+      value: 'dhbw',
+      name: 'DHBW'
     },
     {
       value: 'dark',
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
-  currentTheme = 'default';
+  currentTheme = 'dhbw';
 
   userMenu = [
     {
