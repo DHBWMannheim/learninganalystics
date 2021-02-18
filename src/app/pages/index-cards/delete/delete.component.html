@@ -2,26 +2,27 @@
   <nb-card-header>
     <div class="row">
       <div class="col my-auto">
-        <h3>Delete an index card</h3>
+        <h3>{{ 'indexCards.delete.header' | translate }}</h3>
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
-          <nb-icon icon="close-outline"></nb-icon
-          ><!--TODO:-->
+          <nb-icon icon="close-outline"></nb-icon>
         </button>
       </div>
     </div>
     <div></div>
     <div></div>
   </nb-card-header>
-  <nb-card-body style="text-align: center;">
-    Delete index card permanently?
+  <nb-card-body style="text-align: center">
+    {{ 'indexCards.delete.text' | translate }}
   </nb-card-body>
   <nb-card-footer>
     <div class="row">
       <div class="col"></div>
       <div class="col-end">
-        <button nbButton status="primary" (click)="submit()">Submit</button>
+        <button nbButton status="primary" (click)="submit()">
+          {{ 'indexCards.delete.submit' | translate }}
+        </button>
       </div>
     </div>
   </nb-card-footer>

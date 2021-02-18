@@ -25,6 +25,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { createTranslateLoader } from '../../app.module';
 
 @NgModule({
   imports: [
@@ -46,7 +49,20 @@ import { DeleteComponent } from './delete/delete.component';
     NbCheckboxModule,
     FormsModule,
     NbAlertModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+    }
+    }),
   ],
-  declarations: [IndexCardsComponent, TinderUIComponent, AddComponent, EditComponent, DeleteComponent],
+  declarations: [
+    IndexCardsComponent,
+    TinderUIComponent,
+    AddComponent,
+    EditComponent,
+    DeleteComponent,
+  ],
 })
 export class IndexCardsModule {}

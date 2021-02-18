@@ -1,0 +1,213 @@
+{
+    "footer": {
+        "madeWith": "In Mannheim mit ❤️ erstellt, 2021"
+    },
+    "todos": {
+        "header": "Aufgabenübersicht",
+        "all": "Alle Aufgaben",
+        "notFound": "Keine Aufgaben gefunden",
+        "add": {
+            "header": "Neue Aufgabe",
+            "title": {
+                "label": "Titel",
+                "placeholder": "Ein kurzer Titel..."
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Ausführliche Beschreibung"
+            },
+            "deadline": {
+                "label": "Optionale Deadline"
+            },
+            "submit": "Speichern"
+        }
+    },
+    "dashboard": {
+        
+    },
+    "exams": {
+        "header": "Prüfungen",
+        "title": "Titel",
+        "description": "Beschreibung",
+        "deadline": "Deadline",
+        "duration": "Dauer",
+        "minutes": "Minuten",
+        "room": "Raum",
+        "tools": "Zugelassene Hilfsmittel",
+        "additionalInformations": "Zusätzliche Informationen",
+        "createTodo": "Aufgabe erstellen"
+    },
+    "files": {
+        "header": "Dateien",
+        "browseText": "Hier kannst du Dateien hinziehen oder welche ",
+        "browseButton": "vom Gerät auswählen",
+        "dropLabel": "Hier Dateien ablegen"
+    },
+    "indexCards": {
+        "header": "Karteikarten",
+        "question": "Frage",
+        "answer": "Antwort",
+        "notFound": "Es wurden keine Karteikarten gefunden",
+        "addButton": "Neue Karteikarte",
+        "repeat": "Wiederhohlen",
+        "roundResultPre": "Du hast ",
+        "roundResultPost": "% richtig beantwortet!",
+        "add": {
+            "header": "Neue Karteikarte",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern"
+        },
+        "delete": {
+            "header": "Karteikarte löschen",
+            "text": "Wollen Sie diese Karteikarte wirklich löschen",
+            "submit": "Ja"
+        },
+        "edit": {
+            "header": "Karteikarte bearbeiten",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern"
+        }
+    },
+    "feedback": {
+
+    },
+    "join": {
+        "join": {
+            "header": "An Kurs teilnehmen",
+            "key": {
+                "label": "Einschreibeschlüssel",
+                "placeholder": "Der Kurs-Einschreibeschlüssel...",
+                "errors": {
+                    "required": "Bitte geben Sie einen Schlüssel an",
+                    "minlength": "Bitte geben Sie alle 6 Zeichen des Schlüssels an"
+                }
+            },
+            "submit": "Teilnehmen"
+        },
+        "create": {
+            "header": "Kurs erstellen",
+            "name": {
+                "label": "Name",
+                "placeholder": "Der Name des Kurses...",
+                "errors": {
+                    "required": "Bitte geben Sie einen Namen an"
+                }
+            },
+            "submit": "Erstellen"
+        }
+    },
+    "menu": {
+        "dashboard": "Dashboard",
+        "courses": "Kurse",
+        "exams": "Prüfungen",
+        "files": "Dateien",
+        "feedback": "Feedback",
+        "indexCards": "Karteikarten",
+        "joinCreate": "Neuer Kurs",
+        "personal": "Persönlich",
+        "todos": "Aufgaben"
+    },
+    "action": {
+        "message": "'Kleinen Moment. Wir arbeiten an deinem Anliegen...'",
+        "error": "Woops, wird wissen nicht, wo du hin willst.",
+        "backToLogin": "Zurück zum Login"
+    },
+    "login": {
+        "title": "Login",
+        "subtitle": "Hallo! Log dich mit deiner Email ein.",
+        "error": "Woops!",
+        "email": {
+            "label": "Email-Adresse",
+            "placeholder": "Email-Adresse",
+            "errors": {
+                "required": "Eine Email-Adresse wird benötigt!",
+                "patterns": "Eine echte Email-Adresse!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "forgot": "Password vergessen?",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "rememberMe": "Eingeloggt bleiben",
+        "login": "Login",
+        "register": "Du hast noch keinen Account? Registrier dich!"
+    },
+    "terms": {},
+    "register": {
+        "title": "Registrierung",
+        "error": "Woops!",
+        "email": {
+            "label": "Email-Adresse",
+            "placeholder": "Email-Adresse",
+            "errors": {
+                "required": "Eine Email-Adresse wird benötigt!",
+                "patterns": "Eine echte Email-Adresse!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "repeatPassword": {
+            "label": "Password wiederhohlen",
+            "placeholder": "Password wiederhohlen",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "same": "Das Passwort stimmt nicht überein"
+            }
+        },
+        "agreeTerms": "Ich stimme den Nutzungsbedigungen zu",
+        "backToLogin": "Du hast schon einen Account? Log dich ein!",
+        "submit": "Los geht's"
+    },
+    "logout": {
+        "message": "Der Logout wird bearbeitet. Bitte warten..."
+    },
+    "resetPassword": {
+        "title": "Password ändern",
+        "subtitle": "Bitte setz ein neues Password",
+        "error": "Woops",
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "repeatPassword": {
+            "label": "Password wiederhohlen",
+            "placeholder": "Password wiederhohlen",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "same": "Das Passwort stimmt nicht überein"
+            }
+        },
+        "submit": "Bestätigen",
+        "backToLogin": "Zurück zum Login",
+        "register": "Registrierung"
+    }
+}

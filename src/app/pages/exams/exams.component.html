@@ -1,33 +1,37 @@
 <nb-card>
-  <nb-card-header> Exams </nb-card-header>
+  <nb-card-header>{{ 'exams.header' | translate }} </nb-card-header>
   <nb-card-body>
     <nb-card *ngFor="let exam of exams">
       <nb-card-header>
         {{ exam.title }}
       </nb-card-header>
       <nb-card-body>
-        <strong>Description: </strong>{{ exam.description }}
+        <strong>{{ 'exams.description' | translate }}: </strong
+        >{{ exam.description }}
         <nb-calendar [(date)]="exam.deadline"></nb-calendar>
-<!--TODO: Hier noch etwas besser, damit uhrzeit-->
+        <!--TODO: Hier noch etwas besser, damit uhrzeit-->
         <div *ngIf="exam.duration">
-          <strong>Duration: </strong>{{ exam.duration }} Minutes
+          <strong>{{ 'exams.duration' | translate }}: </strong
+          >{{ exam.duration }} {{ 'exams.minutes' | translate }}
         </div>
-        <div *ngIf="exam.room"><strong>Room: </strong>{{ exam.room }}</div>
+        <div *ngIf="exam.room">
+          <strong>{{ 'exams.room' | translate }}: </strong>{{ exam.room }}
+        </div>
 
         <div *ngIf="exam.tools">
-          <strong>Permitted Tools: </strong>
+          <strong>{{ 'exams.tools' | translate }}: </strong>
           <ul>
-            <li *ngFor="let tool of exam.tools">{{tool}}</li>
-        </ul>
+            <li *ngFor="let tool of exam.tools">{{ tool }}</li>
+          </ul>
         </div>
         <div *ngIf="exam.additionalInformations">
-          <strong>Additional Informations: </strong>
+          <strong>{{ 'exams.additionalInformations' | translate }}: </strong>
           <ul>
-              <li *ngFor="let info of exam.additionalInformations">{{info}}</li>
+            <li *ngFor="let info of exam.additionalInformations">{{ info }}</li>
           </ul>
         </div>
 
-        <button nbButton>Create Todo</button
+        <button nbButton>{{ 'exams.createTodo' | translate }}</button
         ><!--?-->
       </nb-card-body>
     </nb-card>

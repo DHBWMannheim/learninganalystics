@@ -1,5 +1,5 @@
 <nb-card>
-  <nb-card-header> Files </nb-card-header>
+  <nb-card-header> {{'files.header'|translate}} </nb-card-header>
   <nb-list>
     <nb-list-item *ngFor="let item of files"><!--TODO: Das geht bestimmt besser mit einem ngFor-->
       <div class="w-100 row">
@@ -37,7 +37,7 @@
     <nb-list-item *ngIf="isLecturer">
       <ngx-file-drop
         class="w-100"
-        dropZoneLabel="Drop files here"
+        [dropZoneLabel]="'files.dropLabel'|translate"
         [showBrowseBtn]="true"
         (onFileDrop)="dropped($event)"
         dropZoneClassName="drop-zone"
@@ -48,12 +48,12 @@
           ><!--TODO: Das muss noch richtige Farben gemacht werden-->
           <div class="text-basic" style="text-align: center;">
             <div>
-              Drag File here or
+              {{'files.browseText'|translate}}
               <a
                 (click)="openFileSelector()"
                 class="pointer"
                 style="color: #007bff"
-                >browse</a
+                >{{'files.browseButton'|translate}}</a
               >
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {
   NbButtonModule,
@@ -6,8 +7,10 @@ import {
   NbCardModule,
   NbIconModule,
 } from '@nebular/theme';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { ThemeModule } from '../../@theme/theme.module';
+import { createTranslateLoader } from '../../app.module';
 import { ExamsRoutingModule } from './exams-routing.module';
 import { ExamsComponent } from './exams.component';
 
@@ -20,6 +23,13 @@ import { ExamsComponent } from './exams.component';
     NbIconModule,
     NbCalendarModule,
     NbButtonModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+    }
+    }),
   ],
   declarations: [ExamsComponent],
 })
