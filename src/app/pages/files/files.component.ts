@@ -4,12 +4,12 @@ import { NbToastrService } from '@nebular/theme';
 import { FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
 import { last } from 'rxjs/operators';
 import { CoursesService } from '../../@core/data/course.service';
-
 import {
   FilesService,
   FireFile,
-  UploadQueueEntry,
+  UploadQueueEntry
 } from '../../@core/data/files.service';
+
 
 declare const browser;
 
@@ -28,7 +28,7 @@ export class FilesComponent implements OnInit {
     private readonly toastr: NbToastrService,
     private readonly route: ActivatedRoute,
     private readonly coursesService: CoursesService,
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.route.params.subscribe(async ({ courseId }) => {

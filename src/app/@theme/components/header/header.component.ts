@@ -3,14 +3,14 @@ import {
   NbMediaBreakpointsService,
   NbMenuService,
   NbSidebarService,
-  NbThemeService,
+  NbThemeService
 } from '@nebular/theme';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
-
 import { User, UserService } from '../../../@core/data/user.service';
 import { LayoutService } from '../../../@core/utils/layout.service';
 import { RippleService } from '../../../@core/utils/ripple.service';
+
 
 @Component({
   selector: 'ngx-header',
@@ -76,6 +76,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         return themeName.startsWith('material');
       }),
     );
+
   }
 
   ngOnInit() {
@@ -104,6 +105,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.currentTheme = themeName;
         this.rippleService.toggle(themeName?.startsWith('material'));
       });
+
   }
 
   ngOnDestroy() {
