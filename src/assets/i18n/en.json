@@ -45,41 +45,41 @@
     },
     "indexCards": {
         "header": "Index Cards",
-        "question": "Frage",
-        "answer": "Antwort",
+        "question": "Question",
+        "answer": "Answer",
         "notFound": "Seems like, there are no index cards yet.",
         "addButton": "Add index card",
         "repeat": "Repeat",
         "roundResultPre": "You answered ",
         "roundResultPost": "% correct!",
         "add": {
-            "header": "Neue Karteikarte",
+            "header": "New Index-Card",
             "question": {
-                "label": "Frage",
-                "placeholder": "Ein kurzer Fragestellung..."
+                "label": "Question",
+                "placeholder": "The Question..."
             },
             "answer": {
-                "label": "Antwort",
-                "placeholder": "Die Antwort zur Frage..."
+                "label": "Answer",
+                "placeholder": "The Answer..."
             },
-            "submit": "Speichern"
+            "submit": "Save"
         },
         "delete": {
-            "header": "Neue Karteikarte",
-            "text": "Wollen Sie diese Karteikarte wirklich löschen",
-            "submit": "Ja"
+            "header": "Delete Index-Card",
+            "text": "Do you really want to delete this Index-Card",
+            "submit": "Yes"
         },
         "edit": {
-            "header": "Karteikarte bearbeiten",
+            "header": "Edit Index-Card",
             "question": {
-                "label": "Frage",
-                "placeholder": "Ein kurzer Fragestellung..."
+                "label": "Question",
+                "placeholder": "The Question..."
             },
             "answer": {
                 "label": "Antwort",
-                "placeholder": "Die Antwort zur Frage..."
+                "placeholder": "The Answer..."
             },
-            "submit": "Speichern"
+            "submit": "Save"
         }
     },
     "feedback": {
@@ -121,10 +121,93 @@
         "personal": "Personal",
         "todos": "Todos"
     },
-    "action": {},
-    "login": {},
+    "action": {
+        "message": "'Hang on, we are working on it...'",
+        "error": "Woops, you confused us.",
+        "backToLogin": "Back to Log In"
+    },
+    "login": {
+        "title": "Login",
+        "subtitle": "Hello! Log in with your email.",
+        "error": "Oh snap!",
+        "email": {
+            "label": "Email address",
+            "placeholder": "Email address",
+            "errors": {
+                "required": "Email is required!",
+                "patterns": "Email should be the real one!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "forgot": "Forgot Password?",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "rememberMe": "Remember Me",
+        "login": "Login",
+        "register": "Don't have an account? Register"
+    },
     "terms": {},
-    "register": {},
-    "logout": {},
-    "resetPassword": {}
+    "register": {
+        "title": "Register",
+        "error": "Oh snap!",
+        "email": {
+            "label": "Email address",
+            "placeholder": "Email address",
+            "errors": {
+                "required": "Email is required!",
+                "patterns": "Email should be the real one!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "repeatPassword": {
+            "label": "Repeat Password",
+            "placeholder": "Repeat Password",
+            "errors": {
+                "required": "Password is required!",
+                "same": "Password does not match"
+            }
+        },
+        "agreeTerms": "Agree to Terms & Conditions",
+        "backToLogin": "Already have an account? Log in",
+        "submit": "Register"
+    },
+    "logout": {
+        "message": "Logging out, please wait..."
+    },
+    "resetPassword": {
+        "title": "Change password",
+        "subtitle": "Please set a new password",
+        "error": "Oh snap!",
+        "password": {
+            "label": "New Password",
+            "placeholder": "New Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "confirmPassword": {
+            "label": "Confirm Password",
+            "placeholder": "Confirm Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "submit": "Change password",
+        "backToLogin": "Back to Log In",
+        "register": "Register"
+    }
 }

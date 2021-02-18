@@ -65,7 +65,7 @@
             "submit": "Speichern"
         },
         "delete": {
-            "header": "Neue Karteikarte",
+            "header": "Karteikarte löschen",
             "text": "Wollen Sie diese Karteikarte wirklich löschen",
             "submit": "Ja"
         },
@@ -121,10 +121,93 @@
         "personal": "Persönlich",
         "todos": "Aufgaben"
     },
-    "action": {},
-    "login": {},
+    "action": {
+        "message": "'Kleinen Moment. Wir arbeiten an deinem Anliegen...'",
+        "error": "Woops, wird wissen nicht, wo du hin willst.",
+        "backToLogin": "Zurück zum Login"
+    },
+    "login": {
+        "title": "Login",
+        "subtitle": "Hallo! Log dich mit deiner Email ein.",
+        "error": "Woops!",
+        "email": {
+            "label": "Email-Adresse",
+            "placeholder": "Email-Adresse",
+            "errors": {
+                "required": "Eine Email-Adresse wird benötigt!",
+                "patterns": "Eine echte Email-Adresse!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "forgot": "Password vergessen?",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "rememberMe": "Eingeloggt bleiben",
+        "login": "Login",
+        "register": "Du hast noch keinen Account? Registrier dich!"
+    },
     "terms": {},
-    "register": {},
-    "logout": {},
-    "resetPassword": {}
+    "register": {
+        "title": "Registrierung",
+        "error": "Woops!",
+        "email": {
+            "label": "Email-Adresse",
+            "placeholder": "Email-Adresse",
+            "errors": {
+                "required": "Eine Email-Adresse wird benötigt!",
+                "patterns": "Eine echte Email-Adresse!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "repeatPassword": {
+            "label": "Password wiederhohlen",
+            "placeholder": "Password wiederhohlen",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "same": "Das Passwort stimmt nicht überein"
+            }
+        },
+        "agreeTerms": "Ich stimme den Nutzungsbedigungen zu",
+        "backToLogin": "Du hast schon einen Account? Log dich ein!",
+        "submit": "Los geht's"
+    },
+    "logout": {
+        "message": "Der Logout wird bearbeitet. Bitte warten..."
+    },
+    "resetPassword": {
+        "title": "Password ändern",
+        "subtitle": "Bitte setz ein neues Password",
+        "error": "Woops",
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "repeatPassword": {
+            "label": "Password wiederhohlen",
+            "placeholder": "Password wiederhohlen",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "same": "Das Passwort stimmt nicht überein"
+            }
+        },
+        "submit": "Bestätigen",
+        "backToLogin": "Zurück zum Login",
+        "register": "Registrierung"
+    }
 }

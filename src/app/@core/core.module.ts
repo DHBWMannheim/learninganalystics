@@ -42,7 +42,7 @@ export const NB_CORE_PROVIDERS = [
         password: {
           required: true,
           minLength: 6,
-          maxLength: 50,
+          maxLength: 50, // Das muss auch in der Sprachdatei angepasst werden
         },
         email: {
           required: true,
