@@ -19,6 +19,11 @@ const routes: Routes = [
           import('./todos/todos.module').then((m) => m.TodosModule),
       },
       {
+        path: 'search',
+        loadChildren: () =>
+          import('./search/search.module').then((m) => m.SearchModule),
+      },
+      {
         path: 'new-course',
         loadChildren: () =>
           import('./new-course/new-course.module').then(

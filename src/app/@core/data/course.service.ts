@@ -93,7 +93,7 @@ export class CoursesService extends CommonFirestoreService<Course> {
     });
   }
 
-  get currentCourses() {
+  get currentCourses(): Observable<RelevantCourses> {
     return this._currentCourses.asObservable();
   }
 

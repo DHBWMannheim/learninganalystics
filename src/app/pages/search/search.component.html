@@ -1,0 +1,23 @@
+<nb-card>
+  <nb-card-header> Files </nb-card-header>
+
+  <nb-list>
+    <nb-list-item *ngFor="let file of results?.files"> {{file.id}} </nb-list-item>
+  </nb-list>
+</nb-card>
+
+<nb-card>
+    <nb-card-header> Index Cards </nb-card-header>
+  
+    <nb-list>
+        <nb-list-item *ngFor="let card of results?.indexCards"> {{card.id}} </nb-list-item>
+    </nb-list>
+  </nb-card>
+
+<nb-card>
+  <nb-card-header> TODOs </nb-card-header>
+
+  <nb-list>
+    <nb-list-item *ngFor="let todo of results?.todos"> {{todo.id}} </nb-list-item>
+  </nb-list>
+</nb-card>

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilesService, FireFile } from '../@core/data/files.service';
-import { Todo, TodosService } from '../@core/data/todos.service';
-import { UserService } from '../@core/data/user.service';
+import { Router } from '@angular/router';
 import { NbMenuItem, NbSearchService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
@@ -12,9 +10,10 @@ import {
   CoursesService,
   RelevantCourses,
 } from '../@core/data/course.service';
+import { FireFile } from '../@core/data/files.service';
+import { Todo } from '../@core/data/todos.service';
 import { MenuHelperService } from '../@theme/menu-helper.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
-import { SearchHelperService } from './search-helper.service';
 
 @Component({
   selector: 'ngx-pages',
@@ -40,12 +39,14 @@ export class PagesComponent implements OnInit {
     private readonly coursesService: CoursesService,
     private readonly translate: TranslateService,
     private readonly menuHelper: MenuHelperService,
-    private readonly searchHelper: SearchHelperService,
+    private readonly router: Router,
   ) {}
   async ngOnInit(): Promise<void> {
-    this.search.onSearchSubmit().subscribe(({ term }) => {
-      console.log('TODO: SEARCH:', term);
-    });
+    this.search
+      .onSearchSubmit()
+      .subscribe(({ term }) =>
+        this.router.navigate(['pages', 'search'], { queryParams: { term } }),
+      );
 
     this.coursesService.currentCourses.subscribe((courses) => {
       this.currentCourses = courses;
@@ -112,6 +113,4 @@ export class PagesComponent implements OnInit {
       ],
     };
   }
-
-  
 }
