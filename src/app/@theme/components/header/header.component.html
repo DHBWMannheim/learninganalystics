@@ -21,10 +21,6 @@
     <nb-action class="control-item">
       <nb-search type="rotate-layout" matRipple [matRippleUnbounded]="true" [matRippleCentered]="true"></nb-search>
     </nb-action>
-    <!--TODO: SearchService das können wir lokal machen. Wir haben eh nicht so viele Daten, das wir algolie oder so nutzen müssen-->
-    <nb-action class="control-item" icon="bell-outline" matRipple [matRippleUnbounded]="true" [matRippleCentered]="true"
-      badgeDot="areNewMessagesAvailable()" badgePosition="top right" badgeStatus="info">
-    </nb-action> -->
     <nb-action class="user-action" *nbIsGranted="['view', 'user']" matRipple [matRippleUnbounded]="true"
       [matRippleCentered]="true">
       <nb-user [nbContextMenu]="userMenu" [onlyPicture]="userPictureOnly" [name]="(user | async)?.email"

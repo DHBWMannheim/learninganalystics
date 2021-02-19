@@ -129,7 +129,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  areNewMessagesAvailable() {
-    return true; //TODO: Anstehende Klausuren, Todos, ...
-  }
 }
