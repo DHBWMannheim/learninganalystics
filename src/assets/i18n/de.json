@@ -106,7 +106,8 @@
         "transfer": {
             "label": "Wurden neue Inhalte vermittelt?"
         },
-        "submit": "Speichern"
+        "submit": "Speichern",
+        "comments": "Kommentare von Kursteilnehmern"
     },
     "join": {
         "join": {

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
-import { NbButtonModule, NbCardModule, NbIconModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbIconModule, NbListModule } from '@nebular/theme';
 
 import { createTranslateLoader, ThemeModule } from '../../@theme/theme.module';
 import { FeedbackRoutingModule } from './feedback-routing.module';
@@ -10,6 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
@@ -22,6 +23,8 @@ import { HttpClient } from '@angular/common/http';
     MatRadioModule,
     NbButtonModule,
     FormsModule,
+    NbListModule,
+    NgxEchartsModule.forChild(),
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

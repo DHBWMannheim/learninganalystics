@@ -106,7 +106,8 @@
         "transfer": {
             "label": "How was Knowledge conveyed?"
         },
-        "submit": "Save"
+        "submit": "Save",
+        "comments": "Comments from Participants"
     },
     "join": {
         "join": {

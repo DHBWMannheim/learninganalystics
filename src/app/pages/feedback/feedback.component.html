@@ -1,58 +1,106 @@
 <nb-card>
-  <nb-card-header>{{'feedback.header'|translate}} </nb-card-header>
-  <nb-card-body>
+  <nb-card-header>{{ 'feedback.header' | translate }} </nb-card-header>
+  <nb-card-body *ngIf="!isLecturer && !loading">
     <div class="w-100 radio-container">
-      <div>{{'feedback.informations.label'|translate}}</div>
+      <div>{{ 'feedback.informations.label' | translate }}</div>
       <mat-radio-group [(ngModel)]="model.informations">
-        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
-        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
-        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
+        <mat-radio-button [value]="0" class="mr-5">{{
+          'feedback.value.0' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="1" class="mr-5">{{
+          'feedback.value.1' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="2" class="mr-5">{{
+          'feedback.value.2' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="3">{{
+          'feedback.value.3' | translate
+        }}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <div class="w-100 radio-container">
-      <div>{{'feedback.transfer.label'|translate}}</div>
+      <div>{{ 'feedback.transfer.label' | translate }}</div>
       <mat-radio-group [(ngModel)]="model.transfer">
-        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
-        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
-        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
+        <mat-radio-button [value]="0" class="mr-5">{{
+          'feedback.value.0' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="1" class="mr-5">{{
+          'feedback.value.1' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="2" class="mr-5">{{
+          'feedback.value.2' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="3">{{
+          'feedback.value.3' | translate
+        }}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <div class="w-100 radio-container">
-      <div>{{'feedback.quality.label'|translate}}</div>
+      <div>{{ 'feedback.quality.label' | translate }}</div>
       <mat-radio-group [(ngModel)]="model.quality">
-        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
-        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
-        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
+        <mat-radio-button [value]="0" class="mr-5">{{
+          'feedback.value.0' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="1" class="mr-5">{{
+          'feedback.value.1' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="2" class="mr-5">{{
+          'feedback.value.2' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="3">{{
+          'feedback.value.3' | translate
+        }}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <div class="w-100 radio-container">
-      <div>{{'feedback.fun.label'|translate}}</div>
+      <div>{{ 'feedback.fun.label' | translate }}</div>
       <mat-radio-group [(ngModel)]="model.fun">
-        <mat-radio-button value="0" class="mr-5">{{'feedback.value.0'|translate}}</mat-radio-button>
-        <mat-radio-button value="1" class="mr-5">{{'feedback.value.1'|translate}}</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">{{'feedback.value.2'|translate}}</mat-radio-button>
-        <mat-radio-button value="3">{{'feedback.value.3'|translate}}</mat-radio-button>
+        <mat-radio-button [value]="0" class="mr-5">{{
+          'feedback.value.0' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="1" class="mr-5">{{
+          'feedback.value.1' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="2" class="mr-5">{{
+          'feedback.value.2' | translate
+        }}</mat-radio-button>
+        <mat-radio-button [value]="3">{{
+          'feedback.value.3' | translate
+        }}</mat-radio-button>
       </mat-radio-group>
     </div>
 
     <mat-form-field class="w-100">
-      <mat-label>{{'feedback.comment.label'|translate}}</mat-label>
+      <mat-label>{{ 'feedback.comment.label' | translate }}</mat-label>
       <textarea
         matInput
-        [placeholder]="'feedback.comment.placeholder'|translate"
+        [placeholder]="'feedback.comment.placeholder' | translate"
         name="Additional remarks"
         class="textarea"
         required
         [(ngModel)]="model.comment"
       ></textarea>
     </mat-form-field>
-    <button nbButton (click)="save()">{{'feedback.submit'|translate}}</button>
+    <button nbButton (click)="save()">
+      {{ 'feedback.submit' | translate }}
+    </button>
+  </nb-card-body>
+
+  <nb-card-body *ngIf="isLecturer && !loading">
+    <nb-card>
+      <div echarts [options]="lecturerChart"></div>
+    </nb-card>
+
+    <nb-card *ngIf="comments.length">
+      <nb-card-header>{{ 'feedback.comments' | translate }}</nb-card-header>
+      <nb-list>
+        <nb-list-item *ngFor="let comment of comments">
+          {{ comment }}
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
   </nb-card-body>
 </nb-card>
-
