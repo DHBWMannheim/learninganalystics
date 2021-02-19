@@ -233,5 +233,11 @@
         "submit": "Bestätigen",
         "backToLogin": "Zurück zum Login",
         "register": "Registrierung"
+    },
+    "search": {
+        "todos": "Aufgaben",
+        "files": "Dateien",
+        "indexCards": "Karteikarten",
+        "notFound": "Es wurden keine Ergebnisse gefunden"
     }
 }

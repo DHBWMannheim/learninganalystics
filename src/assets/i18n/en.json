@@ -233,5 +233,11 @@
         "submit": "Change password",
         "backToLogin": "Back to Log In",
         "register": "Register"
+    },
+    "search": {
+        "todos": "Todos",
+        "files": "Files",
+        "indexCards": "Index Cards",
+        "notFound": "No results were found"
     }
 }

@@ -3,6 +3,8 @@ import { QuerySnapshot } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { chunk } from 'lodash';
 import { map, take } from 'rxjs/operators';
+
+import { CommonFirestoreDocument } from '../../@core/data/common-firestore-document';
 import { CoursesService } from '../../@core/data/course.service';
 import { FilesService, FireFile } from '../../@core/data/files.service';
 import {
@@ -10,7 +12,6 @@ import {
   IndexCardsService,
 } from '../../@core/data/index-cards.service';
 import { Todo, TodosService } from '../../@core/data/todos.service';
-import { UserService } from '../../@core/data/user.service';
 
 @Component({
   selector: 'ngx-search',
@@ -18,7 +19,9 @@ import { UserService } from '../../@core/data/user.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  results: any;
+  resultsTodos: Todo[];
+  resultsFiles: FireFile[];
+  resultsIndexCards: IndexCard[];
 
   constructor(
     private readonly filesService: FilesService,
@@ -29,12 +32,19 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(async ({ term }) => {
-      this.results = await this.search(term);
+    this.activatedRoute.queryParams.subscribe(({ term }) => {
+      this.resultsFiles = null;
+      this.resultsTodos = null;
+      this.resultsIndexCards = null;
+      this.search(term)
     });
   }
 
   public async search(term: string) {
+    const todos = this.searchTodos(term).then(
+      (results) => (this.resultsTodos = results),
+    );
+
     const currentCourses = await this.coursesService.currentCourses
       .pipe(
         take(1),
@@ -43,22 +53,24 @@ export class SearchComponent implements OnInit {
       )
       .toPromise();
 
-    return {
-      todos: await this.searchTodos(term),
-      files: await this.searchFiles(term, currentCourses),
-      indexCards: await this.searchIndexFiles(term, currentCourses),
-    };
+    const files = this.searchFiles(term, currentCourses).then(
+      (results) => (this.resultsFiles = results),
+    );
+    const indexCards = this.searchIndexFiles(term, currentCourses).then(
+      (results) => (this.resultsIndexCards = results),
+    );
+    await Promise.all([todos, files, indexCards]);
   }
 
-  private async searchTodos(term: string){
+  private async searchTodos(term: string) {
     const allTodos = await this.todoService.get();
     const searchResultsTitle = this.containsInsensitiv(
       term,
-      allTodos.map((todo) => ({ id: todo.id, searcharg: todo.title })),
+      allTodos.map((todo) => ({ document: todo, searcharg: todo.title })),
     );
     const searchResultsDescription = this.containsInsensitiv(
       term,
-      allTodos.map((todo) => ({ id: todo.id, searcharg: todo.description })),
+      allTodos.map((todo) => ({ document: todo, searcharg: todo.description })),
     );
     return this.filterUniqueIds([
       ...searchResultsTitle,
@@ -83,7 +95,7 @@ export class SearchComponent implements OnInit {
 
     return this.containsInsensitiv(
       term,
-      files.map((file) => ({ id: file.id, searcharg: file.filename })),
+      files.map((file) => ({ document: file, searcharg: file.filename })),
     );
   }
 
@@ -104,12 +116,12 @@ export class SearchComponent implements OnInit {
 
     const questionResult = this.containsInsensitiv(
       term,
-      indexCards.map((card) => ({ id: card.id, searcharg: card.question })),
+      indexCards.map((card) => ({ document: card, searcharg: card.question })),
     );
 
     const answerResult = this.containsInsensitiv(
       term,
-      indexCards.map((card) => ({ id: card.id, searcharg: card.answer })),
+      indexCards.map((card) => ({ document: card, searcharg: card.answer })),
     );
 
     return this.filterUniqueIds([...questionResult, ...answerResult]);
@@ -131,15 +143,17 @@ export class SearchComponent implements OnInit {
     ).reduce((acc, curr) => acc.concat(curr), []);
   }
 
-  private containsInsensitiv(
+  private containsInsensitiv<T>(
     term: string,
-    searchItems: { id: string; searcharg: string }[],
-  ) {
-    const reg = new RegExp(`${term}`, 'i');
-    return searchItems.filter(({ searcharg }) => reg.test(searcharg));
+    searchItems: { document: T; searcharg: string }[],
+  ): T[] {
+    const reg = new RegExp(term, 'i');
+    return searchItems
+      .filter(({ searcharg }) => reg.test(searcharg))
+      .map((item) => item.document);
   }
 
-  private filterUniqueIds<T extends { id: string }>(array: T[]) {
+  private filterUniqueIds<T extends CommonFirestoreDocument>(array: T[]) {
     const m = new Map<string, T>();
     array.forEach((a) => m.set(a.id, a));
     return [...m.values()];

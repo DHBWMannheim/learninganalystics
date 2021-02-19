@@ -1,23 +1,38 @@
-<nb-card>
-  <nb-card-header> Files </nb-card-header>
+<nb-card [nbSpinner]="!resultsFiles">
+  <nb-card-header> {{ 'search.files' | translate }} </nb-card-header>
 
-  <nb-list>
-    <nb-list-item *ngFor="let file of results?.files"> {{file.id}} </nb-list-item>
+  <nb-list *ngIf="resultsFiles?.length">
+    <nb-list-item *ngFor="let file of resultsFiles">
+      {{ file.filename }}
+    </nb-list-item>
+  </nb-list>
+  <nb-list *ngIf="!resultsFiles?.length">
+    <nb-list-item> {{ 'search.notFound' | translate }} </nb-list-item>
   </nb-list>
 </nb-card>
 
-<nb-card>
-    <nb-card-header> Index Cards </nb-card-header>
-  
-    <nb-list>
-        <nb-list-item *ngFor="let card of results?.indexCards"> {{card.id}} </nb-list-item>
-    </nb-list>
-  </nb-card>
+<nb-card [nbSpinner]="!resultsIndexCards">
+  <nb-card-header> {{ 'search.indexCards' | translate }} </nb-card-header>
 
-<nb-card>
-  <nb-card-header> TODOs </nb-card-header>
+  <nb-list *ngIf="resultsIndexCards?.length">
+    <nb-list-item *ngFor="let card of resultsIndexCards">
+      {{ card.question }}
+    </nb-list-item>
+  </nb-list>
+  <nb-list *ngIf="!resultsIndexCards?.length">
+    <nb-list-item> {{ 'search.notFound' | translate }} </nb-list-item>
+  </nb-list>
+</nb-card>
 
-  <nb-list>
-    <nb-list-item *ngFor="let todo of results?.todos"> {{todo.id}} </nb-list-item>
+<nb-card [nbSpinner]="!resultsTodos">
+  <nb-card-header> {{ 'search.todos' | translate }} </nb-card-header>
+
+  <nb-list *ngIf="resultsTodos?.length">
+    <nb-list-item *ngFor="let todo of resultsTodos">
+      {{ todo.title }}
+    </nb-list-item>
+  </nb-list>
+  <nb-list *ngIf="!resultsTodos?.length">
+    <nb-list-item> {{ 'search.notFound' | translate }} </nb-list-item>
   </nb-list>
 </nb-card>
