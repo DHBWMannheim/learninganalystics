@@ -115,8 +115,6 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  loadNext() {}
-
   openAddDialog(model?: Todo) {
     const options: Partial<NbDialogConfig> = {};
     if (model) options.context = { model };

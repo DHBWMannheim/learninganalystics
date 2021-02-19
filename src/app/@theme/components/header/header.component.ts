@@ -1,15 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  NbMediaBreakpointsService,
-  NbMenuService,
-  NbSidebarService,
-  NbThemeService
-} from '@nebular/theme';
+import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
+
 import { User, UserService } from '../../../@core/data/user.service';
 import { LayoutService } from '../../../@core/utils/layout.service';
 import { RippleService } from '../../../@core/utils/ripple.service';
+import { MenuHelperService } from '../../menu-helper.service';
 
 
 @Component({
@@ -26,8 +24,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   themes = [
     {
-      value: 'default',
-      name: 'Light',
+      value: 'dhbw',
+      name: 'DHBW'
     },
     {
       value: 'dark',
@@ -51,7 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
-  currentTheme = 'default';
+  currentTheme = 'dhbw';
 
   userMenu = [
     {
@@ -61,14 +59,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
+  languageMenu = [];
+
   public constructor(
-    private sidebarService: NbSidebarService,
-    private menuService: NbMenuService,
-    private themeService: NbThemeService,
-    private layoutService: LayoutService,
-    private breakpointService: NbMediaBreakpointsService,
-    private rippleService: RippleService,
+    private readonly sidebarService: NbSidebarService,
+    private readonly menuService: NbMenuService,
+    private readonly themeService: NbThemeService,
+    private readonly layoutService: LayoutService,
+    private readonly breakpointService: NbMediaBreakpointsService,
+    private readonly rippleService: RippleService,
     private readonly userService: UserService,
+    private readonly translate: TranslateService,
+    private readonly menuHelper: MenuHelperService,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map((theme) => {
@@ -106,6 +108,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.rippleService.toggle(themeName?.startsWith('material'));
       });
 
+    this.menuService
+      .onItemClick()
+      .pipe(filter(({ tag }) => tag === 'languageMenu'))
+      .subscribe(({ item }) => {
+        this.translate.use(item.title.toLowerCase());
+        this.menuHelper.reloadMenu();
+      });
+
+    this.languageMenu = this.translate.getLangs().map((lang) => ({
+      title: lang.toUpperCase(),
+    }));
   }
 
   ngOnDestroy() {

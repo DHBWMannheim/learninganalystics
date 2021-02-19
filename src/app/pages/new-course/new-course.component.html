@@ -1,44 +1,71 @@
-<div class="row" style="height: 100%">
+<div class="row">
   <div class="col-xs-12 col-md-6">
-    <nb-card style="height: calc(100% - 16px)">
-      <nb-card-header> Join a Course </nb-card-header>
+    <nb-card [nbSpinner]="loadingJoin">
+      <nb-card-header>{{ 'join.join.header' | translate }}</nb-card-header>
       <nb-card-body>
-        <form>
-          <mat-form-field class="w-100">
-            <mat-label>Key</mat-label>
+        <form [formGroup]="joinForm">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'join.join.key.label' | translate }}</mat-label>
             <input
               matInput
-              placeholder="The Course-Key..."
+              [placeholder]="'join.join.key.placeholder' | translate"
               required
               name="key"
               maxlength="6"
-              [(ngModel)]="key"
+              formControlName="key"
             />
+            <mat-error *ngIf="joinForm.get('key').hasError('required')">
+              {{ 'join.join.key.errors.required' | translate }}
+            </mat-error>
+            <mat-error *ngIf="joinForm.get('key').hasError('minlength')">
+              {{ 'join.join.key.errors.minlength' | translate }}
+            </mat-error>
           </mat-form-field>
-          <button nbButton (click)="joinCourse()">Join</button>
+          <div style="text-align: right">
+            <button
+              nbButton
+              outline
+              (click)="joinCourse()"
+              [disabled]="!joinForm.valid"
+            >
+              {{ 'join.join.submit' | translate }}
+            </button>
+          </div>
         </form>
       </nb-card-body>
     </nb-card>
   </div>
   <div class="col-xs-12 col-md-6">
-    <nb-card style="height: calc(100% - 16px)">
-      <nb-card-header> Create a Course </nb-card-header>
+    <nb-card [nbSpinner]="loadingCreate">
+      <nb-card-header> {{ 'join.create.header' | translate }} </nb-card-header>
       <nb-card-body>
-        <form>
-          <mat-form-field class="w-100">
-            <mat-label>Name</mat-label>
+        <form [formGroup]="createForm">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'join.create.name.label' | translate }}</mat-label>
             <input
               matInput
-              placeholder="A short name..."
+              [placeholder]="'join.create.name.placeholder' | translate"
               required
               name="name"
-              [(ngModel)]="name"
+              formControlName="name"
             />
+            <mat-error *ngIf="createForm.get('name').hasError('required')">
+              {{ 'join.create.name.errors.required' | translate }}
+            </mat-error>
           </mat-form-field>
-          <button nbButton (click)="createCourse()">Create</button>
+          <div style="text-align: right">
+            <button
+              nbButton
+              outline
+              nbButton
+              (click)="createCourse()"
+              [disabled]="!createForm.valid"
+            >
+              {{ 'join.create.submit' | translate }}
+            </button>
+          </div>
         </form>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
-<!--TODO: Brauchen wir eine Kurs administration, in der man den Course löschen/umbenenen kann, oder den key nochmal anzeitgt, ...-->

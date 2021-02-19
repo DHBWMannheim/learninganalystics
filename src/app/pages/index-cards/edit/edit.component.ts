@@ -1,27 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { CoursesService } from '../../../@core/data/course.service';
-import { IndexCardsService } from '../../../@core/data/index-cards.service';
+import { IndexCard, IndexCardsService } from '../../../@core/data/index-cards.service';
 
 @Component({
-  selector: 'ngx-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss'],
+  selector: 'ngx-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss'],
 })
-export class AddComponent implements OnInit {
-  // TODO: Mit dem add component vom todo zusammenziehen
-
-  model = {
-    // TODO: Owner, course, ...
-    question: '',
-    answer: '',
-    course: null,
-  };
+export class EditComponent implements OnInit {
 
   courseId: string;
+  card: IndexCard;
 
   constructor(
-    private readonly dialogRef: NbDialogRef<AddComponent>,
+    private readonly dialogRef: NbDialogRef<EditComponent>,
     private readonly indexCardsService: IndexCardsService,
     private readonly toastrService: NbToastrService,
     private readonly coursesService: CoursesService,
@@ -30,17 +23,19 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {}
 
   close() {
-    this.dialogRef.close(this.model);
+    this.dialogRef.close();
   }
 
   async submit() {
     await this.indexCardsService.upsert({
-      ...this.model,
+      id: this.card.id,
+      question: this.card.question,
+      answer: this.card.answer,
       course: this.coursesService.createRef(this.courseId),
     });
-    this.toastrService.show('Index card created', 'Success!', {
+    this.toastrService.show('Index card updated', 'Success!', {
       status: 'success',
     });
-    this.close();
+    this.close()
   }
 }

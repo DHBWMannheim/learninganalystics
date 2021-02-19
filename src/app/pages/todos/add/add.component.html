@@ -2,12 +2,12 @@
   <nb-card-header>
     <div class="row">
       <div class="col my-auto">
-        <h3>Add new Todo</h3>
+        <h3>{{'todos.add.header'|translate}}</h3>
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
           <nb-icon icon="close-outline"></nb-icon
-          ><!--TODO:-->
+          >
         </button>
       </div>
     </div>
@@ -17,10 +17,10 @@
   <nb-card-body>
     <form>
       <mat-form-field class="w-100">
-        <mat-label>Title</mat-label>
+        <mat-label>{{'todos.add.title.label'|translate}}</mat-label>
         <input
           matInput
-          placeholder="A short title..."
+          [placeholder]="'todos.add.title.placeholder'|translate"
           required
           [(ngModel)]="model.title"
           name="title"
@@ -29,10 +29,10 @@
       <!--TODO: Max length?-->
 
       <mat-form-field class="w-100">
-        <mat-label>Description</mat-label>
+        <mat-label>{{'todos.add.description.label'|translate}}</mat-label>
         <textarea
           matInput
-          placeholder="What do you want to do..."
+          [placeholder]="'todos.add.description.placeholder'|translate"
           [(ngModel)]="model.description"
           name="description"
           class="description-textarea"
@@ -40,7 +40,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Choose an optional deadline</mat-label>
+        <mat-label>{{'todos.add.deadline.label'|translate}}</mat-label>
         <input
           matInput
           [matDatepicker]="picker"
@@ -56,7 +56,7 @@
     <div class="row">
       <div class="col"></div>
       <div class="col-end">
-        <button nbButton status="primary" (click)="submit()">Submit</button>
+        <button nbButton status="primary" (click)="submit()">{{'todos.add.submit'|translate}}</button>
       </div>
     </div>
   </nb-card-footer>

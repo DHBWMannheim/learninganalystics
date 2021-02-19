@@ -17,12 +17,17 @@ import { IndexCardsRoutingModule } from './index-cards-routing.module';
 import { IndexCardsComponent } from './index-cards.component';
 import { TinderUIComponent } from './tinder-ui/tinder-ui.component';
 import { AddComponent } from './add/add.component';
+import { EditComponent } from './edit/edit.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { DeleteComponent } from './delete/delete.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { createTranslateLoader } from '../../app.module';
 
 @NgModule({
   imports: [
@@ -44,7 +49,20 @@ import { FormsModule } from '@angular/forms';
     NbCheckboxModule,
     FormsModule,
     NbAlertModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+    }
+    }),
   ],
-  declarations: [IndexCardsComponent, TinderUIComponent, AddComponent],
+  declarations: [
+    IndexCardsComponent,
+    TinderUIComponent,
+    AddComponent,
+    EditComponent,
+    DeleteComponent,
+  ],
 })
 export class IndexCardsModule {}

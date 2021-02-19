@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { NbSearchService } from '@nebular/theme';
-import { map } from 'rxjs/operators';
-import { Course, CoursesService } from '../@core/data/course.service';
 import { FilesService, FireFile } from '../@core/data/files.service';
 import { Todo, TodosService } from '../@core/data/todos.service';
 import { UserService } from '../@core/data/user.service';
+import { NbMenuItem, NbSearchService } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
+import { of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+
+import {
+  Course,
+  CoursesService,
+  RelevantCourses,
+} from '../@core/data/course.service';
+import { MenuHelperService } from '../@theme/menu-helper.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
 import { SearchHelperService } from './search-helper.service';
 
@@ -25,99 +33,79 @@ export class PagesComponent implements OnInit {
   coursesNew: Course[] = [];
   userId = '';
   menu = [];
+  private currentCourses: RelevantCourses;
 
   constructor(
     private readonly search: NbSearchService,
     private readonly coursesService: CoursesService,
-    private readonly filesService: FilesService,
-    private readonly todosService: TodosService,
-    private readonly userService: UserService,
+    private readonly translate: TranslateService,
+    private readonly menuHelper: MenuHelperService,
     private readonly searchHelper: SearchHelperService,
   ) {}
-  ngOnInit(): void {
-    this.menu = PRE_COURSE_MENU_ITEMS.concat(POST_COURSE_MENU_ITEMS);
+  async ngOnInit(): Promise<void> {
+    this.search.onSearchSubmit().subscribe(({ term }) => {
+      console.log('TODO: SEARCH:', term);
+    });
 
-    this.search.onSearchSubmit().subscribe(async ({ term }) => {
-      console.log('main:' + term)
-      console.log(await this.searchHelper.search(term))
-    //   this.userId = (await this.userService.currentUser).id;
-    //   var searchTerm = new RegExp(term.toLocaleLowerCase());
-    //   this.items = await this.todosService.get();
-    //   var todos: Todo[] = [];
-    //   for (let item of this.items) {
-    //     if (
-    //       item.title.toLowerCase().match(searchTerm).length > 0 ||
-    //       item.description.toLowerCase().match(searchTerm).length > 0
-    //     ) {
-    //       todos.push(item);
-    //     } else {
-    //     }
-    //   }
-    //   console.log(todos);
+    this.coursesService.currentCourses.subscribe((courses) => {
+      this.currentCourses = courses;
+      this.menuHelper.reloadMenu();
+    });
 
-    //   this.courses = await this.coursesService.get();
-    //   this.courses.forEach(async (element) => {
-    //     if (
-    //       this.userId === (await this.userService.get(element.creator.id)).id
-    //     ) {
-    //       this.coursesNew.push(element);
-    //     } else {
-    //     }
-    //   });
-
-    //   this.files = await this.filesService.getData(
-    //     await this.filesService.getCollection().get(),
-    //   );
-
-    //   var newFiles: FireFile[] = [];
-    //   this.files.forEach(async (element) => {
-    //     if (
-    //       this.coursesNew.includes(await this.coursesService.get(element.id)) &&
-    //       element.filename.toLowerCase().match(searchTerm)
-    //     ) {
-    //       newFiles.push(element);
-    //     }
-    //   });
-    //   console.log(newFiles);
-    // });
-
-    // this.coursesService.currentCourses
-    //   .pipe(
-    //     map((courses) =>
-    //       courses.creations
-    //         .concat(courses.participations)
-    //         .flatMap((course) => this.mapCourseToMenu(course)),
-    //     ),
-    //   )
-    //   .subscribe((v) => {
-    //     this.menu = PRE_COURSE_MENU_ITEMS.concat(v).concat(
-    //       POST_COURSE_MENU_ITEMS,
-    //     );
-      });
+    this.menuHelper.onReload.subscribe(() => {
+      this.buildMenu(this.currentCourses);
+    });
+    this.menuHelper.reloadMenu();
   }
 
-  private mapCourseToMenu(course: Course) {
+  private async buildMenu(relevantCourses: RelevantCourses) {
+    let courseItems: NbMenuItem[] = [];
+    if (relevantCourses) {
+      courseItems = await of(relevantCourses)
+        .pipe(
+          switchMap((courses) =>
+            Promise.all(
+              courses.creations
+                .concat(courses.participations)
+                .flatMap((course) => this.mapCourseToMenu(course)),
+            ),
+          ),
+          map((courses) =>
+            courses.sort((a, b) =>
+              a.title < b.title ? -1 : a.title > b.title ? 1 : 0,
+            ),
+          ),
+        )
+        .toPromise();
+    }
+
+    this.menu = (await PRE_COURSE_MENU_ITEMS(this.translate))
+      .concat(courseItems)
+      .concat(await POST_COURSE_MENU_ITEMS(this.translate));
+  }
+
+  private async mapCourseToMenu(course: Course) {
     return {
       title: course.name,
       icon: 'book-outline',
       children: [
         {
-          title: 'Exams',
+          title: await this.translate.get('menu.exams').toPromise(),
           icon: 'award-outline',
           link: '/pages/exams/' + course.id,
         },
         {
-          title: 'Files',
+          title: await this.translate.get('menu.files').toPromise(),
           icon: 'file-outline',
           link: '/pages/files/' + course.id,
         },
         {
-          title: 'Index Cards',
+          title: await this.translate.get('menu.indexCards').toPromise(),
           icon: 'bookmark-outline',
           link: '/pages/index-cards/' + course.id,
         },
         {
-          title: 'Feedback',
+          title: await this.translate.get('menu.feedback').toPromise(),
           icon: 'message-square-outline',
           link: '/pages/feedback/' + course.id,
         },
