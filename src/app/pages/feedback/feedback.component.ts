@@ -6,21 +6,6 @@ import { CoursesService } from '../../@core/data/course.service';
 import { Feedback, FeedbackService } from '../../@core/data/feedback.service';
 import { UserService } from '../../@core/data/user.service';
 
-const AXIS_NAMES = {
-  en: [
-    'Enjoyement',
-    'Amount of Information',
-    'Informations understandable',
-    'Informationtransfer',
-  ],
-  de: [
-    'Spaß',
-    'Informationsversorgung',
-    'Verständlichkeit',
-    'Neue Informationen',
-  ],
-};
-
 @Component({
   selector: 'ngx-feedback',
   templateUrl: './feedback.component.html',
@@ -31,32 +16,7 @@ export class FeedbackComponent implements OnInit {
   loading = true;
   private courseId: string;
 
-  lecturerChart = {
-    title: {
-      top: 30,
-      left: 'center',
-    },
-    tooltip: {
-      position: 'top',
-    },
-    legend: {
-      show: false,
-    },
-    xAxis: {
-      type: 'category',
-      data: [],
-    },
-    yAxis: {
-      type: 'value',
-    },
-    series: [
-      {
-        data: [0, 0, 0, 0],
-        type: 'bar',
-        showBackground: true,
-      },
-    ],
-  };
+  lecturerChart;
 
   model = {
     id: null,
@@ -67,7 +27,8 @@ export class FeedbackComponent implements OnInit {
     transfer: 0,
   };
 
-  comments: string[];
+  comments = [];
+  dataAvailable = false;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -78,10 +39,11 @@ export class FeedbackComponent implements OnInit {
     private readonly translate: TranslateService,
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.route.params.subscribe(async ({ courseId }) => {
       this.courseId = courseId;
       this.isLecturer = await this.coursesService.isLecturer(courseId);
+      this.lecturerChart = await this.generateChart();
 
       if (this.isLecturer) {
         const feedback: Feedback[] = await this.feedbackService.getData(
@@ -90,14 +52,18 @@ export class FeedbackComponent implements OnInit {
             .where('course', '==', this.coursesService.createRef(this.courseId))
             .get(),
         );
-        this.comments = feedback.map((f) => f.comment);
-        this.lecturerChart.series[0].data = [
-          feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
-          feedback.reduce((acc, f) => f.informations + acc, 0) /
-            feedback.length,
-          feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
-          feedback.reduce((acc, f) => f.transfer + acc, 0) / feedback.length,
-        ];
+        if (feedback.length) {
+          this.comments = feedback.map((f) => f.comment);
+          this.lecturerChart.series[0].data = [
+            feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
+            feedback.reduce((acc, f) => f.informations + acc, 0) /
+              feedback.length,
+            feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
+            feedback.reduce((acc, f) => f.transfer + acc, 0) / feedback.length,
+          ];
+          this.lecturerChart = { ...this.lecturerChart };
+          this.dataAvailable = true
+        }
 
         this.loading = false;
         return;
@@ -132,11 +98,38 @@ export class FeedbackComponent implements OnInit {
       this.loading = false;
     });
 
-    this.translate.onLangChange.subscribe(({ lang }) => {
-      this.lecturerChart.xAxis.data = AXIS_NAMES[lang];
-      this.lecturerChart = {...this.lecturerChart}
+    this.translate.onLangChange.subscribe(async () => {
+      this.lecturerChart = await this.generateChart();
     });
-    this.lecturerChart.xAxis.data = AXIS_NAMES[this.translate.currentLang];
+  }
+
+  private async generateChart() {
+    return {
+      title: {
+        top: 30,
+        left: 'center',
+      },
+      tooltip: {
+        position: 'top',
+      },
+      legend: {
+        show: false,
+      },
+      xAxis: {
+        type: 'category',
+        data: await this.translate.get('feedback.chart').toPromise(),
+      },
+      yAxis: {
+        type: 'value',
+      },
+      series: [
+        {
+          data: this.lecturerChart?.series[0].data || [0, 0, 0, 0],
+          type: 'bar',
+          showBackground: true,
+        },
+      ],
+    };
   }
 
   async save() {

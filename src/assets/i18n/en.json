@@ -26,6 +26,31 @@
                     "message": "The Todo was saved"
                 }
             }
+        },
+        "chart": {
+            "month": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec"
+            ],
+            "day": [
+                "Mo",
+                "Tu",
+                "We",
+                "Th",
+                "Fr",
+                "Sa",
+                "Su"
+            ]
         }
     },
     "dashboard": {},
@@ -80,7 +105,7 @@
             "toast": {
                 "saved": {
                     "title": "Saved",
-                    "message":"The Index-Card was saved"
+                    "message": "The Index-Card was saved"
                 }
             }
         },
@@ -109,7 +134,7 @@
             "toast": {
                 "saved": {
                     "title": "Saved",
-                    "message":"The Index-Card was saved"
+                    "message": "The Index-Card was saved"
                 }
             }
         }
@@ -140,12 +165,19 @@
         },
         "submit": "Save",
         "comments": "Comments from Participants",
+        "notFound": "No feedback available yet",
         "toast": {
             "saved": {
                 "title": "Saved",
                 "message": "Your Feedback was saved"
             }
-        }
+        },
+        "chart": [
+            "Enjoyment",
+            "Informationamount",
+            "Understandability",
+            "New Informations"
+          ]
     },
     "join": {
         "join": {
@@ -194,7 +226,7 @@
         "todos": "Todos"
     },
     "action": {
-        "message": "'Hang on, we are working on it...'",
+        "message": "Hang on, we are working on it...",
         "error": "Woops, you confused us.",
         "backToLogin": "Back to Log In"
     },

@@ -27,6 +27,32 @@
                 }
             }
         }
+        ,
+        "chart": {
+            "month": [
+                "Jan",
+                "Feb",
+                "Mär",
+                "Apr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dez"
+            ],
+            "day": [
+                "Mo",
+                "Di",
+                "Mi",
+                "Do",
+                "Fr",
+                "Sa",
+                "So"
+            ]
+        }
     },
     "dashboard": {
         
@@ -147,7 +173,14 @@
                 "title":"Gespeichert",
                 "message": "Das Feedback wurde gespeichert"
             }
-        }
+        },
+        "notFound": "Es ist noch kein Feedback verfügbar",
+        "chart": [
+            "Spaß",
+            "Informationsversorgung",
+            "Verständlichkeit",
+            "Neue Informationen"
+        ]
     },
     "join": {
         "join": {
@@ -196,7 +229,7 @@
         "todos": "Aufgaben"
     },
     "action": {
-        "message": "'Kleinen Moment. Wir arbeiten an deinem Anliegen...'",
+        "message": "Kleinen Moment. Wir arbeiten an deinem Anliegen...",
         "error": "Woops, wird wissen nicht, wo du hin willst.",
         "backToLogin": "Zurück zum Login"
     },

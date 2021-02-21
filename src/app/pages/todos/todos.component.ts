@@ -18,43 +18,6 @@ const today = new Date();
 const startDate = format(startOfMonth(subMonths(today, 1)), 'yyyy-MM-dd');
 const endDate = format(endOfMonth(addMonths(today, 2)), 'yyyy-MM-dd');
 
-const MONTH_NAME_MAP = {
-  de: [
-    'Jan',
-    'Feb',
-    'Mär',
-    'Apr',
-    'Mai',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dez',
-  ],
-  en: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ],
-};
-
-const DAY_NAME_MAP = {
-  //Das wäre besser in der Lang datei. Dan wäre das aber wieder mit einer async factory verbunden
-  de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-  en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-};
-
 @Component({
   selector: 'todos',
   templateUrl: './todos.component.html',
@@ -63,63 +26,7 @@ const DAY_NAME_MAP = {
 export class TodosComponent implements OnInit {
   items: Todo[] = [];
 
-  echartOptions = {
-    title: {
-      top: 30,
-      left: 'center',
-      text: `${startDate} - ${endDate}`,
-    },
-    tooltip: {
-      position: 'top',
-    },
-    legend: {
-      show: false,
-    },
-    visualMap: {
-      max: 0,
-      show: false,
-    },
-    calendar: {
-      dayLabel: {
-        firstDay: 0,
-        nameMap: DAY_NAME_MAP.en,
-      },
-      monthLabel: {
-        nameMap: MONTH_NAME_MAP.en,
-      },
-      top: 85,
-      left: 46,
-      right: 46,
-      cellSize: ['auto', 32],
-      range: [startDate, endDate],
-      yearLabel: { show: false },
-      itemStyle: {
-        borderWidth: 1,
-        borderColor: '#edf1f7',
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: '#8f9bb3',
-          width: 1,
-          type: 'solid',
-          shadowColor: 'rgba(0, 0, 0, 0.5)',
-          shadowBlur: 10,
-        },
-      },
-    },
-    series: {
-      type: 'heatmap',
-      coordinateSystem: 'calendar',
-      data: [],
-    },
-  };
-
-  mergedata: {
-    series: {
-      data: [];
-    };
-  };
+  echartOptions;
 
   loading = true;
 
@@ -131,15 +38,64 @@ export class TodosComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.reload();
-    this.translate.onLangChange.subscribe(({ lang }) => {
-      this.echartOptions.calendar.dayLabel.nameMap = DAY_NAME_MAP[lang];
-      this.echartOptions.calendar.monthLabel.nameMap = MONTH_NAME_MAP[lang];
-      this.echartOptions = { ...this.echartOptions };
+    this.translate.onLangChange.subscribe(async ({ lang }) => {
+      this.echartOptions = await this.generateChartConfig();
     });
-    this.echartOptions.calendar.dayLabel.nameMap =
-      DAY_NAME_MAP[this.translate.currentLang];
-    this.echartOptions.calendar.monthLabel.nameMap =
-      MONTH_NAME_MAP[this.translate.currentLang];
+    this.echartOptions = await this.generateChartConfig();
+  }
+
+  private async generateChartConfig() {
+    return {
+      title: {
+        top: 30,
+        left: 'center',
+        text: `${startDate} - ${endDate}`,
+      },
+      tooltip: {
+        position: 'top',
+      },
+      legend: {
+        show: false,
+      },
+      visualMap: {
+        max: this.echartOptions?.visualMap.max,
+        show: false,
+      },
+      calendar: {
+        dayLabel: {
+          firstDay: 0,
+          nameMap: await this.translate.get('todos.chart.day').toPromise(),
+        },
+        monthLabel: {
+          nameMap: await this.translate.get('todos.chart.month').toPromise(),
+        },
+        top: 85,
+        left: 46,
+        right: 46,
+        cellSize: ['auto', 32],
+        range: [startDate, endDate],
+        yearLabel: { show: false },
+        itemStyle: {
+          borderWidth: 1,
+          borderColor: '#edf1f7',
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: '#8f9bb3',
+            width: 1,
+            type: 'solid',
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            shadowBlur: 10,
+          },
+        },
+      },
+      series: {
+        type: 'heatmap',
+        coordinateSystem: 'calendar',
+        data: this.echartOptions?.series.data,
+      },
+    };
   }
 
   private reload() {
