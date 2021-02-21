@@ -26,8 +26,7 @@
                     "message": "Die Aufgabe wurde gespeichert"
                 }
             }
-        }
-        ,
+        },
         "chart": {
             "month": [
                 "Jan",
@@ -54,9 +53,7 @@
             ]
         }
     },
-    "dashboard": {
-        
-    },
+    "dashboard": {},
     "exams": {
         "header": "Prüfungen",
         "title": "Titel",
@@ -108,7 +105,7 @@
             "toast": {
                 "saved": {
                     "title": "Gespeichert",
-                    "message":"Die Karteikarte wurde gespeichert"
+                    "message": "Die Karteikarte wurde gespeichert"
                 }
             }
         },
@@ -137,7 +134,7 @@
             "toast": {
                 "saved": {
                     "title": "Gespeichert",
-                    "message":"Die Karteikarte wurde gespeichert"
+                    "message": "Die Karteikarte wurde gespeichert"
                 }
             }
         }
@@ -170,7 +167,7 @@
         "comments": "Kommentare von Kursteilnehmern",
         "toast": {
             "saved": {
-                "title":"Gespeichert",
+                "title": "Gespeichert",
                 "message": "Das Feedback wurde gespeichert"
             }
         },
@@ -206,6 +203,20 @@
             },
             "submit": "Erstellen"
         },
+        "key": "Schlüssel",
+        "participants": "Teilnehmer",
+        "leave": "Verlassen",
+        "delete": {
+            "header": "Kurs verlassen",
+            "text": "Wollen Sie diesen Kurs wirklich verlassen=",
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Verlassen",
+                    "message": "Sie haben den Kurs verlassen"
+                }
+            }
+        },
         "toast": {
             "created": {
                 "message": "Der Kurs wurde erstellt",
@@ -213,7 +224,11 @@
             },
             "joined": {
                 "message": "Du bist dem Kurs beigetreten",
-                "title": "Beigetretten"
+                "title": "Beigetreten"
+            },
+            "conflict": {
+                "message": "Du bist schon Teil dieses Kurses",
+                "title": "Schon beigetreten"
             }
         }
     },
@@ -224,7 +239,7 @@
         "files": "Dateien",
         "feedback": "Feedback",
         "indexCards": "Karteikarten",
-        "joinCreate": "Neuer Kurs",
+        "joinCreate": "Kursverwaltung",
         "personal": "Persönlich",
         "todos": "Aufgaben"
     },

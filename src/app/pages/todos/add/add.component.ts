@@ -29,8 +29,8 @@ export class AddComponent implements OnInit {
   async submit() {
     await this.todosService.upsert(this.model);
     this.toastrService.success(
-      await this.translate.get('todos.add.toast.saved.message'),
-      await this.translate.get('todos.add.toast.saved.title'),
+      await this.translate.get('todos.add.toast.saved.message').toPromise(),
+      await this.translate.get('todos.add.toast.saved.title').toPromise(),
     );
     this.close();
   }
