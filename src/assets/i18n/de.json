@@ -19,7 +19,13 @@
             "deadline": {
                 "label": "Optionale Deadline"
             },
-            "submit": "Speichern"
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Aufgabe wurde gespeichert"
+                }
+            }
         }
     },
     "dashboard": {
@@ -41,7 +47,17 @@
         "header": "Dateien",
         "browseText": "Hier kannst du Dateien hinziehen oder welche ",
         "browseButton": "vom Gerät auswählen",
-        "dropLabel": "Hier Dateien ablegen"
+        "dropLabel": "Hier Dateien ablegen",
+        "toast": {
+            "saved": {
+                "message": "Die Datei wurde gespeichert",
+                "title": "Gespeichert"
+            },
+            "deleted": {
+                "message": "Die Datei wurde gelöscht",
+                "title": "Gelöscht"
+            }
+        }
     },
     "indexCards": {
         "header": "Karteikarten",
@@ -62,12 +78,24 @@
                 "label": "Antwort",
                 "placeholder": "Die Antwort zur Frage..."
             },
-            "submit": "Speichern"
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message":"Die Karteikarte wurde gespeichert"
+                }
+            }
         },
         "delete": {
             "header": "Karteikarte löschen",
             "text": "Wollen Sie diese Karteikarte wirklich löschen",
-            "submit": "Ja"
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Gelöscht",
+                    "message": "Die Karteikarte wurde gelöscht"
+                }
+            }
         },
         "edit": {
             "header": "Karteikarte bearbeiten",
@@ -79,7 +107,13 @@
                 "label": "Antwort",
                 "placeholder": "Die Antwort zur Frage..."
             },
-            "submit": "Speichern"
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message":"Die Karteikarte wurde gespeichert"
+                }
+            }
         }
     },
     "feedback": {
@@ -107,7 +141,13 @@
             "label": "Wurden neue Inhalte vermittelt?"
         },
         "submit": "Speichern",
-        "comments": "Kommentare von Kursteilnehmern"
+        "comments": "Kommentare von Kursteilnehmern",
+        "toast": {
+            "saved": {
+                "title":"Gespeichert",
+                "message": "Das Feedback wurde gespeichert"
+            }
+        }
     },
     "join": {
         "join": {
@@ -132,6 +172,16 @@
                 }
             },
             "submit": "Erstellen"
+        },
+        "toast": {
+            "created": {
+                "message": "Der Kurs wurde erstellt",
+                "title": "Erstellt"
+            },
+            "joined": {
+                "message": "Du bist dem Kurs beigetreten",
+                "title": "Beigetretten"
+            }
         }
     },
     "menu": {

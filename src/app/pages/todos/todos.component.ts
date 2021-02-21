@@ -12,10 +12,48 @@ import {
   startOfMonth,
   endOfMonth,
 } from 'date-fns';
+import { TranslateService } from '@ngx-translate/core';
 
 const today = new Date();
 const startDate = format(startOfMonth(subMonths(today, 1)), 'yyyy-MM-dd');
 const endDate = format(endOfMonth(addMonths(today, 2)), 'yyyy-MM-dd');
+
+const MONTH_NAME_MAP = {
+  de: [
+    'Jan',
+    'Feb',
+    'Mär',
+    'Apr',
+    'Mai',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dez',
+  ],
+  en: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ],
+};
+
+const DAY_NAME_MAP = {
+  //Das wäre besser in der Lang datei. Dan wäre das aber wieder mit einer async factory verbunden
+  de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+  en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+};
 
 @Component({
   selector: 'todos',
@@ -42,9 +80,12 @@ export class TodosComponent implements OnInit {
       show: false,
     },
     calendar: {
-      // TODO: Einstellungen nach Sprache mit 'nameMap'
       dayLabel: {
-        // firstDay: 1, // start on Monday
+        firstDay: 0,
+        nameMap: DAY_NAME_MAP.en,
+      },
+      monthLabel: {
+        nameMap: MONTH_NAME_MAP.en,
       },
       top: 85,
       left: 46,
@@ -85,10 +126,20 @@ export class TodosComponent implements OnInit {
   constructor(
     private readonly todosService: TodosService,
     private readonly dialogService: NbDialogService,
+    private readonly translate: TranslateService,
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.reload();
+    this.translate.onLangChange.subscribe(({ lang }) => {
+      this.echartOptions.calendar.dayLabel.nameMap = DAY_NAME_MAP[lang];
+      this.echartOptions.calendar.monthLabel.nameMap = MONTH_NAME_MAP[lang];
+      this.echartOptions = { ...this.echartOptions };
+    });
+    this.echartOptions.calendar.dayLabel.nameMap =
+      DAY_NAME_MAP[this.translate.currentLang];
+    this.echartOptions.calendar.monthLabel.nameMap =
+      MONTH_NAME_MAP[this.translate.currentLang];
   }
 
   private reload() {

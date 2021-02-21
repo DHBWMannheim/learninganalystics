@@ -1,9 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
 import { CoursesService } from '../../@core/data/course.service';
 import { Feedback, FeedbackService } from '../../@core/data/feedback.service';
 import { UserService } from '../../@core/data/user.service';
+
+const AXIS_NAMES = {
+  en: [
+    'Enjoyement',
+    'Amount of Information',
+    'Informations understandable',
+    'Informationtransfer',
+  ],
+  de: [
+    'Spaß',
+    'Informationsversorgung',
+    'Verständlichkeit',
+    'Neue Informationen',
+  ],
+};
 
 @Component({
   selector: 'ngx-feedback',
@@ -28,12 +44,7 @@ export class FeedbackComponent implements OnInit {
     },
     xAxis: {
       type: 'category',
-      data: [
-        'Enjoyement',
-        'Amount of Information',
-        'Informations understandable',
-        'Informationtransfer',
-      ],
+      data: [],
     },
     yAxis: {
       type: 'value',
@@ -64,6 +75,7 @@ export class FeedbackComponent implements OnInit {
     private readonly feedbackService: FeedbackService,
     private readonly toast: NbToastrService,
     private readonly userService: UserService,
+    private readonly translate: TranslateService,
   ) {}
 
   ngOnInit(): void {
@@ -119,6 +131,12 @@ export class FeedbackComponent implements OnInit {
       }
       this.loading = false;
     });
+
+    this.translate.onLangChange.subscribe(({ lang }) => {
+      this.lecturerChart.xAxis.data = AXIS_NAMES[lang];
+      this.lecturerChart = {...this.lecturerChart}
+    });
+    this.lecturerChart.xAxis.data = AXIS_NAMES[this.translate.currentLang];
   }
 
   async save() {
@@ -127,6 +145,9 @@ export class FeedbackComponent implements OnInit {
       user: this.userService.createRef((await this.userService.currentUser).id),
       ...this.model,
     });
-    this.toast.success('Success', 'Your feedback was saved');
+    this.toast.success(
+      await this.translate.get('feedback.toast.saved.message'),
+      await this.translate.get('feedback.toast.saved.title'),
+    );
   }
 }

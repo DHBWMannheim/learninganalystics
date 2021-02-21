@@ -12,7 +12,6 @@ import {
 } from '../@core/data/course.service';
 import { FireFile } from '../@core/data/files.service';
 import { Todo } from '../@core/data/todos.service';
-import { MenuHelperService } from '../@theme/menu-helper.service';
 import { POST_COURSE_MENU_ITEMS, PRE_COURSE_MENU_ITEMS } from './pages-menu';
 
 @Component({
@@ -38,7 +37,6 @@ export class PagesComponent implements OnInit {
     private readonly search: NbSearchService,
     private readonly coursesService: CoursesService,
     private readonly translate: TranslateService,
-    private readonly menuHelper: MenuHelperService,
     private readonly router: Router,
   ) {}
   async ngOnInit(): Promise<void> {
@@ -50,13 +48,13 @@ export class PagesComponent implements OnInit {
 
     this.coursesService.currentCourses.subscribe((courses) => {
       this.currentCourses = courses;
-      this.menuHelper.reloadMenu();
-    });
-
-    this.menuHelper.onReload.subscribe(() => {
       this.buildMenu(this.currentCourses);
     });
-    this.menuHelper.reloadMenu();
+
+    this.translate.onLangChange.subscribe(() => {
+      this.buildMenu(this.currentCourses);
+    });
+    this.buildMenu(this.currentCourses);
   }
 
   private async buildMenu(relevantCourses: RelevantCourses) {

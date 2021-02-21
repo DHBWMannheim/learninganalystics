@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuerySnapshot } from '@angular/fire/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { chunk } from 'lodash';
 import { map, take } from 'rxjs/operators';
 
@@ -29,6 +29,7 @@ export class SearchComponent implements OnInit {
     private readonly todoService: TodosService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly indexCardsService: IndexCardsService,
+    private readonly router: Router
   ) {}
 
   ngOnInit() {
@@ -157,5 +158,18 @@ export class SearchComponent implements OnInit {
     const m = new Map<string, T>();
     array.forEach((a) => m.set(a.id, a));
     return [...m.values()];
+  }
+
+
+  navigateTodo(id: string){
+    this.router.navigate(['pages', 'todos'])
+  }
+
+  navigateFiles(file: FireFile){
+    this.router.navigate(['pages', 'files', file.course.id])
+  }
+
+  navigateIndexCards(indexCard: IndexCard){
+    this.router.navigate(['pages', 'index-cards', indexCard.course.id])
   }
 }

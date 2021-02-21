@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { NbToastrService } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { CommonFirestoreDocument } from './common-firestore-document';
@@ -30,6 +31,7 @@ export class CoursesService extends CommonFirestoreService<Course> {
     firestore: AngularFirestore,
     private readonly userService: UserService,
     private readonly toastr: NbToastrService,
+    private readonly translate: TranslateService,
   ) {
     super('courses', firestore);
     this.refreshCourses();
@@ -47,7 +49,10 @@ export class CoursesService extends CommonFirestoreService<Course> {
       key: document.id.substring(0, 6).toLowerCase(),
       participants: [],
     });
-    this.toastr.success('Course created', 'Saved');
+    this.toastr.success(
+      await this.translate.get('join.toast.created.message'),
+      await this.translate.get('join.toast.created.title'),
+    );
     await this.refreshCourses();
     return document.id;
   }
@@ -70,7 +75,10 @@ export class CoursesService extends CommonFirestoreService<Course> {
     course.participants.push(this.userService.createRef(currentUser.id));
 
     await this.upsert(course);
-    this.toastr.success('You joined a course', 'Saved');
+    this.toastr.success(
+      await this.translate.get('join.toast.joined.message'),
+      await this.translate.get('join.toast.joined.title'),
+    );
     await this.refreshCourses();
     return course.id;
   }

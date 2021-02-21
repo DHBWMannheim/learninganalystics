@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
-import { NbCardModule, NbListModule, NbSpinnerModule } from '@nebular/theme';
+import { NbCardModule, NbIconModule, NbListModule, NbSpinnerModule } from '@nebular/theme';
 import { ThemeModule } from '../../@theme/theme.module';
 import { SearchRoutingModule } from './search-routing.module';
 import { HttpClient } from '@angular/common/http';
@@ -17,6 +17,7 @@ import { createTranslateLoader } from '../../app.module';
     SearchRoutingModule,
     NbListModule,
     NbSpinnerModule,
+    NbIconModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

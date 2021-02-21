@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
 import { FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
 import { last } from 'rxjs/operators';
 import { CoursesService } from '../../@core/data/course.service';
@@ -28,6 +29,7 @@ export class FilesComponent implements OnInit {
     private readonly toastr: NbToastrService,
     private readonly route: ActivatedRoute,
     private readonly coursesService: CoursesService,
+    private readonly translate: TranslateService
   ) { }
 
   async ngOnInit() {
@@ -36,10 +38,10 @@ export class FilesComponent implements OnInit {
       this.files = await this.filesService.getData(
         await this.filesService
           .getCollection()
-          .where('course', '==', this.coursesService.createRef(this.courseId)) // TODO: solche sachen in den Service packen?
+          .where('course', '==', this.coursesService.createRef(this.courseId))
           .get(),
       );
-      this.isLecturer = await this.coursesService.isLecturer(this.courseId); // Ja, Promise.all oder so wäre besser
+      this.isLecturer = await this.coursesService.isLecturer(this.courseId);
     });
   }
 
@@ -54,15 +56,16 @@ export class FilesComponent implements OnInit {
           this.courseId,
         );
         this.fileUploadQueue.push(queueElement);
-        queueElement.uploadProgress.pipe(last()).subscribe((_) => {
-          // TODO: Error handling?
+        queueElement.uploadProgress.pipe(last()).subscribe(async (_) => {
           this.fileUploadQueue = this.fileUploadQueue.filter(
             (element) => element !== queueElement,
           );
           this.files.push(queueElement);
-          this.toastr.show('Saved', 'Saved successfully', {
-            status: 'success',
-          });
+
+          this.toastr.success(
+            await this.translate.get('files.toast.saved.message'),
+            await this.translate.get('files.toast.saved.title'),
+          );
         });
       }
     }
@@ -75,9 +78,10 @@ export class FilesComponent implements OnInit {
   async del(file: FireFile) {
     this.files = this.files.filter((element) => element !== file);
     await this.filesService.deleteWithStorage(file);
-    this.toastr.show('Deleted', 'Deleted successfully', {
-      status: 'success',
-    });
+    this.toastr.success(
+      await this.translate.get('files.toast.deleted.message'),
+      await this.translate.get('files.toast.deleted.title'),
+    );
   }
 
   async download(file: FireFile) {

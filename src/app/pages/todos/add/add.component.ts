@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
 import { Todo, TodosService } from '../../../@core/data/todos.service';
 
 @Component({
@@ -9,7 +10,6 @@ import { Todo, TodosService } from '../../../@core/data/todos.service';
 })
 export class AddComponent implements OnInit {
   model: Omit<Todo, 'owner'> = {
-    // TODO: ist omit ok oder sollte owner optional sein?
     title: '',
   };
 
@@ -17,6 +17,7 @@ export class AddComponent implements OnInit {
     private readonly dialogRef: NbDialogRef<AddComponent>,
     private readonly todosService: TodosService,
     private readonly toastrService: NbToastrService,
+    private readonly translate: TranslateService,
   ) {}
 
   ngOnInit(): void {}
@@ -27,9 +28,10 @@ export class AddComponent implements OnInit {
 
   async submit() {
     await this.todosService.upsert(this.model);
-    this.toastrService.show('Saved', 'Saved successfully', {
-      status: 'success',
-    });
+    this.toastrService.success(
+      await this.translate.get('todos.add.toast.saved.message'),
+      await this.translate.get('todos.add.toast.saved.title'),
+    );
     this.close();
   }
 }
