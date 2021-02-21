@@ -1,71 +1,128 @@
 <div class="row">
   <div class="col-xs-12 col-md-6">
     <nb-card [nbSpinner]="loadingJoin">
-      <nb-card-header>{{ 'join.join.header' | translate }}</nb-card-header>
-      <nb-card-body>
-        <form [formGroup]="joinForm">
-          <mat-form-field appearance="outline">
-            <mat-label>{{ 'join.join.key.label' | translate }}</mat-label>
-            <input
-              matInput
-              [placeholder]="'join.join.key.placeholder' | translate"
-              required
-              name="key"
-              maxlength="6"
-              formControlName="key"
-            />
-            <mat-error *ngIf="joinForm.get('key').hasError('required')">
-              {{ 'join.join.key.errors.required' | translate }}
-            </mat-error>
-            <mat-error *ngIf="joinForm.get('key').hasError('minlength')">
-              {{ 'join.join.key.errors.minlength' | translate }}
-            </mat-error>
-          </mat-form-field>
-          <div style="text-align: right">
-            <button
-              nbButton
-              outline
-              (click)="joinCourse()"
-              [disabled]="!joinForm.valid"
-            >
-              {{ 'join.join.submit' | translate }}
-            </button>
+      <nb-card-header>{{'join.join.header'|translate}}</nb-card-header>
+
+      <nb-list>
+        <nb-list-item>
+          <form [formGroup]="joinForm">
+
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'join.join.key.label' | translate }}</mat-label>
+              <input
+                matInput
+                [placeholder]="'join.join.key.placeholder' | translate"
+                required
+                name="key"
+                maxlength="6"
+                formControlName="key"
+              />
+              <mat-error *ngIf="joinForm.get('key').hasError('required')">
+                {{ 'join.join.key.errors.required' | translate }}
+              </mat-error>
+              <mat-error *ngIf="joinForm.get('key').hasError('minlength')">
+                {{ 'join.join.key.errors.minlength' | translate }}
+              </mat-error>
+            </mat-form-field>
+            <div style="text-align: right;">
+              <button
+                nbButton
+                outline
+                (click)="joinCourse()"
+                [disabled]="!joinForm.valid"
+                status="primary"
+              >
+                {{ 'join.join.submit' | translate }}
+              </button>
+            </div>
+          </form>
+        </nb-list-item>
+        <nb-list-item
+          *ngFor="let course of (currentCourses | async).participations"
+        >
+        <div class="row w-100">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                {{ course.name }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <small>{{'join.key'|translate}}: {{ course.key }}</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <small>{{ course.participants.length }} {{'join.participants'|translate}}</small>
+              </div>
+            </div>
           </div>
-        </form>
-      </nb-card-body>
+          <div class="leaveButton">
+            <button nbButton (click)="leaveCourse(course)">{{'join.leave'|translate}}</button>
+          </div>
+        </div>
+        </nb-list-item>
+      </nb-list>
     </nb-card>
   </div>
   <div class="col-xs-12 col-md-6">
     <nb-card [nbSpinner]="loadingCreate">
-      <nb-card-header> {{ 'join.create.header' | translate }} </nb-card-header>
-      <nb-card-body>
-        <form [formGroup]="createForm">
-          <mat-form-field appearance="outline">
-            <mat-label>{{ 'join.create.name.label' | translate }}</mat-label>
-            <input
-              matInput
-              [placeholder]="'join.create.name.placeholder' | translate"
-              required
-              name="name"
-              formControlName="name"
-            />
-            <mat-error *ngIf="createForm.get('name').hasError('required')">
-              {{ 'join.create.name.errors.required' | translate }}
-            </mat-error>
-          </mat-form-field>
-          <div style="text-align: right">
-            <button
-              nbButton
-              outline
-              nbButton
-              (click)="createCourse()"
-              [disabled]="!createForm.valid"
-            >
-              {{ 'join.create.submit' | translate }}
-            </button>
+      <nb-card-header>{{'join.create.header'|translate}}</nb-card-header>
+      <nb-list>
+        <nb-list-item>
+          <form [formGroup]="createForm">
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'join.create.name.label' | translate }}</mat-label>
+              <input
+                matInput
+                [placeholder]="'join.create.name.placeholder' | translate"
+                required
+                name="name"
+                formControlName="name"
+              />
+              <mat-error *ngIf="createForm.get('name').hasError('required')">
+                {{ 'join.create.name.errors.required' | translate }}
+              </mat-error>
+            </mat-form-field>
+            <div style="text-align: right">
+              <button
+                nbButton
+                outline
+                (click)="createCourse()"
+                [disabled]="!createForm.valid"
+                status="primary"
+              >
+                {{ 'join.create.submit' | translate }}
+              </button>
+            </div>
+          </form>
+        </nb-list-item>
+        <nb-list-item *ngFor="let course of (currentCourses | async).creations">
+          <div class="row w-100">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  {{ course.name }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <small>{{'join.key'|translate}}: {{ course.key }}</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <small>{{ course.participants.length }} {{'join.participants'|translate}}</small>
+                </div>
+              </div>
+            </div>
+            <div class="leaveButton">
+              <button nbButton (click)="leaveCourse(course)">{{'join.leave'|translate}}</button>
+            </div>
           </div>
-        </form>
-      </nb-card-body>
+        </nb-list-item>
+      </nb-list>
     </nb-card>
   </div>
 </div>

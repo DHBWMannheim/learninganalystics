@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import {
   NbButtonModule,
   NbCardModule,
+  NbIconModule,
   NbInputModule,
   NbListModule,
   NbSpinnerModule,
@@ -15,11 +16,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { createTranslateLoader } from '../../app.module';
+import { DeleteComponent } from './delete/delete.component';
 import { NewCourseRoutingModule } from './new-course-routing.module';
 import { NewCourseComponent } from './new-course.component';
 
 @NgModule({
-  declarations: [NewCourseComponent],
+  declarations: [NewCourseComponent, DeleteComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -33,6 +35,7 @@ import { NewCourseComponent } from './new-course.component';
     MatFormFieldModule,
     MatInputModule,
     NbListModule,
+    NbIconModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

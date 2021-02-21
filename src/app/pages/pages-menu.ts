@@ -7,6 +7,12 @@ export const PRE_COURSE_MENU_ITEMS = async (
   {
     title: 'Dashboard',
     icon: 'home-outline',
+    link: '/pages/search',
+    hidden: true,
+  },
+  {
+    title: 'Dashboard',
+    icon: 'home-outline',
     link: '/pages/dashboard',
     home: true,
   },
@@ -18,7 +24,7 @@ export const PRE_COURSE_MENU_ITEMS = async (
     title: await ts.get('menu.joinCreate').toPromise(),
     icon: 'plus-square-outline',
     link: '/pages/new-course',
-  }
+  },
 ];
 
 export const POST_COURSE_MENU_ITEMS = async (
