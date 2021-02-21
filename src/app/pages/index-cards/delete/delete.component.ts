@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
-import { CoursesService } from '../../../@core/data/course.service';
-import { IndexCard, IndexCardsService } from '../../../@core/data/index-cards.service';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  IndexCard,
+  IndexCardsService,
+} from '../../../@core/data/index-cards.service';
 
 @Component({
   selector: 'ngx-delete',
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.scss'],
 })
-export class DeleteComponent implements OnInit {
-
+export class DeleteComponent {
   courseId: string;
   card: IndexCard;
 
@@ -17,9 +19,8 @@ export class DeleteComponent implements OnInit {
     private readonly dialogRef: NbDialogRef<DeleteComponent>,
     private readonly indexCardsService: IndexCardsService,
     private readonly toastrService: NbToastrService,
+    private readonly translate: TranslateService,
   ) {}
-
-  ngOnInit(): void {}
 
   close() {
     this.dialogRef.close();
@@ -27,9 +28,10 @@ export class DeleteComponent implements OnInit {
 
   async submit() {
     await this.indexCardsService.delete(this.card.id);
-    this.toastrService.show('Index card deleted', 'Success!', {
-      status: 'success',
-    });
+    this.toastrService.success(
+      await this.translate.get('indexCards.delete.toast.deleted.message'),
+      await this.translate.get('indexCards.delete.toast.deleted.title'),
+    );
     this.close();
   }
 }

@@ -19,12 +19,16 @@
             "deadline": {
                 "label": "Optional Deadline"
             },
-            "submit": "Save"
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The Todo was saved"
+                }
+            }
         }
     },
-    "dashboard": {
-        
-    },
+    "dashboard": {},
     "exams": {
         "header": "Exams",
         "title": "Title",
@@ -41,7 +45,17 @@
         "header": "Files",
         "browseText": "Drag files here or ",
         "browseButton": "browse",
-        "dropLabel": "Drop files here"
+        "dropLabel": "Drop files here",
+        "toast": {
+            "created": {
+                "message": "Your file was saved",
+                "title": "Saved"
+            },
+            "deleted": {
+                "message": "The file was deleted",
+                "title": "Deleted"
+            }
+        }
     },
     "indexCards": {
         "header": "Index Cards",
@@ -62,12 +76,24 @@
                 "label": "Answer",
                 "placeholder": "The Answer..."
             },
-            "submit": "Save"
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message":"The Index-Card was saved"
+                }
+            }
         },
         "delete": {
             "header": "Delete Index-Card",
             "text": "Do you really want to delete this Index-Card",
-            "submit": "Yes"
+            "submit": "Yes",
+            "toast": {
+                "deleted": {
+                    "title": "Deleted",
+                    "message": "The Index-card was deleted"
+                }
+            }
         },
         "edit": {
             "header": "Edit Index-Card",
@@ -79,7 +105,13 @@
                 "label": "Antwort",
                 "placeholder": "The Answer..."
             },
-            "submit": "Save"
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message":"The Index-Card was saved"
+                }
+            }
         }
     },
     "feedback": {
@@ -107,7 +139,13 @@
             "label": "How was Knowledge conveyed?"
         },
         "submit": "Save",
-        "comments": "Comments from Participants"
+        "comments": "Comments from Participants",
+        "toast": {
+            "saved": {
+                "title": "Saved",
+                "message": "Your Feedback was saved"
+            }
+        }
     },
     "join": {
         "join": {
@@ -132,6 +170,16 @@
                 }
             },
             "submit": "Create"
+        },
+        "toast": {
+            "created": {
+                "message": "Your course was created",
+                "title": "Created"
+            },
+            "joined": {
+                "message": "You joined a new course",
+                "title": "Joined"
+            }
         }
     },
     "menu": {
@@ -233,5 +281,11 @@
         "submit": "Change password",
         "backToLogin": "Back to Log In",
         "register": "Register"
+    },
+    "search": {
+        "todos": "Todos",
+        "files": "Files",
+        "indexCards": "Index Cards",
+        "notFound": "No results were found"
     }
 }

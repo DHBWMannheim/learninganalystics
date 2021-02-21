@@ -12,7 +12,6 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { User, UserService } from '../../../@core/data/user.service';
 import { LayoutService } from '../../../@core/utils/layout.service';
 import { RippleService } from '../../../@core/utils/ripple.service';
-import { MenuHelperService } from '../../menu-helper.service';
 
 @Component({
   selector: 'ngx-header',
@@ -29,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   themes = [
     {
       value: 'dhbw',
-      name: 'DHBW'
+      name: 'DHBW',
     },
     {
       value: 'dark',
@@ -74,7 +73,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private readonly rippleService: RippleService,
     private readonly userService: UserService,
     private readonly translate: TranslateService,
-    private readonly menuHelper: MenuHelperService,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map((theme) => {
@@ -114,10 +112,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService
       .onItemClick()
       .pipe(filter(({ tag }) => tag === 'languageMenu'))
-      .subscribe(({ item }) => {
-        this.translate.use(item.title.toLowerCase());
-        this.menuHelper.reloadMenu();
-      });
+      .subscribe(({ item }) => this.translate.use(item.title.toLowerCase()));
 
     this.languageMenu = this.translate.getLangs().map((lang) => ({
       title: lang.toUpperCase(),
@@ -143,9 +138,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateHome() {
     this.menuService.navigateHome();
     return false;
-  }
-
-  areNewMessagesAvailable() {
-    return true; //TODO: Anstehende Klausuren, Todos, ...
   }
 }
