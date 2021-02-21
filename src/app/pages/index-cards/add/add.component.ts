@@ -38,8 +38,8 @@ export class AddComponent implements OnInit {
       course: this.coursesService.createRef(this.courseId),
     });
     this.toastrService.success(
-      await this.translate.get('indexCards.add.toast.saved.message'),
-      await this.translate.get('indexCards.add.toast.saved.title'),
+      await this.translate.get('indexCards.add.toast.saved.message').toPromise(),
+      await this.translate.get('indexCards.add.toast.saved.title').toPromise(),
     );
     this.close();
   }

@@ -29,8 +29,8 @@ export class DeleteComponent {
   async submit() {
     await this.indexCardsService.delete(this.card.id);
     this.toastrService.success(
-      await this.translate.get('indexCards.delete.toast.deleted.message'),
-      await this.translate.get('indexCards.delete.toast.deleted.title'),
+      await this.translate.get('indexCards.delete.toast.deleted.message').toPromise(),
+      await this.translate.get('indexCards.delete.toast.deleted.title').toPromise(),
     );
     this.close();
   }

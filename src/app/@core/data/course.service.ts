@@ -50,8 +50,8 @@ export class CoursesService extends CommonFirestoreService<Course> {
       participants: [],
     });
     this.toastr.success(
-      await this.translate.get('join.toast.created.message'),
-      await this.translate.get('join.toast.created.title'),
+      await this.translate.get('join.toast.created.message').toPromise(),
+      await this.translate.get('join.toast.created.title').toPromise(),
     );
     await this.refreshCourses();
     return document.id;
@@ -76,8 +76,8 @@ export class CoursesService extends CommonFirestoreService<Course> {
 
     await this.upsert(course);
     this.toastr.success(
-      await this.translate.get('join.toast.joined.message'),
-      await this.translate.get('join.toast.joined.title'),
+      await this.translate.get('join.toast.joined.message').toPromise(),
+      await this.translate.get('join.toast.joined.title').toPromise(),
     );
     await this.refreshCourses();
     return course.id;

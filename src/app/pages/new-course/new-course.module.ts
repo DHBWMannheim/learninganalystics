@@ -8,6 +8,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbInputModule,
+  NbListModule,
   NbSpinnerModule,
 } from '@nebular/theme';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -31,12 +32,13 @@ import { NewCourseComponent } from './new-course.component';
     NbInputModule,
     MatFormFieldModule,
     MatInputModule,
+    NbListModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
-        deps: [HttpClient]
-    }
+        deps: [HttpClient],
+      },
     }),
   ],
 })

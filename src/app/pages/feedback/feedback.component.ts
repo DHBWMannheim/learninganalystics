@@ -139,8 +139,8 @@ export class FeedbackComponent implements OnInit {
       ...this.model,
     });
     this.toast.success(
-      await this.translate.get('feedback.toast.saved.message'),
-      await this.translate.get('feedback.toast.saved.title'),
+      await this.translate.get('feedback.toast.saved.message').toPromise(),
+      await this.translate.get('feedback.toast.saved.title').toPromise(),
     );
   }
 }
