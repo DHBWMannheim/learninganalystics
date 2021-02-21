@@ -5,8 +5,8 @@ export const PRE_COURSE_MENU_ITEMS = async (
   ts: TranslateService,
 ): Promise<NbMenuItem[]> => [
   {
-    title: 'Dashboard',
-    icon: 'home-outline',
+    title: 'Seach',
+    icon: 'search-outline',
     link: '/pages/search',
     hidden: true,
   },
