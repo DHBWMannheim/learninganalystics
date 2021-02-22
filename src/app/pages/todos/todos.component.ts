@@ -13,6 +13,7 @@ import {
   endOfMonth,
 } from 'date-fns';
 import { TranslateService } from '@ngx-translate/core';
+import { eachDayOfInterval } from 'date-fns/esm';
 
 const today = new Date();
 const startDate = format(startOfMonth(subMonths(today, 1)), 'yyyy-MM-dd');
@@ -99,14 +100,18 @@ export class TodosComponent implements OnInit {
   }
 
   private reload() {
-    // TODO: add load limit, ...
     this.loading = true;
     this.todosService.get().then((v) => {
       this.items = v;
+      const dates = v.flatMap((todo) => {
+        const start = todo.startDate || todo.endDate;
+        const end = todo.endDate || todo.startDate;
+        return start && end ? eachDayOfInterval({ start, end }) : [];
+      });
 
       const dategroup = groupBy(
-        v.filter((v) => v.deadline),
-        ({ deadline }) => format(startOfDay(deadline), 'yyyy-MM-dd'),
+        dates,
+        (date) => format(startOfDay(date), 'yyyy-MM-dd'),
       );
 
       let max = 0;

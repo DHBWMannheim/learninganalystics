@@ -16,8 +16,10 @@
                 "label": "Description",
                 "placeholder": "A long description"
             },
-            "deadline": {
-                "label": "Optional Deadline"
+            "timespan": {
+                "label": "Optional timespan",
+                "placeholderStartDate": "Start date",
+                "placeholderEndDate": "End date"
             },
             "submit": "Save",
             "toast": {

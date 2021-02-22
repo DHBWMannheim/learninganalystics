@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
+
 import { Todo, TodosService } from '../../../@core/data/todos.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class AddComponent implements OnInit {
   }
 
   async submit() {
+    console.log(this.model)
     await this.todosService.upsert(this.model);
     this.toastrService.success(
       await this.translate.get('todos.add.toast.saved.message').toPromise(),

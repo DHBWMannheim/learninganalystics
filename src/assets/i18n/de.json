@@ -16,8 +16,10 @@
                 "label": "Beschreibung",
                 "placeholder": "Ausführliche Beschreibung"
             },
-            "deadline": {
-                "label": "Optionale Deadline"
+            "timespan": {
+                "label": "Optionaler Zeitraum",
+                "placeholderStartDate": "Startdatum",
+                "placeholderEndDate": "Enddatum"
             },
             "submit": "Speichern",
             "toast": {
