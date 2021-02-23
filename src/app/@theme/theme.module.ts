@@ -14,7 +14,7 @@ import {
   NbIconModule,
   NbThemeModule,
   NbBadgeModule,
-  NbCardModule,
+  NbCardModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';

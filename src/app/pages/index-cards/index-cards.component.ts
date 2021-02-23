@@ -81,6 +81,49 @@ export class IndexCardsComponent implements OnInit {
   private known: number = 0;
   private notKnown: number = 0;
 
+  cardStreaks: any = {
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: []
+  };
+
+  private calculateCardStreaks(): void {
+    this.cardStreaks = {
+      0: [],
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: []
+    };
+
+    this.cards.forEach(card => {
+      if (card.streak) {
+        const now = Date.now();
+  
+        if (card.streak === 1 && now - card.streakSince > 60 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[6].push(card)
+        } else if (card.streak === 1 && now - card.streakSince > 30 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[5].push(card)
+        } else if (card.streak === 1 && now - card.streakSince > 10 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[4].push(card)
+        } else if (card.streak === 1 && now - card.streakSince > 2 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[3].push(card)
+        } else if (card.streak === 1 && now - card.streakSince > 24 * 60 * 60 * 1000) {
+          this.cardStreaks[2].push(card)
+        } else if (card.streak === 1 && now - card.streakSince > 20 * 60 * 1000) {
+          this.cardStreaks[1].push(card)
+        }
+      }
+      this.cardStreaks[0].push(card)
+    })
+  }
+
   constructor(
     private readonly dialogService: NbDialogService,
     private readonly indexCardsService: IndexCardsService,
@@ -107,6 +150,7 @@ export class IndexCardsComponent implements OnInit {
     this.cards = cards;
     this.originalCardCount = cards.length;
     this.loadingCards = false;
+    this.calculateCardStreaks();
   }
 
   logChoice({ choice }: TinderChoice) {
