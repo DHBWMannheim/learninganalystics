@@ -3,7 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
-import { QuestionareService } from '../../@core/data/questionare.service';
+import {
+  Questionare,
+  QuestionareService,
+} from '../../@core/data/questionare.service';
 import { UserService } from '../../@core/data/user.service';
 
 @Component({
@@ -19,6 +22,8 @@ export class OnbordingComponent implements OnInit {
     experience: new FormControl(null, [Validators.required]),
   });
 
+  private currentDoc: Questionare;
+
   constructor(
     private readonly questionareService: QuestionareService,
     private readonly userService: UserService,
@@ -27,16 +32,34 @@ export class OnbordingComponent implements OnInit {
     private readonly translate: TranslateService,
   ) {}
 
-  //TODO: Route here after registration
-  ngOnInit(): void {}
+  async ngOnInit() {
+    this.currentDoc = (
+      await this.questionareService.getData(
+        await this.questionareService
+          .getCollection()
+          .where('user', '==', await this.createCurrentUserRef())
+          .get(),
+      )
+    )[0];
+    console.log(this.currentDoc);
+    this.form.get('typ').setValue(this.currentDoc?.typ);
+    this.form.get('online').setValue(this.currentDoc?.online);
+    this.form.get('apps').setValue(this.currentDoc?.apps);
+    this.form.get('experience').setValue(this.currentDoc?.experience);
+  }
+
+  private async createCurrentUserRef() {
+    return this.userService.createRef((await this.userService.currentUser).id);
+  }
 
   async submit() {
     await this.questionareService.upsert({
+      id: this.currentDoc?.id,
       typ: this.form.get('typ').value,
       online: this.form.get('online').value,
       apps: this.form.get('apps').value,
       experience: this.form.get('experience').value,
-      user: this.userService.createRef((await this.userService.currentUser).id),
+      user: await this.createCurrentUserRef(),
     });
     this.toast.success(
       await this.translate.get('questionare.toast.success.message').toPromise(),

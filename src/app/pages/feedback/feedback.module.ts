@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { LecturerComponent } from './lecturer/lecturer.component';
+import { ParticipantComponent } from './participant/participant.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,6 @@ import { NgxEchartsModule } from 'ngx-echarts';
       },
     }),
   ],
-  declarations: [FeedbackComponent],
+  declarations: [FeedbackComponent, LecturerComponent, ParticipantComponent],
 })
 export class FeedbackModule {}

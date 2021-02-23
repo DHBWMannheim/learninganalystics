@@ -1,4 +1,18 @@
 <nb-card>
+  <nb-card-body>
+    <ngx-participant></ngx-participant>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <ngx-lecturer></ngx-lecturer>
+  </nb-card-body>
+</nb-card>
+
+
+
+<nb-card>
   <nb-card-header>{{ 'feedback.header' | translate }} </nb-card-header>
   <nb-card-body *ngIf="!isLecturer && !loading">
     <div class="w-100 radio-container">

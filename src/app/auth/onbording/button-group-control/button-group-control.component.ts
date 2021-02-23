@@ -48,6 +48,7 @@ export class ButtonGroupControlComponent
     const index = this.buttons.findIndex((button) => button.value === value);
     this.buttonStates.fill(false);
     this.buttonStates[index] = true;
+    this.cdRef.detectChanges();
   }
   registerOnChange(fn: (value: any) => void): void {
     this.onChanges = fn;
