@@ -10,6 +10,7 @@ import {
 import { LayoutService } from './utils/layout.service';
 import { RippleService } from './utils/ripple.service';
 import { SeoService } from './utils/seo.service';
+import { QuestionareComponent } from './shared/questionare/questionare.component';
 
 export const NB_CORE_PROVIDERS = [
   { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService },
@@ -62,8 +63,7 @@ export const NB_CORE_PROVIDERS = [
 
 @NgModule({
   imports: [CommonModule],
-  exports: [NbAuthModule, NbFirebaseAuthModule],
-  declarations: [],
+  exports: [NbAuthModule, NbFirebaseAuthModule]
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders<CoreModule> {
