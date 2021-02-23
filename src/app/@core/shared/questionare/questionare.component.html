@@ -99,7 +99,7 @@
   </nb-card-body>
   <nb-card-footer>
     <div class="row justify-content-center">
-      <div class="col-xs-6 col-md-4 md-mb-1">
+      <div class="col-xs-6 col-md-4 md-mb-1" *ngIf="skipEnabled">
         <button class="w-100" nbButton (click)="skip()">
           {{ 'questionare.skip' | translate }}
         </button>
@@ -117,4 +117,3 @@
       </div>
     </div>
   </nb-card-footer>
-  

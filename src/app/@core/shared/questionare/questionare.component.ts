@@ -1,18 +1,23 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
-import { Questionare, QuestionareService } from '../../data/questionare.service';
+
+import {
+  Questionare,
+  QuestionareService,
+} from '../../data/questionare.service';
 import { UserService } from '../../data/user.service';
 
 @Component({
   selector: 'ngx-questionare',
   templateUrl: './questionare.component.html',
-  styleUrls: ['./questionare.component.scss']
+  styleUrls: ['./questionare.component.scss'],
 })
 export class QuestionareComponent {
-
+  @Input()
+  skipEnabled = true;
 
   form = new FormGroup({
     typ: new FormControl(null, [Validators.required]),

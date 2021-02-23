@@ -24,6 +24,11 @@ const routes: Routes = [
           import('./search/search.module').then((m) => m.SearchModule),
       },
       {
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfileModule),
+      },
+      {
         path: 'new-course',
         loadChildren: () =>
           import('./new-course/new-course.module').then(
@@ -31,9 +36,7 @@ const routes: Routes = [
           ),
       },
 
-      //----
-
-      {// TODO: Sollen die routen anders aussehen? also z.B. id/index-cards oder sowas?
+      {
         path: 'index-cards/:courseId',
         loadChildren: () =>
           import('./index-cards/index-cards.module').then(
@@ -55,8 +58,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./exams/exams.module').then((m) => m.ExamsModule),
       },
-
-      //----
 
       {
         path: '',

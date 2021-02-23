@@ -5,9 +5,15 @@ export const PRE_COURSE_MENU_ITEMS = async (
   ts: TranslateService,
 ): Promise<NbMenuItem[]> => [
   {
-    title: 'Seach',
+    title: 'Search',
     icon: 'search-outline',
     link: '/pages/search',
+    hidden: true,
+  },
+  {
+    title: 'Profile',
+    icon: 'person-outline',
+    link: '/pages/profile',
     hidden: true,
   },
   {
