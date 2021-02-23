@@ -16,70 +16,12 @@ import { TinderChoice } from './tinder-ui/tinder-ui.component';
   animations: [fade(200)], // TODO: Die Animation noch anpassen
 })
 export class IndexCardsComponent implements OnInit {
-  gaugeState = 'out';
-
-  echartOptions = {
-    series: [
-      {
-        type: 'gauge',
-        progress: {
-          show: true,
-          width: 16,
-        },
-        axisLine: {
-          lineStyle: {
-            width: 16,
-          },
-        },
-        axisTick: {
-          show: false,
-        },
-        splitLine: {
-          length: 8,
-          lineStyle: {
-            width: 2,
-            color: '#999',
-          },
-        },
-        axisLabel: {
-          distance: 25,
-          color: '#999',
-          fontSize: 16,
-        },
-        anchor: {
-          show: true,
-          showAbove: true,
-          size: 25,
-          itemStyle: {
-            borderWidth: 2,
-          },
-        },
-        title: {
-          show: false,
-        },
-        detail: {
-          valueAnimation: true,
-          fontSize: 46,
-          offsetCenter: [0, '50%'],
-        },
-        data: [
-          {
-            value: 0,
-          },
-        ],
-      },
-    ],
-  };
   cards = [];
 
   private courseId: string;
   isLecturer: boolean;
   loadingCards: boolean = true;
   roundFinished: boolean = false;
-
-  private originalCardCount: number;
-  private known: number = 0;
-  private notKnown: number = 0;
 
   cardStreaks: any = {
     0: [],
@@ -148,23 +90,8 @@ export class IndexCardsComponent implements OnInit {
         .get(),
     );
     this.cards = cards;
-    this.originalCardCount = cards.length;
     this.loadingCards = false;
     this.calculateCardStreaks();
-  }
-
-  logChoice({ choice }: TinderChoice) {
-    choice ? this.known++ : this.notKnown++; // TODO: besser als array und am schluss eine übersicht über nicht gewusste Fragen
-    if (this.known + this.notKnown === this.originalCardCount) {
-      setTimeout(() => {
-        this.echartOptions.series[0].data[0].value = Math.round(
-          (this.known / (this.notKnown + this.known)) * 100,
-        );
-        this.echartOptions = { ...this.echartOptions }; // TODO: use merge
-        this.gaugeState = 'in';
-      }, 200);
-      this.roundFinished = true;
-    }
   }
 
   openAddDialog() {
@@ -179,36 +106,4 @@ export class IndexCardsComponent implements OnInit {
       });
   }
 
-  repeat() {
-    this.roundFinished = false;
-    this.known = 0;
-    this.notKnown = 0;
-    this.reload()
-  }
-
-  edit(card: IndexCard) {
-    this.dialogService
-      .open(EditComponent, {
-        context: {
-          courseId: this.courseId,
-          card
-        },
-      })
-      .onClose.subscribe(async () => {
-        await this.reload();
-      });
-  }
-
-  delete(card: IndexCard) {
-    this.dialogService
-      .open(DeleteComponent, {
-        context: {
-          courseId: this.courseId,
-          card
-        },
-      })
-      .onClose.subscribe(async () => {
-        await this.reload();
-      });
-  }
 }
