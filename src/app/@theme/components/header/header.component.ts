@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DateAdapter } from '@angular/material/core';
 import {
   NbMediaBreakpointsService,
   NbMenuService,
@@ -73,6 +74,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private readonly rippleService: RippleService,
     private readonly userService: UserService,
     private readonly translate: TranslateService,
+    private readonly dateAdapter: DateAdapter<Date>,
   ) {
     this.materialTheme$ = this.themeService.onThemeChange().pipe(
       map((theme) => {
@@ -112,7 +114,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService
       .onItemClick()
       .pipe(filter(({ tag }) => tag === 'languageMenu'))
-      .subscribe(({ item }) => this.translate.use(item.title.toLowerCase()));
+      .subscribe(({ item }) => {
+        this.translate.use(item.title.toLowerCase());
+        this.dateAdapter.setLocale(item.title.toLowerCase());
+      });
 
     this.languageMenu = this.translate.getLangs().map((lang) => ({
       title: lang.toUpperCase(),

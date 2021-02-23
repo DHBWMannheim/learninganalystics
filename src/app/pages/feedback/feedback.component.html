@@ -104,9 +104,10 @@
   </nb-card-body>
 
   <nb-card-body *ngIf="isLecturer && !loading">
-    <nb-card>
+    <nb-card *ngIf="dataAvailable">
       <div echarts [options]="lecturerChart"></div>
     </nb-card>
+    <div *ngIf="!dataAvailable">{{'feedback.notFound'|translate}}</div>
 
     <nb-card *ngIf="comments.length">
       <nb-card-header>{{ 'feedback.comments' | translate }}</nb-card-header>

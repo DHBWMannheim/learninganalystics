@@ -16,8 +16,10 @@
                 "label": "Beschreibung",
                 "placeholder": "Ausführliche Beschreibung"
             },
-            "deadline": {
-                "label": "Optionale Deadline"
+            "timespan": {
+                "label": "Optionaler Zeitraum",
+                "placeholderStartDate": "Startdatum",
+                "placeholderEndDate": "Enddatum"
             },
             "submit": "Speichern",
             "toast": {
@@ -26,11 +28,34 @@
                     "message": "Die Aufgabe wurde gespeichert"
                 }
             }
+        },
+        "chart": {
+            "month": [
+                "Jan",
+                "Feb",
+                "Mär",
+                "Apr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dez"
+            ],
+            "day": [
+                "Mo",
+                "Di",
+                "Mi",
+                "Do",
+                "Fr",
+                "Sa",
+                "So"
+            ]
         }
     },
-    "dashboard": {
-        
-    },
+    "dashboard": {},
     "exams": {
         "header": "Prüfungen",
         "title": "Titel",
@@ -82,7 +107,7 @@
             "toast": {
                 "saved": {
                     "title": "Gespeichert",
-                    "message":"Die Karteikarte wurde gespeichert"
+                    "message": "Die Karteikarte wurde gespeichert"
                 }
             }
         },
@@ -111,7 +136,7 @@
             "toast": {
                 "saved": {
                     "title": "Gespeichert",
-                    "message":"Die Karteikarte wurde gespeichert"
+                    "message": "Die Karteikarte wurde gespeichert"
                 }
             }
         }
@@ -144,10 +169,17 @@
         "comments": "Kommentare von Kursteilnehmern",
         "toast": {
             "saved": {
-                "title":"Gespeichert",
+                "title": "Gespeichert",
                 "message": "Das Feedback wurde gespeichert"
             }
-        }
+        },
+        "notFound": "Es ist noch kein Feedback verfügbar",
+        "chart": [
+            "Spaß",
+            "Informationsversorgung",
+            "Verständlichkeit",
+            "Neue Informationen"
+        ]
     },
     "join": {
         "join": {
@@ -173,6 +205,20 @@
             },
             "submit": "Erstellen"
         },
+        "key": "Schlüssel",
+        "participants": "Teilnehmer",
+        "leave": "Verlassen",
+        "delete": {
+            "header": "Kurs verlassen",
+            "text": "Wollen Sie diesen Kurs wirklich verlassen=",
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Verlassen",
+                    "message": "Sie haben den Kurs verlassen"
+                }
+            }
+        },
         "toast": {
             "created": {
                 "message": "Der Kurs wurde erstellt",
@@ -180,7 +226,11 @@
             },
             "joined": {
                 "message": "Du bist dem Kurs beigetreten",
-                "title": "Beigetretten"
+                "title": "Beigetreten"
+            },
+            "conflict": {
+                "message": "Du bist schon Teil dieses Kurses",
+                "title": "Schon beigetreten"
             }
         }
     },
@@ -191,12 +241,12 @@
         "files": "Dateien",
         "feedback": "Feedback",
         "indexCards": "Karteikarten",
-        "joinCreate": "Neuer Kurs",
+        "joinCreate": "Kursverwaltung",
         "personal": "Persönlich",
         "todos": "Aufgaben"
     },
     "action": {
-        "message": "'Kleinen Moment. Wir arbeiten an deinem Anliegen...'",
+        "message": "Kleinen Moment. Wir arbeiten an deinem Anliegen...",
         "error": "Woops, wird wissen nicht, wo du hin willst.",
         "backToLogin": "Zurück zum Login"
     },

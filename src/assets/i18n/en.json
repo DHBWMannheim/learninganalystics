@@ -16,8 +16,10 @@
                 "label": "Description",
                 "placeholder": "A long description"
             },
-            "deadline": {
-                "label": "Optional Deadline"
+            "timespan": {
+                "label": "Optional timespan",
+                "placeholderStartDate": "Start date",
+                "placeholderEndDate": "End date"
             },
             "submit": "Save",
             "toast": {
@@ -26,6 +28,31 @@
                     "message": "The Todo was saved"
                 }
             }
+        },
+        "chart": {
+            "month": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec"
+            ],
+            "day": [
+                "Mo",
+                "Tu",
+                "We",
+                "Th",
+                "Fr",
+                "Sa",
+                "Su"
+            ]
         }
     },
     "dashboard": {},
@@ -80,7 +107,7 @@
             "toast": {
                 "saved": {
                     "title": "Saved",
-                    "message":"The Index-Card was saved"
+                    "message": "The Index-Card was saved"
                 }
             }
         },
@@ -109,7 +136,7 @@
             "toast": {
                 "saved": {
                     "title": "Saved",
-                    "message":"The Index-Card was saved"
+                    "message": "The Index-Card was saved"
                 }
             }
         }
@@ -140,16 +167,23 @@
         },
         "submit": "Save",
         "comments": "Comments from Participants",
+        "notFound": "No feedback available yet",
         "toast": {
             "saved": {
                 "title": "Saved",
                 "message": "Your Feedback was saved"
             }
-        }
+        },
+        "chart": [
+            "Enjoyment",
+            "Informationamount",
+            "Understandability",
+            "New Informations"
+          ]
     },
     "join": {
         "join": {
-            "header": "Join a Course",
+            "header": "Joined Courses",
             "key": {
                 "label": "Key",
                 "placeholder": "The Course-Key...",
@@ -161,7 +195,7 @@
             "submit": "Join"
         },
         "create": {
-            "header": "Create a Course",
+            "header": "Created Courses",
             "name": {
                 "label": "Name",
                 "placeholder": "The Course-Key...",
@@ -171,6 +205,20 @@
             },
             "submit": "Create"
         },
+        "key": "Key",
+        "participants": "Participants",
+        "leave": "Leave",
+        "delete": {
+            "header": "Leave Course",
+            "text": "Do you realy want to leave this course?",
+            "submit": "Yes",
+            "toast": {
+                "deleted": {
+                    "title": "Left",
+                    "message": "You left the course"
+                }
+            }
+        },
         "toast": {
             "created": {
                 "message": "Your course was created",
@@ -179,6 +227,10 @@
             "joined": {
                 "message": "You joined a new course",
                 "title": "Joined"
+            },
+            "conflict": {
+                "message": "You are already part of this course",
+                "title": "Already joined"
             }
         }
     },
@@ -189,12 +241,12 @@
         "files": "Files",
         "feedback": "Feedback",
         "indexCards": "Index Cards",
-        "joinCreate": "Join or Create",
+        "joinCreate": "Manage courses",
         "personal": "Personal",
         "todos": "Todos"
     },
     "action": {
-        "message": "'Hang on, we are working on it...'",
+        "message": "Hang on, we are working on it...",
         "error": "Woops, you confused us.",
         "backToLogin": "Back to Log In"
     },

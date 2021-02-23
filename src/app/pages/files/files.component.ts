@@ -63,8 +63,8 @@ export class FilesComponent implements OnInit {
           this.files.push(queueElement);
 
           this.toastr.success(
-            await this.translate.get('files.toast.saved.message'),
-            await this.translate.get('files.toast.saved.title'),
+            await this.translate.get('files.toast.saved.message').toPromise(),
+            await this.translate.get('files.toast.saved.title').toPromise(),
           );
         });
       }
@@ -79,8 +79,8 @@ export class FilesComponent implements OnInit {
     this.files = this.files.filter((element) => element !== file);
     await this.filesService.deleteWithStorage(file);
     this.toastr.success(
-      await this.translate.get('files.toast.deleted.message'),
-      await this.translate.get('files.toast.deleted.title'),
+      await this.translate.get('files.toast.deleted.message').toPromise(),
+      await this.translate.get('files.toast.deleted.title').toPromise(),
     );
   }
 

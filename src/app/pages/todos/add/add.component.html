@@ -40,15 +40,13 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>{{'todos.add.deadline.label'|translate}}</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          [(ngModel)]="model.deadline"
-          name="deadline"
-        />
+        <mat-label>{{'todos.add.timespan.label'|translate}}</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate [placeholder]="'todos.add.timespan.placeholderStartDate'|translate" name="startDate" [(ngModel)]="model.startDate">
+          <input matEndDate [placeholder]="'todos.add.timespan.placeholderEndDate'|translate" name="endDate" [(ngModel)]="model.endDate">
+        </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
     </form>
   </nb-card-body>

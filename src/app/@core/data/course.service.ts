@@ -3,13 +3,10 @@ import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { NbToastrService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { map, share, skipWhile, take } from 'rxjs/operators';
 import { CommonFirestoreDocument } from './common-firestore-document';
 import { CommonFirestoreService } from './common-firestore.service';
 import { User, UserService } from './user.service';
-
-const KEY_LENGTH = 6;
-const KEY_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 
 export interface Course extends CommonFirestoreDocument {
   name: string;
@@ -34,6 +31,10 @@ export class CoursesService extends CommonFirestoreService<Course> {
     private readonly translate: TranslateService,
   ) {
     super('courses', firestore);
+    this._currentCourses.next({
+      creations: [],
+      participations: [],
+    });
     this.refreshCourses();
   }
 
@@ -50,8 +51,8 @@ export class CoursesService extends CommonFirestoreService<Course> {
       participants: [],
     });
     this.toastr.success(
-      await this.translate.get('join.toast.created.message'),
-      await this.translate.get('join.toast.created.title'),
+      await this.translate.get('join.toast.created.message').toPromise(),
+      await this.translate.get('join.toast.created.title').toPromise(),
     );
     await this.refreshCourses();
     return document.id;
@@ -76,8 +77,8 @@ export class CoursesService extends CommonFirestoreService<Course> {
 
     await this.upsert(course);
     this.toastr.success(
-      await this.translate.get('join.toast.joined.message'),
-      await this.translate.get('join.toast.joined.title'),
+      await this.translate.get('join.toast.joined.message').toPromise(),
+      await this.translate.get('join.toast.joined.title').toPromise(),
     );
     await this.refreshCourses();
     return course.id;
@@ -102,9 +103,17 @@ export class CoursesService extends CommonFirestoreService<Course> {
   }
 
   get currentCourses(): Observable<RelevantCourses> {
-    return this._currentCourses.asObservable();
+    return this._currentCourses.pipe(
+      map(({ creations, participations }) => ({
+        creations: creations.sort((a, b) =>
+          a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
+        ),
+        participations: participations.sort((a, b) =>
+          a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
+        ),
+      })),
+    );
   }
-
   async isLecturer(course: string | Course): Promise<boolean> {
     const user = await this.userService.currentUser;
     if (typeof course === 'string') {
@@ -112,5 +121,24 @@ export class CoursesService extends CommonFirestoreService<Course> {
       return dbCourse.creator.id === user.id;
     }
     return course.creator.id === user.id;
+  }
+
+  async leaveCourse(course: Course) {
+    const user = await this.userService.currentUser;
+    const dbCourse = await this.get(course.id);
+    dbCourse.creator =
+      dbCourse.creator.id === user.id ? null : dbCourse.creator;
+    dbCourse.participants = dbCourse.participants.filter(
+      (part) => part.id !== user.id,
+    );
+    await this.upsert(dbCourse);
+
+    const { creations, participations } = await this.currentCourses
+      .pipe(take(1))
+      .toPromise();
+    this._currentCourses.next({
+      creations: creations.filter(({ id }) => id !== course.id),
+      participations: participations.filter(({ id }) => id !== course.id),
+    });
   }
 }
