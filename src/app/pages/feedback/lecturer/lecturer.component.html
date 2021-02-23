@@ -1,1 +1,24 @@
-<p>lecturer works!</p>
+<nb-card>
+    <nb-card-header>
+        Kursfeedback
+    </nb-card-header>
+    <nb-card-body>
+      <div echarts [options]="feedbackChart"></div>
+    </nb-card-body>
+  </nb-card>
+  
+
+<nb-card>
+  <nb-card-header> Teilnehmerstatistik </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-4">
+        <div echarts [options]="typeChart"></div>
+      </div>
+      <div class="col-8">
+        <div echarts [options]="questionareChart"></div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+

@@ -1,1 +1,117 @@
-<p>participant works!</p>
+<form [formGroup]="form" style="text-align: center">
+  <div class="row">
+    <div class="col">
+      <label>{{ 'feedback.informations.label' | translate }}</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ngx-button-group-control
+        [buttons]="[
+          { label: ('feedback.value' | translate)[0], value: 0 },
+          { label: ('feedback.value' | translate)[1], value: 1 },
+          { label: ('feedback.value' | translate)[2], value: 2 },
+        ]"
+        name="informations"
+        formControlName="informations"
+        size="large"
+      ></ngx-button-group-control
+      >
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="col">
+      <label>{{ 'feedback.transfer.label' | translate }}</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ngx-button-group-control
+        [buttons]="[
+          { label: ('feedback.value' | translate)[0], value: 0 },
+          { label: ('feedback.value' | translate)[1], value: 1 },
+          { label: ('feedback.value' | translate)[2], value: 2 },
+        ]"
+        name="transfer"
+        formControlName="transfer"
+        size="large"
+      ></ngx-button-group-control
+      >
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="col">
+      <label>{{ 'feedback.quality.label' | translate }}</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ngx-button-group-control
+        [buttons]="[
+          { label: ('feedback.value' | translate)[0], value: 0 },
+          { label: ('feedback.value' | translate)[1], value: 1 },
+          { label: ('feedback.value' | translate)[2], value: 2 },
+        ]"
+        name="quality"
+        formControlName="quality"
+        size="large"
+      ></ngx-button-group-control
+      >
+    </div>
+  </div>
+  <hr />
+
+  
+  <div class="row">
+    <div class="col">
+      <label>{{ 'feedback.fun.label' | translate }}</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ngx-button-group-control
+        [buttons]="[
+          { label: ('feedback.value' | translate)[0], value: 0 },
+          { label: ('feedback.value' | translate)[1], value: 1 },
+          { label: ('feedback.value' | translate)[2], value: 2 },
+        ]"
+        name="fun"
+        formControlName="fun"
+        size="large"
+      ></ngx-button-group-control
+      >
+    </div>
+  </div>
+  <hr />
+  
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{ 'feedback.comment.label' | translate }}</mat-label>
+        <textarea
+        matInput
+        [placeholder]="'feedback.comment.placeholder' | translate"
+        name="comment"
+        class="textarea"
+        formControlName="comment"
+        ></textarea>
+      </mat-form-field>
+
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col"></div>
+  <div class="mr-3">
+    <button nbButton (click)="save()" [disabled]="!form.valid" status="primary">
+    {{ 'feedback.submit' | translate }}
+    </button>
+
+  </div>
+</div>
+
+

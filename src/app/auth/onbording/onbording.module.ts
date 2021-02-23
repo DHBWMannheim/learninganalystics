@@ -1,16 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OnbordingRoutingModule } from './onbording-routing.module';
-import { NbButtonGroupModule, NbButtonModule, NbCardModule } from '@nebular/theme';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OnbordingComponent } from './onbording.component';
-import { ButtonGroupControlComponent } from './button-group-control/button-group-control.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { createTranslateLoader } from '../../@theme/theme.module';
 import { HttpClient } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  NbButtonGroupModule,
+  NbButtonModule,
+  NbCardModule,
+} from '@nebular/theme';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+import { ButtonGroupControlModule } from '../../@theme/button-group-control/button-group-control.module';
+import { createTranslateLoader } from '../../@theme/theme.module';
+import { OnbordingRoutingModule } from './onbording-routing.module';
+import { OnbordingComponent } from './onbording.component';
 
 @NgModule({
-  declarations: [OnbordingComponent, ButtonGroupControlComponent],
+  declarations: [OnbordingComponent],
   imports: [
     CommonModule,
     OnbordingRoutingModule,
@@ -19,6 +24,7 @@ import { HttpClient } from '@angular/common/http';
     ReactiveFormsModule,
     NbButtonGroupModule,
     NbCardModule,
+    ButtonGroupControlModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

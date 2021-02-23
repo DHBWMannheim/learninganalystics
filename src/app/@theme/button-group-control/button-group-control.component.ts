@@ -61,7 +61,7 @@ export class ButtonGroupControlComponent
   }
 
   updateValue(index: number, pressedState: boolean, buttonValue: any) {
-    this.onTouched(this.buttons[index]);
+    if (this.onTouched) this.onTouched(this.buttons[index]);
     if (!pressedState) {
       if (this.buttonStates.every((state) => !state)) {
         this.buttonStates.fill(false);

@@ -143,12 +143,11 @@
     },
     "feedback": {
         "header": "Feedback",
-        "value": {
-            "0": "sehr schlecht",
-            "1": "schlecht",
-            "2": "gut",
-            "3": "sehr gut"
-        },
+        "value": [
+            "gering",
+            "mittel",
+            "hoch"
+        ],
         "comment": {
             "label": "Anmerkungen",
             "placeholder": "Hast du weitere Anmerkungen?..."

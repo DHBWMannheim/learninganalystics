@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { NbAuthService } from '@nebular/auth';
 import { NbToastrService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
@@ -29,13 +30,19 @@ export class CoursesService extends CommonFirestoreService<Course> {
     private readonly userService: UserService,
     private readonly toastr: NbToastrService,
     private readonly translate: TranslateService,
+    private readonly auth: NbAuthService,
   ) {
     super('courses', firestore);
-    this._currentCourses.next({
-      creations: [],
-      participations: [],
+    this.auth.onAuthenticationChange().subscribe((s) => {
+      if (!s) {
+        this._currentCourses.next({
+          creations: [],
+          participations: [],
+        });
+      } else {
+        this.refreshCourses();
+      }
     });
-    this.refreshCourses();
   }
 
   async createCourse(name: string) {
@@ -72,6 +79,17 @@ export class CoursesService extends CommonFirestoreService<Course> {
     const course = doc.data();
 
     const currentUser = await this.userService.currentUser;
+
+    if (
+      course.creator.id === currentUser.id ||
+      course.participants.some((p) => p.id === currentUser.id)
+    ) {
+      this.toastr.danger(
+        await this.translate.get('join.toast.conflict.message').toPromise(),
+        await this.translate.get('join.toast.conflict.title').toPromise(),
+      );
+      return;
+    }
 
     course.participants.push(this.userService.createRef(currentUser.id));
 

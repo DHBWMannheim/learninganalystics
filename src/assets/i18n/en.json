@@ -143,12 +143,11 @@
     },
     "feedback": {
         "header": "Feedback",
-        "value": {
-            "0": "awful",
-            "1": "bad",
-            "2": "good",
-            "3": "great"
-        },
+        "value": [
+            "low",
+            "medium",
+            "high"
+        ],
         "comment": {
             "label": "Additional Remarks",
             "placeholder": "What do you want to add..."
