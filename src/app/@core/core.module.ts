@@ -17,6 +17,12 @@ export const NB_CORE_PROVIDERS = [
     strategies: [
       NbFirebasePasswordStrategy.setup({
         name: 'password',
+        register: {
+          redirect: {
+            success: '/auth/onboarding',
+            failure: null
+          },
+        },
       }),
     ],
     forms: {
@@ -50,8 +56,8 @@ export const NB_CORE_PROVIDERS = [
       },
     },
   }).providers,
-  LayoutService, // TODO: ? brauchen wir das?
-  SeoService, // TODO: ? brauchen wir das?
+  LayoutService,
+  SeoService,
 ];
 
 @NgModule({

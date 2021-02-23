@@ -287,5 +287,53 @@
         "files": "Files",
         "indexCards": "Index Cards",
         "notFound": "No results were found"
+    },
+    "onbording": {
+        "welcome": "Welcome",
+        "text1": "Do you want to participate in a short survey?",
+        "text2": "Your responses help us improve course contents."
+    },
+    "questionare": {
+        "typ": {
+            "label": "Which learning type are you?",
+            "buttons": [
+                "Visually",
+                "Auditory",
+                "Motor",
+                "Communicative"
+            ]
+        },
+        "online": {
+            "label": "How affine are you when it comes to online teaching?",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "apps": {
+            "label": "How often do you use learning apps?",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "experience": {
+            "label": "How much experience do you have with digital teaching? ",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "skip": "Skip",
+        "submit": "Submit",
+        "toast": {
+            "success": {
+                "title": "Saved",
+                "message": "Your answers were saved"
+            }
+        }
     }
 }
