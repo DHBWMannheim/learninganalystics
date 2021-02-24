@@ -143,12 +143,11 @@
     },
     "feedback": {
         "header": "Feedback",
-        "value": {
-            "0": "sehr schlecht",
-            "1": "schlecht",
-            "2": "gut",
-            "3": "sehr gut"
-        },
+        "value": [
+            "gering",
+            "mittel",
+            "hoch"
+        ],
         "comment": {
             "label": "Anmerkungen",
             "placeholder": "Hast du weitere Anmerkungen?..."
@@ -174,12 +173,36 @@
             }
         },
         "notFound": "Es ist noch kein Feedback verfügbar",
-        "chart": [
-            "Spaß",
-            "Informationsversorgung",
-            "Verständlichkeit",
-            "Neue Informationen"
-        ]
+
+        "lecturerView": {
+            "feedback": {
+                "label": "Kursfeedback",
+                 "chart": [
+                    "Spaß",
+                    "Informationsversorgung",
+                    "Verständlichkeit",
+                    "Neue Informationen"
+                ]
+            },
+            "comments": {
+                "label": "Kommentare"
+            },
+            "participants": {
+                "label": "Teilnehmer",
+                "typeChart": [
+                    "Visuell",
+                    "Auditiv",
+                    "Motorisch",
+                    "Kommunikativ"
+                ],
+                "questionareChart": [
+                    "Affinität zu online Unterricht",
+                    "Nutzungsfrequenz von Lernapps",
+                    "Erfahrung mit online Unterricht"
+                ]
+            }
+        }
+       
     },
     "join": {
         "join": {
@@ -339,5 +362,53 @@
         "files": "Dateien",
         "indexCards": "Karteikarten",
         "notFound": "Es wurden keine Ergebnisse gefunden"
+    },
+    "onbording": {
+        "welcome": "Willkommen",
+        "text1": "Möchtest du an einer freiwilligen Umfrage teilnehmen?",
+        "text2": "Beantwortung dieser Fragen hilft uns Kursinhalte besser auf dich abzustimmen."
+    },
+    "questionare": {
+        "typ": {
+            "label": "Welcher Lerntyp bist du?",
+            "buttons": [
+                "Visuell",
+                "Auditiv",
+                "Motorisch",
+                "Kommunikativ"
+            ]
+        },
+        "online": {
+            "label": "Wie Affin bist du in Punkto Online Lehre?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "apps": {
+            "label": "Wie häufig nutzt du Lernapps?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "experience": {
+            "label": "Wie viel Erfahrungen hast du mit digitaler Lehre?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "skip": "Überspringen",
+        "submit": "Speichern",
+        "toast": {
+            "success": {
+                "title": "Gespeichert",
+                "message": "Die Antworten wurden gespeichert"
+            }
+        }
     }
 }

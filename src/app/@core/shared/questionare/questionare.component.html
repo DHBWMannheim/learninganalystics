@@ -1,0 +1,119 @@
+<nb-card-body>
+  <form [formGroup]="form" style="text-align: center">
+    <div class="row">
+      <div class="col">
+        <label>{{ 'questionare.typ.label' | translate }}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ngx-button-group-control
+          [buttons]="[
+            { label: ('questionare.typ.buttons' | translate)[0], value: 0 },
+            { label: ('questionare.typ.buttons' | translate)[1], value: 1 },
+            { label: ('questionare.typ.buttons' | translate)[2], value: 2 },
+            { label: ('questionare.typ.buttons' | translate)[3], value: 3 }
+          ]"
+          name="typ"
+          formControlName="typ"
+          size="large"
+        ></ngx-button-group-control>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col">
+        <label>{{ 'questionare.online.label' | translate }}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ngx-button-group-control
+          [buttons]="[
+            {
+              label: ('questionare.online.buttons' | translate)[0],
+              value: 0
+            },
+            {
+              label: ('questionare.online.buttons' | translate)[1],
+              value: 1
+            },
+            { label: ('questionare.online.buttons' | translate)[2], value: 2 }
+          ]"
+          name="online"
+          formControlName="online"
+          size="large"
+        ></ngx-button-group-control>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col">
+        <label>{{ 'questionare.apps.label' | translate }}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ngx-button-group-control
+          [buttons]="[
+            { label: ('questionare.apps.buttons' | translate)[0], value: 0 },
+            { label: ('questionare.apps.buttons' | translate)[1], value: 1 },
+            { label: ('questionare.apps.buttons' | translate)[2], value: 2 }
+          ]"
+          name="apps"
+          formControlName="apps"
+          size="large"
+        ></ngx-button-group-control>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col">
+        <label>{{ 'questionare.experience.label' | translate }}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ngx-button-group-control
+          [buttons]="[
+            {
+              label: ('questionare.experience.buttons' | translate)[0],
+              value: 0
+            },
+            {
+              label: ('questionare.experience.buttons' | translate)[1],
+              value: 1
+            },
+            {
+              label: ('questionare.experience.buttons' | translate)[2],
+              value: 2
+            }
+          ]"
+          name="experience"
+          formControlName="experience"
+          size="large"
+        ></ngx-button-group-control>
+      </div>
+    </div>
+  </form>
+</nb-card-body>
+<nb-card-footer>
+  <div class="row justify-content-center">
+    <div class="col-xs-6 col-md-4 md-mb-1" *ngIf="skipEnabled">
+      <button class="w-100" nbButton (click)="skip()">
+        {{ 'questionare.skip' | translate }}
+      </button>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <button
+        class="w-100"
+        nbButton
+        status="primary"
+        (click)="submit()"
+        [disabled]="!form.valid"
+      >
+        {{ 'questionare.submit' | translate }}
+      </button>
+    </div>
+  </div>
+</nb-card-footer>

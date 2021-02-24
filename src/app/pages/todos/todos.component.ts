@@ -99,6 +99,7 @@ export class TodosComponent implements OnInit {
     };
   }
 
+
   private reload() {
     this.loading = true;
     this.todosService.get().then((v) => {

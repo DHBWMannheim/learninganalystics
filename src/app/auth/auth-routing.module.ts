@@ -12,6 +12,8 @@ import { TermsComponent } from './terms/terms.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ActionComponent } from './action/action.component';
+import { OnbordingComponent } from './onbording/onbording.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
@@ -32,7 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'request-password',
-        component: NbRequestPasswordComponent, // TODO: ? überschreiben
+        component: NbRequestPasswordComponent,
       },
       {
         path: 'reset-password',
@@ -45,6 +47,12 @@ const routes: Routes = [
       {
         path: 'action',
         component: ActionComponent,
+      },
+      {
+        path: 'onboarding',
+        loadChildren: () =>
+          import('./onbording/onbording.module').then((m) => m.OnbordingModule),
+        canActivate: [AuthGuard],
       },
       {
         path: '',

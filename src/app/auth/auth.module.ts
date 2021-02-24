@@ -21,6 +21,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ActionComponent } from './action/action.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
+import { OnbordingComponent } from './onbording/onbording.component';
 
 @NgModule({
   imports: [
