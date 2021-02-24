@@ -1,13 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { IndexCard, IndexCardsService } from '../../../@core/data/index-cards.service';
+import { fade } from '../../../@theme/animations/fade.animation';
 import { EditComponent } from '../edit/edit.component';
 import { TinderChoice } from '../tinder-ui/tinder-ui.component';
 
 @Component({
   selector: 'ngx-repeat',
   templateUrl: './repeat.component.html',
-  styleUrls: ['./repeat.component.scss']
+  styleUrls: ['./repeat.component.scss'],
+  animations: [fade(200)]
 })
 export class RepeatComponent implements OnInit {
   gaugeState = 'out';
@@ -73,10 +75,12 @@ export class RepeatComponent implements OnInit {
   @Input('cards')
   cards: IndexCard[];
 
+  @Input('streak')
+  streak: number;
+
   roundFinished: boolean = false;
   private courseId: string;
 
-  private originalCardCount: number;
   private known: number = 0;
   private notKnown: number = 0;
 
@@ -87,12 +91,21 @@ export class RepeatComponent implements OnInit {
     choice ? this.known++ : this.notKnown++; // TODO: besser als array und am schluss eine übersicht über nicht gewusste Fragen
     
     if (choice) {
-      // start streak
-      await this.indexCardsService.upsert({
-        ...payload,
-        streak: payload.streak + 1,
-        streakSince: payload.streak ? payload.streakSince : Date.now()
-      });
+      // start from beginning if 60d is reached
+      if (payload.streak === 6) {
+        await this.indexCardsService.upsert({
+          ...payload,
+          streak: 0,
+          streakSince: 0
+        });
+      } else {
+        // increase streak
+        await this.indexCardsService.upsert({
+          ...payload,
+          streak: payload.streak === this.streak ? payload.streak + 1 : payload.streak,
+          streakSince: payload.streak ? payload.streakSince : Date.now()
+        });
+      }
     } else {
       // end streak
       await this.indexCardsService.upsert({
@@ -102,7 +115,7 @@ export class RepeatComponent implements OnInit {
       });
     }
 
-    if (this.known + this.notKnown === this.originalCardCount) {
+    if (this.known + this.notKnown === this.cards.length) {
       setTimeout(() => {
         this.echartOptions.series[0].data[0].value = Math.round(
           (this.known / (this.notKnown + this.known)) * 100,

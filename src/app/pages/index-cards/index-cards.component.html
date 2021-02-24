@@ -12,25 +12,25 @@
         <nb-card [nbSpinner]="loadingCards" class="mb-0" nbSpinnerStatus="primary">
           <nb-tabset fullWidth>
             <nb-tab tabTitle="Alle" [badgeText]="cardStreaks[0].length" badgeStatus="primary">
-              <ngx-repeat [cards]="cardStreaks[0]"></ngx-repeat>
+              <ngx-repeat [cards]="cardStreaks[0]" [streak]="0"></ngx-repeat>
             </nb-tab>
             <nb-tab tabTitle="20min" [badgeText]="cardStreaks[1].length" badgeStatus="primary">
-              <ngx-repeat [cards]="cardStreaks[1]"></ngx-repeat>
+              <ngx-repeat [cards]="cardStreaks[1]" [streak]="1"></ngx-repeat>
             </nb-tab>
             <nb-tab tabTitle="24h" [badgeText]="cardStreaks[2].length" badgeStatus="primary">
-              <ngx-repeat [cards]="cardStreaks[2]"></ngx-repeat>
+              <ngx-repeat [cards]="cardStreaks[2]" [streak]="2"></ngx-repeat>
             </nb-tab>
             <nb-tab tabTitle="48h" [badgeText]="cardStreaks[3].length" badgeStatus="primary">
-              <ngx-repeat [cards]="cardStreaks[3]"></ngx-repeat>
+              <ngx-repeat [cards]="cardStreaks[3]" [streak]="3"></ngx-repeat>
             </nb-tab>
             <nb-tab tabTitle="10d" [badgeText]="cardStreaks[4].length" badgeStatus="primary">
-              <ngx-repeat [cards]="cardStreaks[4]"></ngx-repeat>
+              <ngx-repeat [cards]="cardStreaks[4]" [streak]="4"></ngx-repeat>
             </nb-tab>
             <nb-tab tabTitle="30d" [badgeText]="cardStreaks[5].length" badgeStatus="primary">
-              <ngx-repeat [cards]="cardStreaks[5]"></ngx-repeat>
+              <ngx-repeat [cards]="cardStreaks[5]" [streak]="5"></ngx-repeat>
             </nb-tab>
             <nb-tab tabTitle="60d" [badgeText]="cardStreaks[6].length" badgeStatus="primary">
-              <ngx-repeat [cards]="cardStreaks[6]"></ngx-repeat>
+              <ngx-repeat [cards]="cardStreaks[6]" [streak]="6"></ngx-repeat>
             </nb-tab>
           </nb-tabset>
         </nb-card>

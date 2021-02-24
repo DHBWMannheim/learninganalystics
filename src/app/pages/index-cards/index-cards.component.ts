@@ -3,14 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { CoursesService } from '../../@core/data/course.service';
 import { IndexCard, IndexCardsService } from '../../@core/data/index-cards.service';
-import { fade } from '../../@theme/animations/fade.animation';
 import { AddComponent } from './add/add.component';
 
 @Component({
   selector: 'ngx-index-cards',
   templateUrl: './index-cards.component.html',
   styleUrls: ['./index-cards.component.scss'],
-  animations: [fade(200)], // TODO: Die Animation noch anpassen
 })
 export class IndexCardsComponent implements OnInit {
   private cards: IndexCard[] = [];
@@ -38,15 +36,15 @@ export class IndexCardsComponent implements OnInit {
       if (card.streak) {
         const now = Date.now();
   
-        if (card.streak === 1 && now - card.streakSince > 60 * 24 * 60 * 60 * 1000) {
+        if (card.streak === 6 && now - card.streakSince > 60 * 24 * 60 * 60 * 1000) {
           this.cardStreaks[6].push(card)
-        } else if (card.streak === 1 && now - card.streakSince > 30 * 24 * 60 * 60 * 1000) {
+        } else if (card.streak === 5 && now - card.streakSince > 30 * 24 * 60 * 60 * 1000) {
           this.cardStreaks[5].push(card)
-        } else if (card.streak === 1 && now - card.streakSince > 10 * 24 * 60 * 60 * 1000) {
+        } else if (card.streak === 4 && now - card.streakSince > 10 * 24 * 60 * 60 * 1000) {
           this.cardStreaks[4].push(card)
-        } else if (card.streak === 1 && now - card.streakSince > 2 * 24 * 60 * 60 * 1000) {
+        } else if (card.streak === 3 && now - card.streakSince > 2 * 24 * 60 * 60 * 1000) {
           this.cardStreaks[3].push(card)
-        } else if (card.streak === 1 && now - card.streakSince > 24 * 60 * 60 * 1000) {
+        } else if (card.streak === 2 && now - card.streakSince > 24 * 60 * 60 * 1000) {
           this.cardStreaks[2].push(card)
         } else if (card.streak === 1 && now - card.streakSince > 20 * 60 * 1000) {
           this.cardStreaks[1].push(card)
