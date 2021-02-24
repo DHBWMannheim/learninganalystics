@@ -6,6 +6,7 @@ import {
   NbCardModule,
   NbIconModule,
   NbListModule,
+  NbSpinnerModule,
 } from '@nebular/theme';
 
 import { createTranslateLoader, ThemeModule } from '../../@theme/theme.module';
@@ -33,6 +34,7 @@ import { ButtonGroupControlModule } from '../../@theme/button-group-control/butt
     FormsModule,
     ReactiveFormsModule,
     NbListModule,
+    NbSpinnerModule,
     NgxEchartsModule.forChild(),
     ButtonGroupControlModule,
     TranslateModule.forChild({

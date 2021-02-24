@@ -1,24 +1,36 @@
 <nb-card>
-    <nb-card-header>
-        Kursfeedback
-    </nb-card-header>
-    <nb-card-body>
-      <div echarts [options]="feedbackChart"></div>
-    </nb-card-body>
-  </nb-card>
-  
-
-<nb-card>
-  <nb-card-header> Teilnehmerstatistik </nb-card-header>
+  <nb-card-header>
+    {{ 'feedback.lecturerView.participants.label' | translate }}
+  </nb-card-header>
   <nb-card-body>
     <div class="row">
-      <div class="col-4">
+      <div class="col-5">
         <div echarts [options]="typeChart"></div>
       </div>
-      <div class="col-8">
+      <div class="col-7">
         <div echarts [options]="questionareChart"></div>
       </div>
     </div>
   </nb-card-body>
 </nb-card>
 
+<nb-card>
+  <nb-card-header>
+    {{ 'feedback.lecturerView.feedback.label' | translate }}
+  </nb-card-header>
+  <nb-card-body>
+    <div echarts [options]="feedbackChart"></div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="comments">
+  <nb-card-header
+    >{{ 'feedback.lecturerView.comments.label' | translate }}
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item *ngFor="let comment of comments">
+      {{ comment }}
+    </nb-list-item>
+  </nb-list>
+</nb-card>
+<!--TODO: wenn hier die ui verschönert wird, muss eventuell noch ein "Kein Feedback vorhanden" oder so eingefügt werden-->

@@ -173,12 +173,34 @@
                 "message": "Your Feedback was saved"
             }
         },
-        "chart": [
-            "Enjoyment",
-            "Informationamount",
-            "Understandability",
-            "New Informations"
-          ]
+        "lecturerView": {
+            "feedback": {
+                "label": "Course feedback",
+                 "chart": [
+                    "Enjoyment",
+                    "Informationamount",
+                    "Understandability",
+                    "New Informations"
+                ]
+            },
+            "comments": {
+                "label": "Comments"
+            },
+            "participants": {
+                "label": "Participants",
+                "typeChart": [
+                    "Visually",
+                    "Auditory",
+                    "Motor",
+                    "Communicative"
+                ],
+                "questionareChart": [
+                    "Affinity to online teaching",
+                    "Usage frequency of learning apps",
+                    "Experience with online teaching"
+                ]
+            }
+        }
     },
     "join": {
         "join": {

@@ -27,11 +27,81 @@ const splitLine = {
   styleUrls: ['./lecturer.component.scss'],
 })
 export class LecturerComponent implements OnInit {
-  typeChart;
+  typeChart = {
+    radar: [
+      {
+        top: 30,
+        indicator: [
+          { text: '', max: 0 },
+          { text: '', max: 0 },
+          { text: '', max: 0 },
+          { text: '', max: 0 },
+        ],
+        center: ['50%', '50%'],
+        splitLine,
+      },
+    ],
+    series: [
+      {
+        name: 'Lerntyp',
+        type: 'radar',
+        areaStyle: {},
+        data: [],
+      },
+    ],
+  };
 
-  questionareChart;
+  questionareChart = {
+    tooltip: {
+      position: 'top',
+    },
+    legend: {
+      show: false,
+    },
+    xAxis: {
+      type: 'category',
+      data: [],
+      splitLine,
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        data: [],
+        type: 'bar',
+        showBackground: true,
+      },
+    ],
+  };
 
-  feedbackChart;
+  feedbackChart = {
+    title: {
+      top: 30,
+      left: 'center',
+    },
+    tooltip: {
+      position: 'top',
+    },
+    legend: {
+      show: false,
+    },
+    xAxis: {
+      type: 'category',
+      data: [],
+      splitLine,
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        data: [],
+        type: 'bar',
+        showBackground: true,
+      },
+    ],
+  };
 
   comments: string[];
 
@@ -44,7 +114,41 @@ export class LecturerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(({ courseId }) => this.loadCourse(courseId)); //TODO: Das als input
+    this.route.params.subscribe(async ({ courseId }) => {
+      await this.loadCourse(courseId);
+
+      this.translate.onLangChange.subscribe(() =>
+        this.updateChartTranslations(),
+      );
+    });
+    this.updateChartTranslations();
+  }
+
+  private async updateChartTranslations() {
+    this.translate
+      .get('feedback.lecturerView.feedback.chart')
+      .toPromise()
+      .then((v) => {
+        this.feedbackChart.xAxis.data = v;
+        this.feedbackChart = { ...this.feedbackChart };
+      });
+
+    this.translate
+      .get('feedback.lecturerView.participants.questionareChart')
+      .toPromise()
+      .then((v) => {
+        this.questionareChart.xAxis.data = v;
+        this.questionareChart = { ...this.questionareChart };
+      });
+
+    this.translate
+      .get('feedback.lecturerView.participants.typeChart')
+      .toPromise()
+      .then((v) => {
+        this.typeChart.radar[0].indicator.forEach((i, index) => {
+          i.text = v[index];
+        });
+      });
   }
 
   private async loadCourse(courseId: string) {
@@ -74,40 +178,13 @@ export class LecturerComponent implements OnInit {
     if (feedback.length) {
       this.comments = feedback.map((f) => f.comment);
 
-      this.feedbackChart = {
-        title: {
-          top: 30,
-          left: 'center',
-        },
-        tooltip: {
-          position: 'top',
-        },
-        legend: {
-          show: false,
-        },
-        xAxis: {
-          type: 'category',
-          data: await this.translate.get('feedback.chart').toPromise(),
-          splitLine,
-        },
-        yAxis: {
-          type: 'value',
-        },
-        series: [
-          {
-            data: [
-              feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
-              feedback.reduce((acc, f) => f.informations + acc, 0) /
-                feedback.length,
-              feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
-              feedback.reduce((acc, f) => f.transfer + acc, 0) /
-                feedback.length,
-            ],
-            type: 'bar',
-            showBackground: true,
-          },
-        ],
-      };
+      this.feedbackChart.series[0].data = [
+        feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
+        feedback.reduce((acc, f) => f.informations + acc, 0) / feedback.length,
+        feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
+        feedback.reduce((acc, f) => f.transfer + acc, 0) / feedback.length,
+      ];
+      this.feedbackChart = { ...this.feedbackChart };
     }
   }
 
@@ -131,35 +208,17 @@ export class LecturerComponent implements OnInit {
       new Array(4).fill(0),
     );
 
-    console.log(typeData);
+    this.typeChart.radar[0].indicator.forEach((i) => {
+      i.max = participants.length;
+    });
 
-    this.typeChart = {
-      radar: [
-        {
-          top: 30,
-          indicator: [
-            { text: 'Visuell', max: participants.length }, // TODO: Translation
-            { text: 'Auditiv', max: participants.length },
-            { text: 'Motorisch', max: participants.length },
-            { text: 'Kommunikativ', max: participants.length },
-          ],
-          center: ['50%', '53%'],
-          splitLine,
-        },
-      ],
-      series: [
-        {
-          name: 'Lerntyp',
-          type: 'radar',
-          areaStyle: {},
-          data: [
-            {
-              value: typeData,
-            },
-          ],
-        },
-      ],
-    };
+    this.typeChart.series[0].data = [
+      {
+        value: typeData,
+      },
+    ];
+
+    this.typeChart = { ...this.typeChart };
 
     const questionareData = [
       questionares.reduce((acc, f) => f.online + acc, 0) / participants.length,
@@ -168,32 +227,11 @@ export class LecturerComponent implements OnInit {
         participants.length,
     ];
 
-    this.questionareChart = {
-      tooltip: {
-        position: 'top',
-      },
-      legend: {
-        show: false,
-      },
-      xAxis: {
-        type: 'category',
-        data: [
-          'Affinity to online teaching',
-          'Usage frequency of learning apps',
-          'Experience with online teaching',
-        ],
-        splitLine,
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: [
-        {
-          data: questionareData,
-          type: 'bar',
-          showBackground: true,
-        },
-      ],
+    this.questionareChart.series[0] = {
+      data: questionareData,
+      type: 'bar',
+      showBackground: true,
     };
+    this.questionareChart = { ...this.questionareChart };
   }
 }

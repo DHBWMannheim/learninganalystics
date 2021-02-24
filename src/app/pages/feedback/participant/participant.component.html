@@ -15,8 +15,7 @@
         name="informations"
         formControlName="informations"
         size="large"
-      ></ngx-button-group-control
-      >
+      ></ngx-button-group-control>
     </div>
   </div>
   <hr />
@@ -37,8 +36,7 @@
         name="transfer"
         formControlName="transfer"
         size="large"
-      ></ngx-button-group-control
-      >
+      ></ngx-button-group-control>
     </div>
   </div>
   <hr />
@@ -59,13 +57,11 @@
         name="quality"
         formControlName="quality"
         size="large"
-      ></ngx-button-group-control
-      >
+      ></ngx-button-group-control>
     </div>
   </div>
   <hr />
 
-  
   <div class="row">
     <div class="col">
       <label>{{ 'feedback.fun.label' | translate }}</label>
@@ -82,25 +78,23 @@
         name="fun"
         formControlName="fun"
         size="large"
-      ></ngx-button-group-control
-      >
+      ></ngx-button-group-control>
     </div>
   </div>
   <hr />
-  
+
   <div class="row">
     <div class="col">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>{{ 'feedback.comment.label' | translate }}</mat-label>
         <textarea
-        matInput
-        [placeholder]="'feedback.comment.placeholder' | translate"
-        name="comment"
-        class="textarea"
-        formControlName="comment"
+          matInput
+          [placeholder]="'feedback.comment.placeholder' | translate"
+          name="comment"
+          class="textarea"
+          formControlName="comment"
         ></textarea>
       </mat-form-field>
-
     </div>
   </div>
 </form>
@@ -108,10 +102,7 @@
   <div class="col"></div>
   <div class="mr-3">
     <button nbButton (click)="save()" [disabled]="!form.valid" status="primary">
-    {{ 'feedback.submit' | translate }}
+      {{ 'feedback.submit' | translate }}
     </button>
-
   </div>
 </div>
-
-

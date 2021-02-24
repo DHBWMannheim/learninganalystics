@@ -173,12 +173,36 @@
             }
         },
         "notFound": "Es ist noch kein Feedback verfügbar",
-        "chart": [
-            "Spaß",
-            "Informationsversorgung",
-            "Verständlichkeit",
-            "Neue Informationen"
-        ]
+
+        "lecturerView": {
+            "feedback": {
+                "label": "Kursfeedback",
+                 "chart": [
+                    "Spaß",
+                    "Informationsversorgung",
+                    "Verständlichkeit",
+                    "Neue Informationen"
+                ]
+            },
+            "comments": {
+                "label": "Kommentare"
+            },
+            "participants": {
+                "label": "Teilnehmer",
+                "typeChart": [
+                    "Visuell",
+                    "Auditiv",
+                    "Motorisch",
+                    "Kommunikativ"
+                ],
+                "questionareChart": [
+                    "Affinität zu online Unterricht",
+                    "Nutzungsfrequenz von Lernapps",
+                    "Erfahrung mit online Unterricht"
+                ]
+            }
+        }
+       
     },
     "join": {
         "join": {

@@ -1,6 +1,9 @@
 <nb-card>
   <nb-card-header>{{ 'feedback.header' | translate }} </nb-card-header>
-  <nb-card-body>
+  <nb-card-body [nbSpinner]="true"*ngIf="!courseLoaded">
+
+  </nb-card-body>
+  <nb-card-body *ngIf="courseLoaded">
     <ngx-participant *ngIf="!isLecturer"></ngx-participant>
     <ngx-lecturer *ngIf="isLecturer"></ngx-lecturer>
   </nb-card-body>
