@@ -8,6 +8,7 @@ import {
   Output,
   Renderer2,
   AfterViewInit,
+  OnChanges,
 } from '@angular/core';
 import { IndexCard } from '../../../@core/data/index-cards.service';
 import { fade } from '../../../@theme/animations/fade.animation';
@@ -23,7 +24,7 @@ export interface TinderChoice {
   styleUrls: ['tinder-ui.component.scss'],
   animations: [fade(200)],
 })
-export class TinderUIComponent implements AfterViewInit {
+export class TinderUIComponent implements AfterViewInit, OnChanges {
   @Input('cards')
   cards: IndexCard[];
 

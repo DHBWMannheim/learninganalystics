@@ -20,6 +20,11 @@ export const CommonConverter = {
   // TODO: keine anys verwenden
   toFirestore(u: any): DocumentData {
     const { id, ...data } = u;
+    for (const key in data) {
+      if (data[key] === undefined) {
+        delete data[key];
+      }
+    }
     return {
       ...data,
     };
@@ -36,7 +41,10 @@ export const CommonConverter = {
   },
 };
 
-export abstract class CommonFirestoreService<T extends CommonFirestoreDocument> { // TODO: das alles reaktiv mit subscriptions machen
+export abstract class CommonFirestoreService<
+  T extends CommonFirestoreDocument
+> {
+  // TODO: das alles reaktiv mit subscriptions machen
   constructor(
     private readonly collectionName: string,
     private readonly afs: AngularFirestore,
@@ -75,7 +83,7 @@ export abstract class CommonFirestoreService<T extends CommonFirestoreDocument> 
     const snap = await snapshot;
     return await Promise.all(
       snap.docs.map((doc) => {
-        const data = doc.data() as any;//TODO: Fix for dates
+        const data = doc.data() as any; //TODO: Fix for dates
         for (const field in data) {
           if (data[field].toDate) data[field] = data[field].toDate();
         }

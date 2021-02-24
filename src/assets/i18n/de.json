@@ -8,9 +8,13 @@
         "notFound": "Keine Aufgaben gefunden",
         "add": {
             "header": "Neue Aufgabe",
+            "headerEdit": "Aufgabe bearbeiten",
             "title": {
                 "label": "Titel",
-                "placeholder": "Ein kurzer Titel..."
+                "placeholder": "Ein kurzer Titel...",
+                "errors": {
+                    "required": "Es wird ein Titel benötigt"
+                }
             },
             "description": {
                 "label": "Beschreibung",
