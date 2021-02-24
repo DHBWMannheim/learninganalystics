@@ -372,10 +372,10 @@
         "typ": {
             "label": "Welcher Lerntyp bist du?",
             "buttons": [
-                "Visuell",
-                "Auditiv",
-                "Motorisch",
-                "Kommunikativ"
+                {"label": "Visuell", "tooltip": "Sehen und Verstehen"},
+                {"label": "Auditiv", "tooltip": "Die Macht des gesprochenen Wortes"},
+                {"label": "Motorisch", "tooltip": "Lernen durch Praxis"},
+                {"label": "Kommunikativ", "tooltip": "Reden ist doch Gold"}
             ]
         },
         "online": {

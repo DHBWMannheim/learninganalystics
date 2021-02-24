@@ -370,10 +370,10 @@
         "typ": {
             "label": "Which learning type are you?",
             "buttons": [
-                "Visually",
-                "Auditory",
-                "Motor",
-                "Communicative"
+                {"label": "Visually", "tooltip": "See and understand"},
+                {"label": "Auditory", "tooltip": "The power of spoken words"},
+                {"label": "Motor", "tooltip": "Learning by doing"},
+                {"label": "Communicative", "tooltip": "Talking is gold"}
             ]
         },
         "online": {

@@ -9,7 +9,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NbComponentSize } from '@nebular/theme';
 
-type ButtonConfig = { label: string; value: any };
+type ButtonConfig = { label: string; value: any; tooltip?: string }; //TODO: Check Feedback
 
 @Component({
   selector: 'ngx-button-group-control',
@@ -45,9 +45,11 @@ export class ButtonGroupControlComponent
   }
 
   writeValue(value: any): void {
-    const index = this.buttons.findIndex((button) => button.value === value);
     this.buttonStates.fill(false);
-    this.buttonStates[index] = true;
+    if (this.buttons) {
+      const index = this.buttons.findIndex((button) => button.value === value);
+      this.buttonStates[index] = true;
+    }
     this.cdRef.detectChanges();
   }
   registerOnChange(fn: (value: any) => void): void {
