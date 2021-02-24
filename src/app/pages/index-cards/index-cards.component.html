@@ -33,40 +33,8 @@
               <ngx-repeat [cards]="cardStreaks[6]"></ngx-repeat>
             </nb-tab>
           </nb-tabset>
-          <!-- <div *ngIf="!loadingCards">
-            <div *ngIf="!roundFinished">
-              <tinder-ui *ngIf="cards.length; else alert" [cards]="cards" (choiceMade)="logChoice($event)" (edit)="edit($event)" (delete)="delete($event)"></tinder-ui>
-              <ng-template #alert>
-                <nb-alert outline="basic" style="text-align: center; margin: 50px 20px 0 20px;">
-                  {{'indexCards.notFound'|translate}}
-                  <div style="margin-top: 20px">
-                    <button nbButton outline color="primary" (click)="openAddDialog()">
-                      <nb-icon icon="plus-outline"></nb-icon>
-                      {{'indexCards.addButton'|translate}}
-                    </button>
-                  </div>
-                </nb-alert>
-              </ng-template>
-            </div>
-            <div *ngIf="roundFinished" style="text-align: center; font-size: large; font-weight: 600;">
-              <div
-                echarts
-                [options]="echartOptions"
-                [@fadeAnimation]="gaugeState"
-              ></div>
-              <div>{{'indexCards.roundResultPre'|translate}}{{ echartOptions.series[0].data[0].value }}{{'indexCards.roundResultPost'|translate}}</div>
-              <button style="margin-top: 20px;" nbButton outline color="primary" (click)="repeat()">
-                <nb-icon icon="repeat-outline"></nb-icon>
-                {{'indexCards.repeat'|translate}}
-              </button>
-            </div>
-          </div> -->
         </nb-card>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
-<!-- TODO: connect Gobal Search to index Cards  -->
-
-
-<!--TODO: Das in der Dokumentation anders schreiben. Wenn der Nutzer auch noch Karteikarten bearbeiten kann, wird das komplizierter-->

@@ -5,9 +5,6 @@ import { CoursesService } from '../../@core/data/course.service';
 import { IndexCard, IndexCardsService } from '../../@core/data/index-cards.service';
 import { fade } from '../../@theme/animations/fade.animation';
 import { AddComponent } from './add/add.component';
-import { DeleteComponent } from './delete/delete.component';
-import { EditComponent } from './edit/edit.component';
-import { TinderChoice } from './tinder-ui/tinder-ui.component';
 
 @Component({
   selector: 'ngx-index-cards',
@@ -16,14 +13,13 @@ import { TinderChoice } from './tinder-ui/tinder-ui.component';
   animations: [fade(200)], // TODO: Die Animation noch anpassen
 })
 export class IndexCardsComponent implements OnInit {
-  cards = [];
-
+  private cards: IndexCard[] = [];
   private courseId: string;
+
   isLecturer: boolean;
   loadingCards: boolean = true;
-  roundFinished: boolean = false;
 
-  cardStreaks: any = {
+  defaultCardStreakObject = {
     0: [],
     1: [],
     2: [],
@@ -31,18 +27,12 @@ export class IndexCardsComponent implements OnInit {
     4: [],
     5: [],
     6: []
-  };
+  }
+
+  cardStreaks = { ...this.defaultCardStreakObject };
 
   private calculateCardStreaks(): void {
-    this.cardStreaks = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: []
-    };
+    this.cardStreaks = { ...this.defaultCardStreakObject };
 
     this.cards.forEach(card => {
       if (card.streak) {
@@ -83,13 +73,12 @@ export class IndexCardsComponent implements OnInit {
 
   async reload() {
     this.loadingCards = true;
-    const cards = await this.indexCardsService.getData(
+    this.cards = await this.indexCardsService.getData(
       await this.indexCardsService
         .getCollection()
         .where('course', '==', this.coursesService.createRef(this.courseId))
         .get(),
     );
-    this.cards = cards;
     this.loadingCards = false;
     this.calculateCardStreaks();
   }

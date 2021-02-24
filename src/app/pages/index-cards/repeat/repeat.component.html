@@ -1,6 +1,12 @@
 <div>
   <div *ngIf="!roundFinished">
-    <tinder-ui *ngIf="cards.length; else alert" [cards]="cards" (choiceMade)="logChoice($event)" (edit)="edit($event)" (delete)="delete($event)"></tinder-ui>
+    <tinder-ui
+      *ngIf="cards.length; else alert"
+      [cards]="cards"
+      (choiceMade)="logChoice($event)"
+      (edit)="edit($event)"
+      (delete)="delete($event)"
+    ></tinder-ui>
     <ng-template #alert>
       <nb-alert outline="basic" style="text-align: center; margin: 50px 20px 0 20px;">
         {{'indexCards.notFound'|translate}}

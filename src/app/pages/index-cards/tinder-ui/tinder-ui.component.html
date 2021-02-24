@@ -3,15 +3,15 @@
     class="tinder--cards"
     (pan)="handlePan($event)"
     (panend)="handlePanEnd($event)"
-    [hidden]="!cards.length"
+    [hidden]="!_cards.length"
   >
     <nb-flip-card
       #tinderCard
       class="tinder--card"
       (transitionend)="handleShift()"
-      *ngFor="let card of cards; let i = index"
+      *ngFor="let card of _cards; let i = index"
       [ngStyle]="{
-        zIndex: cards.length - i,
+        zIndex: _cards.length - i,
         transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)'
       }"
       ><!--TODO: ist flipcard besser?--><!--TODO: Fade out border?-->

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-import { IndexCard } from '../../../@core/data/index-cards.service';
+import { IndexCard, IndexCardsService } from '../../../@core/data/index-cards.service';
 import { EditComponent } from '../edit/edit.component';
 import { TinderChoice } from '../tinder-ui/tinder-ui.component';
 
@@ -65,7 +65,10 @@ export class RepeatComponent implements OnInit {
     ],
   };
 
-  constructor(private readonly dialogService: NbDialogService) {}
+  constructor(
+    private readonly dialogService: NbDialogService,
+    private readonly indexCardsService: IndexCardsService,
+  ) {}
 
   @Input('cards')
   cards: IndexCard[];
@@ -80,8 +83,25 @@ export class RepeatComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logChoice({ choice }: TinderChoice) {
+  async logChoice({ choice, payload }: TinderChoice) {
     choice ? this.known++ : this.notKnown++; // TODO: besser als array und am schluss eine übersicht über nicht gewusste Fragen
+    
+    if (choice) {
+      // start streak
+      await this.indexCardsService.upsert({
+        ...payload,
+        streak: payload.streak + 1,
+        streakSince: payload.streak ? payload.streakSince : Date.now()
+      });
+    } else {
+      // end streak
+      await this.indexCardsService.upsert({
+        ...payload,
+        streak: 0,
+        streakSince: 0
+      });
+    }
+
     if (this.known + this.notKnown === this.originalCardCount) {
       setTimeout(() => {
         this.echartOptions.series[0].data[0].value = Math.round(
