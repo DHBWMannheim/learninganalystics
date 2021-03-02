@@ -93,6 +93,7 @@
         "repeat": "Wiederhohlen",
         "roundResultPre": "Du hast ",
         "roundResultPost": "% richtig beantwortet!",
+        "all": "ALLE",
         "add": {
             "header": "Neue Karteikarte",
             "question": {

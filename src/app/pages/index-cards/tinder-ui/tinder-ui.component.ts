@@ -8,8 +8,7 @@ import {
   Output,
   Renderer2,
   AfterViewInit,
-  OnChanges,
-  SimpleChanges,
+  OnChanges
 } from '@angular/core';
 import { IndexCard } from '../../../@core/data/index-cards.service';
 import { fade } from '../../../@theme/animations/fade.animation';

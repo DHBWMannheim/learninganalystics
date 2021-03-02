@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { IndexCard, IndexCardsService } from '../../../@core/data/index-cards.service';
 import { fade } from '../../../@theme/animations/fade.animation';
+import { DeleteComponent } from '../delete/delete.component';
 import { EditComponent } from '../edit/edit.component';
 import { TinderChoice } from '../tinder-ui/tinder-ui.component';
 
@@ -78,6 +79,9 @@ export class RepeatComponent implements OnInit {
   @Input('streak')
   streak: number;
 
+  @Output()
+  reload = new EventEmitter();
+
   roundFinished: boolean = false;
   private courseId: string;
 
@@ -106,7 +110,7 @@ export class RepeatComponent implements OnInit {
           streakSince: payload.streak ? payload.streakSince : Date.now()
         });
       }
-    } else {
+    } else if (payload.streak !== 0) {
       // end streak
       await this.indexCardsService.upsert({
         ...payload,
@@ -131,7 +135,7 @@ export class RepeatComponent implements OnInit {
     this.roundFinished = false;
     this.known = 0;
     this.notKnown = 0;
-    // this.reload()
+    this.reload.emit()
   }
 
   edit(card: IndexCard) {
@@ -142,21 +146,21 @@ export class RepeatComponent implements OnInit {
           card
         },
       })
-      .onClose.subscribe(async () => {
-        // await this.reload();
+      .onClose.subscribe(() => {
+        this.reload.emit()
       });
   }
 
   delete(card: IndexCard) {
     this.dialogService
-      .open(EditComponent, {
+      .open(DeleteComponent, {
         context: {
           courseId: this.courseId,
           card
         },
       })
-      .onClose.subscribe(async () => {
-        // await this.reload();
+      .onClose.subscribe(() => {
+        this.reload.emit()
       });
   }
 
