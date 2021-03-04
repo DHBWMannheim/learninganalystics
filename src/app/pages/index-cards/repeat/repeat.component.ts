@@ -5,6 +5,7 @@ import { fade } from '../../../@theme/animations/fade.animation';
 import { DeleteComponent } from '../delete/delete.component';
 import { EditComponent } from '../edit/edit.component';
 import { TinderChoice } from '../tinder-ui/tinder-ui.component';
+import { AddComponent } from '../add/add.component';
 
 @Component({
   selector: 'ngx-repeat',
@@ -79,11 +80,13 @@ export class RepeatComponent implements OnInit {
   @Input('streak')
   streak: number;
 
+  @Input('courseId')
+  courseId: string;
+
   @Output()
   reload = new EventEmitter();
 
   roundFinished: boolean = false;
-  private courseId: string;
 
   private known: number = 0;
   private notKnown: number = 0;
@@ -161,6 +164,18 @@ export class RepeatComponent implements OnInit {
       })
       .onClose.subscribe(() => {
         this.reload.emit()
+      });
+  }
+
+  openAddDialog() {
+    this.dialogService
+      .open(AddComponent, {
+        context: {
+          courseId: this.courseId,
+        },
+      })
+      .onClose.subscribe(() => {
+        this.reload.emit();
       });
   }
 

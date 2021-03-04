@@ -12,12 +12,12 @@ import { AddComponent } from './add/add.component';
 })
 export class IndexCardsComponent implements OnInit {
   private cards: IndexCard[] = [];
-  private courseId: string;
+  courseId: string;
 
   isLecturer: boolean;
   loadingCards: boolean = true;
 
-  defaultCardStreakObject = {
+  cardStreaks = {
     0: [],
     1: [],
     2: [],
@@ -25,12 +25,18 @@ export class IndexCardsComponent implements OnInit {
     4: [],
     5: [],
     6: []
-  }
-
-  cardStreaks = { ...this.defaultCardStreakObject };
+  };
 
   private calculateCardStreaks(): void {
-    this.cardStreaks = { ...this.defaultCardStreakObject };
+    this.cardStreaks = {
+      0: [],
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: []
+    };
 
     this.cards.forEach(card => {
       if (card.streak) {
