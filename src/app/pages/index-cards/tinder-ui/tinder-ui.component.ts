@@ -24,7 +24,7 @@ export interface TinderChoice {
   styleUrls: ['tinder-ui.component.scss'],
   animations: [fade(200)],
 })
-export class TinderUIComponent implements AfterViewInit, OnChanges {
+export class TinderUIComponent implements AfterViewInit {
   @Input('cards')
   cards: IndexCard[];
 
