@@ -132,10 +132,14 @@ export class SearchComponent implements OnInit {
     term: string,
     searchItems: { document: T; searcharg: string }[],
   ): T[] {
-    const reg = new RegExp(term, 'i');
+    const reg = new RegExp(this.escapeRegExp(term), 'i');
     return searchItems
       .filter(({ searcharg }) => reg.test(searcharg))
       .map((item) => item.document);
+  }
+
+  escapeRegExp(string: string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
   }
 
   private filterUniqueIds<T extends CommonFirestoreDocument>(array: T[]) {
