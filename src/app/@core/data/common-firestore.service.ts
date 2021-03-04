@@ -21,6 +21,11 @@ export const CommonConverter = {
   // TODO: keine anys verwenden
   toFirestore(u: any): DocumentData {
     const { id, ...data } = u;
+    for (const key in data) {
+      if (data[key] === undefined) {
+        delete data[key];
+      }
+    }
     return {
       ...data,
     };

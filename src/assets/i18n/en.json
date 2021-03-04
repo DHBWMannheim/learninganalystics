@@ -8,9 +8,13 @@
         "notFound": "No Todos found",
         "add": {
             "header": "New Todo",
+            "headerEdit": "Edit Todo",
             "title": {
                 "label": "Title",
-                "placeholder": "A short title..."
+                "placeholder": "A short title...",
+                "errors": {
+                    "required": "A title is needed"
+                }
             },
             "description": {
                 "label": "Description",
