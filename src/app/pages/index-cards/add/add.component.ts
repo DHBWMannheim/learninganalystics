@@ -36,6 +36,8 @@ export class AddComponent implements OnInit {
     await this.indexCardsService.upsert({
       ...this.model,
       course: this.coursesService.createRef(this.courseId),
+      streak: 0,
+      streakSince: 0
     });
     this.toastrService.success(
       await this.translate.get('indexCards.add.toast.saved.message').toPromise(),

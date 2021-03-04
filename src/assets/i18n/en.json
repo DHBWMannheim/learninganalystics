@@ -97,6 +97,7 @@
         "repeat": "Repeat",
         "roundResultPre": "You answered ",
         "roundResultPost": "% correct!",
+        "all": "ALL",
         "add": {
             "header": "New Index-Card",
             "question": {

@@ -9,6 +9,7 @@ import {
   NbIconModule,
   NbInputModule,
   NbSpinnerModule,
+  NbTabsetModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -28,6 +29,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { createTranslateLoader } from '../../app.module';
+import { RepeatComponent } from './repeat/repeat.component';
 
 @NgModule({
   imports: [
@@ -49,6 +51,7 @@ import { createTranslateLoader } from '../../app.module';
     NbCheckboxModule,
     FormsModule,
     NbAlertModule,
+    NbTabsetModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -63,6 +66,7 @@ import { createTranslateLoader } from '../../app.module';
     AddComponent,
     EditComponent,
     DeleteComponent,
+    RepeatComponent,
   ],
 })
 export class IndexCardsModule {}
