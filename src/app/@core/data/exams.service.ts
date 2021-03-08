@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
-import { take } from 'rxjs/operators';
+import { take, skipWhile, filter } from 'rxjs/operators';
 import { CommonFirestoreDocument } from './common-firestore-document';
 import { CommonFirestoreService } from './common-firestore.service';
 import { Course, CoursesService } from './course.service';
@@ -38,14 +38,19 @@ export class ExamsService extends CommonFirestoreService<Exam> {
     const myCourses = await this.courseService.currentCourses
       .pipe(take(1))
       .toPromise()
-      .then((c) => c.participations);
+      .then(({ participations, creations }) =>
+        participations.concat(creations),
+      );
 
-    const snap = await this.getCollection().where(
-      'course',
-      'in',
-      myCourses.map((c) => this.courseService.createRef(c.id)),
-    ).get();
+    if (!myCourses.length) return [];
 
-    return this.getData(snap)
+    const snap = await this.getCollection()
+      .where(
+        'course',
+        'in',
+        myCourses.map((c) => this.courseService.createRef(c.id)),
+      )
+      .get();
+    return this.getData(snap);
   }
 }
