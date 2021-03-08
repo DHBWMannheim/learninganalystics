@@ -53,4 +53,15 @@ export class ExamsService extends CommonFirestoreService<Exam> {
       .get();
     return this.getData(snap);
   }
+
+  public async getExamsOfCourse(courseId: string): Promise<Exam[]> {
+    const snap = await this.getCollection()
+      .where(
+        'course',
+        '==',
+        this.courseService.createRef(courseId)
+      )
+      .get();
+    return this.getData(snap);
+  }
 }

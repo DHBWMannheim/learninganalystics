@@ -1,72 +1,45 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../../@core/data/course.service';
-import { ExamsService } from '../../@core/data/exams.service';
-
-interface Exam {
-  title: string;
-  description: string;
-  deadline: Date;
-  duration?: number;
-  room?: string;
-  tools?: string[];
-  additionalInformations?: string[];
-}
+import { Exam, ExamsService } from '../../@core/data/exams.service';
 
 @Component({
   selector: 'ngx-exams',
   templateUrl: './exams.component.html',
-  styleUrls: ['./exams.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./exams.component.scss']
 })
 export class ExamsComponent implements OnInit {
-  exams: Exam[] = [
-    {
-      title: 'Portfolio-Prüfung: Programmierung',
-      description: 'TODO',
-      deadline: new Date(),
-      additionalInformations: ['Kombiklausur mit irgendwas anderem'],
-    },
-    {
-      title: 'Portfolio-Prüfung: Demonstration',
-      description: 'TODO',
-      deadline: new Date(),
-      duration: 10,
-      room: '123B',
-      tools: ['n Taschencalculator', 'NOTizen'],
-      additionalInformations: ['Gehirn mitbringen', 'nicht weinen'],
-    },
-    {
-      title: 'Portfolio-Prüfung: Dokumentation',
-      description: 'TODO',
-      deadline: new Date(),
-      additionalInformations: ['Be Awesome', 'Be Woopy'],
-    },
-  ];
 
-  private courseId: string;
+  courseId: string;
+  exams: Exam[] = [];
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly examsService: ExamsService,
+    private readonly datepipe: DatePipe,
+    private readonly courseService: CoursesService
   ) {}
 
-  ngOnInit(): void {
+  formatDate(date: string): string {
+    return this.datepipe.transform(date, 'dd.MM.yyyy');
+  }
+
+  async ngOnInit(): Promise<void> {
     this.route.params.subscribe(async ({ courseId }) => {
       this.courseId = courseId;
+      this.exams = await this.examsService.getExamsOfCourse(courseId);
     });
     /* this.examsService.upsert({
       title: 'Testklausur',
       tools: ['Taschenrechner'],
-      course: this.courseService.createRef('QmAnXSGOwJcPWgPfRxBg'),
+      course: this.courseService.createRef(this.courseId),
       deadline: new Date().toISOString(),
       description: 'Testbeschreibung',
       duration: '10 Minuten',
       room: 'SAP Raum',
       additionalInformations: ['Information A'],
     }); */
-    this.examsService.get().then((exams) => {
-      console.log(exams);
-    });
+    
   }
 }
