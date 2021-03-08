@@ -9,6 +9,7 @@ import {
   FeedbackService,
 } from '../../../@core/data/feedback.service';
 import { QuestionareService } from '../../../@core/data/questionare.service';
+import { createCsv, Csv } from './csv.helper';
 
 const splitLine = {
   show: true,
@@ -32,10 +33,10 @@ export class LecturerComponent implements OnInit {
       {
         top: 30,
         indicator: [
-          { text: '', max: 0 },
-          { text: '', max: 0 },
-          { text: '', max: 0 },
-          { text: '', max: 0 },
+          { text: '', max: 1 },
+          { text: '', max: 1 },
+          { text: '', max: 1 },
+          { text: '', max: 1 },
         ],
         center: ['50%', '50%'],
         splitLine,
@@ -209,7 +210,7 @@ export class LecturerComponent implements OnInit {
     );
 
     this.typeChart.radar[0].indicator.forEach((i) => {
-      i.max = participants.length;
+      i.max = Math.max(participants.length, 1);
     });
 
     this.typeChart.series[0].data = [
@@ -233,5 +234,20 @@ export class LecturerComponent implements OnInit {
       showBackground: true,
     };
     this.questionareChart = { ...this.questionareChart };
+  }
+
+  exportComments() {
+    const data = [['Comment'], ...this.comments.map((comment) => [comment])];
+    this.downloadCsv(data);
+  }
+
+  private downloadCsv(data: Csv) {
+    const csv = new Blob([createCsv(data)], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.setAttribute('href', window.URL.createObjectURL(csv));
+    link.setAttribute('download', 'export.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }
