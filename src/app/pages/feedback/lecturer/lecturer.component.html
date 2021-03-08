@@ -1,6 +1,15 @@
 <nb-card>
   <nb-card-header>
-    {{ 'feedback.lecturerView.participants.label' | translate }}
+    <div class="row">
+      <div class="col">
+        {{ 'feedback.lecturerView.participants.label' | translate }}
+      </div>
+      <div>
+        <button nbButton size="tiny" (click)="exportParticipants()">
+          <nb-icon icon="download-outline"></nb-icon> Export
+        </button>
+      </div>
+    </div>
   </nb-card-header>
   <nb-card-body>
     <div class="row">
@@ -16,7 +25,16 @@
 
 <nb-card>
   <nb-card-header>
-    {{ 'feedback.lecturerView.feedback.label' | translate }}
+    <div class="row">
+      <div class="col">
+        {{ 'feedback.lecturerView.feedback.label' | translate }}
+      </div>
+      <div>
+        <button nbButton size="tiny" (click)="exportCourseFeedback()">
+          <nb-icon icon="download-outline"></nb-icon> Export
+        </button>
+      </div>
+    </div>
   </nb-card-header>
   <nb-card-body>
     <div echarts [options]="feedbackChart"></div>
@@ -24,8 +42,17 @@
 </nb-card>
 
 <nb-card *ngIf="comments">
-  <nb-card-header
-    >{{ 'feedback.lecturerView.comments.label' | translate }}
+  <nb-card-header>
+    <div class="row">
+      <div class="col">
+        {{ 'feedback.lecturerView.comments.label' | translate }}
+      </div>
+      <div>
+        <button nbButton size="tiny" (click)="exportComments()">
+          <nb-icon icon="download-outline"></nb-icon> Export
+        </button>
+      </div>
+    </div>
   </nb-card-header>
   <nb-list>
     <nb-list-item *ngFor="let comment of comments">
