@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CoursesService } from '../../@core/data/course.service';
+import { ExamsService } from '../../@core/data/exams.service';
 
 interface Exam {
   title: string;
@@ -15,6 +17,7 @@ interface Exam {
   selector: 'ngx-exams',
   templateUrl: './exams.component.html',
   styleUrls: ['./exams.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExamsComponent implements OnInit {
   exams: Exam[] = [
@@ -40,11 +43,28 @@ export class ExamsComponent implements OnInit {
     },
   ];
 
-  constructor(private readonly route: ActivatedRoute) {}
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly examsService: ExamsService,
+    private readonly courseService: CoursesService,
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       console.log('params', params);
+    });
+    this.examsService.upsert({
+      title: 'Testklausur',
+      tools: ['Taschenrechner'],
+      course: this.courseService.createRef('QmAnXSGOwJcPWgPfRxBg'),
+      deadline: new Date().toISOString(),
+      description: 'Testbeschreibung',
+      duration: '10 Minuten',
+      room: 'SAP Raum',
+      additionalInformations: ['Information A'],
+    });
+    this.examsService.get().then((exams) => {
+      console.log(exams);
     });
   }
 }
