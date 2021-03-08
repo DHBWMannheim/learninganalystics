@@ -45,7 +45,6 @@ export class QuestionareComponent {
           .get(),
       )
     )[0];
-    console.log(this.currentDoc);
     this.form.get('typ').setValue(this.currentDoc?.typ);
     this.form.get('online').setValue(this.currentDoc?.online);
     this.form.get('apps').setValue(this.currentDoc?.apps);
@@ -57,14 +56,21 @@ export class QuestionareComponent {
   }
 
   async submit() {
-    await this.questionareService.upsert({
+    const documentData = {
       id: this.currentDoc?.id,
       typ: this.form.get('typ').value,
       online: this.form.get('online').value,
       apps: this.form.get('apps').value,
       experience: this.form.get('experience').value,
       user: await this.createCurrentUserRef(),
-    });
+    };
+    const snapshot = await this.questionareService.upsert(documentData);
+    if (snapshot) {
+      this.currentDoc = {
+        id: snapshot.id,
+        ...documentData,
+      };
+    }
     this.toast.success(
       await this.translate.get('questionare.toast.success.message').toPromise(),
       await this.translate.get('questionare.toast.success.title').toPromise(),
