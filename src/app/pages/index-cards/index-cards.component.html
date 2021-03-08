@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header style="display: flex; justify-content: space-between;">
+      <nb-card-header style="display: flex; justify-content: space-between; align-items: center;">
         {{'indexCards.header'|translate}}
         <button nbButton outline color="primary" (click)="openAddDialog()">
           <nb-icon icon="plus-outline"></nb-icon>
@@ -10,40 +10,31 @@
       </nb-card-header>
       <nb-card-body>
         <nb-card [nbSpinner]="loadingCards" class="mb-0" nbSpinnerStatus="primary">
-          <div *ngIf="!loadingCards">
-            <div *ngIf="!roundFinished">
-              <tinder-ui *ngIf="cards.length; else alert" [cards]="cards" (choiceMade)="logChoice($event)" (edit)="edit($event)" (delete)="delete($event)"></tinder-ui>
-              <ng-template #alert>
-                <nb-alert outline="basic" style="text-align: center; margin: 50px 20px 0 20px;">
-                  {{'indexCards.notFound'|translate}}
-                  <div style="margin-top: 20px">
-                    <button nbButton outline color="primary" (click)="openAddDialog()">
-                      <nb-icon icon="plus-outline"></nb-icon>
-                      {{'indexCards.addButton'|translate}}
-                    </button>
-                  </div>
-                </nb-alert>
-              </ng-template>
-            </div>
-            <div *ngIf="roundFinished" style="text-align: center; font-size: large; font-weight: 600;">
-              <div
-                echarts
-                [options]="echartOptions"
-                [@fadeAnimation]="gaugeState"
-              ></div>
-              <div>{{'indexCards.roundResultPre'|translate}}{{ echartOptions.series[0].data[0].value }}{{'indexCards.roundResultPost'|translate}}</div>
-              <button style="margin-top: 20px;" nbButton outline color="primary" (click)="repeat()">
-                <nb-icon icon="repeat-outline"></nb-icon>
-                {{'indexCards.repeat'|translate}}
-              </button>
-            </div>
-          </div>
+          <nb-tabset fullWidth>
+            <nb-tab [tabTitle]="'indexCards.all'|translate" [badgeText]="cardStreaks[0].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[0]" [streak]="0" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="20min" [badgeText]="cardStreaks[1].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[1]" [streak]="1" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="24h" [badgeText]="cardStreaks[2].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[2]" [streak]="2" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="48h" [badgeText]="cardStreaks[3].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[3]" [streak]="3" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="10d" [badgeText]="cardStreaks[4].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[4]" [streak]="4" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="30d" [badgeText]="cardStreaks[5].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[5]" [streak]="5" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="60d" [badgeText]="cardStreaks[6].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[6]" [streak]="6" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+          </nb-tabset>
         </nb-card>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
-<!-- TODO: connect Gobal Search to index Cards  -->
-
-
-<!--TODO: Das in der Dokumentation anders schreiben. Wenn der Nutzer auch noch Karteikarten bearbeiten kann, wird das komplizierter-->

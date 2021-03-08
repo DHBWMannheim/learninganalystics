@@ -1,7 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbButtonGroupModule, NbButtonModule } from '@nebular/theme';
+import {
+  NbButtonGroupModule,
+  NbButtonModule,
+  NbTooltipModule,
+} from '@nebular/theme';
 import { ButtonGroupControlComponent } from './button-group-control.component';
 
 @NgModule({
@@ -11,6 +15,7 @@ import { ButtonGroupControlComponent } from './button-group-control.component';
     FormsModule,
     ReactiveFormsModule,
     NbButtonGroupModule,
+    NbTooltipModule,
   ],
   declarations: [ButtonGroupControlComponent],
   exports: [ButtonGroupControlComponent],

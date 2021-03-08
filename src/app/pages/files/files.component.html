@@ -6,7 +6,7 @@
         <div class="col">
           {{ item.filename }}
         </div>
-        <div class="col-end">
+        <div class="col-end" *ngIf="isLecturer">
           <nb-icon
             icon="cloud-download-outline"
             style="margin-right: 16px"

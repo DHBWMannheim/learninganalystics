@@ -8,9 +8,13 @@
         "notFound": "No Todos found",
         "add": {
             "header": "New Todo",
+            "headerEdit": "Edit Todo",
             "title": {
                 "label": "Title",
-                "placeholder": "A short title..."
+                "placeholder": "A short title...",
+                "errors": {
+                    "required": "A title is needed"
+                }
             },
             "description": {
                 "label": "Description",
@@ -93,6 +97,7 @@
         "repeat": "Repeat",
         "roundResultPre": "You answered ",
         "roundResultPost": "% correct!",
+        "all": "ALL",
         "add": {
             "header": "New Index-Card",
             "question": {
@@ -370,10 +375,10 @@
         "typ": {
             "label": "Which learning type are you?",
             "buttons": [
-                "Visually",
-                "Auditory",
-                "Motor",
-                "Communicative"
+                {"label": "Visually", "tooltip": "See and understand"},
+                {"label": "Auditory", "tooltip": "The power of spoken words"},
+                {"label": "Motor", "tooltip": "Learning by doing"},
+                {"label": "Communicative", "tooltip": "Talking is gold"}
             ]
         },
         "online": {

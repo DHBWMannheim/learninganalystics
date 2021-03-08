@@ -9,6 +9,8 @@ export interface IndexCard extends CommonFirestoreDocument {
   question: string;
   answer: string;
   course: DocumentReference<Course>;
+  streak: number;
+  streakSince: number;
 }
 
 @Injectable({ providedIn: 'root' })

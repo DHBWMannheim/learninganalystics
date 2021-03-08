@@ -8,7 +8,11 @@ import {
   Feedback,
   FeedbackService,
 } from '../../../@core/data/feedback.service';
-import { QuestionareService } from '../../../@core/data/questionare.service';
+import {
+  Questionare,
+  QuestionareService,
+} from '../../../@core/data/questionare.service';
+import { createCsv, Csv } from './csv.helper';
 
 const splitLine = {
   show: true,
@@ -32,10 +36,10 @@ export class LecturerComponent implements OnInit {
       {
         top: 30,
         indicator: [
-          { text: '', max: 0 },
-          { text: '', max: 0 },
-          { text: '', max: 0 },
-          { text: '', max: 0 },
+          { text: '', max: 1 },
+          { text: '', max: 1 },
+          { text: '', max: 1 },
+          { text: '', max: 1 },
         ],
         center: ['50%', '50%'],
         splitLine,
@@ -104,6 +108,9 @@ export class LecturerComponent implements OnInit {
   };
 
   comments: string[];
+
+  private rawFeedbackData: Feedback[];
+  private rawQuenstionareData: Questionare[];
 
   constructor(
     private readonly courseService: CoursesService,
@@ -175,6 +182,7 @@ export class LecturerComponent implements OnInit {
         .where('course', '==', this.courseService.createRef(course.id))
         .get(),
     );
+    this.rawFeedbackData = feedback;
     if (feedback.length) {
       this.comments = feedback.map((f) => f.comment);
 
@@ -200,6 +208,8 @@ export class LecturerComponent implements OnInit {
       (snap) => this.questionareService.getData(snap),
     );
 
+    this.rawQuenstionareData = questionares;
+
     const typeData = Object.entries(groupBy(questionares, (q) => q.typ)).reduce(
       (acc, [key, value]) => {
         acc[key] = value.length;
@@ -209,7 +219,7 @@ export class LecturerComponent implements OnInit {
     );
 
     this.typeChart.radar[0].indicator.forEach((i) => {
-      i.max = participants.length;
+      i.max = Math.max(participants.length, 1);
     });
 
     this.typeChart.series[0].data = [
@@ -233,5 +243,62 @@ export class LecturerComponent implements OnInit {
       showBackground: true,
     };
     this.questionareChart = { ...this.questionareChart };
+  }
+
+  async exportComments() {
+    const translation = await this.translate
+      .get('feedback.lecturerView.comments.label')
+      .toPromise();
+    const data = [[translation], ...this.comments.map((comment) => [comment])];
+    this.downloadCsv(data);
+  }
+
+  async exportCourseFeedback() {
+    const data = [
+      await this.translate
+        .get('feedback.lecturerView.feedback.chart')
+        .toPromise(),
+      ...this.rawFeedbackData.map(
+        ({ fun, informations, quality, transfer }) => [
+          `${fun}`,
+          `${informations}`,
+          `${quality}`,
+          `${transfer}`,
+        ],
+      ),
+    ];
+    this.downloadCsv(data);
+  }
+
+  async exportParticipants() {
+    const learningTypeNames = await this.translate
+      .get('feedback.lecturerView.participants.typeChart')
+      .toPromise();
+    const data = [
+      await Promise.all([
+        this.translate.get('questionare.typ.label').toPromise(),
+        this.translate.get('questionare.online.label').toPromise(),
+        this.translate.get('questionare.apps.label').toPromise(),
+        this.translate.get('questionare.experience.label').toPromise(),
+      ]),
+      ...this.rawQuenstionareData.map(({ typ, online, apps, experience }) => [
+        `${learningTypeNames[typ]}`,
+        `${online}`,
+        `${apps}`,
+        `${experience}`,
+      ]),
+    ];
+
+    this.downloadCsv(data);
+  }
+
+  private downloadCsv(data: Csv) {
+    const csv = new Blob([createCsv(data)], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.setAttribute('href', window.URL.createObjectURL(csv));
+    link.setAttribute('download', 'export.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }

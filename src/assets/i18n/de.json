@@ -8,9 +8,13 @@
         "notFound": "Keine Aufgaben gefunden",
         "add": {
             "header": "Neue Aufgabe",
+            "headerEdit": "Aufgabe bearbeiten",
             "title": {
                 "label": "Titel",
-                "placeholder": "Ein kurzer Titel..."
+                "placeholder": "Ein kurzer Titel...",
+                "errors": {
+                    "required": "Es wird ein Titel benötigt"
+                }
             },
             "description": {
                 "label": "Beschreibung",
@@ -93,6 +97,7 @@
         "repeat": "Wiederhohlen",
         "roundResultPre": "Sie haben ",
         "roundResultPost": "% richtig beantwortet!",
+        "all": "ALLE",
         "add": {
             "header": "Neue Karteikarte",
             "question": {
@@ -372,10 +377,10 @@
         "typ": {
             "label": "Welcher Lerntyp sind Sie?",
             "buttons": [
-                "Visuell",
-                "Auditiv",
-                "Motorisch",
-                "Kommunikativ"
+                {"label": "Visuell", "tooltip": "Sehen und Verstehen"},
+                {"label": "Auditiv", "tooltip": "Die Macht des gesprochenen Wortes"},
+                {"label": "Motorisch", "tooltip": "Lernen durch Praxis"},
+                {"label": "Kommunikativ", "tooltip": "Reden ist doch Gold"}
             ]
         },
         "online": {
