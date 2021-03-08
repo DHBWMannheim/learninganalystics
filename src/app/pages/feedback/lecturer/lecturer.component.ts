@@ -245,20 +245,19 @@ export class LecturerComponent implements OnInit {
     this.questionareChart = { ...this.questionareChart };
   }
 
-  exportComments() {
-    //TODO: Translation
-    const data = [['Comment'], ...this.comments.map((comment) => [comment])];
+  async exportComments() {
+    const translation = await this.translate
+      .get('feedback.lecturerView.comments.label')
+      .toPromise();
+    const data = [[translation], ...this.comments.map((comment) => [comment])];
     this.downloadCsv(data);
   }
 
-  exportCourseFeedback() {
+  async exportCourseFeedback() {
     const data = [
-      [
-        'Enjoyment',
-        'Informationamount',
-        'Understandability',
-        'New Informations',
-      ],
+      await this.translate
+        .get('feedback.lecturerView.feedback.chart')
+        .toPromise(),
       ...this.rawFeedbackData.map(
         ({ fun, informations, quality, transfer }) => [
           `${fun}`,
@@ -271,21 +270,17 @@ export class LecturerComponent implements OnInit {
     this.downloadCsv(data);
   }
 
-  exportParticipants() {
-    const learningTypeNames = [
-      'Visually',
-      'Auditory',
-      'Motor',
-      'Communicative',
-    ];
-
+  async exportParticipants() {
+    const learningTypeNames = await this.translate
+      .get('feedback.lecturerView.participants.typeChart')
+      .toPromise();
     const data = [
-      [
-        'Learning type',
-        'Affinity to online teaching',
-        'Usage frequency of learning apps',
-        'Experience with online teaching',
-      ],
+      await Promise.all([
+        this.translate.get('questionare.typ.label').toPromise(),
+        this.translate.get('questionare.online.label').toPromise(),
+        this.translate.get('questionare.apps.label').toPromise(),
+        this.translate.get('questionare.experience.label').toPromise(),
+      ]),
       ...this.rawQuenstionareData.map(({ typ, online, apps, experience }) => [
         `${learningTypeNames[typ]}`,
         `${online}`,
