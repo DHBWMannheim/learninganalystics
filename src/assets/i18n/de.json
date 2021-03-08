@@ -62,15 +62,70 @@
     "dashboard": {},
     "exams": {
         "header": "Prüfungen",
+        "addButton": "Prüfung hinzufügen",
         "title": "Titel",
         "description": "Beschreibung",
-        "deadline": "Deadline",
+        "date": "Datum",
+        "time": "Uhrzeit",
         "duration": "Dauer",
         "minutes": "Minuten",
         "room": "Raum",
         "tools": "Zugelassene Hilfsmittel",
         "additionalInformations": "Zusätzliche Informationen",
-        "createTodo": "Aufgabe erstellen"
+        "createTodo": "Aufgabe erstellen",
+        "add": {
+            "header": "Neue Prüfung",
+            "title": {
+                "label": "Titel",
+                "placeholder": "Prüfungstitel..."
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Beschreibung..."
+            },
+            "date": {
+                "label": "Datum",
+                "placeholder": "Datum..."
+            },
+            "time": {
+                "label": "Uhrzeit",
+                "placeholder": "Uhrzeit..."
+            },
+            "duration": {
+                "label": "Dauer in Minuten",
+                "placeholder": "Dauer in Minuten..."
+            },
+            "room": {
+                "label": "Raum",
+                "placeholder": "Raum..."
+            },
+            "tools": {
+                "label": "Zugelassene Hilfsmittel",
+                "placeholder": "Zugelassene Hilfsmittel..."
+            },
+            "additionalInformations": {
+                "label": "Zusätzliche Informationen",
+                "placeholder": "Zusätzliche Informationen..."
+            },
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Prüfung wurde gespeichert"
+                }
+            }
+        },
+        "delete": {
+            "header": "Prüfung löschen",
+            "text": "Wollen Sie diese Prüfung wirklich löschen",
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Gelöscht",
+                    "message": "Die Prüfung wurde gelöscht"
+                }
+            }
+        }
     },
     "files": {
         "header": "Dateien",

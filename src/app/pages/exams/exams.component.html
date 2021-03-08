@@ -1,10 +1,22 @@
-<nb-card>
-  <nb-card-header>{{ 'exams.header' | translate }}</nb-card-header>
-  <nb-card-body *ngIf="exams.length" class="row">
+<nb-card [nbSpinner]="loadingExams">
+  <nb-card-header style="display: flex; justify-content: space-between; align-items: center;">
+    {{ 'exams.header' | translate }}
+    <button nbButton outline color="primary" (click)="openAddDialog()">
+      <nb-icon icon="plus-outline"></nb-icon>
+      {{'exams.addButton' | translate}}
+    </button>
+  </nb-card-header>
+  <nb-card-body class="row">
     <div *ngFor="let exam of exams" class="col-xs-12 col-md-6 mt-4">
       <nb-card style="height: 100%">
         <nb-card-header>
           <strong>{{ exam.title }}</strong>
+          <button style="margin-left: 5px; float: right;" nbButton outline size="small" color="primary" (click)="deleteExam(exam)">
+            <nb-icon icon="trash-2-outline"></nb-icon>
+          </button>
+          <button style="margin-left: 15px; float: right;" nbButton outline size="small" color="primary">
+            <nb-icon icon="edit-outline"></nb-icon>
+          </button>
         </nb-card-header>
         <nb-card-body>
           <table style="width: 100%">
@@ -16,10 +28,17 @@
             </tr>
             <tr>
               <td>
-                <strong>{{ 'exams.deadline' | translate }}: </strong>
+                <strong>{{ 'exams.date' | translate }}: </strong>
               </td>
-              <td *ngIf="exam.deadline">{{ formatDate(exam.deadline) }}</td>
-              <td *ngIf="!exam.deadline">-</td>
+              <td *ngIf="exam.date">{{ formatDate(exam.date) }}</td>
+              <td *ngIf="!exam.date">-</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{{ 'exams.time' | translate }}: </strong>
+              </td>
+              <td *ngIf="exam.date">{{ formatTime(exam.time) }}</td>
+              <td *ngIf="!exam.date">-</td>
             </tr>
             <tr>
               <td>
@@ -39,9 +58,7 @@
                 <strong>{{ 'exams.tools' | translate }}: </strong>
               </td>
               <td *ngIf="exam.tools">
-                <ul>
-                  <li *ngFor="let tool of exam.tools">{{ tool }}</li>
-                </ul>
+                {{ exam.tools || '-' }}
               </td>
               <td *ngIf="!exam.tools">-</td>
             </tr>
@@ -50,15 +67,13 @@
                 <strong>{{ 'exams.additionalInformations' | translate }}: </strong>
               </td>
               <td *ngIf="exam.additionalInformations">
-                <ul>
-                  <li *ngFor="let info of exam.additionalInformations">{{ info }}</li>
-                </ul>
+                {{ exam.additionalInformations || '-' }}
               </td>
-              <td *ngIf="exam.additionalInformations">-</td>
+              <td *ngIf="!exam.additionalInformations">-</td>
             </tr>
           </table>
 
-          <button nbButton>{{ 'exams.createTodo' | translate }}</button>
+          <button nbButton class="mt-4">{{ 'exams.createTodo' | translate }}</button>
         </nb-card-body>
       </nb-card>
     </div>
