@@ -106,6 +106,8 @@ export class LecturerComponent implements OnInit {
 
   comments: string[];
 
+  private rawFeedbackData: Feedback[];
+
   constructor(
     private readonly courseService: CoursesService,
     private readonly questionareService: QuestionareService,
@@ -176,6 +178,7 @@ export class LecturerComponent implements OnInit {
         .where('course', '==', this.courseService.createRef(course.id))
         .get(),
     );
+    this.rawFeedbackData = feedback;
     if (feedback.length) {
       this.comments = feedback.map((f) => f.comment);
 
@@ -237,9 +240,32 @@ export class LecturerComponent implements OnInit {
   }
 
   exportComments() {
+    //TODO: Translation
     const data = [['Comment'], ...this.comments.map((comment) => [comment])];
     this.downloadCsv(data);
   }
+
+  exportCourseFeedback() {
+    const data = [
+      [
+        'Enjoyment',
+        'Informationamount',
+        'Understandability',
+        'New Informations',
+      ],
+      ...this.rawFeedbackData.map(
+        ({ fun, informations, quality, transfer }) => [
+          `${fun}`,
+          `${informations}`,
+          `${quality}`,
+          `${transfer}`,
+        ],
+      ),
+    ];
+    this.downloadCsv(data);
+  }
+
+  exportParticipants() {}
 
   private downloadCsv(data: Csv) {
     const csv = new Blob([createCsv(data)], { type: 'text/csv' });

@@ -5,7 +5,7 @@
         {{ 'feedback.lecturerView.participants.label' | translate }}
       </div>
       <div>
-        <button nbButton size="tiny">
+        <button nbButton size="tiny" (click)="exportParticipants()">
           <nb-icon icon="download-outline"></nb-icon> Export
         </button>
       </div>
@@ -30,7 +30,7 @@
         {{ 'feedback.lecturerView.feedback.label' | translate }}
       </div>
       <div>
-        <button nbButton size="tiny">
+        <button nbButton size="tiny" (click)="exportCourseFeedback()">
           <nb-icon icon="download-outline"></nb-icon> Export
         </button>
       </div>
