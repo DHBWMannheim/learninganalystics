@@ -9,7 +9,7 @@ import {
   NbIconModule,
 } from '@nebular/theme';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { ExamsService } from '../../@core/data/exams.service';
+import { ExamService } from '../../@core/data/exams.service';
 import { DatePipe } from '@angular/common';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -35,6 +35,6 @@ import { ExamsComponent } from './exams.component';
     }),
   ],
   declarations: [ExamsComponent],
-  providers: [ExamsService, DatePipe],
+  providers: [ExamService, DatePipe],
 })
 export class ExamsModule {}

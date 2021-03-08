@@ -18,50 +18,8 @@ export interface Exam extends CommonFirestoreDocument {
 }
 
 @Injectable({ providedIn: 'root' })
-export class ExamsService extends CommonFirestoreService<Exam> {
-  constructor(
-    private firestore: AngularFirestore,
-    private userService: UserService,
-    private courseService: CoursesService,
-  ) {
+export class ExamService extends CommonFirestoreService<Exam> {
+  constructor(firestore: AngularFirestore) {
     super('exams', firestore);
-  }
-
-  public async get(): Promise<Exam[]>;
-  public async get(id: string): Promise<Exam>;
-  public async get(id?: string): Promise<Exam | Exam[]> {
-    if (id) {
-      return this.createRef(id)
-        .get()
-        .then((doc) => doc.data());
-    }
-    const myCourses = await this.courseService.currentCourses
-      .pipe(take(1))
-      .toPromise()
-      .then(({ participations, creations }) =>
-        participations.concat(creations),
-      );
-
-    if (!myCourses.length) return [];
-
-    const snap = await this.getCollection()
-      .where(
-        'course',
-        'in',
-        myCourses.map((c) => this.courseService.createRef(c.id)),
-      )
-      .get();
-    return this.getData(snap);
-  }
-
-  public async getExamsOfCourse(courseId: string): Promise<Exam[]> {
-    const snap = await this.getCollection()
-      .where(
-        'course',
-        '==',
-        this.courseService.createRef(courseId)
-      )
-      .get();
-    return this.getData(snap);
   }
 }

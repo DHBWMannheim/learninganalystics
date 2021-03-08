@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoursesService } from '../../@core/data/course.service';
-import { Exam, ExamsService } from '../../@core/data/exams.service';
+import { Exam, ExamService } from '../../@core/data/exams.service';
 
 @Component({
   selector: 'ngx-exams',
@@ -16,7 +16,7 @@ export class ExamsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly examsService: ExamsService,
+    private readonly examService: ExamService,
     private readonly datepipe: DatePipe,
     private readonly courseService: CoursesService
   ) {}
@@ -28,9 +28,14 @@ export class ExamsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe(async ({ courseId }) => {
       this.courseId = courseId;
-      this.exams = await this.examsService.getExamsOfCourse(courseId);
+      this.exams = await this.examService.getData(
+        await this.examService
+          .getCollection()
+          .where('course', '==', this.courseService.createRef(this.courseId))
+          .get(),
+      );
     });
-    /* this.examsService.upsert({
+    /* this.examService.upsert({
       title: 'Testklausur',
       tools: ['Taschenrechner'],
       course: this.courseService.createRef(this.courseId),
