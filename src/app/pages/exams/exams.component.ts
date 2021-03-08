@@ -34,6 +34,7 @@ export class ExamsComponent implements OnInit {
       duration: 10,
       room: '123B',
       tools: ['n Taschencalculator', 'NOTizen'],
+      additionalInformations: ['Gehirn mitbringen', 'nicht weinen'],
     },
     {
       title: 'Portfolio-Prüfung: Dokumentation',
@@ -43,17 +44,18 @@ export class ExamsComponent implements OnInit {
     },
   ];
 
+  private courseId: string;
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly examsService: ExamsService,
-    private readonly courseService: CoursesService,
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      console.log('params', params);
+    this.route.params.subscribe(async ({ courseId }) => {
+      this.courseId = courseId;
     });
-    this.examsService.upsert({
+    /* this.examsService.upsert({
       title: 'Testklausur',
       tools: ['Taschenrechner'],
       course: this.courseService.createRef('QmAnXSGOwJcPWgPfRxBg'),
@@ -62,7 +64,7 @@ export class ExamsComponent implements OnInit {
       duration: '10 Minuten',
       room: 'SAP Raum',
       additionalInformations: ['Information A'],
-    });
+    }); */
     this.examsService.get().then((exams) => {
       console.log(exams);
     });
