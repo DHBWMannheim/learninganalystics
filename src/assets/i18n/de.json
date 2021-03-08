@@ -115,6 +115,48 @@
                 }
             }
         },
+        "edit": {
+            "header": "Prüfung bearbeiten",
+            "title": {
+                "label": "Titel",
+                "placeholder": "Prüfungstitel..."
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Beschreibung..."
+            },
+            "date": {
+                "label": "Datum",
+                "placeholder": "Datum..."
+            },
+            "time": {
+                "label": "Uhrzeit",
+                "placeholder": "Uhrzeit..."
+            },
+            "duration": {
+                "label": "Dauer in Minuten",
+                "placeholder": "Dauer in Minuten..."
+            },
+            "room": {
+                "label": "Raum",
+                "placeholder": "Raum..."
+            },
+            "tools": {
+                "label": "Zugelassene Hilfsmittel",
+                "placeholder": "Zugelassene Hilfsmittel..."
+            },
+            "additionalInformations": {
+                "label": "Zusätzliche Informationen",
+                "placeholder": "Zusätzliche Informationen..."
+            },
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Prüfung wurde gespeichert"
+                }
+            }
+        },
         "delete": {
             "header": "Prüfung löschen",
             "text": "Wollen Sie diese Prüfung wirklich löschen",

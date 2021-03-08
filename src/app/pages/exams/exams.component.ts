@@ -6,6 +6,7 @@ import { CoursesService } from '../../@core/data/course.service';
 import { Exam, ExamService } from '../../@core/data/exams.service';
 import { AddComponent } from './add/add.component';
 import { DeleteComponent } from './delete/delete.component';
+import { EditComponent } from './edit/edit.component';
 
 @Component({
   selector: 'ngx-exams',
@@ -72,6 +73,19 @@ export class ExamsComponent implements OnInit {
       })
       .onClose.subscribe(async () => {
         await this.reload();
+      });
+  }
+
+  editExam(exam: Exam) {
+    this.dialogService
+      .open(EditComponent, {
+        context: {
+          courseId: this.courseId,
+          exam
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload()
       });
   }
 

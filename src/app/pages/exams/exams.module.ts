@@ -24,6 +24,7 @@ import { AddComponent } from './add/add.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     ExamsComponent,
     DeleteComponent,
-    AddComponent
+    AddComponent,
+    EditComponent
   ],
   providers: [ExamService, DatePipe],
 })

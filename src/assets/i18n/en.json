@@ -115,6 +115,48 @@
                 }
             }
         },
+        "edit": {
+            "header": "Edit Exam",
+            "title": {
+                "label": "Title",
+                "placeholder": "Exam title..."
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "Description..."
+            },
+            "date": {
+                "label": "Date",
+                "placeholder": "Date..."
+            },
+            "time": {
+                "label": "Time",
+                "placeholder": "Time..."
+            },
+            "duration": {
+                "label": "Duration in Minutes",
+                "placeholder": "Duration in Minutes..."
+            },
+            "room": {
+                "label": "Room",
+                "placeholder": "Room..."
+            },
+            "tools": {
+                "label": "Tools",
+                "placeholder": "Tools..."
+            },
+            "additionalInformations": {
+                "label": "Additional information",
+                "placeholder": "Additional information..."
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The exam was saved"
+                }
+            }
+        },
         "delete": {
             "header": "Delete Exam",
             "text": "Do you really want to delete this Exam",
