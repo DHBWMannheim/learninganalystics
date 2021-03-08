@@ -1,29 +1,40 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header> Index Cards </nb-card-header>
+      <nb-card-header style="display: flex; justify-content: space-between; align-items: center;">
+        {{'indexCards.header'|translate}}
+        <button nbButton outline color="primary" (click)="openAddDialog()">
+          <nb-icon icon="plus-outline"></nb-icon>
+          {{'indexCards.addButton'|translate}}
+        </button>
+      </nb-card-header>
       <nb-card-body>
-        <tinder-ui [cards]="cards" (choiceMade)="logChoice($event)"></tinder-ui>
-        <div
-          echarts
-          [options]="echartOptions"
-          [@fadeAnimation]="gaugeState"
-        ></div>
-
-        <!-- <nb-alert outline="basic" style="text-align: center"
-          >Seems like, there are no Index-Cards yet. Try creating on with the
-          button below.</nb-alert
-        > -->
-        <!--TODO:-->
+        <nb-card [nbSpinner]="loadingCards" class="mb-0" nbSpinnerStatus="primary">
+          <nb-tabset fullWidth>
+            <nb-tab [tabTitle]="'indexCards.all'|translate" [badgeText]="cardStreaks[0].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[0]" [streak]="0" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="20min" [badgeText]="cardStreaks[1].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[1]" [streak]="1" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="24h" [badgeText]="cardStreaks[2].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[2]" [streak]="2" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="48h" [badgeText]="cardStreaks[3].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[3]" [streak]="3" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="10d" [badgeText]="cardStreaks[4].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[4]" [streak]="4" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="30d" [badgeText]="cardStreaks[5].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[5]" [streak]="5" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+            <nb-tab tabTitle="60d" [badgeText]="cardStreaks[6].length" badgeStatus="primary">
+              <ngx-repeat [courseId]="courseId" [cards]="cardStreaks[6]" [streak]="6" (reload)="reload()"></ngx-repeat>
+            </nb-tab>
+          </nb-tabset>
+        </nb-card>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
-<!-- TODO: connect Gobal Search to index Cards  -->
-
-<div class="add-button-container" *ngIf="isLecturer">
-  <button mat-fab color="primary" (click)="openAddDialog()">
-    <nb-icon icon="plus-outline"></nb-icon>
-  </button>
-</div>
-<!--TODO: Das in der Dokumentation anders schreiben. Wenn der Nutzer auch noch Karteikarten bearbeiten kann, wird das komplizierter-->

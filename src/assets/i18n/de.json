@@ -1,0 +1,419 @@
+{
+    "footer": {
+        "madeWith": "In Mannheim mit ❤️ erstellt, 2021"
+    },
+    "todos": {
+        "header": "Aufgabenübersicht",
+        "all": "Alle Aufgaben",
+        "notFound": "Keine Aufgaben gefunden",
+        "add": {
+            "header": "Neue Aufgabe",
+            "headerEdit": "Aufgabe bearbeiten",
+            "title": {
+                "label": "Titel",
+                "placeholder": "Ein kurzer Titel...",
+                "errors": {
+                    "required": "Es wird ein Titel benötigt"
+                }
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Ausführliche Beschreibung"
+            },
+            "timespan": {
+                "label": "Optionaler Zeitraum",
+                "placeholderStartDate": "Startdatum",
+                "placeholderEndDate": "Enddatum"
+            },
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Aufgabe wurde gespeichert"
+                }
+            }
+        },
+        "chart": {
+            "month": [
+                "Jan",
+                "Feb",
+                "Mär",
+                "Apr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dez"
+            ],
+            "day": [
+                "Mo",
+                "Di",
+                "Mi",
+                "Do",
+                "Fr",
+                "Sa",
+                "So"
+            ]
+        }
+    },
+    "dashboard": {},
+    "exams": {
+        "header": "Prüfungen",
+        "title": "Titel",
+        "description": "Beschreibung",
+        "deadline": "Deadline",
+        "duration": "Dauer",
+        "minutes": "Minuten",
+        "room": "Raum",
+        "tools": "Zugelassene Hilfsmittel",
+        "additionalInformations": "Zusätzliche Informationen",
+        "createTodo": "Aufgabe erstellen"
+    },
+    "files": {
+        "header": "Dateien",
+        "browseText": "Hier können Sie Dateien hinziehen oder welche ",
+        "browseButton": "vom Gerät auswählen",
+        "dropLabel": "Hier Dateien ablegen",
+        "toast": {
+            "saved": {
+                "message": "Die Datei wurde gespeichert",
+                "title": "Gespeichert"
+            },
+            "deleted": {
+                "message": "Die Datei wurde gelöscht",
+                "title": "Gelöscht"
+            }
+        }
+    },
+    "indexCards": {
+        "header": "Karteikarten",
+        "question": "Frage",
+        "answer": "Antwort",
+        "notFound": "Es wurden keine Karteikarten gefunden",
+        "addButton": "Neue Karteikarte",
+        "repeat": "Wiederhohlen",
+        "roundResultPre": "Sie haben ",
+        "roundResultPost": "% richtig beantwortet!",
+        "all": "ALLE",
+        "add": {
+            "header": "Neue Karteikarte",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Karteikarte wurde gespeichert"
+                }
+            }
+        },
+        "delete": {
+            "header": "Karteikarte löschen",
+            "text": "Wollen Sie diese Karteikarte wirklich löschen",
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Gelöscht",
+                    "message": "Die Karteikarte wurde gelöscht"
+                }
+            }
+        },
+        "edit": {
+            "header": "Karteikarte bearbeiten",
+            "question": {
+                "label": "Frage",
+                "placeholder": "Ein kurzer Fragestellung..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "Die Antwort zur Frage..."
+            },
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Karteikarte wurde gespeichert"
+                }
+            }
+        }
+    },
+    "feedback": {
+        "header": "Feedback",
+        "value": [
+            "gering",
+            "mittel",
+            "hoch"
+        ],
+        "comment": {
+            "label": "Anmerkungen",
+            "placeholder": "Haben Sie weitere Anmerkungen?..."
+        },
+        "fun": {
+            "label": "Wie hat Ihnen die Vorlesung gefallen?"
+        },
+        "informations": {
+            "label": "Wie empfanden Sie die Informationsversorgung?"
+        },
+        "quality": {
+            "label": "Wurden Sachverhalte verständlich dargestellt?"
+        },
+        "transfer": {
+            "label": "Wurden neue Inhalte vermittelt?"
+        },
+        "submit": "Speichern",
+        "comments": "Kommentare von Kursteilnehmern",
+        "toast": {
+            "saved": {
+                "title": "Gespeichert",
+                "message": "Das Feedback wurde gespeichert"
+            }
+        },
+        "notFound": "Es ist noch kein Feedback verfügbar",
+
+        "lecturerView": {
+            "feedback": {
+                "label": "Kursfeedback",
+                 "chart": [
+                    "Spaß",
+                    "Informationsversorgung",
+                    "Verständlichkeit",
+                    "Neue Informationen"
+                ]
+            },
+            "comments": {
+                "label": "Kommentare"
+            },
+            "participants": {
+                "label": "Teilnehmer",
+                "typeChart": [
+                    "Visuell",
+                    "Auditiv",
+                    "Motorisch",
+                    "Kommunikativ"
+                ],
+                "questionareChart": [
+                    "Affinität zu online Unterricht",
+                    "Nutzungsfrequenz von Lernapps",
+                    "Erfahrung mit online Unterricht"
+                ]
+            }
+        }
+       
+    },
+    "join": {
+        "join": {
+            "header": "An Kurs teilnehmen",
+            "key": {
+                "label": "Einschreibeschlüssel",
+                "placeholder": "Der Kurs-Einschreibeschlüssel...",
+                "errors": {
+                    "required": "Bitte geben Sie einen Schlüssel an",
+                    "minlength": "Bitte geben Sie alle 6 Zeichen des Schlüssels an"
+                }
+            },
+            "submit": "Teilnehmen"
+        },
+        "create": {
+            "header": "Kurs erstellen",
+            "name": {
+                "label": "Name",
+                "placeholder": "Der Name des Kurses...",
+                "errors": {
+                    "required": "Bitte geben Sie einen Namen an"
+                }
+            },
+            "submit": "Erstellen"
+        },
+        "key": "Schlüssel",
+        "participants": "Teilnehmer",
+        "leave": "Verlassen",
+        "delete": {
+            "header": "Kurs verlassen",
+            "text": "Wollen Sie diesen Kurs wirklich verlassen?",
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Verlassen",
+                    "message": "Sie haben den Kurs verlassen"
+                }
+            }
+        },
+        "toast": {
+            "created": {
+                "message": "Der Kurs wurde erstellt",
+                "title": "Erstellt"
+            },
+            "joined": {
+                "message": "Sie sind dem Kurs beigetreten",
+                "title": "Beigetreten"
+            },
+            "conflict": {
+                "message": "Sie sind schon Teil dieses Kurses",
+                "title": "Schon beigetreten"
+            }
+        }
+    },
+    "menu": {
+        "dashboard": "Dashboard",
+        "courses": "Kurse",
+        "exams": "Prüfungen",
+        "files": "Dateien",
+        "feedback": "Feedback",
+        "indexCards": "Karteikarten",
+        "joinCreate": "Kursverwaltung",
+        "personal": "Persönlich",
+        "todos": "Aufgaben"
+    },
+    "action": {
+        "message": "Kleinen Moment. Wir arbeiten an Ihrem Anliegen...",
+        "error": "Woops, wird wissen nicht, wo Sie hin wollen.",
+        "backToLogin": "Zurück zum Login"
+    },
+    "login": {
+        "title": "Login",
+        "subtitle": "Hallo! Loggen Sie sich mit Ihrer Email ein.",
+        "error": "Woops!",
+        "email": {
+            "label": "Email-Adresse",
+            "placeholder": "Email-Adresse",
+            "errors": {
+                "required": "Eine Email-Adresse wird benötigt!",
+                "patterns": "Eine echte Email-Adresse!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "forgot": "Password vergessen?",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "rememberMe": "Eingeloggt bleiben",
+        "login": "Login",
+        "register": "Sie haben noch keinen Account? Kein Problem! Registrieren Sie sich."
+    },
+    "terms": {},
+    "register": {
+        "title": "Registrierung",
+        "error": "Woops!",
+        "email": {
+            "label": "Email-Adresse",
+            "placeholder": "Email-Adresse",
+            "errors": {
+                "required": "Eine Email-Adresse wird benötigt!",
+                "patterns": "Eine echte Email-Adresse!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "repeatPassword": {
+            "label": "Password wiederhohlen",
+            "placeholder": "Password wiederhohlen",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "same": "Das Passwort stimmt nicht überein"
+            }
+        },
+        "agreeTerms": "Ich stimme den Nutzungsbedigungen zu",
+        "backToLogin": "Sie haben schon einen Account? Einfach einloggen und los gehts!",
+        "submit": "Los geht's"
+    },
+    "logout": {
+        "message": "Der Logout wird bearbeitet. Bitte warten..."
+    },
+    "resetPassword": {
+        "title": "Password ändern",
+        "subtitle": "Bitte setzen Sie ein neues Password",
+        "error": "Woops",
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+            }
+        },
+        "repeatPassword": {
+            "label": "Password wiederhohlen",
+            "placeholder": "Password wiederhohlen",
+            "errors": {
+                "required": "Ein Password wird benötigt!",
+                "same": "Das Passwort stimmt nicht überein"
+            }
+        },
+        "submit": "Bestätigen",
+        "backToLogin": "Zurück zum Login",
+        "register": "Registrierung"
+    },
+    "search": {
+        "todos": "Aufgaben",
+        "files": "Dateien",
+        "indexCards": "Karteikarten",
+        "notFound": "Es wurden keine Ergebnisse gefunden"
+    },
+    "onbording": {
+        "welcome": "Willkommen",
+        "text1": "Möchten Sie an einer freiwilligen Umfrage teilnehmen?",
+        "text2": "Die Beantwortung dieser Fragen uns Kursinhalte besser auf Sie abzustimmen."
+    },
+    "questionare": {
+        "typ": {
+            "label": "Welcher Lerntyp sind Sie?",
+            "buttons": [
+                {"label": "Visuell", "tooltip": "Sehen und Verstehen"},
+                {"label": "Auditiv", "tooltip": "Die Macht des gesprochenen Wortes"},
+                {"label": "Motorisch", "tooltip": "Lernen durch Praxis"},
+                {"label": "Kommunikativ", "tooltip": "Reden ist doch Gold"}
+            ]
+        },
+        "online": {
+            "label": "Wie affin sind Sie in Punkto Online Lehre?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "apps": {
+            "label": "Wie häufig nutzen Sie Lernapps?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "experience": {
+            "label": "Wie viel Erfahrungen haben Sie mit digitaler Lehre?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "skip": "Überspringen",
+        "submit": "Speichern",
+        "toast": {
+            "success": {
+                "title": "Gespeichert",
+                "message": "Die Antworten wurden gespeichert"
+            }
+        }
+    }
+}

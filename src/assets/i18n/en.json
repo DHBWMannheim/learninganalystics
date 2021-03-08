@@ -1,0 +1,417 @@
+{
+    "footer": {
+        "madeWith": "Created with ❤️ in Mannheim 2021"
+    },
+    "todos": {
+        "header": "Todo-Overview",
+        "all": "All Todos",
+        "notFound": "No Todos found",
+        "add": {
+            "header": "New Todo",
+            "headerEdit": "Edit Todo",
+            "title": {
+                "label": "Title",
+                "placeholder": "A short title...",
+                "errors": {
+                    "required": "A title is needed"
+                }
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "A long description"
+            },
+            "timespan": {
+                "label": "Optional timespan",
+                "placeholderStartDate": "Start date",
+                "placeholderEndDate": "End date"
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The Todo was saved"
+                }
+            }
+        },
+        "chart": {
+            "month": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec"
+            ],
+            "day": [
+                "Mo",
+                "Tu",
+                "We",
+                "Th",
+                "Fr",
+                "Sa",
+                "Su"
+            ]
+        }
+    },
+    "dashboard": {},
+    "exams": {
+        "header": "Exams",
+        "title": "Title",
+        "description": "Description",
+        "deadline": "Deadline",
+        "duration": "Duration",
+        "minutes": "Minutes",
+        "room": "Room",
+        "tools": "Permitted Tools",
+        "additionalInformations": "Additional Informations",
+        "createTodo": "Create Todo"
+    },
+    "files": {
+        "header": "Files",
+        "browseText": "Drag files here or ",
+        "browseButton": "browse",
+        "dropLabel": "Drop files here",
+        "toast": {
+            "created": {
+                "message": "Your file was saved",
+                "title": "Saved"
+            },
+            "deleted": {
+                "message": "The file was deleted",
+                "title": "Deleted"
+            }
+        }
+    },
+    "indexCards": {
+        "header": "Index Cards",
+        "question": "Question",
+        "answer": "Answer",
+        "notFound": "Seems like, there are no index cards yet.",
+        "addButton": "Add index card",
+        "repeat": "Repeat",
+        "roundResultPre": "You answered ",
+        "roundResultPost": "% correct!",
+        "all": "ALL",
+        "add": {
+            "header": "New Index-Card",
+            "question": {
+                "label": "Question",
+                "placeholder": "The Question..."
+            },
+            "answer": {
+                "label": "Answer",
+                "placeholder": "The Answer..."
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The Index-Card was saved"
+                }
+            }
+        },
+        "delete": {
+            "header": "Delete Index-Card",
+            "text": "Do you really want to delete this Index-Card",
+            "submit": "Yes",
+            "toast": {
+                "deleted": {
+                    "title": "Deleted",
+                    "message": "The Index-card was deleted"
+                }
+            }
+        },
+        "edit": {
+            "header": "Edit Index-Card",
+            "question": {
+                "label": "Question",
+                "placeholder": "The Question..."
+            },
+            "answer": {
+                "label": "Antwort",
+                "placeholder": "The Answer..."
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The Index-Card was saved"
+                }
+            }
+        }
+    },
+    "feedback": {
+        "header": "Feedback",
+        "value": [
+            "low",
+            "medium",
+            "high"
+        ],
+        "comment": {
+            "label": "Additional Remarks",
+            "placeholder": "What do you want to add..."
+        },
+        "fun": {
+            "label": "How did you enjoy the course?"
+        },
+        "informations": {
+            "label": "Amount of Informations?"
+        },
+        "quality": {
+            "label": "How was the information quality?"
+        },
+        "transfer": {
+            "label": "How was Knowledge conveyed?"
+        },
+        "submit": "Save",
+        "comments": "Comments from Participants",
+        "notFound": "No feedback available yet",
+        "toast": {
+            "saved": {
+                "title": "Saved",
+                "message": "Your Feedback was saved"
+            }
+        },
+        "lecturerView": {
+            "feedback": {
+                "label": "Course feedback",
+                 "chart": [
+                    "Enjoyment",
+                    "Informationamount",
+                    "Understandability",
+                    "New Informations"
+                ]
+            },
+            "comments": {
+                "label": "Comments"
+            },
+            "participants": {
+                "label": "Participants",
+                "typeChart": [
+                    "Visually",
+                    "Auditory",
+                    "Motor",
+                    "Communicative"
+                ],
+                "questionareChart": [
+                    "Affinity to online teaching",
+                    "Usage frequency of learning apps",
+                    "Experience with online teaching"
+                ]
+            }
+        }
+    },
+    "join": {
+        "join": {
+            "header": "Joined Courses",
+            "key": {
+                "label": "Key",
+                "placeholder": "The Course-Key...",
+                "errors": {
+                    "required": "Please enter a key",
+                    "minlength": "Please enter a 6-character key"
+                }
+            },
+            "submit": "Join"
+        },
+        "create": {
+            "header": "Created Courses",
+            "name": {
+                "label": "Name",
+                "placeholder": "The Course-Key...",
+                "errors": {
+                    "required": "Please enter a course name"
+                }
+            },
+            "submit": "Create"
+        },
+        "key": "Key",
+        "participants": "Participants",
+        "leave": "Leave",
+        "delete": {
+            "header": "Leave Course",
+            "text": "Do you realy want to leave this course?",
+            "submit": "Yes",
+            "toast": {
+                "deleted": {
+                    "title": "Left",
+                    "message": "You left the course"
+                }
+            }
+        },
+        "toast": {
+            "created": {
+                "message": "Your course was created",
+                "title": "Created"
+            },
+            "joined": {
+                "message": "You joined a new course",
+                "title": "Joined"
+            },
+            "conflict": {
+                "message": "You are already part of this course",
+                "title": "Already joined"
+            }
+        }
+    },
+    "menu": {
+        "dashboard": "Dashboard",
+        "courses": "Courses",
+        "exams": "Exams",
+        "files": "Files",
+        "feedback": "Feedback",
+        "indexCards": "Index Cards",
+        "joinCreate": "Manage courses",
+        "personal": "Personal",
+        "todos": "Todos"
+    },
+    "action": {
+        "message": "Hang on, we are working on it...",
+        "error": "Woops, you confused us.",
+        "backToLogin": "Back to Log In"
+    },
+    "login": {
+        "title": "Login",
+        "subtitle": "Hello! Log in with your email.",
+        "error": "Oh snap!",
+        "email": {
+            "label": "Email address",
+            "placeholder": "Email address",
+            "errors": {
+                "required": "Email is required!",
+                "patterns": "Email should be the real one!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "forgot": "Forgot Password?",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "rememberMe": "Remember Me",
+        "login": "Login",
+        "register": "Don't have an account? Register"
+    },
+    "terms": {},
+    "register": {
+        "title": "Register",
+        "error": "Oh snap!",
+        "email": {
+            "label": "Email address",
+            "placeholder": "Email address",
+            "errors": {
+                "required": "Email is required!",
+                "patterns": "Email should be the real one!"
+            }
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "repeatPassword": {
+            "label": "Repeat Password",
+            "placeholder": "Repeat Password",
+            "errors": {
+                "required": "Password is required!",
+                "same": "Password does not match"
+            }
+        },
+        "agreeTerms": "Agree to Terms & Conditions",
+        "backToLogin": "Already have an account? Log in",
+        "submit": "Register"
+    },
+    "logout": {
+        "message": "Logging out, please wait..."
+    },
+    "resetPassword": {
+        "title": "Change password",
+        "subtitle": "Please set a new password",
+        "error": "Oh snap!",
+        "password": {
+            "label": "New Password",
+            "placeholder": "New Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "confirmPassword": {
+            "label": "Confirm Password",
+            "placeholder": "Confirm Password",
+            "errors": {
+                "required": "Password is required!",
+                "minlength": "Password has to be between 6 and 50 Characters"
+            }
+        },
+        "submit": "Change password",
+        "backToLogin": "Back to Log In",
+        "register": "Register"
+    },
+    "search": {
+        "todos": "Todos",
+        "files": "Files",
+        "indexCards": "Index Cards",
+        "notFound": "No results were found"
+    },
+    "onbording": {
+        "welcome": "Welcome",
+        "text1": "Do you want to participate in a short survey?",
+        "text2": "Your responses help us improve course contents."
+    },
+    "questionare": {
+        "typ": {
+            "label": "Which learning type are you?",
+            "buttons": [
+                {"label": "Visually", "tooltip": "See and understand"},
+                {"label": "Auditory", "tooltip": "The power of spoken words"},
+                {"label": "Motor", "tooltip": "Learning by doing"},
+                {"label": "Communicative", "tooltip": "Talking is gold"}
+            ]
+        },
+        "online": {
+            "label": "How affine are you when it comes to online teaching?",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "apps": {
+            "label": "How often do you use learning apps?",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "experience": {
+            "label": "How much experience do you have with digital teaching? ",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "skip": "Skip",
+        "submit": "Submit",
+        "toast": {
+            "success": {
+                "title": "Saved",
+                "message": "Your answers were saved"
+            }
+        }
+    }
+}

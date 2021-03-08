@@ -5,6 +5,7 @@ import { NbMenuModule } from '@nebular/theme';
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [

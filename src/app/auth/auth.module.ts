@@ -9,7 +9,7 @@ import {
   NbSpinnerModule,
 } from '@nebular/theme';
 
-import { ThemeModule } from '../@theme/theme.module';
+import { createTranslateLoader, ThemeModule } from '../@theme/theme.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +19,9 @@ import { TermsComponent } from './terms/terms.component';
 import { FormsModule } from '@angular/forms';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ActionComponent } from './action/action.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { OnbordingComponent } from './onbording/onbording.component';
 
 @NgModule({
   imports: [
@@ -33,6 +36,13 @@ import { ActionComponent } from './action/action.component';
     NbCheckboxModule,
     NbButtonModule,
     NbSpinnerModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   declarations: [
     LoginComponent,

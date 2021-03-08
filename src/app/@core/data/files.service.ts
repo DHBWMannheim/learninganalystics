@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { CommonFirestoreService } from './common-firestore.service';
 
 import { last, shareReplay } from 'rxjs/operators';
-import { v4 } from 'uuid';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { CommonFirestoreDocument } from './common-firestore-document';
 import { Course, CoursesService } from './course.service';
@@ -36,8 +35,8 @@ export class FilesService extends CommonFirestoreService<FireFile> {
     courseId: string,
   ): Promise<UploadQueueEntry> {
     const file = await this.getFile(fileEntry);
-    const firebasePath = 'files/' + v4();
     const id = this.getCollection().doc().id;
+    const firebasePath = 'files/' + id;
 
     const dto = {
       id,

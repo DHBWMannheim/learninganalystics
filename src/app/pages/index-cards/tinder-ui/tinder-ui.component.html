@@ -3,54 +3,66 @@
     class="tinder--cards"
     (pan)="handlePan($event)"
     (panend)="handlePanEnd($event)"
-    [hidden]="!cards.length"
+    [hidden]="!_cards.length"
   >
-    <nb-reveal-card
+    <nb-flip-card
       #tinderCard
       class="tinder--card"
       (transitionend)="handleShift()"
-      *ngFor="let card of cards; let i = index"
+      *ngFor="let card of _cards; let i = index"
       [ngStyle]="{
-        zIndex: cards.length - i,
+        zIndex: _cards.length - i,
         transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)'
       }"
       ><!--TODO: ist flipcard besser?--><!--TODO: Fade out border?-->
       <nb-card-front>
         <nb-card>
-          <nb-card-header>
-            <h1>Question</h1>
+          <nb-card-header style="display: flex; align-items: center; justify-content: center;">
+            <h5>{{'indexCards.question'|translate}}</h5>
+            <button style="margin-left: 15px;" nbButton outline size="small" color="primary" (click)="editCard(card)">
+              <nb-icon icon="edit-outline"></nb-icon>
+            </button>
+            <button style="margin-left: 5px;" nbButton outline size="small" color="primary" (click)="deleteCard(card)">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
           </nb-card-header>
           <nb-card-body>
-            <h3>{{ card.question }}</h3>
+            {{ card.question }}
           </nb-card-body>
         </nb-card>
       </nb-card-front>
       <nb-card-back>
         <nb-card>
-          <nb-card-header>
-            <h1>Answer</h1>
+          <nb-card-header style="display: flex; align-items: center; justify-content: center;">
+            <h5>{{'indexCards.answer'|translate}}</h5>
+            <button style="margin-left: 15px;" nbButton outline size="small" color="primary" (click)="editCard(card)">
+              <nb-icon icon="edit-outline"></nb-icon>
+            </button>
+            <button style="margin-left: 5px;" nbButton outline size="small" color="primary" (click)="deleteCard(card)">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </button>
           </nb-card-header>
           <nb-card-body>
-            <h3>{{ card.answer }}</h3>
+            {{ card.answer }}
           </nb-card-body>
         </nb-card>
       </nb-card-back>
-    </nb-reveal-card>
+    </nb-flip-card>
   </div>
-  <nb-actions size="giant" fullWidth  [@fadeAnimation]="fadeState"><!--TODO: Die Karten in den footer?-->
+  <nb-actions style="margin-bottom: 45px;" size="giant" fullWidth  [@fadeAnimation]="fadeState">
     <nb-action
       icon="close-outline"
       (click)="userClickedButton($event, false)"
-      badgeStatus="warning"
-      [badgeText]="crossCount"
-      badgeSize="giant"
+      badgeStatus="danger"
+      [badgeText]="''+crossCount"
+      badgeSize="40px"
     ></nb-action>
     <nb-action
       icon="checkmark-outline"
       (click)="userClickedButton($event, true)"
       badgeStatus="success"
-      [badgeText]="heartCount"
-      badgeSize="giant"
+      [badgeText]="''+heartCount"
+      badgeSize="large"
     ></nb-action>
   </nb-actions>
 </div><!--TODO: Pointer-->

@@ -1,0 +1,61 @@
+<nb-card [nbSpinner]="!resultsFiles">
+  <nb-card-header> {{ 'search.files' | translate }} </nb-card-header>
+
+  <nb-list *ngIf="resultsFiles?.length">
+    <nb-list-item *ngFor="let file of resultsFiles">
+      <div class="row w-100">
+        <div class="col">
+          {{ file.filename }}
+        </div>
+        <div class="rotate pointer" (click)="navigateFiles(file)">
+          <nb-icon icon="menu-arrow-outline"></nb-icon>
+        </div>
+      </div>
+    </nb-list-item>
+  </nb-list>
+  <nb-list *ngIf="!resultsFiles?.length">
+    <nb-list-item> {{ 'search.notFound' | translate }} </nb-list-item>
+  </nb-list>
+</nb-card>
+
+<nb-card [nbSpinner]="!resultsIndexCards">
+  <nb-card-header> {{ 'search.indexCards' | translate }} </nb-card-header>
+
+  <nb-list *ngIf="resultsIndexCards?.length">
+    <nb-list-item *ngFor="let card of resultsIndexCards">
+      <div class="row w-100">
+        <div class="col">
+          {{ card.question }}
+        </div>
+        <div class="rotate pointer" (click)="navigateIndexCards(card)">
+          <nb-icon icon="menu-arrow-outline"></nb-icon>
+        </div>
+      </div>
+    </nb-list-item>
+  </nb-list>
+  <nb-list *ngIf="!resultsIndexCards?.length">
+    <nb-list-item> {{ 'search.notFound' | translate }} </nb-list-item>
+  </nb-list>
+</nb-card>
+
+<nb-card [nbSpinner]="!resultsTodos">
+  <nb-card-header> {{ 'search.todos' | translate }} </nb-card-header>
+
+  <nb-list *ngIf="resultsTodos?.length">
+    <nb-list-item *ngFor="let todo of resultsTodos">
+      <div class="row w-100">
+        <div class="col">
+          {{ todo.title }}
+        </div>
+        <div class="rotate pointer" (click)="navigateTodo(todo.id)">
+          <nb-icon icon="menu-arrow-outline"></nb-icon>
+        </div>
+      </div>
+    </nb-list-item>
+  </nb-list>
+  <nb-list *ngIf="!resultsTodos?.length">
+    <nb-list-item>
+      {{ 'search.notFound' | translate }}
+    </nb-list-item>
+  </nb-list>
+</nb-card>

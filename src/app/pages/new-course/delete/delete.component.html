@@ -1,0 +1,29 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col my-auto">
+        <h3>{{ 'join.delete.header' | translate }}</h3>
+      </div>
+      <div class="col-end">
+        <button nbButton (click)="close()">
+          <nb-icon icon="close-outline"></nb-icon>
+        </button>
+      </div>
+    </div>
+    <div></div>
+    <div></div>
+  </nb-card-header>
+  <nb-card-body style="text-align: center">
+    {{ 'join.delete.text' | translate }}
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-end">
+        <button nbButton status="primary" (click)="submit()">
+          {{ 'join.delete.submit' | translate }}
+        </button>
+      </div>
+    </div>
+  </nb-card-footer>
+</nb-card>

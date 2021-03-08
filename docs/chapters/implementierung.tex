@@ -68,6 +68,61 @@ Nutzer ohne die notwendigen Berechtigungen werden automatisch auf das Dashboard 
 
 
 % TODO: Die haben auch noch den ganzen Lebenszyklus von React erklärt wtf=
+% TODO: Wir sollten vielleicht was zum Thema accessibility schreiben (unterschiedliche Sprachen, Design, etc.)
 
 
+
+
+
+\section{Übersetzung}
+% TODO: Das in Anforderungen
+% TODO: Konzeption
+
+An der DHBW studieren viele verschiedene Studenten mit verschiedenen Hintergründen.
+Nicht immer ist Deutsch die Muttersprache.
+Besonders für Studenten des Erasmus+ Programms ist Englisch oft präferiert.
+
+Aus diesem Grund ist die Anwendung sowohl in Deutsch, als auch in Englisch verfügbar.
+Neue Sprachen können mithilfe einfach mithilfe von JSON-Dateien hinzugefügt werden.
+Verfügbare Sprachen werden in der Navigation im Globus-Menu angezeigt.
+Durch Klick auf eine Sprache wird sofort die gesamte Anwendung übersetzt, ohne das neu geladen werden muss.
+
+Die Anwendung fragt beim initialen Aufruf der Anwendung ab, auf welche Sprache das Gerät des Nutzers eingestellt ist.
+Wird eine kompatible Sprache gefunden wird die Anwendung auf diese übersetzt.
+Andernfalls wird Englisch als internationale Sprache gewählt.
+
+
+% TODO: Angular differential loading und so  zeug?
+
+% Registrierungskontingent 
+
+
+% TODO:
+Wurde die Registrierung erfolgreich abgeschlossen wird der Nutzer auf eine freiwillige Umfrage geleitet.
+Der Nutzer kann dabei angeben, welcher Lerntyp er ist, wie affine er für die Nutzung von online Lernplattformen ist und welche Erfahrung er mit diesen bisher hat.
+Besitzer von Kursen, in dem dieser Nutzer eingeschrieben ist, können anschließend diese Informationen anonym einsehen.
+Dabei existiert ein separater Abschnitt im Feedback, welcher einen Einblick über alle Studenten gibt.
+Dies erlaubt es Kursbesitzern bzw. Dozenten ihren Lerninhalt auf die Studenten besser abzustimmen und die Kursqualität zu erhöhen.
+Nutzer können jederzeit über das Profil-Kontextmenü ihre Angaben ändern.
+
+% TODO: Feedback noch genauer erklären
+
+% TODO:
+Todos können sowohl ein Start-, als auch ein Enddatum haben.
+Existiert nur eines dieser Daten, wird das andere auf den gleichen Tag terminiert.
+Somit können auch langfristige Aufgaben wie Assignments oder andere alternative Prüfungsformen in die Zeitplanung einbezogen werden.
+Die Zeitspannen werden anschließend in einem Diagramm angezeigt.
+Je dunkler eine Zelle ist, desto mehr Aufgaben sind an diesem Tag zu bearbeiten, bzw. abzugeben.
+
+
+
+% TODO:
+Im Kursmanagement können Nutzer ihre gesamten Kurse einsehen.
+Das Management zeigt alle bereits erstellen und alle bereits beigetretenen Kurse an.
+Der Nutzer kann durch Eingabe eines Kurs-Einschreibeschlüssels einem Kurs beitreten.
+Alternativ kann er auch einen neuen erstellen.
+Die Tabelle zeigt stets alle Kurse, mit ihren Schlüsseln und der Anzahl an Teilnehmern an.
+Durch einen Button können Kurse verlassen werden.
+Verlässt der Kursbesitzer den Kurs geht ihm die Verwalter-Funktion verloren.
+Da es keinen Weg gibt zu validieren, ob der Nutzer einmal ein ersteller war, kann der Nutzer anschließend nur noch seinem Kurs beitreten.
 

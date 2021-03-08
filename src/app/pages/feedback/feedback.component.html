@@ -1,66 +1,10 @@
 <nb-card>
-  <nb-card-header> Feedback </nb-card-header>
-  <nb-card-body>
-       
+  <nb-card-header>{{ 'feedback.header' | translate }} </nb-card-header>
+  <nb-card-body [nbSpinner]="true"*ngIf="!courseLoaded">
 
-    <div class="w-100 radio-container">
-      <div>Wie empfangen die Informationsversorgung?</div>
-      <mat-radio-group
-        >
-        <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-        <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-        <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-        <mat-radio-button value="4">great</mat-radio-button>
-      </mat-radio-group>
-    </div>
-
-    <div class="w-100 radio-container">
-        <div> Wurden neue Inhalte vermittelt?</div>
-        <mat-radio-group
-          >
-          <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-          <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-          <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-          <mat-radio-button value="4">great</mat-radio-button>
-        </mat-radio-group>
-      </div>
-
-    <div class="w-100 radio-container">
-        <div>Wurden Sachverhalte verständlich dargestellt?</div>
-        <mat-radio-group
-          >
-          <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-          <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-          <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-          <mat-radio-button value="4">great</mat-radio-button>
-        </mat-radio-group>
-      </div>
-
-      <div class="w-100 radio-container">
-        <div>Wie hat ihnen die Vorlesung gefallen?</div>
-        <mat-radio-group
-          >
-          <mat-radio-button value="1" class="mr-5">awful</mat-radio-button>
-          <mat-radio-button value="2" class="mr-5">bad</mat-radio-button>
-          <mat-radio-button value="3" class="mr-5">good</mat-radio-button>
-          <mat-radio-button value="4">great</mat-radio-button>
-        </mat-radio-group>
-      </div>
-
-
-
-
-    <mat-form-field class="w-100">
-      <mat-label>Additional Remarks</mat-label>
-      <textarea
-        matInput
-        placeholder="What do you want to add..."
-        name="Additional remarks"
-        class="textarea"
-        required
-      ></textarea>
-    </mat-form-field>
+  </nb-card-body>
+  <nb-card-body *ngIf="courseLoaded">
+    <ngx-participant *ngIf="!isLecturer"></ngx-participant>
+    <ngx-lecturer *ngIf="isLecturer"></ngx-lecturer>
   </nb-card-body>
 </nb-card>
-
-<!-- TODO: Wenn wir die Funktionalitäten haben, können wir noch analysen dran packen. z.B. Lernzeit pro Karteikarte und so sachen -->

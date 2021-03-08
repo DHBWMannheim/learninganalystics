@@ -1,0 +1,12 @@
+<nb-button-group [disabled]="disabled" [size]="size">
+  <button
+    nbButtonToggle
+    *ngFor="let button of buttons; let i = index"
+    [(pressed)]="buttonStates[i]"
+    (pressedChange)="updateValue(i, $event, button.value)"
+    [nbTooltip]="button.tooltip"
+    [nbTooltipTrigger]="(button.tooltip ? 'hover' : 'noop')"
+  >
+    {{ button.label }}
+  </button>
+</nb-button-group>

@@ -8,9 +8,9 @@ import {
   Output,
   Renderer2,
   AfterViewInit,
+  OnChanges
 } from '@angular/core';
 import { IndexCard } from '../../../@core/data/index-cards.service';
-
 import { fade } from '../../../@theme/animations/fade.animation';
 
 export interface TinderChoice {
@@ -24,9 +24,11 @@ export interface TinderChoice {
   styleUrls: ['tinder-ui.component.scss'],
   animations: [fade(200)],
 })
-export class TinderUIComponent implements AfterViewInit {
+export class TinderUIComponent implements AfterViewInit, OnChanges {
   @Input('cards')
   cards: IndexCard[];
+
+  _cards: IndexCard[];
 
   @ViewChildren('tinderCard', { read: ElementRef })
   tinderCards: QueryList<ElementRef>;
@@ -35,6 +37,12 @@ export class TinderUIComponent implements AfterViewInit {
 
   @Output()
   choiceMade = new EventEmitter<TinderChoice>();
+
+  @Output()
+  edit = new EventEmitter<IndexCard>();
+
+  @Output()
+  delete = new EventEmitter<IndexCard>();
 
   moveOutWidth: number;
   shiftRequired: boolean;
@@ -49,9 +57,13 @@ export class TinderUIComponent implements AfterViewInit {
 
   constructor(private readonly renderer: Renderer2) {}
 
+  ngOnChanges(): void {
+    this._cards = [...this.cards];
+  }
+
   userClickedButton(event: Event, heart: boolean) {
     event.preventDefault();
-    if (!this.cards.length) return false;
+    if (!this._cards.length) return false;
     if (heart) {
       this.renderer.setStyle(
         this.tinderCardsArray[0].nativeElement,
@@ -66,7 +78,7 @@ export class TinderUIComponent implements AfterViewInit {
       );
     }
     this.toggleChoiceIndicator(!heart, heart);
-    this.emitChoice(heart, this.cards[0]);
+    this.emitChoice(heart, this._cards[0]);
     this.shiftRequired = true;
     this.transitionInProgress = true;
   }
@@ -75,7 +87,7 @@ export class TinderUIComponent implements AfterViewInit {
     if (
       event.deltaX === 0 ||
       (event.center.x === 0 && event.center.y === 0) ||
-      !this.cards.length
+      !this._cards.length
     )
       return;
 
@@ -108,7 +120,7 @@ export class TinderUIComponent implements AfterViewInit {
   handlePanEnd(event) {
     this.toggleChoiceIndicator(false, false);
 
-    if (!this.cards.length) return;
+    if (!this._cards.length) return;
 
     this.renderer.removeClass(this.tinderCardsArray[0].nativeElement, 'moving');
 
@@ -140,7 +152,7 @@ export class TinderUIComponent implements AfterViewInit {
 
       this.shiftRequired = true;
 
-      this.emitChoice(!!(event.deltaX > 0), this.cards[0]);
+      this.emitChoice(!!(event.deltaX > 0), this._cards[0]);
     }
     this.transitionInProgress = true;
   }
@@ -155,8 +167,8 @@ export class TinderUIComponent implements AfterViewInit {
     this.toggleChoiceIndicator(false, false);
     if (this.shiftRequired) {
       this.shiftRequired = false;
-      this.cards.shift();
-      if (!this.cards.length) this.fadeState = 'out';
+      this._cards.shift();
+      if (!this._cards.length) this.fadeState = 'out';
     }
   }
 
@@ -175,5 +187,13 @@ export class TinderUIComponent implements AfterViewInit {
     this.tinderCards.changes.subscribe(() => {
       this.tinderCardsArray = this.tinderCards.toArray();
     });
+  }
+
+  editCard(card: IndexCard) {
+    this.edit.emit(card);
+  }
+
+  deleteCard(card: IndexCard) {
+    this.delete.emit(card);
   }
 }

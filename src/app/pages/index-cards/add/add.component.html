@@ -2,12 +2,12 @@
   <nb-card-header>
     <div class="row">
       <div class="col my-auto">
-        <h3>Add an Indexcard</h3>
+        <h3>{{'indexCards.add.header'|translate}}</h3>
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
           <nb-icon icon="close-outline"></nb-icon
-          ><!--TODO:-->
+          >
         </button>
       </div>
     </div>
@@ -16,10 +16,10 @@
   </nb-card-header>
   <nb-card-body>
     <mat-form-field class="w-100">
-      <mat-label>Question</mat-label>
+      <mat-label>{{'indexCards.add.question.label'|translate}}</mat-label>
       <textarea
         matInput
-        placeholder="Whats the question..."
+        [placeholder]="'indexCards.add.question.placeholder'|translate"
         [(ngModel)]="model.question"
         name="question"
         class="textarea"
@@ -28,10 +28,10 @@
     </mat-form-field>
 
     <mat-form-field class="w-100">
-      <mat-label>Answer</mat-label>
+      <mat-label>{{'indexCards.add.answer.label'|translate}}</mat-label>
       <textarea
         matInput
-        placeholder="What do you answer..."
+        [placeholder]="'indexCards.add.answer.placeholder'|translate"
         [(ngModel)]="model.answer"
         name="answer"
         class="textarea"
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col"></div>
       <div class="col-end">
-        <button nbButton status="primary" (click)="submit()">Submit</button>
+        <button nbButton status="primary" (click)="submit()">{{'indexCards.add.submit'|translate}}</button>
       </div>
     </div>
   </nb-card-footer>

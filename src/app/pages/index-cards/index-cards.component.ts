@@ -2,78 +2,63 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { CoursesService } from '../../@core/data/course.service';
-import { IndexCardsService } from '../../@core/data/index-cards.service';
-import { fade } from '../../@theme/animations/fade.animation';
+import { IndexCard, IndexCardsService } from '../../@core/data/index-cards.service';
 import { AddComponent } from './add/add.component';
-import { TinderChoice } from './tinder-ui/tinder-ui.component';
 
 @Component({
   selector: 'ngx-index-cards',
   templateUrl: './index-cards.component.html',
   styleUrls: ['./index-cards.component.scss'],
-  animations: [fade(200)], // TODO: Die Animation noch anpassen
 })
 export class IndexCardsComponent implements OnInit {
-  gaugeState = 'out';
-
-  echartOptions = {
-    series: [
-      {
-        // TODO:
-        type: 'gauge',
-        progress: {
-          show: true,
-          width: 16,
-        },
-        axisLine: {
-          lineStyle: {
-            width: 16,
-          },
-        },
-        axisTick: {
-          show: false,
-        },
-        splitLine: {
-          length: 8,
-          lineStyle: {
-            width: 2,
-            color: '#999',
-          },
-        },
-        axisLabel: {
-          distance: 25,
-          color: '#999',
-          fontSize: 16,
-        },
-        anchor: {
-          show: true,
-          showAbove: true,
-          size: 25,
-          itemStyle: {
-            borderWidth: 2,
-          },
-        },
-        title: {
-          show: false,
-        },
-        detail: {
-          valueAnimation: true,
-          fontSize: 46,
-          offsetCenter: [0, '50%'],
-        },
-        data: [
-          {
-            value: 0,
-          },
-        ],
-      },
-    ],
-  };
-  cards = [];
-  originalCardCount;
-
+  private cards: IndexCard[] = [];
   courseId: string;
+
   isLecturer: boolean;
+  loadingCards: boolean = true;
+
+  cardStreaks = {
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: []
+  };
+
+  private calculateCardStreaks(): void {
+    this.cardStreaks = {
+      0: [],
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: []
+    };
+
+    this.cards.forEach(card => {
+      if (card.streak) {
+        const now = Date.now();
+  
+        if (card.streak === 6 && now - card.streakSince > 60 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[6].push(card)
+        } else if (card.streak === 5 && now - card.streakSince > 30 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[5].push(card)
+        } else if (card.streak === 4 && now - card.streakSince > 10 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[4].push(card)
+        } else if (card.streak === 3 && now - card.streakSince > 2 * 24 * 60 * 60 * 1000) {
+          this.cardStreaks[3].push(card)
+        } else if (card.streak === 2 && now - card.streakSince > 24 * 60 * 60 * 1000) {
+          this.cardStreaks[2].push(card)
+        } else if (card.streak === 1 && now - card.streakSince > 20 * 60 * 1000) {
+          this.cardStreaks[1].push(card)
+        }
+      }
+      this.cardStreaks[0].push(card)
+    })
+  }
 
   constructor(
     private readonly dialogService: NbDialogService,
@@ -91,29 +76,15 @@ export class IndexCardsComponent implements OnInit {
   }
 
   async reload() {
-    const cards = await this.indexCardsService.getData(
+    this.loadingCards = true;
+    this.cards = await this.indexCardsService.getData(
       await this.indexCardsService
         .getCollection()
         .where('course', '==', this.coursesService.createRef(this.courseId))
         .get(),
     );
-    this.cards = cards;
-    this.originalCardCount = cards.length;
-  }
-
-  private known = 0;
-  private notKnown = 0;
-  logChoice({ choice }: TinderChoice) {
-    choice ? this.known++ : this.notKnown++; // TODO: besser als array und am schluss eine übersicht über nicht gewusste Fragen
-    if (this.known + this.notKnown === this.originalCardCount) {
-      setTimeout(() => {
-        this.echartOptions.series[0].data[0].value = Math.round(
-          (this.known / (this.notKnown + this.known)) * 100,
-        );
-        this.echartOptions = { ...this.echartOptions }; // TODO: use merge
-        this.gaugeState = 'in';
-      }, 200);
-    }
+    this.loadingCards = false;
+    this.calculateCardStreaks();
   }
 
   openAddDialog() {
@@ -127,4 +98,5 @@ export class IndexCardsComponent implements OnInit {
         await this.reload();
       });
   }
+
 }

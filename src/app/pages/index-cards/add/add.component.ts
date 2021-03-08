@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogRef, NbToastrService } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
 import { CoursesService } from '../../../@core/data/course.service';
 import { IndexCardsService } from '../../../@core/data/index-cards.service';
 
@@ -9,10 +10,7 @@ import { IndexCardsService } from '../../../@core/data/index-cards.service';
   styleUrls: ['./add.component.scss'],
 })
 export class AddComponent implements OnInit {
-  // TODO: Mit dem add component vom todo zusammenziehen
-
   model = {
-    // TODO: Owner, course, ...
     question: '',
     answer: '',
     course: null,
@@ -25,6 +23,7 @@ export class AddComponent implements OnInit {
     private readonly indexCardsService: IndexCardsService,
     private readonly toastrService: NbToastrService,
     private readonly coursesService: CoursesService,
+    private readonly translate: TranslateService,
   ) {}
 
   ngOnInit(): void {}
@@ -37,10 +36,13 @@ export class AddComponent implements OnInit {
     await this.indexCardsService.upsert({
       ...this.model,
       course: this.coursesService.createRef(this.courseId),
+      streak: 0,
+      streakSince: 0
     });
-    this.toastrService.show('Saved', 'Saved successfully', {
-      status: 'success',
-    });
+    this.toastrService.success(
+      await this.translate.get('indexCards.add.toast.saved.message').toPromise(),
+      await this.translate.get('indexCards.add.toast.saved.title').toPromise(),
+    );
     this.close();
   }
 }

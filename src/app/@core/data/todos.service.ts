@@ -7,7 +7,8 @@ import { User, UserService } from './user.service';
 export interface Todo extends CommonFirestoreDocument{
   title: string;
   description?: string;
-  deadline?: Date;
+  startDate?: Date;
+  endDate?: Date;
   completed?: boolean;
   owner: DocumentReference<User>;
 }

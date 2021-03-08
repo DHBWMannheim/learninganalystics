@@ -14,7 +14,7 @@ import {
   NbIconModule,
   NbThemeModule,
   NbBadgeModule,
-  NbCardModule,
+  NbCardModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -39,6 +39,13 @@ import { DARK_THEME } from './styles/theme.dark';
 import { MATERIAL_LIGHT_THEME } from './styles/material/theme.material-light';
 import { MATERIAL_DARK_THEME } from './styles/material/theme.material-dark';
 import { MainLayoutComponent } from './layouts/main.layout';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+export const createTranslateLoader = (httpClient: HttpClient) =>
+  new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -55,6 +62,13 @@ const NB_MODULES = [
   NbEvaIconsModule,
   NbBadgeModule,
   NbCardModule,
+  TranslateModule.forChild({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: createTranslateLoader,
+      deps: [HttpClient],
+    },
+  })
 ];
 const COMPONENTS = [
   HeaderComponent,
@@ -83,7 +97,7 @@ export class ThemeModule {
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: 'default',
+            name: 'dhbw',
           },
           [
             DEFAULT_THEME,

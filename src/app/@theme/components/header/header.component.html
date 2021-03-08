@@ -5,46 +5,36 @@
     </a>
     <a class="logo" href="#" (click)="navigateHome()">DHBW Learning</a>
   </div>
-  <!-- <nb-select 
+  <nb-select
     [selected]="currentTheme"
     (selectedChange)="changeTheme($event)"
     status="primary"
+    style="width: 150px"
   >
     <nb-option *ngFor="let theme of themes" [value]="theme.value">
       {{ theme.name }}</nb-option
     >
-  </nb-select> -->
+  </nb-select>
 </div>
 
 <div class="header-container">
-  <nb-actions size="small">
-    <!-- <nb-action class="control-item">
+  <nb-actions>
+    <nb-action class="control-item">
       <nb-search
         type="rotate-layout"
         matRipple
         [matRippleUnbounded]="true"
         [matRippleCentered]="true"
       ></nb-search
-    ></nb-action> -->
-    <!--TODO: SearchService das können wir lokal machen. Wir haben eh nicht so viele Daten, das wir algolie oder so nutzen müssen-->
-    <!-- <nb-action
-      class="control-item"
-      icon="bell-outline"
-      matRipple
-      [matRippleUnbounded]="true"
-      [matRippleCentered]="true"
-      badgeDot="areNewMessagesAvailable()"
-      badgePosition="top right"
-      badgeStatus="info"
-    >
-    </nb-action> -->
+    ></nb-action>
     <nb-action
-      class="user-action"
-      *nbIsGranted="['view', 'user']"
+      class="control-action"
       matRipple
-      [matRippleUnbounded]="true"
-      [matRippleCentered]="true"
-    >
+      [nbContextMenu]="languageMenu"
+      nbContextMenuTag="languageMenu"
+      ><nb-icon icon="globe-2-outline"></nb-icon>
+    </nb-action>
+    <nb-action class="user-action" matRipple>
       <nb-user
         [nbContextMenu]="userMenu"
         [onlyPicture]="userPictureOnly"

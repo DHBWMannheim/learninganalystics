@@ -1,45 +1,30 @@
-import {
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-  SkipSelf,
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 import { NbAuthModule } from '@nebular/auth';
-import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
-import { of as observableOf } from 'rxjs';
-
-
-import { RippleService } from './utils/ripple.service';
 import {
-  NbFirebasePasswordStrategy,
   NbFirebaseAuthModule,
+  NbFirebasePasswordStrategy,
 } from '@nebular/firebase-auth';
-import { SeoService } from './utils/seo.service';
+
 import { LayoutService } from './utils/layout.service';
-
-const DATA_SERVICES = [
-  { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService },
-];
-
-export class NbSimpleRoleProvider extends NbRoleProvider {
-  getRole() {
-    // here you could provide any role based on any auth flow
-    return observableOf('guest');
-  }
-}
+import { RippleService } from './utils/ripple.service';
+import { SeoService } from './utils/seo.service';
+import { QuestionareComponent } from './shared/questionare/questionare.component';
 
 export const NB_CORE_PROVIDERS = [
-  ...DATA_SERVICES,
+  { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService },
   ...NbAuthModule.forRoot({
     strategies: [
       NbFirebasePasswordStrategy.setup({
         name: 'password',
+        register: {
+          redirect: {
+            success: '/auth/onboarding',
+            failure: null
+          },
+        },
       }),
-      // NbFirebaseGoogleStrategy.setup({
-      //   name: 'google',
-      // }),  TODO: ? oder sagen wir, damit wäre eine nachverfolgung möglich
     ],
     forms: {
       login: {
@@ -64,7 +49,7 @@ export const NB_CORE_PROVIDERS = [
         password: {
           required: true,
           minLength: 6,
-          maxLength: 50,
+          maxLength: 50, // Das muss auch in der Sprachdatei angepasst werden
         },
         email: {
           required: true,
@@ -72,38 +57,15 @@ export const NB_CORE_PROVIDERS = [
       },
     },
   }).providers,
-
-  NbSecurityModule.forRoot({
-    // TODO: ? brauchen wir das? Ich glaube nicht, weil alle nutzer die gleichen rechte haben? Und das handlen kursübergreifend ist nicht wirklich drin glaube ich
-    accessControl: {
-      guest: {
-        view: '*',
-      },
-      user: {
-        parent: 'guest',
-        create: '*',
-        edit: '*',
-        remove: '*',
-      },
-    },
-  }).providers,
-
-  {
-    // TODO: ? brauchen wir das?
-    provide: NbRoleProvider,
-    useClass: NbSimpleRoleProvider,
-  },
-  LayoutService, // TODO: ? brauchen wir das?
-  SeoService, // TODO: ? brauchen wir das?
+  LayoutService,
+  SeoService,
 ];
 
 @NgModule({
   imports: [CommonModule],
-  exports: [NbAuthModule, NbFirebaseAuthModule],
-  declarations: [],
+  exports: [NbAuthModule, NbFirebaseAuthModule]
 })
 export class CoreModule {
-
   static forRoot(): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
