@@ -8,7 +8,10 @@ import {
   Feedback,
   FeedbackService,
 } from '../../../@core/data/feedback.service';
-import { QuestionareService } from '../../../@core/data/questionare.service';
+import {
+  Questionare,
+  QuestionareService,
+} from '../../../@core/data/questionare.service';
 import { createCsv, Csv } from './csv.helper';
 
 const splitLine = {
@@ -107,6 +110,7 @@ export class LecturerComponent implements OnInit {
   comments: string[];
 
   private rawFeedbackData: Feedback[];
+  private rawQuenstionareData: Questionare[];
 
   constructor(
     private readonly courseService: CoursesService,
@@ -204,6 +208,8 @@ export class LecturerComponent implements OnInit {
       (snap) => this.questionareService.getData(snap),
     );
 
+    this.rawQuenstionareData = questionares;
+
     const typeData = Object.entries(groupBy(questionares, (q) => q.typ)).reduce(
       (acc, [key, value]) => {
         acc[key] = value.length;
@@ -265,7 +271,31 @@ export class LecturerComponent implements OnInit {
     this.downloadCsv(data);
   }
 
-  exportParticipants() {}
+  exportParticipants() {
+    const learningTypeNames = [
+      'Visually',
+      'Auditory',
+      'Motor',
+      'Communicative',
+    ];
+
+    const data = [
+      [
+        'Learning type',
+        'Affinity to online teaching',
+        'Usage frequency of learning apps',
+        'Experience with online teaching',
+      ],
+      ...this.rawQuenstionareData.map(({ typ, online, apps, experience }) => [
+        `${learningTypeNames[typ]}`,
+        `${online}`,
+        `${apps}`,
+        `${experience}`,
+      ]),
+    ];
+
+    this.downloadCsv(data);
+  }
 
   private downloadCsv(data: Csv) {
     const csv = new Blob([createCsv(data)], { type: 'text/csv' });
