@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
 import { CalendarEvent, CalendarEventAction } from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
+
+import { Course, CoursesService } from '../../@core/data/course.service';
 import { ExamService } from '../../@core/data/exams.service';
 
 @Component({
@@ -43,40 +45,61 @@ export class DashboardComponent {
       actions: this.actions,
       color: {
         primary: '#e10217',
-        secondary: '#e10217'
+        secondary: '#e10217',
       },
     },
-  ]
+  ];
+
+  private currentCourses: Course[] = [];
 
   constructor(
     readonly auth: NbAuthService,
     public auth2: AngularFireAuth,
     private readonly examService: ExamService,
+    private readonly courseService: CoursesService,
   ) {
     this.auth.onTokenChange().subscribe((token: NbAuthJWTToken) => {
       this.a = token.getPayload();
     });
 
     this.auth2.user.subscribe((u) => (this.a2 = u));
+
+    this.courseService.currentCourses.subscribe((courses) => {
+      if (!courses) return;
+      this.currentCourses = courses.creations.concat(courses.participations);
+    });
   }
 
   async reload() {
     this.loadingExams = true;
-    const exams = await this.examService.getData(
-      await this.examService
-        .getCollection()
-        .get(),
+
+    const exams = await this.examService.getChunked(
+      this.currentCourses,
+      (chunk) =>
+        this.examService
+          .getCollection()
+          .where(
+            'course',
+            'in',
+            chunk.map(({ id }) => this.courseService.createRef(id)),
+          )
+          .get(),
+      (snap) => this.examService.getData(snap),
     );
-    console.log(exams)
+
+    // const exams = await this.examService.getData(
+    //   await this.examService.getCollection().get(),
+    // );
+    console.log(exams);
     this.loadingExams = false;
   }
 
   async ngOnInit(): Promise<void> {
-    await this.reload()
+    await this.reload();
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    console.log('event')
+    console.log('event');
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
