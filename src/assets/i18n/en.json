@@ -62,15 +62,113 @@
     "dashboard": {},
     "exams": {
         "header": "Exams",
+        "addButton": "Add Exam",
+        "notFound": "No exams could be found",
         "title": "Title",
         "description": "Description",
-        "deadline": "Deadline",
+        "date": "Date",
+        "time": "Time",
         "duration": "Duration",
         "minutes": "Minutes",
         "room": "Room",
         "tools": "Permitted Tools",
         "additionalInformations": "Additional Informations",
-        "createTodo": "Create Todo"
+        "createTodo": "Create Todo",
+        "add": {
+            "header": "New Exam",
+            "title": {
+                "label": "Title",
+                "placeholder": "Exam title..."
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "Description..."
+            },
+            "date": {
+                "label": "Date",
+                "placeholder": "Date..."
+            },
+            "time": {
+                "label": "Time",
+                "placeholder": "Time..."
+            },
+            "duration": {
+                "label": "Duration in Minutes",
+                "placeholder": "Duration in Minutes..."
+            },
+            "room": {
+                "label": "Room",
+                "placeholder": "Room..."
+            },
+            "tools": {
+                "label": "Tools",
+                "placeholder": "Tools..."
+            },
+            "additionalInformations": {
+                "label": "Additional information",
+                "placeholder": "Additional information..."
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The exam was saved"
+                }
+            }
+        },
+        "edit": {
+            "header": "Edit Exam",
+            "title": {
+                "label": "Title",
+                "placeholder": "Exam title..."
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "Description..."
+            },
+            "date": {
+                "label": "Date",
+                "placeholder": "Date..."
+            },
+            "time": {
+                "label": "Time",
+                "placeholder": "Time..."
+            },
+            "duration": {
+                "label": "Duration in Minutes",
+                "placeholder": "Duration in Minutes..."
+            },
+            "room": {
+                "label": "Room",
+                "placeholder": "Room..."
+            },
+            "tools": {
+                "label": "Tools",
+                "placeholder": "Tools..."
+            },
+            "additionalInformations": {
+                "label": "Additional information",
+                "placeholder": "Additional information..."
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The exam was saved"
+                }
+            }
+        },
+        "delete": {
+            "header": "Delete Exam",
+            "text": "Do you really want to delete this Exam",
+            "submit": "Yes",
+            "toast": {
+                "deleted": {
+                    "title": "Deleted",
+                    "message": "The Exam was deleted"
+                }
+            }
+        }
     },
     "files": {
         "header": "Files",
@@ -236,7 +334,7 @@
         "leave": "Leave",
         "delete": {
             "header": "Leave Course",
-            "text": "Do you realy want to leave this course?",
+            "text": "Do you really want to leave this course?",
             "submit": "Yes",
             "toast": {
                 "deleted": {

@@ -1,50 +1,93 @@
-import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-interface Exam {
-  title: string;
-  description: string;
-  deadline: Date;
-  duration?: number;
-  room?: string;
-  tools?: string[];
-  additionalInformations?: string[];
-}
+import { NbDialogService } from '@nebular/theme';
+import { CoursesService } from '../../@core/data/course.service';
+import { Exam, ExamService } from '../../@core/data/exams.service';
+import { AddComponent } from './add/add.component';
+import { DeleteComponent } from './delete/delete.component';
+import { EditComponent } from './edit/edit.component';
 
 @Component({
   selector: 'ngx-exams',
   templateUrl: './exams.component.html',
-  styleUrls: ['./exams.component.scss'],
+  styleUrls: ['./exams.component.scss']
 })
 export class ExamsComponent implements OnInit {
-  exams: Exam[] = [
-    {
-      title: 'Portfolio-Prüfung: Programmierung',
-      description: 'TODO',
-      deadline: new Date(),
-      additionalInformations: ['Kombiklausur mit irgendwas anderem'],
-    },
-    {
-      title: 'Portfolio-Prüfung: Demonstration',
-      description: 'TODO',
-      deadline: new Date(),
-      duration: 10,
-      room: '123B',
-      tools: ['n Taschencalculator', 'NOTizen'],
-    },
-    {
-      title: 'Portfolio-Prüfung: Dokumentation',
-      description: 'TODO',
-      deadline: new Date(),
-      additionalInformations: ['Be Awesome', 'Be Woopy'],
-    },
-  ];
 
-  constructor(private readonly route: ActivatedRoute) {}
+  courseId: string;
+  exams: Exam[] = [];
+  loadingExams: boolean = false;
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      console.log('params', params);
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly examService: ExamService,
+    private readonly datepipe: DatePipe,
+    private readonly courseService: CoursesService,
+    private readonly dialogService: NbDialogService,
+  ) {}
+
+  formatDate(date: string): string {
+    return this.datepipe.transform(date, 'dd.MM.yyyy');
+  }
+
+  formatTime(time: string): string {
+    return this.datepipe.transform(time, 'HH:mm');
+  }
+
+  async reload() {
+    this.loadingExams = true;
+    this.exams = await this.examService.getData(
+      await this.examService
+        .getCollection()
+        .where('course', '==', this.courseService.createRef(this.courseId))
+        .get(),
+    );
+    this.loadingExams = false;
+  }
+
+  async ngOnInit(): Promise<void> {
+    this.route.params.subscribe(async ({ courseId }) => {
+      this.courseId = courseId;
+      await this.reload()
     });
+  }
+
+  openAddDialog() {
+    this.dialogService
+      .open(AddComponent, {
+        context: {
+          courseId: this.courseId,
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload();
+      });
+  }
+
+  editExam(exam: Exam) {
+    this.dialogService
+      .open(EditComponent, {
+        context: {
+          courseId: this.courseId,
+          exam
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload()
+      });
+  }
+
+  deleteExam(exam: Exam) {
+    this.dialogService
+      .open(DeleteComponent, {
+        context: {
+          courseId: this.courseId,
+          exam
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload()
+      });
   }
 }
