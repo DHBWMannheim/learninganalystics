@@ -74,7 +74,7 @@
     },
     "files": {
         "header": "Dateien",
-        "browseText": "Hier kannst du Dateien hinziehen oder welche ",
+        "browseText": "Hier können Sie Dateien hinziehen oder welche ",
         "browseButton": "vom Gerät auswählen",
         "dropLabel": "Hier Dateien ablegen",
         "toast": {
@@ -95,7 +95,7 @@
         "notFound": "Es wurden keine Karteikarten gefunden",
         "addButton": "Neue Karteikarte",
         "repeat": "Wiederhohlen",
-        "roundResultPre": "Du hast ",
+        "roundResultPre": "Sie haben ",
         "roundResultPost": "% richtig beantwortet!",
         "all": "ALLE",
         "add": {
@@ -155,13 +155,13 @@
         ],
         "comment": {
             "label": "Anmerkungen",
-            "placeholder": "Hast du weitere Anmerkungen?..."
+            "placeholder": "Haben Sie weitere Anmerkungen?..."
         },
         "fun": {
-            "label": "Wie hat ihnen die Vorlesung gefallen?"
+            "label": "Wie hat Ihnen die Vorlesung gefallen?"
         },
         "informations": {
-            "label": "Wie empfangen die Informationsversorgung?"
+            "label": "Wie empfanden Sie die Informationsversorgung?"
         },
         "quality": {
             "label": "Wurden Sachverhalte verständlich dargestellt?"
@@ -238,7 +238,7 @@
         "leave": "Verlassen",
         "delete": {
             "header": "Kurs verlassen",
-            "text": "Wollen Sie diesen Kurs wirklich verlassen=",
+            "text": "Wollen Sie diesen Kurs wirklich verlassen?",
             "submit": "Ja",
             "toast": {
                 "deleted": {
@@ -253,11 +253,11 @@
                 "title": "Erstellt"
             },
             "joined": {
-                "message": "Du bist dem Kurs beigetreten",
+                "message": "Sie sind dem Kurs beigetreten",
                 "title": "Beigetreten"
             },
             "conflict": {
-                "message": "Du bist schon Teil dieses Kurses",
+                "message": "Sie sind schon Teil dieses Kurses",
                 "title": "Schon beigetreten"
             }
         }
@@ -274,13 +274,13 @@
         "todos": "Aufgaben"
     },
     "action": {
-        "message": "Kleinen Moment. Wir arbeiten an deinem Anliegen...",
-        "error": "Woops, wird wissen nicht, wo du hin willst.",
+        "message": "Kleinen Moment. Wir arbeiten an Ihrem Anliegen...",
+        "error": "Woops, wird wissen nicht, wo Sie hin wollen.",
         "backToLogin": "Zurück zum Login"
     },
     "login": {
         "title": "Login",
-        "subtitle": "Hallo! Log dich mit deiner Email ein.",
+        "subtitle": "Hallo! Loggen Sie sich mit Ihrer Email ein.",
         "error": "Woops!",
         "email": {
             "label": "Email-Adresse",
@@ -301,7 +301,7 @@
         },
         "rememberMe": "Eingeloggt bleiben",
         "login": "Login",
-        "register": "Du hast noch keinen Account? Registrier dich!"
+        "register": "Sie haben noch keinen Account? Kein Problem! Registrieren Sie sich."
     },
     "terms": {},
     "register": {
@@ -332,7 +332,7 @@
             }
         },
         "agreeTerms": "Ich stimme den Nutzungsbedigungen zu",
-        "backToLogin": "Du hast schon einen Account? Log dich ein!",
+        "backToLogin": "Sie haben schon einen Account? Einfach einloggen und los gehts!",
         "submit": "Los geht's"
     },
     "logout": {
@@ -340,7 +340,7 @@
     },
     "resetPassword": {
         "title": "Password ändern",
-        "subtitle": "Bitte setz ein neues Password",
+        "subtitle": "Bitte setzen Sie ein neues Password",
         "error": "Woops",
         "password": {
             "label": "Password",
@@ -370,12 +370,12 @@
     },
     "onbording": {
         "welcome": "Willkommen",
-        "text1": "Möchtest du an einer freiwilligen Umfrage teilnehmen?",
-        "text2": "Beantwortung dieser Fragen hilft uns Kursinhalte besser auf dich abzustimmen."
+        "text1": "Möchten Sie an einer freiwilligen Umfrage teilnehmen?",
+        "text2": "Die Beantwortung dieser Fragen uns Kursinhalte besser auf Sie abzustimmen."
     },
     "questionare": {
         "typ": {
-            "label": "Welcher Lerntyp bist du?",
+            "label": "Welcher Lerntyp sind Sie?",
             "buttons": [
                 {"label": "Visuell", "tooltip": "Sehen und Verstehen"},
                 {"label": "Auditiv", "tooltip": "Die Macht des gesprochenen Wortes"},
@@ -384,7 +384,7 @@
             ]
         },
         "online": {
-            "label": "Wie Affin bist du in Punkto Online Lehre?",
+            "label": "Wie affin sind Sie in Punkto Online Lehre?",
             "buttons": [
                 "gering",
                 "mittel",
@@ -392,7 +392,7 @@
             ]
         },
         "apps": {
-            "label": "Wie häufig nutzt du Lernapps?",
+            "label": "Wie häufig nutzen Sie Lernapps?",
             "buttons": [
                 "gering",
                 "mittel",
@@ -400,7 +400,7 @@
             ]
         },
         "experience": {
-            "label": "Wie viel Erfahrungen hast du mit digitaler Lehre?",
+            "label": "Wie viel Erfahrungen haben Sie mit digitaler Lehre?",
             "buttons": [
                 "gering",
                 "mittel",
