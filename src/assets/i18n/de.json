@@ -63,6 +63,7 @@
     "exams": {
         "header": "Prüfungen",
         "addButton": "Prüfung hinzufügen",
+        "notFound": "Es wurden keine Prüfungen gefunden",
         "title": "Titel",
         "description": "Beschreibung",
         "date": "Datum",

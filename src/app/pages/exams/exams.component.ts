@@ -51,17 +51,6 @@ export class ExamsComponent implements OnInit {
       this.courseId = courseId;
       await this.reload()
     });
-    /* this.examService.upsert({
-      title: 'Testklausur',
-      tools: ['Taschenrechner'],
-      course: this.courseService.createRef(this.courseId),
-      date: new Date().toISOString(),
-      time: '15:00',
-      description: 'Testbeschreibung',
-      duration: '10 Minuten',
-      room: 'SAP Raum',
-      additionalInformations: ['Information A'],
-    }); */
   }
 
   openAddDialog() {

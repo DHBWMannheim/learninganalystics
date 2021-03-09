@@ -1,11 +1,15 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
+import { NbDialogService } from '@nebular/theme';
 import { CalendarEvent, CalendarEventAction } from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
 
 import { Course, CoursesService } from '../../@core/data/course.service';
-import { ExamService } from '../../@core/data/exams.service';
+import { Exam, ExamService } from '../../@core/data/exams.service';
+import { EditComponent } from '../exams/edit/edit.component';
+import { DeleteComponent } from '../exams/delete/delete.component';
 
 @Component({
   selector: 'ngx-dashboard',
@@ -18,37 +22,26 @@ export class DashboardComponent {
   viewDate: Date = new Date();
   activeDayIsOpen: boolean = false;
   loadingExams: boolean = false;
+  exams: Exam[] = [];
 
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fas fa-fw fa-pencil-alt"></i>',
       a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
+      onClick: ({ event }: any): void => {
+        this.editExam(event.exam);
       },
     },
     {
       label: '<i class="fas fa-fw fa-trash-alt"></i>',
       a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
+      onClick: ({ event }: any): void => {
+        this.deleteExam(event.exam);
       },
     },
   ];
 
-  events: CalendarEvent[] = [
-    {
-      start: new Date(),
-      end: new Date(),
-      title: 'Testprüfung',
-      actions: this.actions,
-      color: {
-        primary: '#e10217',
-        secondary: '#e10217',
-      },
-    },
-  ];
+  events: CalendarEvent[];
 
   private currentCourses: Course[] = [];
 
@@ -57,6 +50,8 @@ export class DashboardComponent {
     public auth2: AngularFireAuth,
     private readonly examService: ExamService,
     private readonly courseService: CoursesService,
+    private readonly datepipe: DatePipe,
+    private readonly dialogService: NbDialogService,
   ) {
     this.auth.onTokenChange().subscribe((token: NbAuthJWTToken) => {
       this.a = token.getPayload();
@@ -70,36 +65,49 @@ export class DashboardComponent {
     });
   }
 
+  formatTime(time: string): string {
+    return this.datepipe.transform(time, 'HH:mm');
+  }
+
   async reload() {
     this.loadingExams = true;
 
-    const exams = await this.examService.getChunked(
-      this.currentCourses,
-      (chunk) =>
-        this.examService
-          .getCollection()
-          .where(
-            'course',
-            'in',
-            chunk.map(({ id }) => this.courseService.createRef(id)),
-          )
-          .get(),
-      (snap) => this.examService.getData(snap),
-    );
+    this.courseService.currentCourses.subscribe(async (courses) => {
+      if (!courses) return;
+      this.currentCourses = courses.creations.concat(courses.participations);
 
-    // const exams = await this.examService.getData(
-    //   await this.examService.getCollection().get(),
-    // );
-    console.log(exams);
-    this.loadingExams = false;
+      this.exams = await this.examService.getChunked(
+        this.currentCourses,
+        (chunk) =>
+          this.examService
+            .getCollection()
+            .where(
+              'course',
+              'in',
+              chunk.map(({ id }) => this.courseService.createRef(id)),
+            )
+            .get(),
+        (snap) => this.examService.getData(snap),
+      );
+
+      this.events = this.exams.map((exam: Exam) => ({
+        start: exam.date as any,
+        end: exam.date as any,
+        title: `${exam.title} - ${this.formatTime(exam.time)} - ${exam.room}`,
+        actions: this.actions,
+        color: {
+          primary: '#e10217',
+          secondary: '#e10217',
+        },
+        exam: exam
+      }))
+
+      this.loadingExams = false;
+    });
   }
 
   async ngOnInit(): Promise<void> {
     await this.reload();
-  }
-
-  handleEvent(action: string, event: CalendarEvent): void {
-    console.log('event');
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
@@ -114,5 +122,32 @@ export class DashboardComponent {
       }
       this.viewDate = date;
     }
+  }
+
+  editExam(exam: Exam) {
+    this.dialogService
+      .open(EditComponent, {
+        context: {
+          courseId: exam.course.id,
+          exam
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload()
+      });
+  }
+
+  deleteExam(exam: Exam) {
+    this.dialogService
+      .open(DeleteComponent, {
+        context: {
+          courseId: exam.course.id,
+          exam
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload()
+        this.activeDayIsOpen = false;
+      });
   }
 }

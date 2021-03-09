@@ -1,15 +1,14 @@
 <div class="row">
   <div class="col">
-    <nb-card>
-      <nb-card-header>
-        Exams
+    <nb-card [nbSpinner]="loadingExams">
+      <nb-card-header style="display: flex; justify-content: space-between; align-items: center;">
+        {{ 'exams.header' | translate }} ({{ exams.length }})
       </nb-card-header>
       <nb-card-body>
         <mwl-calendar-month-view
           [viewDate]="viewDate"
           [events]="events"
           [activeDayIsOpen]="activeDayIsOpen"
-          (eventClicked)="handleEvent('Clicked', $event.event)"
           (dayClicked)="dayClicked($event.day)"
         >
         </mwl-calendar-month-view>

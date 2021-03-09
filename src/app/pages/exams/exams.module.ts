@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {
+  NbAlertModule,
   NbButtonModule,
   NbCalendarModule,
   NbCardModule,
@@ -42,6 +43,7 @@ import { EditComponent } from './edit/edit.component';
     NbDatepickerModule,
     NbTimepickerModule,
     FormsModule,
+    NbAlertModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

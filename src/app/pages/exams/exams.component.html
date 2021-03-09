@@ -6,7 +6,7 @@
       {{'exams.addButton' | translate}}
     </button>
   </nb-card-header>
-  <nb-card-body class="row">
+  <nb-card-body *ngIf="exams.length" class="row">
     <div *ngFor="let exam of exams" class="col-xs-12 col-md-6 mt-4">
       <nb-card style="height: 100%">
         <nb-card-header>
@@ -77,5 +77,16 @@
         </nb-card-body>
       </nb-card>
     </div>
+  </nb-card-body>
+  <nb-card-body *ngIf="!exams.length">
+    <nb-alert outline="basic" style="text-align: center; margin: 50px 20px 0 20px;">
+      {{'exams.notFound'|translate}}
+      <div style="margin-top: 20px">
+        <button nbButton outline color="primary" (click)="openAddDialog()">
+          <nb-icon icon="plus-outline"></nb-icon>
+          {{'exams.addButton'|translate}}
+        </button>
+      </div>
+    </nb-alert>
   </nb-card-body>
 </nb-card>

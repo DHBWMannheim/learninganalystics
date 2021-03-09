@@ -63,6 +63,7 @@
     "exams": {
         "header": "Exams",
         "addButton": "Add Exam",
+        "notFound": "No exams could be found",
         "title": "Title",
         "description": "Description",
         "date": "Date",
