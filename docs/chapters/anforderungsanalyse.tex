@@ -2,14 +2,14 @@
 \chapter{Anforderungsanalyse} % TODO: Das hier ist noch etwas durcheinander
 \section{Abgrenzung}
 \subsection{Abgrenzung des Funktionsumfangs}\label{sub:abgrenzung}
-Im bereich Bildung gibt es viele Möglichkeiten, wie Hochschulen und Studenten unterstützt werdem können.
+Im Bereich Bildung gibt es viele Möglichkeiten, wie Hochschulen und Studenten unterstützt werdem können.
 Primär gibt es hierbei 4 Ebenen, auf der Aktionen stattfinden können:
 \begin{center}
 	\includegraphics[width=\linewidth, keepaspectratio]{img/4LA.png}
 \end{center}
 Dieser Graphik kann entnommen werden, dass die Ebenen unterschiedliche Anforderungen mit sich bringen. Um auf politischer Ebene Daten miteinander zu verbinden braucht es entweder in den darunterliegenden Ebenen einheitliche Systeme oder ein weiteres System, dass die unterschiedlichen Daten zusammenführt. Die Umsetzung solcher Lösungen bringt in der Regel viel Abstimmungs- und Überzeugungsaufwand mit sich, sodass diese sehr zeitintensiv ist. Da die Anwendung aber möglichst schnell krisenbeeinträchtigte Studenten unterstützten soll, muss diese Ebene bei der Entwicklung zunächst vernachlässigt werden.
 
-Die Institutionsebene beschreibt das Management von Ressourcen innerhalb der Hochschule. Besonders der Austausch und die Weiterbildung zwischen Dozenten ist hierbei ein wichtiger Aspekt. Problematisch ist aber die Identifizierung von Anforderungen aller Studienrichtungen. So besitzen technische Studiengänge andere Bedürfnisse als wirtschaftlich orientierte Studiengänge. AUßerdem haben die einzelnen Fakultäten bereits unterschiedliche Erfahrungen mit dem Thema Learning Analytics gemacht haben und dementsprechend unterschiedliche Standpunkte und Fortschritte zu verzeichnen. Aus diesem Grund kann auch diese Ebene nicht genauer beachtet werden.
+Die Institutionsebene beschreibt das Management von Ressourcen innerhalb der Hochschule. Besonders der Austausch und die Weiterbildung zwischen Dozenten ist hierbei ein wichtiger Aspekt. Problematisch ist aber die Identifizierung von Anforderungen aller Studienrichtungen. So besitzen technische Studiengänge andere Bedürfnisse als wirtschaftlich orientierte Studiengänge. Außerdem haben die einzelnen Fakultäten bereits unterschiedliche Erfahrungen mit dem Thema Learning Analytics gemacht haben und dementsprechend unterschiedliche Standpunkte und Fortschritte zu verzeichnen. Aus diesem Grund kann auch diese Ebene nicht genauer beachtet werden.
 
 Stattdessen wird sich in dieser Arbeit auf die Entwicklung einer Anwendung mit dem Schwerpunkt auf der Kurs- und der Individualebene fokussiert.
 Die Kursebene dient zur Weitergabe von Lernmaterialien, die eine Vorlesung ergänzen. Außerdem bündelt sie für einen Kurs geltende Informationen, die ansonsten jeder Studierende einzeln für sich einarbeiten und berücksichtigen müsste. Dies soll einen direkten Einfluss auf die Individualebene haben und den individuellen Studenten fördern. Ziel ist es den Studenten beim Lernen zur unterstützen, administrative Aufwände zu reduzieren und das Verständnis der in der Vorlesung vermittelten Informationen zu fördern.  
@@ -85,17 +85,7 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         So entsteht ein Kalender und Kapazitätsengpässe rechtzeitig erkannt und durch Umplanen verhindert werden können.
 	% TODO: Hier ist ein Teil reingerutscht der eigentlich mehr Theorei als ANforderung ist!
     \item Karteikarten                      \\
-        Für eine bessere Prüfungsvorbereitungen können Karteikarten angelegt werden. Unterschiedliche wissenschaftliche Untersuchungen zeigen die Vorteile dieser Methode. Für das Lernen der Karteikarten gibt es eine Vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung implementiert einen Algorithmus aus dem Bereich der \enquote{Spaced Repetition Systems}. Ins deutsche übersetzt heißt das so viel wie Wiederholen ohne Lücken. Das System hinter diesen Algorithmen besteht darin, die entsprechenden Informationen genau dann zu wiederholen, wenn das menschliche Gehirn sie fast schon vergessen hätte. Die einzelnen Karteikarten werden nacheinander abgefragt und bei richtiger Antwort in zunehmenden Zeitintervallen immer wieder überprüft. Durch diesen Abstandseffekt soll gezielt das Langzeitgedächnis trainiert werden und die Inhalte damit auch über eine Prüfung hinaus gelernt werden. Die unterschiedlichen Algorithmen dieser Klasse unterscheiden sich lediglich in der Wahl der Zeitabstände. Diese Anwendung implementiert das Super-Memo System des polnischen Neurobiologen Piotr Wozniak. Diese definiert folgende Zeitabstände:
-        \begin{itemize}
-        	\item 20 Minuten
-        	\item 24 Stunden
-        	\item 48 Stunden
-        	\item 10 Tagen
-        	\item 30 Tagen
-        	\item 60 Tagen
-        \end{itemize}  
-    	Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und durchläuft die definierten Zeitintervalle von vorn. % TODO: wissenschaftliche Quelle? https://magazin.sofatutor.com/schueler/besser-lernen-mit-karteikarten/#:~:text=Alle%20Karteikarten%20befinden%20sich%20anfangs,gehst%20du%20immer%20weiter%20vor.
-        Die Karteikarten sollen direkt in App gelernt werden, sodass kein zusätzlicher Aufwand für das Abschreiben der Karten notwendig ist.
+        Für eine bessere Prüfungsvorbereitungen können Karteikarten angelegt werden. Unterschiedliche wissenschaftliche Untersuchungen zeigen die Vorteile dieser Methode. Die Karteikarten sollen direkt in App gelernt werden, sodass kein zusätzlicher Aufwand für das Abschreiben der Karten notwendig ist.
 
     \item Prüfungsterminübersicht           \\
         In der Anwendung soll es eine Übersicht aller Klausuren und anderen Prüfungsleistungen geben.
@@ -117,7 +107,7 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
     \item Übersichtliches Dashboard			\\
    		Die Anwendung soll es leicht ermöglichen sich einen Überblick über die in nächster Zeit anstehenden Aufgaben und Tätigkeiten zu erhalten. Dies ermöglichen die anstehenden Klausuren, eingetragene ToDos und Karteikarten die am selben Tag empfohlen werden zu lernen.
    	\item Barrierefreiheit		\\
-   		Um allen Nutzern unabhängig ihrer Einschränkungen oder technischen Möglichkeiten die uneingeschränkte Nutzung der Anwendung zu ermöglichen sind für diese Anwendung einige Überlegungen angestellt worden. So soll sich die Sprache der Anwendung an den Spracheinstellungen des Webbrowsers auf dem Gerät des jeweiligen Nutzers orientieren. Darüber hinaus soll diese auch in der Anwendung selbst umgestellt werden können. Das Standard-Design orientiert sich an dem Cooperate Design der Dualen Hochschule Württemberg. Diese soll jedoch einfach über ein Drop-Down Menü angepasst werden können, so dass auch Versionen mit erhöhten Kontrast, etc. vorliegen.  
+   		Um allen Nutzern unabhängig ihrer Einschränkungen oder technischen Möglichkeiten die uneingeschränkte Nutzung der Anwendung zu ermöglichen sind für diese Anwendung einige Überlegungen angestellt worden. So soll sich die Sprache der Anwendung an den Spracheinstellungen des Webbrowsers auf dem Gerät des jeweiligen Nutzers orientieren. Darüber hinaus soll diese auch in der Anwendung selbst umgestellt werden können. Hierbei sollen alle Nutzergruppen angesprochen werden. Als potenzielle Nutzer seien hier die Austausch Studenten oder Kommilitonen die lieber in einer anderen Sprache arbeiten weil sie damit zum Beispiel die Inhalte leichter verstehen können erwähnt. Das Standard-Design orientiert sich an dem Cooperate Design der Dualen Hochschule Württemberg. Diese soll jedoch einfach über ein Drop-Down Menü angepasst werden können, so dass auch Versionen mit erhöhten Kontrast, etc. vorliegen und das aussehen nach den eigenen Präferenzen und Bedürfnissen gestaltet werden kann.  
 \end{itemize}
 
 % Das ist das was ich grad realistisch sehe. Wenn wir noch mehr implementiert haben, dann können wir das gerne noch erweitern
@@ -169,6 +159,7 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
         F6      & Informationen können allen Studenten mitgeteilt werden  \\
         F7      & Es gibt eine Unterscheidung zwischen Studenten und Dozenten  \\
         F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\
+        F9      & Die Anwendung soll möglichst Barrierefrei gestaltet werden\\
         NF1     & Anwendung lädt schnell                    \\
         NF2     & Daten jederzeit einsehbar                 \\
         NF3     & Anwendung funktioniert auf allen Geräten  \\
