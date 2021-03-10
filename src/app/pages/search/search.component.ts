@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
     private readonly todoService: TodosService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly indexCardsService: IndexCardsService,
-    private readonly router: Router
+    private readonly router: Router,
   ) {}
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
       this.resultsFiles = null;
       this.resultsTodos = null;
       this.resultsIndexCards = null;
-      this.search(term)
+      this.search(term);
     });
   }
 
@@ -80,7 +80,7 @@ export class SearchComponent implements OnInit {
   }
 
   private async searchFiles(term: string, courseIds: string[]) {
-    const files = await this.loadChunked(
+    const files = await this.filesService.getChunked(
       courseIds,
       (chunk) =>
         this.filesService
@@ -101,7 +101,7 @@ export class SearchComponent implements OnInit {
   }
 
   private async searchIndexFiles(term: string, courseIds: string[]) {
-    const indexCards = await this.loadChunked(
+    const indexCards = await this.indexCardsService.getChunked(
       courseIds,
       (chunk) =>
         this.indexCardsService
@@ -128,30 +128,18 @@ export class SearchComponent implements OnInit {
     return this.filterUniqueIds([...questionResult, ...answerResult]);
   }
 
-  private async loadChunked<T, K>(
-    elements: T[],
-    loadSnapshot: (chunk: T[]) => QuerySnapshot<K> | Promise<QuerySnapshot<K>>,
-    getData: (
-      snap: QuerySnapshot<K> | Promise<QuerySnapshot<K>>,
-    ) => Promise<K[]>,
-  ): Promise<K[]> {
-    return (
-      await Promise.all(
-        chunk(elements, 10)
-          .map((chunk) => loadSnapshot(chunk))
-          .map((snap) => getData(snap)),
-      )
-    ).reduce((acc, curr) => acc.concat(curr), []);
-  }
-
   private containsInsensitiv<T>(
     term: string,
     searchItems: { document: T; searcharg: string }[],
   ): T[] {
-    const reg = new RegExp(term, 'i');
+    const reg = new RegExp(this.escapeRegExp(term), 'i');
     return searchItems
       .filter(({ searcharg }) => reg.test(searcharg))
       .map((item) => item.document);
+  }
+
+  escapeRegExp(string: string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
   }
 
   private filterUniqueIds<T extends CommonFirestoreDocument>(array: T[]) {
@@ -160,16 +148,15 @@ export class SearchComponent implements OnInit {
     return [...m.values()];
   }
 
-
-  navigateTodo(id: string){
-    this.router.navigate(['pages', 'todos'])
+  navigateTodo(id: string) {
+    this.router.navigate(['pages', 'todos']);
   }
 
-  navigateFiles(file: FireFile){
-    this.router.navigate(['pages', 'files', file.course.id])
+  navigateFiles(file: FireFile) {
+    this.router.navigate(['pages', 'files', file.course.id]);
   }
 
-  navigateIndexCards(indexCard: IndexCard){
-    this.router.navigate(['pages', 'index-cards', indexCard.course.id])
+  navigateIndexCards(indexCard: IndexCard) {
+    this.router.navigate(['pages', 'index-cards', indexCard.course.id]);
   }
 }

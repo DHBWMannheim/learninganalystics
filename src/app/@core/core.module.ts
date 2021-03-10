@@ -10,6 +10,7 @@ import {
 import { LayoutService } from './utils/layout.service';
 import { RippleService } from './utils/ripple.service';
 import { SeoService } from './utils/seo.service';
+import { QuestionareComponent } from './shared/questionare/questionare.component';
 
 export const NB_CORE_PROVIDERS = [
   { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useExisting: RippleService },
@@ -17,6 +18,12 @@ export const NB_CORE_PROVIDERS = [
     strategies: [
       NbFirebasePasswordStrategy.setup({
         name: 'password',
+        register: {
+          redirect: {
+            success: '/auth/onboarding',
+            failure: null
+          },
+        },
       }),
     ],
     forms: {
@@ -50,14 +57,13 @@ export const NB_CORE_PROVIDERS = [
       },
     },
   }).providers,
-  LayoutService, // TODO: ? brauchen wir das?
-  SeoService, // TODO: ? brauchen wir das?
+  LayoutService,
+  SeoService,
 ];
 
 @NgModule({
   imports: [CommonModule],
-  exports: [NbAuthModule, NbFirebaseAuthModule],
-  declarations: [],
+  exports: [NbAuthModule, NbFirebaseAuthModule]
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders<CoreModule> {

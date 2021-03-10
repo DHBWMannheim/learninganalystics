@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
       </nb-layout-column>
 
       <nb-layout-footer fixed>
-        <ngx-footer></ngx-footer>
+      <img src="https://upload.wikimedia.org/wikipedia/de/1/1d/DHBW-Logo.svg" alt="DHBW Logo" height="40em"> 
       </nb-layout-footer>
     </nb-layout>
   `,

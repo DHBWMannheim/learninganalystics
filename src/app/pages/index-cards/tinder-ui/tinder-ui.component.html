@@ -54,14 +54,14 @@
       icon="close-outline"
       (click)="userClickedButton($event, false)"
       badgeStatus="danger"
-      [badgeText]="crossCount"
+      [badgeText]="''+crossCount"
       badgeSize="40px"
     ></nb-action>
     <nb-action
       icon="checkmark-outline"
       (click)="userClickedButton($event, true)"
       badgeStatus="success"
-      [badgeText]="heartCount"
+      [badgeText]="''+heartCount"
       badgeSize="large"
     ></nb-action>
   </nb-actions>

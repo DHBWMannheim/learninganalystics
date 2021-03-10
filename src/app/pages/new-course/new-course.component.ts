@@ -47,22 +47,12 @@ export class NewCourseComponent implements OnInit {
     const key = this.joinForm.get('key').value.toLowerCase();
     this.joinForm.reset();
 
-    const relevantCourses = await this.currentCourses.pipe(take(1)).toPromise();
-    if (
-      relevantCourses.creations.some((course) => course.key === key) ||
-      relevantCourses.participations.some((course) => course.key === key)
-    ) {
-      this.toast.danger(
-        await this.translate.get('join.toast.conflict.message').toPromise(),
-        await this.translate.get('join.toast.conflict.title').toPromise(),
-      );
-    } else {
-      await this.coursesService.joinCourse(key);
-    }
+    await this.coursesService.joinCourse(key);
 
     this.loadingJoin = false;
   }
 
+  //TODO: In die Doku, dass wir gleiche namen erlauben, weil man ja auch joinen kann und es da komisch wäre, wenn man nicht joinen kann nur weil man einen gleichen schon hat
   async createCourse() {
     this.loadingCreate = true;
     const name = this.createForm.get('name').value;

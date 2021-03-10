@@ -8,9 +8,13 @@
         "notFound": "Keine Aufgaben gefunden",
         "add": {
             "header": "Neue Aufgabe",
+            "headerEdit": "Aufgabe bearbeiten",
             "title": {
                 "label": "Titel",
-                "placeholder": "Ein kurzer Titel..."
+                "placeholder": "Ein kurzer Titel...",
+                "errors": {
+                    "required": "Es wird ein Titel benötigt"
+                }
             },
             "description": {
                 "label": "Beschreibung",
@@ -58,19 +62,117 @@
     "dashboard": {},
     "exams": {
         "header": "Prüfungen",
+        "addButton": "Prüfung hinzufügen",
+        "notFound": "Es wurden keine Prüfungen gefunden",
         "title": "Titel",
         "description": "Beschreibung",
-        "deadline": "Deadline",
+        "date": "Datum",
+        "time": "Uhrzeit",
         "duration": "Dauer",
         "minutes": "Minuten",
         "room": "Raum",
         "tools": "Zugelassene Hilfsmittel",
         "additionalInformations": "Zusätzliche Informationen",
-        "createTodo": "Aufgabe erstellen"
+        "createTodo": "Aufgabe erstellen",
+        "add": {
+            "header": "Neue Prüfung",
+            "title": {
+                "label": "Titel",
+                "placeholder": "Prüfungstitel..."
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Beschreibung..."
+            },
+            "date": {
+                "label": "Datum",
+                "placeholder": "Datum..."
+            },
+            "time": {
+                "label": "Uhrzeit",
+                "placeholder": "Uhrzeit..."
+            },
+            "duration": {
+                "label": "Dauer in Minuten",
+                "placeholder": "Dauer in Minuten..."
+            },
+            "room": {
+                "label": "Raum",
+                "placeholder": "Raum..."
+            },
+            "tools": {
+                "label": "Zugelassene Hilfsmittel",
+                "placeholder": "Zugelassene Hilfsmittel..."
+            },
+            "additionalInformations": {
+                "label": "Zusätzliche Informationen",
+                "placeholder": "Zusätzliche Informationen..."
+            },
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Prüfung wurde gespeichert"
+                }
+            }
+        },
+        "edit": {
+            "header": "Prüfung bearbeiten",
+            "title": {
+                "label": "Titel",
+                "placeholder": "Prüfungstitel..."
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Beschreibung..."
+            },
+            "date": {
+                "label": "Datum",
+                "placeholder": "Datum..."
+            },
+            "time": {
+                "label": "Uhrzeit",
+                "placeholder": "Uhrzeit..."
+            },
+            "duration": {
+                "label": "Dauer in Minuten",
+                "placeholder": "Dauer in Minuten..."
+            },
+            "room": {
+                "label": "Raum",
+                "placeholder": "Raum..."
+            },
+            "tools": {
+                "label": "Zugelassene Hilfsmittel",
+                "placeholder": "Zugelassene Hilfsmittel..."
+            },
+            "additionalInformations": {
+                "label": "Zusätzliche Informationen",
+                "placeholder": "Zusätzliche Informationen..."
+            },
+            "submit": "Speichern",
+            "toast": {
+                "saved": {
+                    "title": "Gespeichert",
+                    "message": "Die Prüfung wurde gespeichert"
+                }
+            }
+        },
+        "delete": {
+            "header": "Prüfung löschen",
+            "text": "Wollen Sie diese Prüfung wirklich löschen",
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Gelöscht",
+                    "message": "Die Prüfung wurde gelöscht"
+                }
+            }
+        }
     },
     "files": {
         "header": "Dateien",
-        "browseText": "Hier kannst du Dateien hinziehen oder welche ",
+        "browseText": "Hier können Sie Dateien hinziehen oder welche ",
         "browseButton": "vom Gerät auswählen",
         "dropLabel": "Hier Dateien ablegen",
         "toast": {
@@ -91,7 +193,7 @@
         "notFound": "Es wurden keine Karteikarten gefunden",
         "addButton": "Neue Karteikarte",
         "repeat": "Wiederhohlen",
-        "roundResultPre": "Du hast ",
+        "roundResultPre": "Sie haben ",
         "roundResultPost": "% richtig beantwortet!",
         "all": "ALLE",
         "add": {
@@ -144,21 +246,20 @@
     },
     "feedback": {
         "header": "Feedback",
-        "value": {
-            "0": "sehr schlecht",
-            "1": "schlecht",
-            "2": "gut",
-            "3": "sehr gut"
-        },
+        "value": [
+            "gering",
+            "mittel",
+            "hoch"
+        ],
         "comment": {
             "label": "Anmerkungen",
-            "placeholder": "Hast du weitere Anmerkungen?..."
+            "placeholder": "Haben Sie weitere Anmerkungen?..."
         },
         "fun": {
-            "label": "Wie hat ihnen die Vorlesung gefallen?"
+            "label": "Wie hat Ihnen die Vorlesung gefallen?"
         },
         "informations": {
-            "label": "Wie empfangen die Informationsversorgung?"
+            "label": "Wie empfanden Sie die Informationsversorgung?"
         },
         "quality": {
             "label": "Wurden Sachverhalte verständlich dargestellt?"
@@ -175,12 +276,36 @@
             }
         },
         "notFound": "Es ist noch kein Feedback verfügbar",
-        "chart": [
-            "Spaß",
-            "Informationsversorgung",
-            "Verständlichkeit",
-            "Neue Informationen"
-        ]
+
+        "lecturerView": {
+            "feedback": {
+                "label": "Kursfeedback",
+                 "chart": [
+                    "Spaß",
+                    "Informationsversorgung",
+                    "Verständlichkeit",
+                    "Neue Informationen"
+                ]
+            },
+            "comments": {
+                "label": "Kommentare"
+            },
+            "participants": {
+                "label": "Teilnehmer",
+                "typeChart": [
+                    "Visuell",
+                    "Auditiv",
+                    "Motorisch",
+                    "Kommunikativ"
+                ],
+                "questionareChart": [
+                    "Affinität zu online Unterricht",
+                    "Nutzungsfrequenz von Lernapps",
+                    "Erfahrung mit online Unterricht"
+                ]
+            }
+        }
+       
     },
     "join": {
         "join": {
@@ -211,7 +336,7 @@
         "leave": "Verlassen",
         "delete": {
             "header": "Kurs verlassen",
-            "text": "Wollen Sie diesen Kurs wirklich verlassen=",
+            "text": "Wollen Sie diesen Kurs wirklich verlassen?",
             "submit": "Ja",
             "toast": {
                 "deleted": {
@@ -226,11 +351,11 @@
                 "title": "Erstellt"
             },
             "joined": {
-                "message": "Du bist dem Kurs beigetreten",
+                "message": "Sie sind dem Kurs beigetreten",
                 "title": "Beigetreten"
             },
             "conflict": {
-                "message": "Du bist schon Teil dieses Kurses",
+                "message": "Sie sind schon Teil dieses Kurses",
                 "title": "Schon beigetreten"
             }
         }
@@ -247,13 +372,13 @@
         "todos": "Aufgaben"
     },
     "action": {
-        "message": "Kleinen Moment. Wir arbeiten an deinem Anliegen...",
-        "error": "Woops, wird wissen nicht, wo du hin willst.",
+        "message": "Kleinen Moment. Wir arbeiten an Ihrem Anliegen...",
+        "error": "Woops, wird wissen nicht, wo Sie hin wollen.",
         "backToLogin": "Zurück zum Login"
     },
     "login": {
         "title": "Login",
-        "subtitle": "Hallo! Log dich mit deiner Email ein.",
+        "subtitle": "Hallo! Loggen Sie sich mit Ihrer Email ein.",
         "error": "Woops!",
         "email": {
             "label": "Email-Adresse",
@@ -274,7 +399,7 @@
         },
         "rememberMe": "Eingeloggt bleiben",
         "login": "Login",
-        "register": "Du hast noch keinen Account? Registrier dich!"
+        "register": "Sie haben noch keinen Account? Kein Problem! Registrieren Sie sich."
     },
     "terms": {},
     "register": {
@@ -305,7 +430,7 @@
             }
         },
         "agreeTerms": "Ich stimme den Nutzungsbedigungen zu",
-        "backToLogin": "Du hast schon einen Account? Log dich ein!",
+        "backToLogin": "Sie haben schon einen Account? Einfach einloggen und los gehts!",
         "submit": "Los geht's"
     },
     "logout": {
@@ -313,7 +438,7 @@
     },
     "resetPassword": {
         "title": "Password ändern",
-        "subtitle": "Bitte setz ein neues Password",
+        "subtitle": "Bitte setzen Sie ein neues Password",
         "error": "Woops",
         "password": {
             "label": "Password",
@@ -340,5 +465,53 @@
         "files": "Dateien",
         "indexCards": "Karteikarten",
         "notFound": "Es wurden keine Ergebnisse gefunden"
+    },
+    "onbording": {
+        "welcome": "Willkommen",
+        "text1": "Möchten Sie an einer freiwilligen Umfrage teilnehmen?",
+        "text2": "Die Beantwortung dieser Fragen uns Kursinhalte besser auf Sie abzustimmen."
+    },
+    "questionare": {
+        "typ": {
+            "label": "Welcher Lerntyp sind Sie?",
+            "buttons": [
+                {"label": "Visuell", "tooltip": "Sehen und Verstehen"},
+                {"label": "Auditiv", "tooltip": "Die Macht des gesprochenen Wortes"},
+                {"label": "Motorisch", "tooltip": "Lernen durch Praxis"},
+                {"label": "Kommunikativ", "tooltip": "Reden ist doch Gold"}
+            ]
+        },
+        "online": {
+            "label": "Wie affin sind Sie in Punkto Online Lehre?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "apps": {
+            "label": "Wie häufig nutzen Sie Lernapps?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "experience": {
+            "label": "Wie viel Erfahrungen haben Sie mit digitaler Lehre?",
+            "buttons": [
+                "gering",
+                "mittel",
+                "hoch"
+            ]
+        },
+        "skip": "Überspringen",
+        "submit": "Speichern",
+        "toast": {
+            "success": {
+                "title": "Gespeichert",
+                "message": "Die Antworten wurden gespeichert"
+            }
+        }
     }
 }

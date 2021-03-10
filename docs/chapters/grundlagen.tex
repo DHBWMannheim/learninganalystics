@@ -14,13 +14,91 @@ Für das Lernen der Karteikarten gibt es eine Vielzahl an unterschiedlichen Algo
 \end{itemize}  
 Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und durchläuft die definierten Zeitintervalle von vorn. \autocite[Vgl.][]{BaileyuDavey}
 
+\section{Theoretische Grundlagen - Learning Analytics}
+
+% TODO 2.1.2 Abgrenzungen zu anderen Anwendungen beachten
+\subsection{Darlegung des Learning Analytics Konzepts}
+
+%Begriff: Learning Analytics System 
+Ein \ac{LMS} hat die grundlegenden Aufgaben Lernaktivitäten zu verwalten, aufzuzeichnen und über diese zu berichten. Diese \ac{LMS} können aus unterschiedlichsten Komponenten bestehen, die sich mit verschiedenen Aspekten dieser Aufgaben befassen \autocite[S.1]{learningManagementSystemsFieldGuide}. Zusätzlich sind entsprechende Nutzerdaten von Studierenden und Dozierenden zusammen mit den dazugehörigen Lernmaterialien innerhalb des \ac{LMS} zu verwalten \autocite{learningManagementSystemDefinition}\\
+In einer Arbeit von 2013 \autocite[S.253]{SCHOONENBOOM2014247} sind verschiedene Formen von potentiellen Lernaktivitäten bei der Verwendung eines \ac{LMS} vorgestellt und im Rahmen einer Befragung von Studenten und Dozenten ausgewertet worden. Als entscheidende Einflüsse für Lernaktivitäten sind hierbei \enquote{Präsentationen}, \enquote{Referenzen auf weiterführende Inhalte}, \enquote{Fragemöglichkeiten für Studierende}, \enquote{hilfreiche Youtube-Inhalte} und \enquote{Feedbackmöglichkeiten von Dozenten} erkannt.
+
+In der selben Arbeit \autocite[S.247]{SCHOONENBOOM2014247} wird auf die drei verschiedenen Ebenen von Leingegangen, welche Lernaktivitäten und deren Kontext darstellen.
+\begin{enumerate}
+	\item Auf der ersten Ebene befinden sich Werkzeuge (eng. \enquote{Tools}). Diese stellen konkrete Handlungen dar. Zum Beispiel könnte das Halten von Online-Vorlesungen ein Werkzeug darstellen.
+	\item Auf der zweiten Ebene kann mit einem Werkzeug eine Lehr-/Unterrichtsaufgabe (eng. \enquote{instructional task}) unterstützt, beziehungsweise realisiert werden. Beispielsweise können gehaltene Online-Vorlesungen die Unterrichtsaufgabe realisieren, dass Studierenden Lehrinhalte erklärend vorgestellt werden.
+	\item Die dritte Ebene stellt letztendlich konkrete Lernaktivitäten dar. Diese können durch eine Kombination von einer oder mehrere Lehr-/ Unterrichtsaufgaben erreicht werden. Um das Beispiel abzuschließen können in einer Online-Vorlesung (Werkzeug) vorgestellte Lerninhalte (Unterrichtsaufgabe) ein Lernaktivität induzieren, nämlich, dass aufmerksame Studierende die behandelten Themen der gehaltenen Vorlesung verstehen.	
+\end{enumerate}
+
+Aus all diesen Aktivitäten rund um \ac{LMS}, und im speziellen um Lernaktivitäten, lassen sich Daten erheben, die das Verhalten von Lehrenden und Lernenden darstellbar machen. Generell gilt für die gesamte Interaktion mit \ac{LMS}, dass aus expliziten und impliziten Handlungen Daten und Informationen gewonnen werden können \autocite[S.26]{2012HorizonReport}. Die systematische Analyse dieser Daten wird im Rahmen von \enquote{Learning Analytics} durchgeführt. Die in einem \ac{LMS} verfügbaren Daten können wiederum in verschiedenen Ebenen analysiert werden \autocite[S.2f]{learningAnalyticsImHochschulkontext} \autocite{penetratingTheFogAnalyticsInLearningAndEducation}:
+
+\begin{itemize}
+	\item Individualebene: 
+	
+		In dieser Ebene können Schlüsse zu dem Verhalten von individuellen Studierenden gebildet werden. Hieraus können Lernalternativen für Studierende formuliert werden.
+		
+	\item Kursebene:
+	
+		Dozierenden nützliche Informationen zu ihren Kursen zur Verfügung zu stellen geschieht auf dieser Ebene und kann für individuelle Handlungsalternativen bei unterschiedlichen Kursen herangezogen werden. 
+	
+	\item Institutionsebene:
+	
+		Mithilfe von Daten dieser Ebene kann eine Institution gezielt Ressourcen allokieren, um den Studienbetrieb bestmöglich zu unterstützen.  
+	
+	\item Politische Ebene:
+	
+		Die politische Ebene stellt die abstrakteste Ebene dar. Auf dieser Ebene können fundamentale Eigenschaften des zugrundeliegenden Bildungssystems erhoben und verglichen werden.
+	
+\end{itemize}
+
+Mithilfe von diesen unterschiedlichen Datenbezugsebenen kann die datengesteuerte Entscheidungsfindung unterstützt werden \autocite[S.19]{theEvolutionOfBigDataAndLearningAnalyticsInAmericanHigherEducation}, womit von allen unterstützten Akteuren fundiertere Entscheidungen begründet getroffen werden können. Konkret können Bildungsangebote auf individuelle Bedürfnisse und Fähigkeiten abstimmen werden \autocite[S.26]{2012HorizonReport}.
+
+
+
+% TODO????? (Irgendwas, um von Learning activities auf Learning analytics zu kommen)
+
+
+
+\subsection{Thematische Einordnung dieser Arbeit}
+
+%Learning management System (parallel zu Moodle)
+
+Im Rahmen dieser Arbeit wird ein \ac{LMS} erarbeitet, dass parallel zu dem bereits existierenden \enquote{Moodle}-\ac{LMS} konzipiert ist. Hierbei wurde darauf geachtet, dass diese Kombination beider eigenständigen \ac{LMS} eine effektive Symbiose darstellt. Lernaktivitäten sollen transparent einem \ac{LMS} zugeordnet werden können und Überschneidungen sind zu minieren. Gewisse Überschneidungen sind (an vielen Stellen anhand des prototypischen Charakters dieser Erarbeitung) technisch bedingt. Zum Beispiel sind konkrete Kurse in beiden \ac{LMS} parallel zu führen. In einer weiteren Ausbaustufe können entsprechende Schnittstellen zwischen beiden Systemen technische bedingte Überschneidungen minimieren. Fachliche Themen der \enquote{Learning Analytics}-Komponenten des \ac{LMS} sind folgend erarbeitet, wobei Überschneidungen zu Moodle weitestgehend vermieden werden. 
+
+Die Erhebung von Daten in der Individual- und Kursebene ist angestrebt. Daten auf Kursebene werden im Kurskontext erhoben (zum Beispiel fallen in diese Kategorie Exmatrikulationsquoten, Abwesenheitsquoten, Aggregierung von Daten der Individualebene, $\ldots$), wohingegen Daten der Individualebene an unterschiedlichen Studierenden erhoben werden (zum Beispiel aus Befragungen oder Interaktionen mit einem \ac{LMS}).
+
+Die Datenschutzthematik mit personenbezogenen Daten nach Art.4 Nr.1 DS-GVO ist durch das Vorhandensein einer eindeutigen Nutzerkennung gegeben. Durch die Einhaltung der Grundsätze der Datenverarbeitung nach Art.5 DS-GVO und des Vorhandenseins des Erlaubnistatbestands nach Art.6 Abs.1 S.1 lit.f ist die Verarbeitung dieser personenbezogenen Daten jedoch zulässig. Hier gilt es jedoch anzumerken, dass der Erlaubnistatbestand an die \enquote{Verarbeitung zur Wahrung berechtigter Interessen} gebunden ist. In diesem System sind die zur Auswertung im Rahmen des \enquote{Learning Analytics} Aspekts herangezogenen Daten anonymisiert und es ist keine Rückverfolgung zu Individuen möglich. Bei weiteren Ausbaustufen dieser Software gilt es den Erlaubnistatbestand zu beachten. 
+
+Neben den Datenschutzrechtlichen Aspekten existieren ebenfalls ethische Bedenken, die bei der Auswertung von personenbezogenen Daten zu beachten sind. Auf folgende Punkte ist hierbei einzugehen \autocite[S.1510]{learningAnalyticsEthicalUssuesAndDilemmas}:
+
+	Interpretierung der Daten; Zustimmung der Betroffenen, Privatsphäre und Anonymisierung der Daten; Klassifizierung und Management der Daten
+	
+Diese Aspekte sind bei der Konzeption des Systems beachtet, jedoch nicht weiter ausgeführt. An dieser Stelle ist lediglich zu verstehen, dass die Erhebung der Daten transparent für die studierende Person stattfinden muss. 
+	
+
+Folgende \ac{LMS} Lehr-/ Unterrichtsaufgaben werden im Rahmen dieses Prototypensystems behandelt \autocite[S.248]{SCHOONENBOOM2014247}:
+\begin{itemize}
+	\item Referenzen: Dozierenden soll die Möglichkeit gegeben werden, selbst spezielle Referenzen zu ihren Vorlesungen den Kursteilnehmenden zur Verfügung zu stellen. Diese spezielle Referenzen sollen in Form von Karteikarteninhalten zur Verfügung gestellt werden, die per Definition als Werkzeug dienen.
+	\item Selbsttest: Im Rahmen des Selbsttests können Studierende auf eigene Karteikarten oder auf die von Dozierenden bereitgestellten Karteikarten zurückgreifen. Hierbei kann mit den Karteikarten effizient für anstehenden Klausuren gelernt werden, was eine Lernaktivität darstellt. Als Werkzeug dient hier analog das Lernen mit Karteikarten.
+	\item Außerhalb der in dieser Quelle definierten Unterrichtsaufgaben ist eine integrierte Organisationslösung für Studierende implementiert, damit Lernaktivitäten geplant und dadurch negative Ausflüsse aus einer mangelhaften Organisation minimiert werden können.	Als Werkzeuge dienen hierbei ein Kalender, der mit Funktionalitäten rund um die Klausurplanung erweitert ist. Eine direkte Lernaktivität ist mit dieser Unterrichtsaufgabe nicht realisiert, jedoch sind alle Lernaktivitäten unterstützt. Somit könnte hierbei von einer indirekten Lernaktivität gesprochen werden.
+\end{itemize}
+
+Hierbei ist anzumerken, dass die Bereitstellung von Referenzen bereits mithilfe von Moodle für Dozierende möglich ist. Sodass hier explizit der Fokus auf den Merhwert durch die Bereitstellung von direkt verwendbaren Karteikarten für Studierende liegt.
+
+Soviel zu dem grundlegenden fachlichen Kontext, im folgenden Kapitel sind diese Konzepte nochmals aufgegriffen und in konkreten Handlungsschritten umgesetzt. 
+
+%Soll in diesem Projekt \enquote{Self-Test} eines LMSs Funktionalität umsetzen, potentiell noch weitere Funktionalitäten (Student Questions, References, Student Discussion, Blog) in dem Ansatz möglich 
+%
+%Tool -> instructional task -> learning activity ; für unseren Fall ausführen
+%Zu \autocite[S.247]{SCHOONENBOOM2014247} Koexistenz mit Moodle darstellen und anführen, dass "wichtige" Funktionalitäten schon Moodle abgedenkt sind und eine Symbiose angestrebt ist
+
 \section{Technische Grundlagen}
 
 \subsection{Backend as a Service}
 \ac{BaaS} ist ein relativ neuer Ansatz, mit dem die Entwicklung von Web- und Mobilanwendungen beschleunigt werden soll.
 Bei \ac{BaaS} handelt es sich um ein Cloud-Service-Modell, welches sich aus der steigenden Nutzung von Cloud-Computing und Serverless-Ansätzen ableitet.
 Dabei geht \ac{BaaS} einen Schritt weiter als andere Cloud-Ansätze wie \ac{IaaS}, \ac{CaaS} oder \ac{FaaS}.
-Stattdessen orientiert sich \ac{BaaS} mehr an einem \ac{SaaS}-Ansatz. % :D
+Stattdessen orientiert sich \ac{BaaS} mehr an einem \ac{SaaS}-Ansatz. % :D xD O: (:
 So wird in \ac{BaaS} nicht nur die gesamte Infrastruktur und Laufzeitumgebung, sondern sogar Teile der Serverlogik von einem Cloud-Provider verwaltet.\autocite[Vgl.][]{cloudflareBaaS}
 So können sich Anwendungsentwickler auf die Entwicklung der Nutzeranwendungen und die Geschäftslogik kümmern ohne umfangreichen Boiler-Plate-Code schreiben zu müssen.
 Typische Beispiele für Services, die von einem \ac{BaaS}-Anbieter übernommen werden sind die Bereitstellung von Speicherressourcen, Nutzerauthentifizierung und das Hosting einer Website.
@@ -37,7 +115,7 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung g
     \item Datensicherheit\\
         Nach einer Befragung von Tang und Liu stimmen 48\% zu, dass Cloud-Provider eine bessere Sicherheit liefern als eine eigene Implementierungen.\autocite[S. 63]{TANG}
         Google als einer der größten IT-Dienstleister ist dabei weit vorne und ist konform mit den europäischen Datenschutzverordnungen.\autocite{firebaseDataprotection}
-        Die Authentifizierung ist sicher, da aktuelle Standards wie OAuth 2.0 verwendet wird. Dieser wird im RFC 6749 und RFC 6750 beschrieben und ist ein Protokoll, dass eine sichere Autorisierung und Authentifizierung für Desktop-, Web- und Mobile Anwendungen über API Schnitstellen ermöglicht. 
+        Die Authentifizierung ist sicher, da aktuelle Standards wie OAuth 2.0 verwendet wird.
     \item Ausfallsicherheit\\
         Da Server nicht mehr einzeln betrieben werden müssen entfällt die Gefähr eines \enquote{Single Point of Failure}. %TODO: in die Anforderungen
         Dies würde dafür sorgen, dass die Anwendung ausfällt, sofern der Server abstürzen würde.
@@ -47,12 +125,18 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung g
         Die Entwicklung des Frontends kann vorranschreiten ohne auf die Entwicklung des Backends zu warten.
     \item Kosten \\
         Google bietet attraktive Preismodelle an, welches die Bereitstellung der Anwendung sehr kostengünstig macht.
-        Nicht nur entfallen Kosten für die Wartung der Server und Hardwareressourcen, sondern der gesamte Betrieb ist im \enquote{Spark}-Plan kostenlos \autocite{firebasePrice}.
+        Nicht nur entfallen Kosten für die Wartung der Server und Hardwareressourcen, sondern der gesamte Betrieb ist im \enquote{Spark}-Plan kostenlos.
     \item Skalierung \\
         Firebase kümmert sich um die gesamte Bereitstellung und Skalierung der Serverleistung.
         Das heißt, sofern mehr Rechenleistung benötigt wird (wie beispielsweise in Lastspitzen) wird die Rechenleistung automatisch erhöht ohne das Anfragen fehlschlagen.
 \end{itemize}
-Die verwendete Technologie ermöglicht das Erfüllen der für unsere Anwendung bestehenden nichtfunktionalen Anforderungen.
+% TODO: Nochmal auf die Anfoderungen verweißen
+
+
+
+
+
+
 
 
 % TODO: Was soll noch alles in die Dokumentation? Auch sowas wie Quickstart und Ordneraufbau?

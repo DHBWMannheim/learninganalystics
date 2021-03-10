@@ -99,6 +99,7 @@ export class TodosComponent implements OnInit {
     };
   }
 
+
   private reload() {
     this.loading = true;
     this.todosService.get().then((v) => {
@@ -129,7 +130,7 @@ export class TodosComponent implements OnInit {
 
   openAddDialog(model?: Todo) {
     const options: Partial<NbDialogConfig> = {};
-    if (model) options.context = { model };
+    if (model) options.context = { inputModel: model };
 
     this.dialogService.open(AddComponent, options).onClose.subscribe((v) => {
       if (v) this.reload();

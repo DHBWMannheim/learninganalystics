@@ -38,7 +38,7 @@
           </form>
         </nb-list-item>
         <nb-list-item
-          *ngFor="let course of (currentCourses | async).participations"
+          *ngFor="let course of (currentCourses | async)?.participations"
         >
         <div class="row w-100">
           <div class="col">
@@ -98,7 +98,7 @@
             </div>
           </form>
         </nb-list-item>
-        <nb-list-item *ngFor="let course of (currentCourses | async).creations">
+        <nb-list-item *ngFor="let course of (currentCourses | async)?.creations">
           <div class="row w-100">
             <div class="col">
               <div class="row">

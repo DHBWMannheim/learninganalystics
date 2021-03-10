@@ -2,7 +2,7 @@
   <nb-card-header>
     <div class="row">
       <div class="col my-auto">
-        <h3>{{'todos.add.header'|translate}}</h3>
+        <h3>{{(inputModel?'todos.add.headerEdit':'todos.add.header')|translate}}</h3>
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
@@ -15,35 +15,37 @@
     <div></div>
   </nb-card-header>
   <nb-card-body>
-    <form>
+    <form [formGroup]="formGroup">
       <mat-form-field class="w-100">
         <mat-label>{{'todos.add.title.label'|translate}}</mat-label>
         <input
           matInput
           [placeholder]="'todos.add.title.placeholder'|translate"
           required
-          [(ngModel)]="model.title"
           name="title"
+          formControlName="title"
         />
+        <mat-error *ngIf="formGroup.get('title').hasError('required')">
+          {{ 'todos.add.title.errors.required' | translate }}
+        </mat-error>
       </mat-form-field>
-      <!--TODO: Max length?-->
 
       <mat-form-field class="w-100">
         <mat-label>{{'todos.add.description.label'|translate}}</mat-label>
         <textarea
           matInput
           [placeholder]="'todos.add.description.placeholder'|translate"
-          [(ngModel)]="model.description"
           name="description"
           class="description-textarea"
+          formControlName="description"
         ></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>{{'todos.add.timespan.label'|translate}}</mat-label>
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate [placeholder]="'todos.add.timespan.placeholderStartDate'|translate" name="startDate" [(ngModel)]="model.startDate">
-          <input matEndDate [placeholder]="'todos.add.timespan.placeholderEndDate'|translate" name="endDate" [(ngModel)]="model.endDate">
+          <input matStartDate [placeholder]="'todos.add.timespan.placeholderStartDate'|translate" name="startDate" formControlName="startDate">
+          <input matEndDate [placeholder]="'todos.add.timespan.placeholderEndDate'|translate" name="endDate" formControlName="endDate">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -54,7 +56,7 @@
     <div class="row">
       <div class="col"></div>
       <div class="col-end">
-        <button nbButton status="primary" (click)="submit()">{{'todos.add.submit'|translate}}</button>
+        <button nbButton status="primary" (click)="submit()" [disabled]="!formGroup.valid">{{'todos.add.submit'|translate}}</button>
       </div>
     </div>
   </nb-card-footer>

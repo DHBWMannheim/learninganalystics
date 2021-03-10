@@ -1,39 +1,92 @@
-<nb-card>
-  <nb-card-header>{{ 'exams.header' | translate }} </nb-card-header>
-  <nb-card-body>
-    <nb-card *ngFor="let exam of exams">
-      <nb-card-header>
-        {{ exam.title }}
-      </nb-card-header>
-      <nb-card-body>
-        <strong>{{ 'exams.description' | translate }}: </strong
-        >{{ exam.description }}
-        <nb-calendar [(date)]="exam.deadline"></nb-calendar>
-        <!--TODO: Hier noch etwas besser, damit uhrzeit-->
-        <div *ngIf="exam.duration">
-          <strong>{{ 'exams.duration' | translate }}: </strong
-          >{{ exam.duration }} {{ 'exams.minutes' | translate }}
-        </div>
-        <div *ngIf="exam.room">
-          <strong>{{ 'exams.room' | translate }}: </strong>{{ exam.room }}
-        </div>
+<nb-card [nbSpinner]="loadingExams">
+  <nb-card-header style="display: flex; justify-content: space-between; align-items: center;">
+    {{ 'exams.header' | translate }}
+    <button nbButton outline color="primary" (click)="openAddDialog()">
+      <nb-icon icon="plus-outline"></nb-icon>
+      {{'exams.addButton' | translate}}
+    </button>
+  </nb-card-header>
+  <nb-card-body *ngIf="exams.length" class="row">
+    <div *ngFor="let exam of exams" class="col-xs-12 col-md-6 mt-4">
+      <nb-card style="height: 100%">
+        <nb-card-header>
+          <strong>{{ exam.title }}</strong>
+          <button style="margin-left: 5px; float: right;" nbButton outline size="small" color="primary" (click)="deleteExam(exam)">
+            <nb-icon icon="trash-2-outline"></nb-icon>
+          </button>
+          <button style="margin-left: 15px; float: right;" nbButton outline size="small" color="primary"(click)="editExam(exam)" >
+            <nb-icon icon="edit-outline"></nb-icon>
+          </button>
+        </nb-card-header>
+        <nb-card-body>
+          <table style="width: 100%">
+            <tr>
+              <td>
+                <strong>{{ 'exams.description' | translate }}: </strong>
+              </td>
+              <td>{{ exam.description || '-' }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{{ 'exams.date' | translate }}: </strong>
+              </td>
+              <td *ngIf="exam.date">{{ formatDate(exam.date) }}</td>
+              <td *ngIf="!exam.date">-</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{{ 'exams.time' | translate }}: </strong>
+              </td>
+              <td *ngIf="exam.date">{{ formatTime(exam.time) }}</td>
+              <td *ngIf="!exam.date">-</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{{ 'exams.duration' | translate }}: </strong>
+              </td>
+              <td *ngIf="exam.duration">{{ exam.duration }} {{ 'exams.minutes' | translate }}</td>
+              <td *ngIf="!exam.duration">-</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{{ 'exams.room' | translate }}: </strong>
+              </td>
+              <td>{{ exam.room || '-' }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{{ 'exams.tools' | translate }}: </strong>
+              </td>
+              <td *ngIf="exam.tools">
+                {{ exam.tools || '-' }}
+              </td>
+              <td *ngIf="!exam.tools">-</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{{ 'exams.additionalInformations' | translate }}: </strong>
+              </td>
+              <td *ngIf="exam.additionalInformations">
+                {{ exam.additionalInformations || '-' }}
+              </td>
+              <td *ngIf="!exam.additionalInformations">-</td>
+            </tr>
+          </table>
 
-        <div *ngIf="exam.tools">
-          <strong>{{ 'exams.tools' | translate }}: </strong>
-          <ul>
-            <li *ngFor="let tool of exam.tools">{{ tool }}</li>
-          </ul>
-        </div>
-        <div *ngIf="exam.additionalInformations">
-          <strong>{{ 'exams.additionalInformations' | translate }}: </strong>
-          <ul>
-            <li *ngFor="let info of exam.additionalInformations">{{ info }}</li>
-          </ul>
-        </div>
-
-        <button nbButton>{{ 'exams.createTodo' | translate }}</button
-        ><!--?-->
-      </nb-card-body>
-    </nb-card>
+          <button nbButton class="mt-4">{{ 'exams.createTodo' | translate }}</button>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </nb-card-body>
+  <nb-card-body *ngIf="!exams.length">
+    <nb-alert outline="basic" style="text-align: center; margin: 50px 20px 0 20px;">
+      {{'exams.notFound'|translate}}
+      <div style="margin-top: 20px">
+        <button nbButton outline color="primary" (click)="openAddDialog()">
+          <nb-icon icon="plus-outline"></nb-icon>
+          {{'exams.addButton'|translate}}
+        </button>
+      </div>
+    </nb-alert>
   </nb-card-body>
 </nb-card>

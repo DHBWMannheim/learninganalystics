@@ -8,9 +8,13 @@
         "notFound": "No Todos found",
         "add": {
             "header": "New Todo",
+            "headerEdit": "Edit Todo",
             "title": {
                 "label": "Title",
-                "placeholder": "A short title..."
+                "placeholder": "A short title...",
+                "errors": {
+                    "required": "A title is needed"
+                }
             },
             "description": {
                 "label": "Description",
@@ -58,15 +62,113 @@
     "dashboard": {},
     "exams": {
         "header": "Exams",
+        "addButton": "Add Exam",
+        "notFound": "No exams could be found",
         "title": "Title",
         "description": "Description",
-        "deadline": "Deadline",
+        "date": "Date",
+        "time": "Time",
         "duration": "Duration",
         "minutes": "Minutes",
         "room": "Room",
         "tools": "Permitted Tools",
         "additionalInformations": "Additional Informations",
-        "createTodo": "Create Todo"
+        "createTodo": "Create Todo",
+        "add": {
+            "header": "New Exam",
+            "title": {
+                "label": "Title",
+                "placeholder": "Exam title..."
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "Description..."
+            },
+            "date": {
+                "label": "Date",
+                "placeholder": "Date..."
+            },
+            "time": {
+                "label": "Time",
+                "placeholder": "Time..."
+            },
+            "duration": {
+                "label": "Duration in Minutes",
+                "placeholder": "Duration in Minutes..."
+            },
+            "room": {
+                "label": "Room",
+                "placeholder": "Room..."
+            },
+            "tools": {
+                "label": "Tools",
+                "placeholder": "Tools..."
+            },
+            "additionalInformations": {
+                "label": "Additional information",
+                "placeholder": "Additional information..."
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The exam was saved"
+                }
+            }
+        },
+        "edit": {
+            "header": "Edit Exam",
+            "title": {
+                "label": "Title",
+                "placeholder": "Exam title..."
+            },
+            "description": {
+                "label": "Description",
+                "placeholder": "Description..."
+            },
+            "date": {
+                "label": "Date",
+                "placeholder": "Date..."
+            },
+            "time": {
+                "label": "Time",
+                "placeholder": "Time..."
+            },
+            "duration": {
+                "label": "Duration in Minutes",
+                "placeholder": "Duration in Minutes..."
+            },
+            "room": {
+                "label": "Room",
+                "placeholder": "Room..."
+            },
+            "tools": {
+                "label": "Tools",
+                "placeholder": "Tools..."
+            },
+            "additionalInformations": {
+                "label": "Additional information",
+                "placeholder": "Additional information..."
+            },
+            "submit": "Save",
+            "toast": {
+                "saved": {
+                    "title": "Saved",
+                    "message": "The exam was saved"
+                }
+            }
+        },
+        "delete": {
+            "header": "Delete Exam",
+            "text": "Do you really want to delete this Exam",
+            "submit": "Yes",
+            "toast": {
+                "deleted": {
+                    "title": "Deleted",
+                    "message": "The Exam was deleted"
+                }
+            }
+        }
     },
     "files": {
         "header": "Files",
@@ -144,12 +246,11 @@
     },
     "feedback": {
         "header": "Feedback",
-        "value": {
-            "0": "awful",
-            "1": "bad",
-            "2": "good",
-            "3": "great"
-        },
+        "value": [
+            "low",
+            "medium",
+            "high"
+        ],
         "comment": {
             "label": "Additional Remarks",
             "placeholder": "What do you want to add..."
@@ -175,12 +276,34 @@
                 "message": "Your Feedback was saved"
             }
         },
-        "chart": [
-            "Enjoyment",
-            "Informationamount",
-            "Understandability",
-            "New Informations"
-          ]
+        "lecturerView": {
+            "feedback": {
+                "label": "Course feedback",
+                 "chart": [
+                    "Enjoyment",
+                    "Informationamount",
+                    "Understandability",
+                    "New Informations"
+                ]
+            },
+            "comments": {
+                "label": "Comments"
+            },
+            "participants": {
+                "label": "Participants",
+                "typeChart": [
+                    "Visually",
+                    "Auditory",
+                    "Motor",
+                    "Communicative"
+                ],
+                "questionareChart": [
+                    "Affinity to online teaching",
+                    "Usage frequency of learning apps",
+                    "Experience with online teaching"
+                ]
+            }
+        }
     },
     "join": {
         "join": {
@@ -211,7 +334,7 @@
         "leave": "Leave",
         "delete": {
             "header": "Leave Course",
-            "text": "Do you realy want to leave this course?",
+            "text": "Do you really want to leave this course?",
             "submit": "Yes",
             "toast": {
                 "deleted": {
@@ -340,5 +463,53 @@
         "files": "Files",
         "indexCards": "Index Cards",
         "notFound": "No results were found"
+    },
+    "onbording": {
+        "welcome": "Welcome",
+        "text1": "Do you want to participate in a short survey?",
+        "text2": "Your responses help us improve course contents."
+    },
+    "questionare": {
+        "typ": {
+            "label": "Which learning type are you?",
+            "buttons": [
+                {"label": "Visually", "tooltip": "See and understand"},
+                {"label": "Auditory", "tooltip": "The power of spoken words"},
+                {"label": "Motor", "tooltip": "Learning by doing"},
+                {"label": "Communicative", "tooltip": "Talking is gold"}
+            ]
+        },
+        "online": {
+            "label": "How affine are you when it comes to online teaching?",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "apps": {
+            "label": "How often do you use learning apps?",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "experience": {
+            "label": "How much experience do you have with digital teaching? ",
+            "buttons": [
+                "low",
+                "medium",
+                "high"
+            ]
+        },
+        "skip": "Skip",
+        "submit": "Submit",
+        "toast": {
+            "success": {
+                "title": "Saved",
+                "message": "Your answers were saved"
+            }
+        }
     }
 }
