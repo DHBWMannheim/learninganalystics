@@ -196,6 +196,12 @@
         "roundResultPre": "You answered ",
         "roundResultPost": "% correct!",
         "all": "ALL",
+        "toast": {
+            "noPermissions": {
+                "message": "You are not the owner of this index card. Ask the course owner to change this card.",
+                "title": "No Permissions"
+            }
+        },
         "add": {
             "header": "New Index-Card",
             "question": {
