@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { NbCardModule, NbSpinnerModule } from '@nebular/theme';
+import { NbCardModule, NbListModule, NbSpinnerModule } from '@nebular/theme';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CalendarModule } from 'angular-calendar';
 
@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard.component';
     DashboardRoutingModule,
     CalendarModule,
     NbSpinnerModule,
+    NbListModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
