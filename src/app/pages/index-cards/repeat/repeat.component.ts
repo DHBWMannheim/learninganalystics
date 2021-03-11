@@ -1,17 +1,22 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-import { IndexCard, IndexCardsService } from '../../../@core/data/index-cards.service';
+import {
+  IndexCard,
+  IndexCardsService,
+} from '../../../@core/data/index-cards.service';
 import { fade } from '../../../@theme/animations/fade.animation';
 import { DeleteComponent } from '../delete/delete.component';
 import { EditComponent } from '../edit/edit.component';
 import { TinderChoice } from '../tinder-ui/tinder-ui.component';
 import { AddComponent } from '../add/add.component';
+import { StreakService } from '../../../@core/data/streak.service';
+import { UserService } from '../../../@core/data/user.service';
 
 @Component({
   selector: 'ngx-repeat',
   templateUrl: './repeat.component.html',
   styleUrls: ['./repeat.component.scss'],
-  animations: [fade(200)]
+  animations: [fade(200)],
 })
 export class RepeatComponent implements OnInit {
   gaugeState = 'out';
@@ -72,6 +77,8 @@ export class RepeatComponent implements OnInit {
   constructor(
     private readonly dialogService: NbDialogService,
     private readonly indexCardsService: IndexCardsService,
+    private readonly streakService: StreakService,
+    private readonly userService: UserService,
   ) {}
 
   @Input('cards')
@@ -91,34 +98,44 @@ export class RepeatComponent implements OnInit {
   private known: number = 0;
   private notKnown: number = 0;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   async logChoice({ choice, payload }: TinderChoice) {
     choice ? this.known++ : this.notKnown++; // TODO: besser als array und am schluss eine übersicht über nicht gewusste Fragen
-    
+
+    const userId = (await this.userService.currentUser).id;
+
     if (choice) {
       // start from beginning if 60d is reached
       if (payload.streak === 6) {
-        await this.indexCardsService.upsert({
-          ...payload,
+        await this.streakService.upsert({
+          id: payload.streakId,
+          userId,
+          indexCard: this.indexCardsService.createRef(payload.id),
           streak: 0,
-          streakSince: 0
+          streakSince: 0,
         });
       } else {
         // increase streak
-        await this.indexCardsService.upsert({
-          ...payload,
-          streak: payload.streak === this.streak ? payload.streak + 1 : payload.streak,
-          streakSince: payload.streak ? payload.streakSince : Date.now()
+        this.streakService.upsert({
+          id: payload.streakId,
+          userId,
+          indexCard: this.indexCardsService.createRef(payload.id),
+          streak:
+            payload.streak === this.streak
+              ? payload.streak + 1
+              : payload.streak,
+          streakSince: payload.streak ? payload.streakSince : Date.now(),
         });
       }
     } else if (payload.streak !== 0) {
       // end streak
-      await this.indexCardsService.upsert({
-        ...payload,
+      await this.streakService.upsert({
+        id: payload.streakId,
+        userId,
+        indexCard: this.indexCardsService.createRef(payload.id),
         streak: 0,
-        streakSince: 0
+        streakSince: 0,
       });
     }
 
@@ -138,7 +155,7 @@ export class RepeatComponent implements OnInit {
     this.roundFinished = false;
     this.known = 0;
     this.notKnown = 0;
-    this.reload.emit()
+    this.reload.emit();
   }
 
   edit(card: IndexCard) {
@@ -146,11 +163,11 @@ export class RepeatComponent implements OnInit {
       .open(EditComponent, {
         context: {
           courseId: this.courseId,
-          card
+          card,
         },
       })
       .onClose.subscribe(() => {
-        this.reload.emit()
+        this.reload.emit();
       });
   }
 
@@ -159,11 +176,11 @@ export class RepeatComponent implements OnInit {
       .open(DeleteComponent, {
         context: {
           courseId: this.courseId,
-          card
+          card,
         },
       })
       .onClose.subscribe(() => {
-        this.reload.emit()
+        this.reload.emit();
       });
   }
 
@@ -178,5 +195,4 @@ export class RepeatComponent implements OnInit {
         this.reload.emit();
       });
   }
-
 }

@@ -36,11 +36,11 @@ export class EditComponent implements OnInit {
       question: this.card.question,
       answer: this.card.answer,
       course: this.coursesService.createRef(this.courseId),
-      streak: this.card.streak,
-      streakSince: this.card.streakSince
     });
     this.toastrService.success(
-      await this.translate.get('indexCards.edit.toast.saved.message').toPromise(),
+      await this.translate
+        .get('indexCards.edit.toast.saved.message')
+        .toPromise(),
       await this.translate.get('indexCards.edit.toast.saved.title').toPromise(),
     );
     this.close();
