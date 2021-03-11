@@ -3,6 +3,7 @@ import { NbDialogRef, NbToastrService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { CoursesService } from '../../../@core/data/course.service';
 import { IndexCardsService } from '../../../@core/data/index-cards.service';
+import { UserService } from '../../../@core/data/user.service';
 
 @Component({
   selector: 'ngx-add',
@@ -24,6 +25,7 @@ export class AddComponent implements OnInit {
     private readonly toastrService: NbToastrService,
     private readonly coursesService: CoursesService,
     private readonly translate: TranslateService,
+    private readonly userService: UserService,
   ) {}
 
   ngOnInit(): void {}
@@ -33,14 +35,19 @@ export class AddComponent implements OnInit {
   }
 
   async submit() {
+    const currentUser = (await this.userService.currentUser).id;// TODO:
+
     await this.indexCardsService.upsert({
       ...this.model,
       course: this.coursesService.createRef(this.courseId),
+      owner: this.userService.createRef(currentUser),
       streak: 0,
-      streakSince: 0
+      streakSince: 0,
     });
     this.toastrService.success(
-      await this.translate.get('indexCards.add.toast.saved.message').toPromise(),
+      await this.translate
+        .get('indexCards.add.toast.saved.message')
+        .toPromise(),
       await this.translate.get('indexCards.add.toast.saved.title').toPromise(),
     );
     this.close();
