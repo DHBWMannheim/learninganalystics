@@ -14,7 +14,14 @@
 
 \section{Allgemeine Implementierungsdetails}
 
+\section{Dateistruktur}
 
+Auf der obersten Ebene sind finden sich alle Dateien, die allgemeine Konfigurationen enthalten. Beispielsweise liegen dort die Firebase-Konfigurationen, die Angular-Konfigurationen und 
+weitere technischen Konfigurationendateien. Des Weieren sind die folgenden zwei Ordner relevant: \enquote{src} und \enquote{docs}. Im docs-Ordner ist die Dokumentation im \LaTeX-Format 
+und im src-Ordner ist der gesamte Code enthalten. \\
+Im src-Ordner ist nochmal eine weitere Unterteilung in \enquote{assets}, \enquote{environments} und \enquote{app}. Im assets-Ordner sind alle Icons, Designs und Übersetzungen und im environments-Ordner 
+liegen die Dateien mit den Daten, welche für das bauen der Applikation notwendig sind. Im app-Ordner sind zwei wichtige Ordner enthalten, zum einen den auth-Ordner, der den gesamten Code rund um das 
+Thema Authentifizierung enthält und den pages-Ordner, der den restlichen Code für alle Seiten auf der Learning Analytics App enthält. \\
 
 \section{Responsive Design} % NF3
 Nach den nicht-funktionalen Anforderungen ist ein responsive Design pflicht.  
@@ -75,8 +82,6 @@ Nutzer ohne die notwendigen Berechtigungen werden automatisch auf das Dashboard 
 
 
 \section{Übersetzung}
-% TODO: Das in Anforderungen
-% TODO: Konzeption
 
 An der DHBW studieren viele verschiedene Studenten mit verschiedenen Hintergründen.
 Nicht immer ist Deutsch die Muttersprache.
@@ -84,8 +89,10 @@ Besonders für Studenten des Erasmus+ Programms ist Englisch oft präferiert.
 
 Aus diesem Grund ist die Anwendung sowohl in Deutsch, als auch in Englisch verfügbar.
 Neue Sprachen können mithilfe einfach mithilfe von JSON-Dateien hinzugefügt werden.
+Diese JSON-Dateien enthalten alle HTML-Labels und die Übersetzung in der jeweiligen Sprache. 
 Verfügbare Sprachen werden in der Navigation im Globus-Menu angezeigt.
 Durch Klick auf eine Sprache wird sofort die gesamte Anwendung übersetzt, ohne das neu geladen werden muss.
+Dabei wird einfach die jeweilige JSON-Datei mit den Labels in der richitgen Sprache verwendet.
 
 Die Anwendung fragt beim initialen Aufruf der Anwendung ab, auf welche Sprache das Gerät des Nutzers eingestellt ist.
 Wird eine kompatible Sprache gefunden wird die Anwendung auf diese übersetzt.
