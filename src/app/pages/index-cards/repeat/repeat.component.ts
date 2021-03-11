@@ -12,6 +12,7 @@ import { AddComponent } from '../add/add.component';
 import { DocumentReference } from '@angular/fire/firestore';
 import { User, UserService } from '../../../@core/data/user.service';
 import { TranslateService } from '@ngx-translate/core';
+import { StreakService } from '../../../@core/data/streak.service';
 
 @Component({
   selector: 'ngx-repeat',
@@ -81,6 +82,7 @@ export class RepeatComponent implements OnInit {
     private readonly userService: UserService,
     private readonly translateService: TranslateService,
     private readonly toast: NbToastrService,
+    private readonly streakService: StreakService,
   ) {}
 
   @Input('cards')
@@ -108,18 +110,24 @@ export class RepeatComponent implements OnInit {
   async logChoice({ choice, payload }: TinderChoice) {
     choice ? this.known++ : this.notKnown++; // TODO: besser als array und am schluss eine übersicht über nicht gewusste Fragen
 
+    const userId = (await this.userService.currentUser).id;
+
     if (choice) {
       // start from beginning if 60d is reached
       if (payload.streak === 6) {
-        await this.indexCardsService.upsert({
-          ...payload,
+        await this.streakService.upsert({
+          id: payload.streakId,
+          userId,
+          indexCard: this.indexCardsService.createRef(payload.id),
           streak: 0,
           streakSince: 0,
         });
       } else {
         // increase streak
-        await this.indexCardsService.upsert({
-          ...payload,
+        this.streakService.upsert({
+          id: payload.streakId,
+          userId,
+          indexCard: this.indexCardsService.createRef(payload.id),
           streak:
             payload.streak === this.streak
               ? payload.streak + 1
@@ -129,8 +137,10 @@ export class RepeatComponent implements OnInit {
       }
     } else if (payload.streak !== 0) {
       // end streak
-      await this.indexCardsService.upsert({
-        ...payload,
+      await this.streakService.upsert({
+        id: payload.streakId,
+        userId,
+        indexCard: this.indexCardsService.createRef(payload.id),
         streak: 0,
         streakSince: 0,
       });

@@ -5,7 +5,7 @@ import { CommonFirestoreService } from './common-firestore.service';
 import { Course } from './course.service';
 import { User } from './user.service';
 
-export interface IndexCard extends CommonFirestoreDocument {
+export interface IndexCard {
   id?: string;
   question: string;
   answer: string;
@@ -13,10 +13,18 @@ export interface IndexCard extends CommonFirestoreDocument {
   streak: number;
   streakSince: number;
   owner: DocumentReference<User>;
+  streakId: string;
+}
+export interface IndexCardPersistence extends CommonFirestoreDocument {
+  id?: string;
+  question: string;
+  answer: string;
+  course: DocumentReference<Course>;
+  owner: DocumentReference<User>;
 }
 
 @Injectable({ providedIn: 'root' })
-export class IndexCardsService extends CommonFirestoreService<IndexCard> {
+export class IndexCardsService extends CommonFirestoreService<IndexCardPersistence> {
   constructor(firestore: AngularFirestore) {
     super('index-cards', firestore);
   }

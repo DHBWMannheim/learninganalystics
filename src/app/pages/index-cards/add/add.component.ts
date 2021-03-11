@@ -35,14 +35,12 @@ export class AddComponent implements OnInit {
   }
 
   async submit() {
-    const currentUser = (await this.userService.currentUser).id;// TODO:
+    const currentUser = (await this.userService.currentUser).id; // TODO:
 
     await this.indexCardsService.upsert({
       ...this.model,
       course: this.coursesService.createRef(this.courseId),
       owner: this.userService.createRef(currentUser),
-      streak: 0,
-      streakSince: 0,
     });
     this.toastrService.success(
       await this.translate

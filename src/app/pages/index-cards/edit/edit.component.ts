@@ -41,8 +41,6 @@ export class EditComponent implements OnInit {
       answer: this.card.answer,
       course: this.coursesService.createRef(this.courseId),
       owner: this.userService.createRef(currentUser),
-      streak: this.card.streak,
-      streakSince: this.card.streakSince,
     });
     this.toastrService.success(
       await this.translate

@@ -35,6 +35,10 @@ service cloud.firestore {
         allow update: if request.auth != null && ((isOwner(resource.data.creator, request.auth.uid) && onlyFields(request, resource, ['creator', 'participants'])) || onlyFields(request, resource, ['participants']))
     }
     
+    match /card-streaks/{document=**} {
+       allow read, write: if request.auth.uid != null
+    }
+
     match /index-cards/{document=**} {
         allow read: if request.auth != null
         allow write: if request.auth != null //&& isOwner(get(/databases/$(database)/documents/$(request.resource.data.course.path)).data.creator, request.auth.uid)

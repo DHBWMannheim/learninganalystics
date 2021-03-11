@@ -9,6 +9,7 @@ import { CoursesService } from '../../@core/data/course.service';
 import { FilesService, FireFile } from '../../@core/data/files.service';
 import {
   IndexCard,
+  IndexCardPersistence,
   IndexCardsService,
 } from '../../@core/data/index-cards.service';
 import { Todo, TodosService } from '../../@core/data/todos.service';
@@ -21,7 +22,7 @@ import { Todo, TodosService } from '../../@core/data/todos.service';
 export class SearchComponent implements OnInit {
   resultsTodos: Todo[];
   resultsFiles: FireFile[];
-  resultsIndexCards: IndexCard[];
+  resultsIndexCards: IndexCardPersistence[];
 
   constructor(
     private readonly filesService: FilesService,
