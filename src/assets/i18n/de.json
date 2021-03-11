@@ -196,6 +196,12 @@
         "roundResultPre": "Sie haben ",
         "roundResultPost": "% richtig beantwortet!",
         "all": "ALLE",
+        "toast": {
+            "noPermissions": {
+                "message": "Du bist nicht der Ersteller dieser Karteikarte. Frag the Kursersteller, ob er diese Karte anpassen kann.",
+                "title": "Nicht berechtigt"
+            }
+        },
         "add": {
             "header": "Neue Karteikarte",
             "question": {
