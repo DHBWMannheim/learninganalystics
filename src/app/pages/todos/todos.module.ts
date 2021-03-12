@@ -24,6 +24,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { ThemeModule } from '../../@theme/theme.module';
 import { createTranslateLoader } from '../../app.module';
 import { AddComponent } from './add/add.component';
+import { DeleteComponent } from './delete/delete.component';
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';
 
@@ -57,6 +58,6 @@ import { TodosComponent } from './todos.component';
     }
     }),
   ],
-  declarations: [TodosComponent, AddComponent],
+  declarations: [TodosComponent, AddComponent, DeleteComponent],
 })
 export class TodosModule {}

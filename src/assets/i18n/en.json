@@ -33,6 +33,17 @@
                 }
             }
         },
+        "delete": {
+            "header": "Delete Todo",
+            "text": "Do you really want to delete this todo",
+            "submit": "Yes",
+            "toast": {
+                "deleted": {
+                    "title": "Deleted",
+                    "message": "The todo was deleted"
+                }
+            }
+        },
         "chart": {
             "month": [
                 "Jan",

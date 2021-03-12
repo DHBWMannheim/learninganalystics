@@ -39,13 +39,21 @@
             <span *ngIf="!item.completed">{{ item.title }}</span>
             <del *ngIf="item.completed">{{ item.title }}</del>
           </div>
-          <div *ngIf="item.endDate">
+          <div *ngIf="item.endDate" class="mr-2">
             <ng-container *ngIf="getDeadlineDiffernce(item) > 0">
               {{ getDeadlineDiffernce(item) }} {{ 'todos.days' | translate }}
             </ng-container>
             <ng-container *ngIf="getDeadlineDiffernce(item) <= 0">
               {{ 'todos.overdue' | translate }}
             </ng-container>
+          </div>
+          <div>
+            <nb-icon
+            icon="trash-outline"
+            [options]="{ animation: { type: 'pulse' } }"
+            class="pointer"
+            (click)="del(item)"
+          ></nb-icon>
           </div>
         </nb-list-item>
         <nb-list-item *ngIf="!items.length">

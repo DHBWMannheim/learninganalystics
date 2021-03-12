@@ -15,6 +15,7 @@ import {
 } from 'date-fns';
 import { TranslateService } from '@ngx-translate/core';
 import { eachDayOfInterval } from 'date-fns/esm';
+import { DeleteComponent } from './delete/delete.component';
 
 const today = new Date();
 const startDate = format(startOfMonth(subMonths(today, 1)), 'yyyy-MM-dd');
@@ -152,5 +153,17 @@ export class TodosComponent implements OnInit {
   getDeadlineDiffernce({ endDate }: Todo) {
     if (!endDate) return;
     return differenceInCalendarDays(endDate, Date.now());
+  }
+
+  del(todo: Todo) {
+    this.dialogService
+      .open(DeleteComponent, {
+        context: {
+          todo,
+        },
+      })
+      .onClose.subscribe(async () => {
+        await this.reload();
+      });
   }
 }

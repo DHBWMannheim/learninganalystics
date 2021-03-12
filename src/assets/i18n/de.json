@@ -33,6 +33,17 @@
                 }
             }
         },
+        "delete": {
+            "header": "Aufgabe löschen",
+            "text": "Wollen Sie diese Aufgabe wirklich löschen",
+            "submit": "Ja",
+            "toast": {
+                "deleted": {
+                    "title": "Gelöscht",
+                    "message": "Die Aufgabe wurde gelöscht"
+                }
+            }
+        },
         "chart": {
             "month": [
                 "Jan",
