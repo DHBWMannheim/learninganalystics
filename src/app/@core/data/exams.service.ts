@@ -5,7 +5,6 @@ import { CommonFirestoreService } from './common-firestore.service';
 import { Course } from './course.service';
 
 export interface Exam extends CommonFirestoreDocument {
-  id?: string;
   title: string;
   date: string;
   time: string;

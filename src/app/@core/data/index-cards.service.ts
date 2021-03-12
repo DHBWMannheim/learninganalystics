@@ -16,7 +16,6 @@ export interface IndexCard {
   streakId: string;
 }
 export interface IndexCardPersistence extends CommonFirestoreDocument {
-  id?: string;
   question: string;
   answer: string;
   course: DocumentReference<Course>;

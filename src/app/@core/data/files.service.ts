@@ -10,7 +10,6 @@ import { CommonFirestoreDocument } from './common-firestore-document';
 import { Course, CoursesService } from './course.service';
 
 export interface FireFile extends CommonFirestoreDocument {
-  id: string;
   filename: string;
   path: string;
   course: DocumentReference<Course>;
