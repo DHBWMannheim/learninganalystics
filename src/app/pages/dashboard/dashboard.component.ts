@@ -87,9 +87,10 @@ export class DashboardComponent {
         this.todos = v
           .filter(({ endDate }) => endDate)
           .filter((todo) => {
-            const difference = this.getDeadlineDiffernce(todo)
+            const difference = this.getDeadlineDiffernce(todo);
             return difference < 7 && difference > 0;
-          });
+          })
+          .sort((a, b) => a.endDate.getTime() - b.endDate.getTime());
       });
 
       this.exams = await this.examService.getChunked(

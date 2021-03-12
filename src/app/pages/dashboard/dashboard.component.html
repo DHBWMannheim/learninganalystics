@@ -22,21 +22,23 @@
     </nb-card>
 
     <nb-card>
-      <nb-card-header> Upcoming Deadlines </nb-card-header>
+      <nb-card-header>
+        {{ 'todos.upcomingHeader' | translate }}
+      </nb-card-header>
       <nb-list [nbSpinner]="loadingTodos">
         <nb-list-item *ngFor="let item of todos">
-          <div class="row">
+          <div class="row w-100">
             <div class="col">
               <span *ngIf="!item.completed">{{ item.title }}</span>
               <del *ngIf="item.completed">{{ item.title }}</del>
             </div>
             <div>
-              {{ getDeadlineDiffernce(item) }}
+              {{ getDeadlineDiffernce(item) }} {{ 'todos.days' | translate }}
             </div>
           </div>
         </nb-list-item>
         <nb-list-item *ngIf="!todos?.length">
-          No upcoming Deadlines
+          {{ 'todos.noUpcoming' | translate }}
         </nb-list-item>
       </nb-list>
     </nb-card>

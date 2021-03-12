@@ -11,6 +11,7 @@ import {
   addMonths,
   startOfMonth,
   endOfMonth,
+  differenceInCalendarDays,
 } from 'date-fns';
 import { TranslateService } from '@ngx-translate/core';
 import { eachDayOfInterval } from 'date-fns/esm';
@@ -99,20 +100,25 @@ export class TodosComponent implements OnInit {
     };
   }
 
-
   private reload() {
     this.loading = true;
     this.todosService.get().then((v) => {
-      this.items = v;
+      this.items = v
+        .filter((v) => v.endDate)
+        .sort((a, b) => {
+          const aDate = (a.endDate && a.endDate.getTime()) || 0;
+          const bDate = (b.endDate && b.endDate.getTime()) || 0;
+          return aDate - bDate;
+        })
+        .concat(v.filter((v) => !v.endDate));
       const dates = v.flatMap((todo) => {
         const start = todo.startDate || todo.endDate;
         const end = todo.endDate || todo.startDate;
         return start && end ? eachDayOfInterval({ start, end }) : [];
       });
 
-      const dategroup = groupBy(
-        dates,
-        (date) => format(startOfDay(date), 'yyyy-MM-dd'),
+      const dategroup = groupBy(dates, (date) =>
+        format(startOfDay(date), 'yyyy-MM-dd'),
       );
 
       let max = 0;
@@ -141,5 +147,10 @@ export class TodosComponent implements OnInit {
     // TODO: add delayed write?
     todo.completed = checked;
     await this.todosService.upsert(todo);
+  }
+
+  getDeadlineDiffernce({ endDate }: Todo) {
+    if (!endDate) return;
+    return differenceInCalendarDays(endDate, Date.now());
   }
 }

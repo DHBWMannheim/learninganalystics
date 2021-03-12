@@ -57,9 +57,12 @@
                 "Sa",
                 "Su"
             ]
-        }
+        },
+        "upcomingHeader": "Upcoming Deadlines",
+        "noUpcoming": "Es stehen keine Aufgaben unmittelbar an.",
+        "days": "Days",
+        "overdue": "Overdue"
     },
-    "dashboard": {},
     "exams": {
         "header": "Exams",
         "addButton": "Add Exam",
