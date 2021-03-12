@@ -57,9 +57,12 @@
                 "Sa",
                 "So"
             ]
-        }
+        },
+        "upcomingHeader": "Anstehende Aufgaben",
+        "noUpcoming": "Es stehen keine Aufgaben unmittelbar an.",
+        "days": "Tage",
+        "overdue": "Überfällig"
     },
-    "dashboard": {},
     "exams": {
         "header": "Prüfungen",
         "addButton": "Prüfung hinzufügen",

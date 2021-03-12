@@ -3,12 +3,8 @@
     <nb-card>
       <nb-card-header> {{ 'todos.header' | translate }} </nb-card-header>
       <nb-card-body>
-        <div
-          echarts
-          [options]="echartOptions"
-          class="overview--chart"
-        ></div> </nb-card-body
-      >
+        <div echarts [options]="echartOptions" class="overview--chart"></div>
+      </nb-card-body>
     </nb-card>
   </div>
 </div>
@@ -16,7 +12,19 @@
 <div class="row">
   <div class="col">
     <nb-card>
-      <nb-card-header>{{ 'todos.all' | translate }}</nb-card-header>
+      <nb-card-header
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        {{ 'todos.all' | translate }}
+        <button nbButton (click)="openAddDialog()" outline color="primary">
+          <nb-icon icon="plus-outline"></nb-icon>
+          {{ 'todos.add.header' | translate }}
+        </button>
+      </nb-card-header>
       <nb-list [nbSpinner]="loading">
         <nb-list-item *ngFor="let item of items">
           <div class="row">
@@ -31,17 +39,19 @@
             <span *ngIf="!item.completed">{{ item.title }}</span>
             <del *ngIf="item.completed">{{ item.title }}</del>
           </div>
+          <div *ngIf="item.endDate">
+            <ng-container *ngIf="getDeadlineDiffernce(item) > 0">
+              {{ getDeadlineDiffernce(item) }} {{ 'todos.days' | translate }}
+            </ng-container>
+            <ng-container *ngIf="getDeadlineDiffernce(item) <= 0">
+              {{ 'todos.overdue' | translate }}
+            </ng-container>
+          </div>
         </nb-list-item>
         <nb-list-item *ngIf="!items.length">
-         {{'todos.notFound'|translate}}
+          {{ 'todos.notFound' | translate }}
         </nb-list-item>
       </nb-list>
     </nb-card>
   </div>
-</div>
-
-<div class="add-button-container">
-  <button mat-fab color="primary" (click)="openAddDialog()">
-    <nb-icon icon="plus-outline"></nb-icon>
-  </button>
 </div>

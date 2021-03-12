@@ -4,12 +4,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
 import { NbDialogService } from '@nebular/theme';
 import { CalendarEvent, CalendarEventAction } from 'angular-calendar';
-import { isSameDay, isSameMonth } from 'date-fns';
+import { differenceInCalendarDays, isSameDay, isSameMonth } from 'date-fns';
 
 import { Course, CoursesService } from '../../@core/data/course.service';
 import { Exam, ExamService } from '../../@core/data/exams.service';
 import { EditComponent } from '../exams/edit/edit.component';
 import { DeleteComponent } from '../exams/delete/delete.component';
+import { Todo, TodosService } from '../../@core/data/todos.service';
 
 @Component({
   selector: 'ngx-dashboard',
@@ -45,6 +46,9 @@ export class DashboardComponent {
 
   private currentCourses: Course[] = [];
 
+  loadingTodos = true;
+  todos: Todo[];
+
   constructor(
     readonly auth: NbAuthService,
     public auth2: AngularFireAuth,
@@ -52,6 +56,7 @@ export class DashboardComponent {
     private readonly courseService: CoursesService,
     private readonly datepipe: DatePipe,
     private readonly dialogService: NbDialogService,
+    private readonly todosService: TodosService,
   ) {
     this.auth.onTokenChange().subscribe((token: NbAuthJWTToken) => {
       this.a = token.getPayload();
@@ -71,10 +76,22 @@ export class DashboardComponent {
 
   async reload() {
     this.loadingExams = true;
+    this.loadingTodos = true;
 
     this.courseService.currentCourses.subscribe(async (courses) => {
       if (!courses) return;
       this.currentCourses = courses.creations.concat(courses.participations);
+
+      this.todosService.get().then((v) => {
+        this.loadingTodos = false;
+        this.todos = v
+          .filter(({ endDate }) => endDate)
+          .filter((todo) => {
+            const difference = this.getDeadlineDiffernce(todo);
+            return difference < 7 && difference > 0;
+          })
+          .sort((a, b) => a.endDate.getTime() - b.endDate.getTime());
+      });
 
       this.exams = await this.examService.getChunked(
         this.currentCourses,
@@ -99,8 +116,8 @@ export class DashboardComponent {
           primary: '#e10217',
           secondary: '#e10217',
         },
-        exam: exam
-      }))
+        exam: exam,
+      }));
 
       this.loadingExams = false;
     });
@@ -129,11 +146,11 @@ export class DashboardComponent {
       .open(EditComponent, {
         context: {
           courseId: exam.course.id,
-          exam
+          exam,
         },
       })
       .onClose.subscribe(async () => {
-        await this.reload()
+        await this.reload();
       });
   }
 
@@ -142,12 +159,17 @@ export class DashboardComponent {
       .open(DeleteComponent, {
         context: {
           courseId: exam.course.id,
-          exam
+          exam,
         },
       })
       .onClose.subscribe(async () => {
-        await this.reload()
+        await this.reload();
         this.activeDayIsOpen = false;
       });
+  }
+
+  getDeadlineDiffernce({ endDate }: Todo) {
+    if (!endDate) return;
+    return differenceInCalendarDays(endDate, Date.now());
   }
 }

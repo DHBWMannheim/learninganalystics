@@ -1,7 +1,13 @@
 <div class="row">
   <div class="col">
     <nb-card [nbSpinner]="loadingExams">
-      <nb-card-header style="display: flex; justify-content: space-between; align-items: center;">
+      <nb-card-header
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
         {{ 'exams.header' | translate }} ({{ exams.length }})
       </nb-card-header>
       <nb-card-body>
@@ -17,9 +23,24 @@
 
     <nb-card>
       <nb-card-header>
-        Todos
+        {{ 'todos.upcomingHeader' | translate }}
       </nb-card-header>
-      <nb-card-body> Test </nb-card-body>
+      <nb-list [nbSpinner]="loadingTodos">
+        <nb-list-item *ngFor="let item of todos">
+          <div class="row w-100">
+            <div class="col">
+              <span *ngIf="!item.completed">{{ item.title }}</span>
+              <del *ngIf="item.completed">{{ item.title }}</del>
+            </div>
+            <div>
+              {{ getDeadlineDiffernce(item) }} {{ 'todos.days' | translate }}
+            </div>
+          </div>
+        </nb-list-item>
+        <nb-list-item *ngIf="!todos?.length">
+          {{ 'todos.noUpcoming' | translate }}
+        </nb-list-item>
+      </nb-list>
     </nb-card>
   </div>
 </div>
