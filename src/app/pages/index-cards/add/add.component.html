@@ -2,12 +2,11 @@
   <nb-card-header>
     <div class="row">
       <div class="col my-auto">
-        <h3>{{'indexCards.add.header'|translate}}</h3>
+        <h3>{{ 'indexCards.add.header' | translate }}</h3>
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
-          <nb-icon icon="close-outline"></nb-icon
-          >
+          <nb-icon icon="close-outline"></nb-icon>
         </button>
       </div>
     </div>
@@ -15,35 +14,50 @@
     <div></div>
   </nb-card-header>
   <nb-card-body>
-    <mat-form-field class="w-100">
-      <mat-label>{{'indexCards.add.question.label'|translate}}</mat-label>
-      <textarea
-        matInput
-        [placeholder]="'indexCards.add.question.placeholder'|translate"
-        [(ngModel)]="model.question"
-        name="question"
-        class="textarea"
-        required
-      ></textarea>
-    </mat-form-field>
+    <form [formGroup]="formGroup">
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'indexCards.add.question.label' | translate }}</mat-label>
+        <textarea
+          matInput
+          [placeholder]="'indexCards.add.question.placeholder' | translate"
+          formControlName="question"
+          name="question"
+          class="textarea"
+          required
+        ></textarea>
+        <mat-error *ngIf="formGroup.get('question').hasError('required')">
+          {{ 'indexCards.add.question.errors.required' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'indexCards.add.answer.label'|translate}}</mat-label>
-      <textarea
-        matInput
-        [placeholder]="'indexCards.add.answer.placeholder'|translate"
-        [(ngModel)]="model.answer"
-        name="answer"
-        class="textarea"
-        required
-      ></textarea>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'indexCards.add.answer.label' | translate }}</mat-label>
+        <textarea
+          matInput
+          [placeholder]="'indexCards.add.answer.placeholder' | translate"
+          formControlName="answer"
+          name="answer"
+          class="textarea"
+          required
+        ></textarea>
+        <mat-error *ngIf="formGroup.get('answer').hasError('required')">
+          {{ 'indexCards.add.answer.errors.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </form>
   </nb-card-body>
   <nb-card-footer>
     <div class="row">
       <div class="col"></div>
       <div class="col-end">
-        <button nbButton status="primary" (click)="submit()">{{'indexCards.add.submit'|translate}}</button>
+        <button
+          nbButton
+          status="primary"
+          (click)="submit()"
+          [disabled]="!formGroup.valid"
+        >
+          {{ 'indexCards.add.submit' | translate }}
+        </button>
       </div>
     </div>
   </nb-card-footer>

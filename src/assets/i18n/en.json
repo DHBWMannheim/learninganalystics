@@ -92,27 +92,45 @@
             "header": "New Exam",
             "title": {
                 "label": "Title",
-                "placeholder": "Exam title..."
+                "placeholder": "Exam title...",
+                "errors": {
+                    "required": "A title is needed"
+                }
             },
             "description": {
                 "label": "Description",
-                "placeholder": "Description..."
+                "placeholder": "Description...",
+                "errors": {
+                    "required": "A description is needed"
+                }
             },
             "date": {
                 "label": "Date",
-                "placeholder": "Date..."
+                "placeholder": "Date...",
+                "errors": {
+                    "required": "A date is needed"
+                }
             },
             "time": {
                 "label": "Time",
-                "placeholder": "Time..."
+                "placeholder": "Time...",
+                "errors": {
+                    "required": "A time is needed"
+                }
             },
             "duration": {
                 "label": "Duration in Minutes",
-                "placeholder": "Duration in Minutes..."
+                "placeholder": "Duration in Minutes...",
+                "errors": {
+                    "required": "A duration is needed"
+                }
             },
             "room": {
                 "label": "Room",
-                "placeholder": "Room..."
+                "placeholder": "Room...",
+                "errors": {
+                    "required": "A room is needed"
+                }
             },
             "tools": {
                 "label": "Tools",
@@ -134,27 +152,45 @@
             "header": "Edit Exam",
             "title": {
                 "label": "Title",
-                "placeholder": "Exam title..."
+                "placeholder": "Exam title...",
+                "errors": {
+                    "required": "A title is needed"
+                }
             },
             "description": {
                 "label": "Description",
-                "placeholder": "Description..."
+                "placeholder": "Description...",
+                "errors": {
+                    "required": "A description is needed"
+                }
             },
             "date": {
                 "label": "Date",
-                "placeholder": "Date..."
+                "placeholder": "Date...",
+                "errors": {
+                    "required": "A date is needed"
+                }
             },
             "time": {
                 "label": "Time",
-                "placeholder": "Time..."
+                "placeholder": "Time...",
+                "errors": {
+                    "required": "A time is needed"
+                }
             },
             "duration": {
                 "label": "Duration in Minutes",
-                "placeholder": "Duration in Minutes..."
+                "placeholder": "Duration in Minutes...",
+                "errors": {
+                    "required": "A duration is needed"
+                }
             },
             "room": {
                 "label": "Room",
-                "placeholder": "Room..."
+                "placeholder": "Room...",
+                "errors": {
+                    "required": "A room is needed"
+                }
             },
             "tools": {
                 "label": "Tools",
@@ -220,11 +256,17 @@
             "header": "New Index-Card",
             "question": {
                 "label": "Question",
-                "placeholder": "The Question..."
+                "placeholder": "The Question...",
+                "errors": {
+                    "required": "A question is needed"
+                }
             },
             "answer": {
                 "label": "Answer",
-                "placeholder": "The Answer..."
+                "placeholder": "The Answer...",
+                "errors": {
+                    "required": "An answer is needed"
+                }
             },
             "submit": "Save",
             "toast": {
@@ -249,11 +291,17 @@
             "header": "Edit Index-Card",
             "question": {
                 "label": "Question",
-                "placeholder": "The Question..."
+                "placeholder": "The Question...",
+                "errors": {
+                    "required": "A question is needed"
+                }
             },
             "answer": {
                 "label": "Antwort",
-                "placeholder": "The Answer..."
+                "placeholder": "The Answer...",
+                "errors": {
+                    "required": "An answer is needed"
+                }
             },
             "submit": "Save",
             "toast": {

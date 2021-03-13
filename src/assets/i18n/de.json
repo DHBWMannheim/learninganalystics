@@ -92,27 +92,45 @@
             "header": "Neue Prüfung",
             "title": {
                 "label": "Titel",
-                "placeholder": "Prüfungstitel..."
+                "placeholder": "Prüfungstitel...",
+                "errors": {
+                    "required": "Ein Titel wird benötigt"
+                }
             },
             "description": {
                 "label": "Beschreibung",
-                "placeholder": "Beschreibung..."
+                "placeholder": "Beschreibung...",
+                "errors": {
+                    "required": "Eine Beschreibung wird benötigt"
+                }
             },
             "date": {
                 "label": "Datum",
-                "placeholder": "Datum..."
+                "placeholder": "Datum...",
+                "errors": {
+                    "required": "Ein Datum wird benötigt"
+                }
             },
             "time": {
                 "label": "Uhrzeit",
-                "placeholder": "Uhrzeit..."
+                "placeholder": "Uhrzeit...",
+                "errors": {
+                    "required": "Eine Uhrzeit wird benötigt"
+                }
             },
             "duration": {
                 "label": "Dauer in Minuten",
-                "placeholder": "Dauer in Minuten..."
+                "placeholder": "Dauer in Minuten...",
+                "errors": {
+                    "required": "Eine Dauer wird benötigt"
+                }
             },
             "room": {
                 "label": "Raum",
-                "placeholder": "Raum..."
+                "placeholder": "Raum...",
+                "errors": {
+                    "required": "Ein Raum wird benötigt"
+                }
             },
             "tools": {
                 "label": "Zugelassene Hilfsmittel",
@@ -134,27 +152,45 @@
             "header": "Prüfung bearbeiten",
             "title": {
                 "label": "Titel",
-                "placeholder": "Prüfungstitel..."
+                "placeholder": "Prüfungstitel...",
+                "errors": {
+                    "required": "Ein Titel wird benötigt"
+                }
             },
             "description": {
                 "label": "Beschreibung",
-                "placeholder": "Beschreibung..."
+                "placeholder": "Beschreibung...",
+                "errors": {
+                    "required": "Eine Beschreibung wird benötigt"
+                }
             },
             "date": {
                 "label": "Datum",
-                "placeholder": "Datum..."
+                "placeholder": "Datum...",
+                "errors": {
+                    "required": "Ein Datum wird benötigt"
+                }
             },
             "time": {
                 "label": "Uhrzeit",
-                "placeholder": "Uhrzeit..."
+                "placeholder": "Uhrzeit...",
+                "errors": {
+                    "required": "Eine Uhrzeit wird benötigt"
+                }
             },
             "duration": {
                 "label": "Dauer in Minuten",
-                "placeholder": "Dauer in Minuten..."
+                "placeholder": "Dauer in Minuten...",
+                "errors": {
+                    "required": "Eine Dauer wird benötigt"
+                }
             },
             "room": {
                 "label": "Raum",
-                "placeholder": "Raum..."
+                "placeholder": "Raum...",
+                "errors": {
+                    "required": "Ein Raum wird benötigt"
+                }
             },
             "tools": {
                 "label": "Zugelassene Hilfsmittel",
@@ -220,11 +256,17 @@
             "header": "Neue Karteikarte",
             "question": {
                 "label": "Frage",
-                "placeholder": "Ein kurzer Fragestellung..."
+                "placeholder": "Ein kurzer Fragestellung...",
+                "errors": {
+                    "required": "Es wird eine Fragestellung benötigt"
+                }
             },
             "answer": {
                 "label": "Antwort",
-                "placeholder": "Die Antwort zur Frage..."
+                "placeholder": "Die Antwort zur Frage...",
+                "errors": {
+                    "required": "Es wird eine Antwort benötigt"
+                }
             },
             "submit": "Speichern",
             "toast": {
@@ -249,11 +291,17 @@
             "header": "Karteikarte bearbeiten",
             "question": {
                 "label": "Frage",
-                "placeholder": "Ein kurzer Fragestellung..."
+                "placeholder": "Ein kurzer Fragestellung...",
+                "errors": {
+                    "required": "Es wird eine Fragestellung benötigt"
+                }
             },
             "answer": {
                 "label": "Antwort",
-                "placeholder": "Die Antwort zur Frage..."
+                "placeholder": "Die Antwort zur Frage...",
+                "errors": {
+                    "required": "Es wird eine Antwort benötigt"
+                }
             },
             "submit": "Speichern",
             "toast": {

@@ -2,114 +2,144 @@
   <nb-card-header>
     <div class="row">
       <div class="col my-auto">
-        <h3>{{'exams.add.header'|translate}}</h3>
+        <h3>{{ 'exams.add.header' | translate }}</h3>
       </div>
       <div class="col-end">
         <button nbButton (click)="close()">
-          <nb-icon icon="close-outline"></nb-icon
-          >
+          <nb-icon icon="close-outline"></nb-icon>
         </button>
       </div>
     </div>
   </nb-card-header>
   <nb-card-body>
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.title.label'|translate}}</mat-label>
-      <input
-        matInput
-        [placeholder]="'exams.add.title.placeholder'|translate"
-        [(ngModel)]="model.title"
-        name="title"
-        required
-      />
-    </mat-form-field>
+    <form [formGroup]="formGroup">
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'exams.add.title.label' | translate }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'exams.add.title.placeholder' | translate"
+          formControlName="title"
+          name="title"
+          required
+        />
+        <mat-error *ngIf="formGroup.get('title').hasError('required')">
+          {{ 'exams.add.title.errors.required' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.description.label'|translate}}</mat-label>
-      <textarea
-        matInput
-        [placeholder]="'exams.add.description.placeholder'|translate"
-        [(ngModel)]="model.description"
-        name="description"
-        class="textarea"
-        required
-      ></textarea>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'exams.add.description.label' | translate }}</mat-label>
+        <textarea
+          matInput
+          [placeholder]="'exams.add.description.placeholder' | translate"
+          formControlName="description"
+          name="description"
+          class="textarea"
+          required
+        ></textarea>
+        <mat-error *ngIf="formGroup.get('description').hasError('required')">
+          {{ 'exams.add.description.errors.required' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.date.label'|translate}}</mat-label>
-      <input
-        matInput
-        [placeholder]="'exams.add.date.placeholder'|translate"
-        [(ngModel)]="model.date"
-        name="date"
-        required
-        [nbDatepicker]="datepicker"
-      />
-      <nb-datepicker #datepicker></nb-datepicker>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'exams.add.date.label' | translate }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'exams.add.date.placeholder' | translate"
+          formControlName="date"
+          name="date"
+          required
+          [nbDatepicker]="datepicker"
+        />
+        <mat-error *ngIf="formGroup.get('date').hasError('required')">
+          {{ 'exams.add.date.errors.required' | translate }}
+        </mat-error>
+        <nb-datepicker #datepicker></nb-datepicker>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.time.label'|translate}}</mat-label>
-      <input
-        matInput
-        [placeholder]="'exams.add.time.placeholder'|translate"
-        [(ngModel)]="model.time"
-        name="time"
-        required
-        [nbTimepicker]="timepicker"
-      />
-      <nb-timepicker #timepicker></nb-timepicker>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'exams.add.time.label' | translate }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'exams.add.time.placeholder' | translate"
+          formControlName="time"
+          name="time"
+          required
+          [nbTimepicker]="timepicker"
+        />
+        <mat-error *ngIf="formGroup.get('time').hasError('required')">
+          {{ 'exams.add.time.errors.required' | translate }}
+        </mat-error>
+        <nb-timepicker #timepicker></nb-timepicker>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.duration.label'|translate}}</mat-label>
-      <input
-        matInput
-        [placeholder]="'exams.add.duration.placeholder'|translate"
-        [(ngModel)]="model.duration"
-        name="duration"
-        required
-        type="number"
-      />
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'exams.add.duration.label' | translate }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'exams.add.duration.placeholder' | translate"
+          formControlName="duration"
+          name="duration"
+          required
+          type="number"
+        />
+        <mat-error *ngIf="formGroup.get('duration').hasError('required')">
+          {{ 'exams.add.duration.errors.required' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.room.label'|translate}}</mat-label>
-      <input
-        matInput
-        [placeholder]="'exams.add.room.placeholder'|translate"
-        [(ngModel)]="model.room"
-        name="room"
-        required
-      />
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'exams.add.room.label' | translate }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'exams.add.room.placeholder' | translate"
+          formControlName="room"
+          name="room"
+          required
+        />
+        <mat-error *ngIf="formGroup.get('room').hasError('required')">
+          {{ 'exams.add.room.errors.required' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.tools.label'|translate}}</mat-label>
-      <textarea
-        matInput
-        [placeholder]="'exams.add.tools.placeholder'|translate"
-        [(ngModel)]="model.tools"
-        name="tools"
-      ></textarea>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{ 'exams.add.tools.label' | translate }}</mat-label>
+        <textarea
+          matInput
+          [placeholder]="'exams.add.tools.placeholder' | translate"
+          formControlName="tools"
+          name="tools"
+        ></textarea>
+      </mat-form-field>
 
-    <mat-form-field class="w-100">
-      <mat-label>{{'exams.add.additionalInformations.label'|translate}}</mat-label>
-      <textarea
-        matInput
-        [placeholder]="'exams.add.additionalInformations.placeholder'|translate"
-        [(ngModel)]="model.additionalInformations"
-        name="additionalInformations"
-      ></textarea>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>{{
+          'exams.add.additionalInformations.label' | translate
+        }}</mat-label>
+        <textarea
+          matInput
+          [placeholder]="
+            'exams.add.additionalInformations.placeholder' | translate
+          "
+          formControlName="additionalInformations"
+          name="additionalInformations"
+        ></textarea>
+      </mat-form-field>
+    </form>
   </nb-card-body>
   <nb-card-footer>
     <div class="row">
       <div class="col"></div>
       <div class="col-end">
-        <button nbButton status="primary" (click)="submit()">{{'exams.add.submit'|translate}}</button>
+        <button
+          nbButton
+          status="primary"
+          (click)="submit()"
+          [disabled]="!formGroup.valid"
+        >
+          {{ 'exams.add.submit' | translate }}
+        </button>
       </div>
     </div>
   </nb-card-footer>

@@ -24,7 +24,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { AddComponent } from './add/add.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 
 @NgModule({
@@ -32,6 +32,7 @@ import { EditComponent } from './edit/edit.component';
     CommonModule,
     NbCardModule,
     ThemeModule,
+    ReactiveFormsModule,
     ExamsRoutingModule,
     NbIconModule,
     NbCalendarModule,

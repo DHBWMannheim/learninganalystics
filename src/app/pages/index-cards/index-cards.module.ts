@@ -24,7 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -36,6 +36,7 @@ import { RepeatComponent } from './repeat/repeat.component';
     CommonModule,
     NbCardModule,
     ThemeModule,
+    ReactiveFormsModule,
     IndexCardsRoutingModule,
     NbIconModule,
     NbActionsModule,

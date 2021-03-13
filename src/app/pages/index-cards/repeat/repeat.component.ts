@@ -166,7 +166,6 @@ export class RepeatComponent implements OnInit {
   }
 
   private async isAuthorizedToModify({ owner: { id } }: IndexCard) {
-    console.log(id, this.courseOwner.id);
     return (
       id === (await this.userService.currentUser).id ||
       (await this.userService.currentUser).id === this.courseOwner.id
