@@ -18,7 +18,7 @@ In \autoref{fig:login} ist die Anmeldeseite dargestellt.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=.7\textwidth]{img/Login}
+    \includegraphics[width=.7\textwidth]{img/Login.png}
     \caption{Login-Maske}
     \label{fig:login}
 \end{figure}
@@ -58,11 +58,15 @@ Sollte der Nutzer bereits einen Useraccount besitzen kann er jederzeit durch ein
 
 Ist alles korrekt ausgefüllt kann der Nutzer durch klick auf \enquote{Registrieren} die Anmeldung abschließen und wird automatisch eingeloggt.
 
+Direkt nach der Registrierung wird der Nutzer auf eine Seite mit verschiedenen Fragen weitergeleitet. Diese Seite beinhaltet Fragen zu seinem Lerntypen. 
+Der Nutzer kann die Fragen freiwillig beantworten, jedoch helfen sie dem Dozenten einen Überblick zu bekommen, welche verschiedenen Lerntypen in 
+einem Kurs enthalten sind. Die Auswertung der Lerntypen wird unter dem Punkt \autoref{sec:Feedback} weiter behandelt.
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=.7\textwidth]{img/register.png}
-    \caption{Registrierungs-Maske}
-    \label{fig:registrierung}
+    \includegraphics[width=.7\textwidth]{img/Einstiegsfragen.png}
+    \caption{Einstiegsfragen}
+    \label{fig:einstiegsfragen}
 \end{figure}
 
 
@@ -104,14 +108,20 @@ Dies verhindert, dass unberechtigte Personen die Email mitlesen können und das 
 
 
 \section{Karteikarten}\label{sec:Karteikarten} % TODO: Bilder
-Index-Cards stellen eine Karteikarten-Funktion dar.
-Im Nutzer-Interface werden Karten ähnlich zu einem realen Karteikasten hintereinander dargestellt.
+Index-Cards stellen eine Karteikarten-Funktion dar. Dabei können Dozenten neue Karteikarten erstellen, die die Kursteilnehmer bearbeiten können.
+Im Nutzer-Interface werden diese Karten ähnlich zu einem realen Karteikasten hintereinander dargestellt.
 Jede Karte zeigt zunächst die Frage an.
 Solle man die Antwort zu der Frage nicht wissen oder sich kontrollieren wollen, kann man mithilfe des Pfeils im Eck einer jeden Karte die Antwort einblenden.
 Anschließend können die Karten mit den Buttons am unteren Bildschirmrand als gewusst und nicht gewusst markiert werden.
 Durch die Zahlen an diesen Buttons kann der Nutzer leicht ablesen, wie viele Karten der Nutzer bereits wusste.
 Karten können aber auch durch einfaches ziehen der Karten zu gewusst oder nicht gewusst verschoben werden.
-Dies erleichtert die Handhabung.
+Dies erleichtert die Handhabung. In der Grafik \autoref{fig:Karteikarten} ist die Ansicht zu sehen, die ein Teilnehmer bekommt, wenn er die Karteikarten durcharbeitet.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Karteikarten_hinzugefuegt.png}
+    \caption{Karteikarten}
+    \label{fig:Karteikarten}
+\end{figure}
 
 Wurden alle Karteikarten beantwortet bekommt der Student direkt Feedback, wieviel Prozent aller Fragen er richtig beantworten konnte.
 % TODO: Zusätzlich bekommt er angezeigt, welche Karten er nocheinmal auffrischen sollte
@@ -129,14 +139,20 @@ Inner
 
 
 % TODO: Die Material Principien besser herausarbeiten  https://material.io/components/dialogs#usage
-Nach dem Klick öffnet sich ein Modal, in dem alle relevanten Todos eingetragen werden können.
+Nach dem Klick öffnet sich ein Modal, in dem alle relevanten TODOs eingetragen werden können.
 Todos zeichnen sich durch einen Titel und eine optionale Beschreibung, sowie eine optionale Deadline aus.
-Sofern eine Deadline angegeben ist, wird dieses Todo in den Kalender über der Todo Übersicht dargestellt.
-Je roter ein Tag ist, desto mehr Todos müssen an diesem Tag erledigt sein.
+Sofern eine Deadline angegeben ist, wird dieses TODO in den Kalender über der TODO Übersicht dargestellt.
+Je roter ein Tag ist, desto mehr TODOs müssen an diesem Tag erledigt sein.
 Der Kalender zeigt stets den Zeitraum zwischen Anfang des letzten Monates und Ende der nächsten zwei Monate  an.
 % TODO: ?
-Todos können schnell und einfach durch klicken auf die Checkbox vor einem Todo abgehackt werden.
-
+TODOs können schnell und einfach durch klicken auf die Checkbox vor einem TODO abgehackt werden.
+In der Grafik \autoref{fig:TODOanlegen} ist bereits ein TODO angelegt und es ist zu sehen in welchem Zeitraum dieses TODO erledigt werden muss.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Aufgabe_angelegt.png}
+    \caption{TODO angelegt}
+    \label{fig:TODOanlegen}
+\end{figure}
 
 
 
@@ -147,8 +163,8 @@ Todos können schnell und einfach durch klicken auf die Checkbox vor einem Todo 
 
 
 
-\section{Files}
-Die \enquote{Files}-Maske dient zur Verwaltung von Dokumenten.
+\section{Dateien}
+Die \enquote{Dateien}-Maske dient zur Verwaltung von Dokumenten.
 % TODO: Das in Konzeption verschieben?
 Momentan müssen Dokumente umständich an Studenten weitergegeben werden.
 In der Regel werden Dokumente an die Studiengangsleiter geschickt, welche die Dokumente anschließend weiterverteilen.
@@ -163,12 +179,12 @@ Aus diesem Grund wird ein einheitliches System benötigt, in dem Dateien abgeleg
 
 \begin{figure}[h] 
     \centering
-    \includegraphics[width=\textwidth]{img/Files.png}
-    \caption{Files-Maske}
-    \label{fig:files}
+    \includegraphics[width=.7\textwidth]{img/Dateien_uebersicht.png}
+    \caption{Dateien-Maske}
+    \label{fig:dateien}
 \end{figure}
 
-Das in \autoref{fig:files} dargestellte Datenmanagementsystem erleichtert dies, da Dokumente für einen Kurs hochgeladen werden können.
+Das in \autoref{fig:dateien} dargestellte Datenmanagementsystem erleichtert dies, da Dokumente für einen Kurs hochgeladen werden können.
 Dokumente können mithilfe des \enquote{browse}-Button hochgeladen werden.
 Dafür öffnet sich ein Fenster, in dem beliebig viele Dateien für den Upload hochgeladen werden.
 Zur einfacheren Nutzung können optional auch Dateien direkt aus dem Explorer in das Fenster gezogen werden.
@@ -215,7 +231,7 @@ Anschließend wird die eigentliche Datei aus dem Bucket-Speicher gelöscht.
 % TODO: Konform zum Müll Artikel 17
 
 
-\section{Feedback}
+\section{Feedback}\label{sec:Feedback}
 % TODO: Das in die Anforderungen packen + die Anwendung in die Abgrenzung zu anderen Softwares packen + Mit Personas verknüpfen
 Die Feedback-Maske dient dazu, einem Dozenten eine unmittelbare Rückmeldung zu geben, wodurch Dozenten jederzeit ihren Vorlesungsstil anpassen können.
 Gegenwärtig existieren Umfragen am Ende jedes Semesters, in dem Studenten die Vorlesung bewerten können.
@@ -223,11 +239,37 @@ Problematisch ist, dass diese Umfragen erst am Ende eines Semesters durchgeführ
 Das bedeutet, dass unter Umständen eine ganze Vorlesungsreihe suboptimal durchgeführt wird.
 Dazu kommt, dass es an der DHBW einen stetigen Ausstausch an Dozenten gibt.
 Neue Dozenten haben noch keine Erfahrung im Halten von Vorlesungen.
-Viele der Dozenten fragen bereits während der ersten Vorlesungen um Feedback.
+Viele der Dozenten bitten bereits während der ersten Vorlesungen um Feedback.
 Aus diesem Grund wird eine anonyme Plattform benötigt, bei dem kurzzeitig Feedback gegeben werden kann.
 
 Im Vergleich zu den Umfragen am Ende eines Semesters werden die Umfragen in der Anwendung kurz gehalten.
 Dies geht daraus hervor, dass es als eine schnelle Feedbackmöglichkeit gedacht ist und eine kurze Umfrage die Change erhöht, dass das Feedback ausgefüllt wird.
+In der Grafik \autoref{fig:feeback} sind die verschiedenen Punkte aufgelistet, bei denen die Kursteilnehmner dem Dozenten Feedback geben können.
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Feedback_geben.png}
+    \caption{Feedback}
+    \label{fig:feedback}
+\end{figure}
+Der Dozent kann nachdem die Teilnehmer ihr Feedback gegeben haben, die Anworten auswerten. Zum einen kann dies direkt in der Webapplikation ausgewertet werden 
+und zum anderen können die Ergebnisse als CSV-Datei exportiert werden und selbstständig ausgewertet werden. In der Grafik \autoref{fig:passwordVergessen} 
+wird eine beispielhafte Auswertung angezeigt.
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Feedback_uebersicht_Teilnehmer_Feedback.png}
+    \caption{Feedback-Ergebnis}
+    \label{fig:_ergebnis}
+\end{figure}
+Als letztes Feature bei der Feedbackoption kann eine Übersicht zum Kurs angezeigt werden. Diese Übersicht beinhaltet alle Antworten zu den Fragen, die 
+bei der Registrierung gestellt werden. Dadurch hat der Dozent einen Eindruck, welche Arten von Lerntypen in diesem Kurs vertreten sind und wie viel 
+Erfahrung die Teilnehmner mit der Online-Lehre haben. 
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Feedback_uebersicht_Teilnehmer.png}
+    \caption{Übersicht-Teilnehmner}
+    \label{fig:uebersichtTeilnehmner}
+\end{figure}
+
 
 
 
@@ -248,7 +290,7 @@ Dies geht daraus hervor, dass es als eine schnelle Feedbackmöglichkeit gedacht 
 \section{Exams}
 Als Studenten konnten wir ein weiteres Problem mit der aktuellen Informationsversorgung identifizieren.
 Momentan herrscht eine große Unklarheit über Prüfungsleistungen.
-Teilweiße werden die Prüfungsleistungen in den Vorlesungen angekündigt, manche in Moodle und wieder andere werden in einem Google Calendar eingetragen.
+Teilweise werden die Prüfungsleistungen in den Vorlesungen angekündigt, manche in Moodle und wieder andere werden in einem Google Calendar eingetragen.
 Außer einem Datum sind oft keine weiteren Informationen festgesetzt.
 Stattdessen werden diese mündlich in den Vorlesungen bekanntegegeben.
 Besonders für Studenten die Aufgrund von Krankheiten oder, in der Zeit von Online-Vorlesungen, Internetverbindugnsprobleme besitzen ist dies problematisch, wenn sie diese Informationen nicht mitbekommen.
@@ -257,8 +299,13 @@ Dazu kommt, dass besonders bei Portfolioprüfungen, Prüfungen nicht aus einer e
 Ein Beispiel ist die Erstellung einer Präsentation, bei die nicht nur der Vortrag, sondern auch das Begleitmaterial bewertet wird.
 
 Aus diesem Grund können in der Anwendungen Informationen über Klausuren verwaltet werden.
-% TODO: 
 Jede Prüfungsleistung besitzt einen Titel und einer Beschreibung, in der beschrieben werden kann, was die Aufgabe ist.
 Außerdem wird das Abgabedatum in einem Kalender zur einfacheren Übersicht dargestellt.
 Zusätzlich werden alle wichtigen Informationen, wie Räume oder zugelassenen Hilfsmittel dargestellt.
-
+Die Eingabemaske ist in der Grafik \autoref{fig:pruefungsmaske} zu sehen.
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Pruefung_hinzugefuegen.png}
+    \caption{Prüfungsmaske}
+    \label{fig:pruefungsmaske}
+\end{figure}
