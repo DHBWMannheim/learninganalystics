@@ -315,9 +315,9 @@
     "feedback": {
         "header": "Feedback",
         "value": [
-            "low",
-            "medium",
-            "high"
+            "Low",
+            "Medium",
+            "High"
         ],
         "comment": {
             "label": "Additional Remarks",

@@ -25,6 +25,12 @@ const splitLine = {
   },
 };
 
+const DHBW_COLOR = [
+  '#e10217',
+  '#0057c2',
+  '#00d68f'
+];
+
 @Component({
   selector: 'ngx-lecturer',
   templateUrl: './lecturer.component.html',
@@ -75,21 +81,12 @@ export class LecturerComponent implements OnInit {
     },
     yAxis: {
       type: 'value',
+      interval: 1,
     },
-    series: [
-      {
-        data: [],
-        type: 'bar',
-        showBackground: true,
-      },
-    ],
+    series: [],
   };
 
   feedbackChart = {
-    title: {
-      top: 30,
-      left: 'center',
-    },
     tooltip: {
       position: 'top',
       appendToBody: true,
@@ -105,14 +102,9 @@ export class LecturerComponent implements OnInit {
     },
     yAxis: {
       type: 'value',
+      interval: 1,
     },
-    series: [
-      {
-        data: [],
-        type: 'bar',
-        showBackground: true,
-      },
-    ],
+    series: [],
   };
 
   comments: string[];
@@ -140,11 +132,16 @@ export class LecturerComponent implements OnInit {
   }
 
   private async updateChartTranslations() {
+    const labels = await this.translate.get('feedback.value').toPromise();
     this.translate
       .get('feedback.lecturerView.feedback.chart')
       .toPromise()
       .then((v) => {
         this.feedbackChart.xAxis.data = v;
+        this.feedbackChart.series.forEach((s, i) => {
+          s.name = labels[i];
+        });
+
         this.feedbackChart = { ...this.feedbackChart };
       });
 
@@ -153,6 +150,9 @@ export class LecturerComponent implements OnInit {
       .toPromise()
       .then((v) => {
         this.questionareChart.xAxis.data = v;
+        this.questionareChart.series.forEach((s, i) => {
+          s.name = labels[i];
+        });
         this.questionareChart = { ...this.questionareChart };
       });
 
@@ -183,10 +183,6 @@ export class LecturerComponent implements OnInit {
     ]);
   }
 
-  private semiRound(n: number) {
-    return Number(n.toFixed(2));
-  }
-
   private async loadFeedback(course: Course) {
     const feedback: Feedback[] = await this.feedbackService.getData(
       await this.feedbackService
@@ -195,26 +191,48 @@ export class LecturerComponent implements OnInit {
         .get(),
     );
     this.rawFeedbackData = feedback;
-    if (feedback.length) {
-      this.comments = feedback.map((f) => f.comment);
 
-      this.feedbackChart.series[0].data = [
-        this.semiRound(
-          feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
-        ),
-        this.semiRound(
-          feedback.reduce((acc, f) => f.informations + acc, 0) /
-            feedback.length,
-        ),
-        this.semiRound(
-          feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
-        ),
-        this.semiRound(
-          feedback.reduce((acc, f) => f.transfer + acc, 0) / feedback.length,
-        ),
-      ];
-      this.feedbackChart = { ...this.feedbackChart };
-    }
+    this.comments = feedback.map((f) => f.comment);
+
+    const funGroup = groupBy(
+      feedback.map(({ fun }) => fun),
+      Number,
+    );
+
+    const informationsGroup = groupBy(
+      feedback.map(({ informations }) => informations),
+      Number,
+    );
+
+    const qualityGroup = groupBy(
+      feedback.map(({ quality }) => quality),
+      Number,
+    );
+
+    const transferGroup = groupBy(
+      feedback.map(({ transfer }) => transfer),
+      Number,
+    );
+
+    const labels = await this.translate.get('feedback.value').toPromise();
+
+    this.feedbackChart.series = new Array(3).fill(0).map((_, i) => ({
+      data: [
+        funGroup[i]?.length || 0,
+        informationsGroup[i]?.length || 0,
+        qualityGroup[i]?.length || 0,
+        transferGroup[i]?.length || 0,
+      ],
+      itemStyle: {
+        color: DHBW_COLOR[i],
+      },
+      type: 'bar',
+      name: labels[i],
+      barGap: 0,
+      showBackground: true,
+    }));
+
+    this.feedbackChart = { ...this.feedbackChart };
   }
 
   private async loadQuestionares(course: Course) {
@@ -250,26 +268,38 @@ export class LecturerComponent implements OnInit {
     ];
 
     this.typeChart = { ...this.typeChart };
+    //TODO: funktioniert das, wenn kein Questionare gibt
+    const onlineGroup = groupBy(
+      questionares.map(({ online }) => online),
+      Number,
+    );
 
-    const questionareData = [
-      this.semiRound(
-        questionares.reduce((acc, f) => f.online + acc, 0) /
-          participants.length,
-      ),
-      this.semiRound(
-        questionares.reduce((acc, f) => f.apps + acc, 0) / participants.length,
-      ),
-      this.semiRound(
-        questionares.reduce((acc, f) => f.experience + acc, 0) /
-          participants.length,
-      ),
-    ];
+    const appsGroup = groupBy(
+      questionares.map(({ apps }) => apps),
+      Number,
+    );
 
-    this.questionareChart.series[0] = {
-      data: questionareData,
+    const experienceGroup = groupBy(
+      questionares.map(({ experience }) => experience),
+      Number,
+    );
+
+    const labels = await this.translate.get('feedback.value').toPromise();
+
+    this.questionareChart.series = new Array(3).fill(0).map((_, i) => ({
+      data: [
+        onlineGroup[i]?.length || 0,
+        appsGroup[i]?.length || 0,
+        experienceGroup[i]?.length || 0,
+      ],
       type: 'bar',
+      itemStyle: {
+        color: DHBW_COLOR[i],
+      },
+      name: labels[i],
+      barGap: 0,
       showBackground: true,
-    };
+    }));
     this.questionareChart = { ...this.questionareChart };
   }
 
@@ -282,16 +312,17 @@ export class LecturerComponent implements OnInit {
   }
 
   async exportCourseFeedback() {
+    const labels = await this.translate.get('feedback.value').toPromise();
     const data = [
       await this.translate
         .get('feedback.lecturerView.feedback.chart')
         .toPromise(),
       ...this.rawFeedbackData.map(
         ({ fun, informations, quality, transfer }) => [
-          `${fun}`,
-          `${informations}`,
-          `${quality}`,
-          `${transfer}`,
+          labels[fun],
+          labels[informations],
+          labels[quality],
+          labels[transfer],
         ],
       ),
     ];
@@ -302,6 +333,7 @@ export class LecturerComponent implements OnInit {
     const learningTypeNames = await this.translate
       .get('feedback.lecturerView.participants.typeChart')
       .toPromise();
+    const labels = await this.translate.get('feedback.value').toPromise();
     const data = [
       await Promise.all([
         this.translate.get('questionare.typ.label').toPromise(),
@@ -311,9 +343,9 @@ export class LecturerComponent implements OnInit {
       ]),
       ...this.rawQuenstionareData.map(({ typ, online, apps, experience }) => [
         `${learningTypeNames[typ]}`,
-        `${online}`,
-        `${apps}`,
-        `${experience}`,
+        labels[online],
+        labels[apps],
+        labels[experience],
       ]),
     ];
 
