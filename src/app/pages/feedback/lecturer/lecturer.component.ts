@@ -25,6 +25,12 @@ const splitLine = {
   },
 };
 
+const DHBW_COLOR = [
+  '#e10217',
+  '#0057c2',
+  '#00d68f'
+];
+
 @Component({
   selector: 'ngx-lecturer',
   templateUrl: './lecturer.component.html',
@@ -210,7 +216,6 @@ export class LecturerComponent implements OnInit {
 
     const labels = await this.translate.get('feedback.value').toPromise();
 
-    //TODO: Export
     this.feedbackChart.series = new Array(3).fill(0).map((_, i) => ({
       data: [
         funGroup[i]?.length || 0,
@@ -218,8 +223,11 @@ export class LecturerComponent implements OnInit {
         qualityGroup[i]?.length || 0,
         transferGroup[i]?.length || 0,
       ],
+      itemStyle: {
+        color: DHBW_COLOR[i],
+      },
       type: 'bar',
-      name: labels[i], //TODO: Translation
+      name: labels[i],
       barGap: 0,
       showBackground: true,
     }));
@@ -285,6 +293,9 @@ export class LecturerComponent implements OnInit {
         experienceGroup[i]?.length || 0,
       ],
       type: 'bar',
+      itemStyle: {
+        color: DHBW_COLOR[i],
+      },
       name: labels[i],
       barGap: 0,
       showBackground: true,
