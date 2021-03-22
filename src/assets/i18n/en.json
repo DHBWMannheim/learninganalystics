@@ -502,6 +502,22 @@
     "logout": {
         "message": "Logging out, please wait..."
     },
+    "requestPassword": {
+        "title": "Forgot Password",
+        "subTitle": "Enter your email address and we’ll send a link to reset your password",
+        "error": "Oh snap!",
+        "email": {
+            "label": "Enter your email address:",
+            "placeholder": "Email address",
+            "errors": {
+                "required": "Email is required!",
+                "patterns": "Email should be the real one!"
+            }
+        },
+        "backToLogin": "Already have an account? Log in",
+        "backToRegister": "Register",
+        "submit": "Request password"
+    },
     "resetPassword": {
         "title": "Change password",
         "subtitle": "Please set a new password",
