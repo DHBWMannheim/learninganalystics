@@ -75,21 +75,12 @@ export class LecturerComponent implements OnInit {
     },
     yAxis: {
       type: 'value',
+      interval: 1,
     },
-    series: [
-      {
-        data: [],
-        type: 'bar',
-        showBackground: true,
-      },
-    ],
+    series: [],
   };
 
   feedbackChart = {
-    title: {
-      top: 30,
-      left: 'center',
-    },
     tooltip: {
       position: 'top',
       appendToBody: true,
@@ -105,14 +96,9 @@ export class LecturerComponent implements OnInit {
     },
     yAxis: {
       type: 'value',
+      interval: 1,
     },
-    series: [
-      {
-        data: [],
-        type: 'bar',
-        showBackground: true,
-      },
-    ],
+    series: [],
   };
 
   comments: string[];
@@ -183,10 +169,6 @@ export class LecturerComponent implements OnInit {
     ]);
   }
 
-  private semiRound(n: number) {
-    return Number(n.toFixed(2));
-  }
-
   private async loadFeedback(course: Course) {
     const feedback: Feedback[] = await this.feedbackService.getData(
       await this.feedbackService
@@ -195,26 +177,70 @@ export class LecturerComponent implements OnInit {
         .get(),
     );
     this.rawFeedbackData = feedback;
-    if (feedback.length) {
-      this.comments = feedback.map((f) => f.comment);
 
-      this.feedbackChart.series[0].data = [
-        this.semiRound(
-          feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
-        ),
-        this.semiRound(
-          feedback.reduce((acc, f) => f.informations + acc, 0) /
-            feedback.length,
-        ),
-        this.semiRound(
-          feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
-        ),
-        this.semiRound(
-          feedback.reduce((acc, f) => f.transfer + acc, 0) / feedback.length,
-        ),
-      ];
-      this.feedbackChart = { ...this.feedbackChart };
-    }
+    this.comments = feedback.map((f) => f.comment);
+
+    const funGroup = groupBy(
+      feedback.map(({ fun }) => fun),
+      Number,
+    );
+
+    const informationsGroup = groupBy(
+      feedback.map(({ informations }) => informations),
+      Number,
+    );
+
+    const qualityGroup = groupBy(
+      feedback.map(({ quality }) => quality),
+      Number,
+    );
+
+    const transferGroup = groupBy(
+      feedback.map(({ transfer }) => transfer),
+      Number,
+    );
+
+    //TODO: Export
+    this.feedbackChart.series = [
+      {
+        data: [
+          funGroup[0]?.length || 0,
+          informationsGroup[0]?.length || 0,
+          qualityGroup[0]?.length || 0,
+          transferGroup[0]?.length || 0,
+        ],
+        type: 'bar',
+        name: 'Gering', //TODO: Translation
+        barGap: 0,
+        showBackground: true,
+      },
+      {
+        data: [
+          funGroup[1]?.length || 0,
+          informationsGroup[1]?.length || 0,
+          qualityGroup[1]?.length || 0,
+          transferGroup[1]?.length || 0,
+        ],
+        type: 'bar',
+        name: 'Mittel',
+        barGap: 0,
+        showBackground: true,
+      },
+      {
+        data: [
+          funGroup[2]?.length || 0,
+          informationsGroup[2]?.length || 0,
+          qualityGroup[2]?.length || 0,
+          transferGroup[2]?.length || 0,
+        ],
+        type: 'bar',
+        name: 'Hoch',
+        barGap: 0,
+        showBackground: true,
+      },
+    ];
+
+    this.feedbackChart = { ...this.feedbackChart };
   }
 
   private async loadQuestionares(course: Course) {
@@ -250,26 +276,57 @@ export class LecturerComponent implements OnInit {
     ];
 
     this.typeChart = { ...this.typeChart };
+    //TODO: funktioniert das, wenn kein Questionare gibt
+    const onlineGroup = groupBy(
+      questionares.map(({ online }) => online),
+      Number,
+    );
 
-    const questionareData = [
-      this.semiRound(
-        questionares.reduce((acc, f) => f.online + acc, 0) /
-          participants.length,
-      ),
-      this.semiRound(
-        questionares.reduce((acc, f) => f.apps + acc, 0) / participants.length,
-      ),
-      this.semiRound(
-        questionares.reduce((acc, f) => f.experience + acc, 0) /
-          participants.length,
-      ),
+    const appsGroup = groupBy(
+      questionares.map(({ apps }) => apps),
+      Number,
+    );
+
+    const experienceGroup = groupBy(
+      questionares.map(({ experience }) => experience),
+      Number,
+    );
+
+    this.questionareChart.series = [
+      {
+        data: [
+          onlineGroup[0]?.length || 0,
+          appsGroup[0]?.length || 0,
+          experienceGroup[0]?.length || 0,
+        ],
+        type: 'bar',
+        name: 'Gering', //TODO: Translation
+        barGap: 0,
+        showBackground: true,
+      },
+      {
+        data: [
+          onlineGroup[1]?.length || 0,
+          appsGroup[1]?.length || 0,
+          experienceGroup[1]?.length || 0,
+        ],
+        type: 'bar',
+        name: 'Mittel',
+        barGap: 0,
+        showBackground: true,
+      },
+      {
+        data: [
+          onlineGroup[2]?.length || 0,
+          appsGroup[2]?.length || 0,
+          experienceGroup[2]?.length || 0,
+        ],
+        type: 'bar',
+        name: 'Hoch',
+        barGap: 0,
+        showBackground: true,
+      },
     ];
-
-    this.questionareChart.series[0] = {
-      data: questionareData,
-      type: 'bar',
-      showBackground: true,
-    };
     this.questionareChart = { ...this.questionareChart };
   }
 
