@@ -86,7 +86,7 @@ export abstract class CommonFirestoreService<
       snap.docs.map((doc) => {
         const data = doc.data() as any; //TODO: Fix for dates
         for (const field in data) {
-          if (data[field].toDate) data[field] = data[field].toDate();
+          if (data[field] && data[field].toDate) data[field] = data[field].toDate();
         }
         return data;
       }),

@@ -532,7 +532,7 @@
                 "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
             }
         },
-        "repeatPassword": {
+        "confirmPassword": {
             "label": "Password wiederhohlen",
             "placeholder": "Password wiederhohlen",
             "errors": {
