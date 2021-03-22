@@ -32,6 +32,10 @@ const splitLine = {
 })
 export class LecturerComponent implements OnInit {
   typeChart = {
+    tooltip: {
+      position: 'top',
+      appendToBody: true,
+    },
     radar: [
       {
         top: 30,
@@ -58,6 +62,8 @@ export class LecturerComponent implements OnInit {
   questionareChart = {
     tooltip: {
       position: 'top',
+      appendToBody: true,
+      trigger: 'axis',
     },
     legend: {
       show: false,
@@ -86,6 +92,8 @@ export class LecturerComponent implements OnInit {
     },
     tooltip: {
       position: 'top',
+      appendToBody: true,
+      trigger: 'axis',
     },
     legend: {
       show: false,
@@ -175,6 +183,10 @@ export class LecturerComponent implements OnInit {
     ]);
   }
 
+  private semiRound(n: number) {
+    return Number(n.toFixed(2));
+  }
+
   private async loadFeedback(course: Course) {
     const feedback: Feedback[] = await this.feedbackService.getData(
       await this.feedbackService
@@ -187,10 +199,19 @@ export class LecturerComponent implements OnInit {
       this.comments = feedback.map((f) => f.comment);
 
       this.feedbackChart.series[0].data = [
-        feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
-        feedback.reduce((acc, f) => f.informations + acc, 0) / feedback.length,
-        feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
-        feedback.reduce((acc, f) => f.transfer + acc, 0) / feedback.length,
+        this.semiRound(
+          feedback.reduce((acc, f) => f.fun + acc, 0) / feedback.length,
+        ),
+        this.semiRound(
+          feedback.reduce((acc, f) => f.informations + acc, 0) /
+            feedback.length,
+        ),
+        this.semiRound(
+          feedback.reduce((acc, f) => f.quality + acc, 0) / feedback.length,
+        ),
+        this.semiRound(
+          feedback.reduce((acc, f) => f.transfer + acc, 0) / feedback.length,
+        ),
       ];
       this.feedbackChart = { ...this.feedbackChart };
     }
@@ -231,10 +252,17 @@ export class LecturerComponent implements OnInit {
     this.typeChart = { ...this.typeChart };
 
     const questionareData = [
-      questionares.reduce((acc, f) => f.online + acc, 0) / participants.length,
-      questionares.reduce((acc, f) => f.apps + acc, 0) / participants.length,
-      questionares.reduce((acc, f) => f.experience + acc, 0) /
-        participants.length,
+      this.semiRound(
+        questionares.reduce((acc, f) => f.online + acc, 0) /
+          participants.length,
+      ),
+      this.semiRound(
+        questionares.reduce((acc, f) => f.apps + acc, 0) / participants.length,
+      ),
+      this.semiRound(
+        questionares.reduce((acc, f) => f.experience + acc, 0) /
+          participants.length,
+      ),
     ];
 
     this.questionareChart.series[0] = {
