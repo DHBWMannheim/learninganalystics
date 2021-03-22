@@ -504,6 +504,22 @@
     "logout": {
         "message": "Der Logout wird bearbeitet. Bitte warten..."
     },
+    "requestPassword": {
+        "title": "Password zurücksetzen",
+        "subTitle": "Gib hier deine Email-Adresse ein, damit wir die einen Link zum zurücksetzen schicken können",
+        "error": "Woops!",
+        "email": {
+            "label": "Email-Adresse",
+            "placeholder": "Email-Adresse",
+            "errors": {
+                "required": "Eine Email-Adresse wird benötigt!",
+                "patterns": "Eine echte Email-Adresse!"
+            }
+        },
+        "backToLogin": "Login",
+        "backToRegister": "Registrierung",
+        "submit": "Passwort zurücksetzen"
+    },
     "resetPassword": {
         "title": "Password ändern",
         "subtitle": "Bitte setzen Sie ein neues Password",

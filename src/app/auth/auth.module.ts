@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   NbAlertModule,
   NbButtonModule,
@@ -8,20 +11,17 @@ import {
   NbMenuModule,
   NbSpinnerModule,
 } from '@nebular/theme';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { createTranslateLoader, ThemeModule } from '../@theme/theme.module';
+import { ActionComponent } from './action/action.component';
 import { AuthRoutingModule } from './auth-routing.module';
-import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
-import { TermsComponent } from './terms/terms.component';
-import { FormsModule } from '@angular/forms';
+import { RequestPasswordComponent } from './request-password/request-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ActionComponent } from './action/action.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
-import { OnbordingComponent } from './onbording/onbording.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   imports: [
@@ -51,6 +51,7 @@ import { OnbordingComponent } from './onbording/onbording.component';
     TermsComponent,
     ResetPasswordComponent,
     ActionComponent,
+    RequestPasswordComponent,
   ],
 })
 export class AuthModule {}

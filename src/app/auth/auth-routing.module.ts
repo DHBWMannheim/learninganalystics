@@ -1,19 +1,15 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import {
-  NbAuthComponent,
-  NbLogoutComponent,
-  NbRequestPasswordComponent,
-  NbResetPasswordComponent,
-} from '@nebular/auth';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { TermsComponent } from './terms/terms.component';
-import { LogoutComponent } from './logout/logout.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ActionComponent } from './action/action.component';
-import { OnbordingComponent } from './onbording/onbording.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NbAuthComponent } from '@nebular/auth';
+
 import { AuthGuard } from '../auth.guard';
+import { ActionComponent } from './action/action.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
+import { RequestPasswordComponent } from './request-password/request-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   {
@@ -34,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'request-password',
-        component: NbRequestPasswordComponent,
+        component: RequestPasswordComponent,
       },
       {
         path: 'reset-password',
