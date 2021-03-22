@@ -315,9 +315,9 @@
     "feedback": {
         "header": "Feedback",
         "value": [
-            "gering",
-            "mittel",
-            "hoch"
+            "Gering",
+            "Mittel",
+            "Hoch"
         ],
         "comment": {
             "label": "Anmerkungen",

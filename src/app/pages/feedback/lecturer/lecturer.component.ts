@@ -126,11 +126,16 @@ export class LecturerComponent implements OnInit {
   }
 
   private async updateChartTranslations() {
+    const labels = await this.translate.get('feedback.value').toPromise();
     this.translate
       .get('feedback.lecturerView.feedback.chart')
       .toPromise()
       .then((v) => {
         this.feedbackChart.xAxis.data = v;
+        this.feedbackChart.series.forEach((s, i) => {
+          s.name = labels[i];
+        });
+
         this.feedbackChart = { ...this.feedbackChart };
       });
 
@@ -139,6 +144,9 @@ export class LecturerComponent implements OnInit {
       .toPromise()
       .then((v) => {
         this.questionareChart.xAxis.data = v;
+        this.questionareChart.series.forEach((s, i) => {
+          s.name = labels[i];
+        });
         this.questionareChart = { ...this.questionareChart };
       });
 
@@ -200,45 +208,21 @@ export class LecturerComponent implements OnInit {
       Number,
     );
 
+    const labels = await this.translate.get('feedback.value').toPromise();
+
     //TODO: Export
-    this.feedbackChart.series = [
-      {
-        data: [
-          funGroup[0]?.length || 0,
-          informationsGroup[0]?.length || 0,
-          qualityGroup[0]?.length || 0,
-          transferGroup[0]?.length || 0,
-        ],
-        type: 'bar',
-        name: 'Gering', //TODO: Translation
-        barGap: 0,
-        showBackground: true,
-      },
-      {
-        data: [
-          funGroup[1]?.length || 0,
-          informationsGroup[1]?.length || 0,
-          qualityGroup[1]?.length || 0,
-          transferGroup[1]?.length || 0,
-        ],
-        type: 'bar',
-        name: 'Mittel',
-        barGap: 0,
-        showBackground: true,
-      },
-      {
-        data: [
-          funGroup[2]?.length || 0,
-          informationsGroup[2]?.length || 0,
-          qualityGroup[2]?.length || 0,
-          transferGroup[2]?.length || 0,
-        ],
-        type: 'bar',
-        name: 'Hoch',
-        barGap: 0,
-        showBackground: true,
-      },
-    ];
+    this.feedbackChart.series = new Array(3).fill(0).map((_, i) => ({
+      data: [
+        funGroup[i]?.length || 0,
+        informationsGroup[i]?.length || 0,
+        qualityGroup[i]?.length || 0,
+        transferGroup[i]?.length || 0,
+      ],
+      type: 'bar',
+      name: labels[i], //TODO: Translation
+      barGap: 0,
+      showBackground: true,
+    }));
 
     this.feedbackChart = { ...this.feedbackChart };
   }
@@ -292,41 +276,19 @@ export class LecturerComponent implements OnInit {
       Number,
     );
 
-    this.questionareChart.series = [
-      {
-        data: [
-          onlineGroup[0]?.length || 0,
-          appsGroup[0]?.length || 0,
-          experienceGroup[0]?.length || 0,
-        ],
-        type: 'bar',
-        name: 'Gering', //TODO: Translation
-        barGap: 0,
-        showBackground: true,
-      },
-      {
-        data: [
-          onlineGroup[1]?.length || 0,
-          appsGroup[1]?.length || 0,
-          experienceGroup[1]?.length || 0,
-        ],
-        type: 'bar',
-        name: 'Mittel',
-        barGap: 0,
-        showBackground: true,
-      },
-      {
-        data: [
-          onlineGroup[2]?.length || 0,
-          appsGroup[2]?.length || 0,
-          experienceGroup[2]?.length || 0,
-        ],
-        type: 'bar',
-        name: 'Hoch',
-        barGap: 0,
-        showBackground: true,
-      },
-    ];
+    const labels = await this.translate.get('feedback.value').toPromise();
+
+    this.questionareChart.series = new Array(3).fill(0).map((_, i) => ({
+      data: [
+        onlineGroup[i]?.length || 0,
+        appsGroup[i]?.length || 0,
+        experienceGroup[i]?.length || 0,
+      ],
+      type: 'bar',
+      name: labels[i],
+      barGap: 0,
+      showBackground: true,
+    }));
     this.questionareChart = { ...this.questionareChart };
   }
 
