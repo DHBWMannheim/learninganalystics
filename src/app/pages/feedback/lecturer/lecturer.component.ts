@@ -301,16 +301,17 @@ export class LecturerComponent implements OnInit {
   }
 
   async exportCourseFeedback() {
+    const labels = await this.translate.get('feedback.value').toPromise();
     const data = [
       await this.translate
         .get('feedback.lecturerView.feedback.chart')
         .toPromise(),
       ...this.rawFeedbackData.map(
         ({ fun, informations, quality, transfer }) => [
-          `${fun}`,
-          `${informations}`,
-          `${quality}`,
-          `${transfer}`,
+          labels[fun],
+          labels[informations],
+          labels[quality],
+          labels[transfer],
         ],
       ),
     ];
@@ -321,6 +322,7 @@ export class LecturerComponent implements OnInit {
     const learningTypeNames = await this.translate
       .get('feedback.lecturerView.participants.typeChart')
       .toPromise();
+    const labels = await this.translate.get('feedback.value').toPromise();
     const data = [
       await Promise.all([
         this.translate.get('questionare.typ.label').toPromise(),
@@ -330,9 +332,9 @@ export class LecturerComponent implements OnInit {
       ]),
       ...this.rawQuenstionareData.map(({ typ, online, apps, experience }) => [
         `${learningTypeNames[typ]}`,
-        `${online}`,
-        `${apps}`,
-        `${experience}`,
+        labels[online],
+        labels[apps],
+        labels[experience],
       ]),
     ];
 
