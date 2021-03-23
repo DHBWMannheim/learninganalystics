@@ -76,7 +76,7 @@ Möchte der Nutzer sein Password zurücksetzen und erneut Zugang zu seinem Accou
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=.7\textwidth]{img/passwordReset.png}
+    \includegraphics[width=.7\textwidth]{img/Passwort_zuruecksetzen.png}
     \caption{Password-Vergessen-Maske}
     \label{fig:passwordVergessen}
 \end{figure}
@@ -104,8 +104,22 @@ Dies verhindert, dass unberechtigte Personen die Email mitlesen können und das 
 
 
 \section{Dashboard}\label{sec:dashboard}
-... siehe User Journey
-
+Das Dashboard ist die erste Seite, die der Nutzer sieht, wenn er sich erfolgreich eingelogt hat. Es soll einen Überblick über alle bevorstehenden Ereignisse geben.
+Die nächsten anstehenden Prüfungen werden in einem Kalender angezeigt und Gesamtanzahl an Prüfungen wird auch eingeblendet. In der Übersicht können nochmal die wichtigsten 
+Informationen zu der Prüfung eingesehen werden, wie zum Beispiel die Uhrzeit und der Raum. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Dashboard_3.png}
+    \caption{Dashboard-Prüfung}
+    \label{fig:Dashboardansicht}
+\end{figure}
+Zusätzlich zu den nächsten Prüfungen werden auch bald fällige Aufgaben angezeigt. Der Benutzer sieht auf einen Blick, wie viele Tage er noch für welche Aufgabe hat.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{img/Dashboard_4.png}
+    \caption{Dashboard-Aufgaben}
+    \label{fig:Dashboardaufgaben}
+\end{figure}
 
 \section{Karteikarten}\label{sec:Karteikarten} % TODO: Bilder
 Index-Cards stellen eine Karteikarten-Funktion dar. Dabei können Dozenten neue Karteikarten erstellen, die die Kursteilnehmer bearbeiten können.
@@ -115,7 +129,7 @@ Solle man die Antwort zu der Frage nicht wissen oder sich kontrollieren wollen, 
 Anschließend können die Karten mit den Buttons am unteren Bildschirmrand als gewusst und nicht gewusst markiert werden.
 Durch die Zahlen an diesen Buttons kann der Nutzer leicht ablesen, wie viele Karten der Nutzer bereits wusste.
 Karten können aber auch durch einfaches ziehen der Karten zu gewusst oder nicht gewusst verschoben werden.
-Dies erleichtert die Handhabung. In der Grafik \autoref{fig:Karteikarten} ist die Ansicht zu sehen, die ein Teilnehmer bekommt, wenn er die Karteikarten durcharbeitet.
+Dies erleichtert die Handhabung. In der Abbildung \autoref{fig:Karteikarten} ist die Ansicht zu sehen, die ein Teilnehmer bekommt, wenn er die Karteikarten durcharbeitet.
 \begin{figure}[h]
     \centering
     \includegraphics[width=.7\textwidth]{img/Karteikarten_hinzugefuegt.png}
@@ -128,30 +142,30 @@ Wurden alle Karteikarten beantwortet bekommt der Student direkt Feedback, wievie
 % TODO: Erstellung
 
 
-\section{TODOs}\label{sec:TODOs} % TODO:
-TODOs stellen einen elementaren Bestandteil einer Ausbildung dar.
-Schon in der Schule mussten Schüler eine Hausaufgabenheft oder Ähnliches führen um einen Überblick über ihre TODOs zu haben.
-Auch im Studium gibt es Unzähliche TODOs, ...
+\section{Aufgaben}\label{sec:Aufgaben} % TODO:
+Aufgaben stellen einen elementaren Bestandteil einer Ausbildung dar.
+Schon in der Schule mussten Schüler eine Hausaufgabenheft oder Ähnliches führen um einen Überblick über ihre Aufgaben zu haben.
+Auch im Studium gibt es Unzähliche Aufgaben, wie zum Beispiel das Erstellen von Zusammenfassungen.
 
-TODOs können mithilfe des \enquote{Floating Action Button (FAB)} im rechten unterem Eck erstellt werden. % https://material.io/components/buttons-floating-action-button#usage
+Aufgaben können mithilfe des \enquote{Floating Action Button (FAB)} im rechten unterem Eck erstellt werden. % https://material.io/components/buttons-floating-action-button#usage
 Fabs stellen die primäre Action einer Ansicht, die konstruktiv ist und zu dem Inhalt der Ansicht passt.
 Inner
 
 
 % TODO: Die Material Principien besser herausarbeiten  https://material.io/components/dialogs#usage
-Nach dem Klick öffnet sich ein Modal, in dem alle relevanten TODOs eingetragen werden können.
-Todos zeichnen sich durch einen Titel und eine optionale Beschreibung, sowie eine optionale Deadline aus.
-Sofern eine Deadline angegeben ist, wird dieses TODO in den Kalender über der TODO Übersicht dargestellt.
-Je roter ein Tag ist, desto mehr TODOs müssen an diesem Tag erledigt sein.
+Nach dem Klick öffnet sich ein Modal, in dem alle relevanten Aufgaben eingetragen werden können.
+Aufgaben zeichnen sich durch einen Titel und eine optionale Beschreibung, sowie eine optionale Deadline aus.
+Sofern eine Deadline angegeben ist, wird dieses Aufgabe in dem Kalender über der Aufgaben Übersicht dargestellt.
+Je roter ein Tag ist, desto mehr Aufgaben müssen an diesem Tag erledigt sein.
 Der Kalender zeigt stets den Zeitraum zwischen Anfang des letzten Monates und Ende der nächsten zwei Monate  an.
 % TODO: ?
-TODOs können schnell und einfach durch klicken auf die Checkbox vor einem TODO abgehackt werden.
-In der Grafik \autoref{fig:TODOanlegen} ist bereits ein TODO angelegt und es ist zu sehen in welchem Zeitraum dieses TODO erledigt werden muss.
+Aufgaben können schnell und einfach durch klicken auf die Checkbox vor einer Aufgabe abgehackt werden.
+In der Abbildung \autoref{fig:Aufgabeanlegen} ist bereits eine Aufgabe angelegt und es ist zu sehen in welchem Zeitraum diese Aufgabe erledigt werden muss.
 \begin{figure}[h]
     \centering
     \includegraphics[width=.7\textwidth]{img/Aufgabe_angelegt.png}
-    \caption{TODO angelegt}
-    \label{fig:TODOanlegen}
+    \caption{Aufgabe angelegt}
+    \label{fig:Aufgabeanlegen}
 \end{figure}
 
 
@@ -244,26 +258,26 @@ Aus diesem Grund wird eine anonyme Plattform benötigt, bei dem kurzzeitig Feedb
 
 Im Vergleich zu den Umfragen am Ende eines Semesters werden die Umfragen in der Anwendung kurz gehalten.
 Dies geht daraus hervor, dass es als eine schnelle Feedbackmöglichkeit gedacht ist und eine kurze Umfrage die Change erhöht, dass das Feedback ausgefüllt wird.
-In der Grafik \autoref{fig:feeback} sind die verschiedenen Punkte aufgelistet, bei denen die Kursteilnehmner dem Dozenten Feedback geben können.
-\begin{figure}[h] 
+In der Abbildung \autoref{fig:feedback} sind die verschiedenen Punkte aufgelistet, bei denen die Kursteilnehmner dem Dozenten Feedback geben können.
+\begin{figure}[!h] 
     \centering
     \includegraphics[width=.7\textwidth]{img/Feedback_geben.png}
     \caption{Feedback}
     \label{fig:feedback}
 \end{figure}
 Der Dozent kann nachdem die Teilnehmer ihr Feedback gegeben haben, die Anworten auswerten. Zum einen kann dies direkt in der Webapplikation ausgewertet werden 
-und zum anderen können die Ergebnisse als CSV-Datei exportiert werden und selbstständig ausgewertet werden. In der Grafik \autoref{fig:passwordVergessen} 
+und zum anderen können die Ergebnisse als CSV-Datei exportiert werden und selbstständig ausgewertet werden. In der Abbildung \autoref{fig:feedback_ergebnis} 
 wird eine beispielhafte Auswertung angezeigt.
-\begin{figure}[h] 
+\begin{figure}[!h] 
     \centering
     \includegraphics[width=.7\textwidth]{img/Feedback_uebersicht_Teilnehmer_Feedback.png}
     \caption{Feedback-Ergebnis}
-    \label{fig:_ergebnis}
+    \label{fig:feedback_ergebnis}
 \end{figure}
 Als letztes Feature bei der Feedbackoption kann eine Übersicht zum Kurs angezeigt werden. Diese Übersicht beinhaltet alle Antworten zu den Fragen, die 
 bei der Registrierung gestellt werden. Dadurch hat der Dozent einen Eindruck, welche Arten von Lerntypen in diesem Kurs vertreten sind und wie viel 
 Erfahrung die Teilnehmner mit der Online-Lehre haben. 
-\begin{figure}[h] 
+\begin{figure}[!h] 
     \centering
     \includegraphics[width=.7\textwidth]{img/Feedback_uebersicht_Teilnehmer.png}
     \caption{Übersicht-Teilnehmner}
@@ -302,7 +316,7 @@ Aus diesem Grund können in der Anwendungen Informationen über Klausuren verwal
 Jede Prüfungsleistung besitzt einen Titel und einer Beschreibung, in der beschrieben werden kann, was die Aufgabe ist.
 Außerdem wird das Abgabedatum in einem Kalender zur einfacheren Übersicht dargestellt.
 Zusätzlich werden alle wichtigen Informationen, wie Räume oder zugelassenen Hilfsmittel dargestellt.
-Die Eingabemaske ist in der Grafik \autoref{fig:pruefungsmaske} zu sehen.
+Die Eingabemaske ist in der Abbildung \autoref{fig:pruefungsmaske} zu sehen.
 \begin{figure}[h] 
     \centering
     \includegraphics[width=.7\textwidth]{img/Pruefung_hinzugefuegen.png}
