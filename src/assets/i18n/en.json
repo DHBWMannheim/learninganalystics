@@ -35,7 +35,7 @@
         },
         "delete": {
             "header": "Delete Todo",
-            "text": "Do you really want to delete this todo",
+            "text": "Do you really want to delete this todo?",
             "submit": "Yes",
             "toast": {
                 "deleted": {
@@ -70,7 +70,7 @@
             ]
         },
         "upcomingHeader": "Upcoming Deadlines",
-        "noUpcoming": "Es stehen keine Aufgaben unmittelbar an.",
+        "noUpcoming": "There are no immediate todos",
         "days": "Days",
         "overdue": "Overdue"
     },

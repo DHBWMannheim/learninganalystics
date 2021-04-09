@@ -35,7 +35,7 @@
         },
         "delete": {
             "header": "Aufgabe löschen",
-            "text": "Wollen Sie diese Aufgabe wirklich löschen",
+            "text": "Wollen Sie diese Aufgabe wirklich löschen?",
             "submit": "Ja",
             "toast": {
                 "deleted": {
