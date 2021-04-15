@@ -8,7 +8,7 @@ Dadurch soll verhindert werden, dass die aufwendige Implementierung fehlschlägt
 
 \section{Konzeption der Anwendungsarchitektur}
 
-\subsection{Infrastruktur}
+% \subsection{Infrastruktur}
 Die Grundlage jeder Anwendung ist der Aufbau und die Struktur der Infrastruktur, auf welcher die Anwendung später ausgeführt werden soll.
 Aus diesem Grund wird diese als erstes betrachtet.
 
@@ -42,10 +42,10 @@ Die Lösung dieses Problems hat sich vor Jahren unter dem Begriff des Cloud Comp
 
 Des Weiteren müssen diesen Ressourcen nicht in Form von eigenen, abgeschlossenen Servern zur Verfügung gestellt werden, sondern die Geschäftslogik von Entwicklern kann in einer Serverless Computing Umgebung \autocite{definitionOfServerlessComputing} ausgeführt werden. Hierbei wird lediglich die Anwendungslogik in der Cloud (zum Beispiel in Form einer Funktion) ausgeführt, ohne dabei auf einem dezidierten Server zu laufen.
 
-Dieses Serverless Commputing kann in \ac{BaaS} und \ac{FaaS} unterteilt werden \autocite{whatIsServerless}. Hierbei ist zu unterscheiden, dass bei \ac{BaaS} dem Entwickler weitere Backend-Funktionalitäten zur Verfügung gestellt werden, welche er in seiner Anwendungs- (und damit Geschäfts-)logik verwenden kann, womit die Skalierbarkeit der entwickelten Lösung nochmals an vielen Stellen verbessert werden kann.
+Dieses Serverless Commputing kann in \ac{BaaS} und \ac{FaaS} unterteilt werden \autocite{whatIsServerless}. Hierbei ist zu unterscheiden, dass bei \ac{BaaS} dem Entwickler weitere Backend-Funktionalitäten zur Verfügung gestellt werden, welche er in seiner Anwendungs- (und damit Geschäfts-)logik verwenden kann, womit die Skalierbarkeit der entwickelten Lösung nochmals an vielen Stellen verbessert werden kann. Aus diesem Grund haben wir uns für einen solchen \enquote{Serverless}-Ansatz entschieden.
 
 
-Aus diesem Grund haben wir uns für einen modernen \enquote{Serverless}-Ansatz entschieden.
+
 
 % TODO: Cloud Computing
 
@@ -65,25 +65,25 @@ Aus diesem Grund haben wir uns für einen modernen \enquote{Serverless}-Ansatz e
 
 
 
-\subsection{Anwendungsaufbau}
-Für das Nutzerinterface werden verschiedene Technologien verwendet.
-% Firebase
-Die Frontend-Anwendung ist mit Angular, Nebular, Firebase, RxJS ... % TODO: Was muss hier tatsächlich erwähnt werden? Die anderen erzählen ja wirklich aaaallles
+% \subsection{Anwendungsaufbau}
+% Für das Nutzerinterface werden verschiedene Technologien verwendet.
+% % Firebase
+% Die Frontend-Anwendung ist mit Angular, Nebular, Firebase, RxJS ... % TODO: Was muss hier tatsächlich erwähnt werden? Die anderen erzählen ja wirklich aaaallles
 
 
-Angular ist ein von Google entwickeltes Javascript Framework zur Erstellung interaktiver 
+% Angular ist ein von Google entwickeltes Javascript Framework zur Erstellung interaktiver 
 
 
 
-Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgeteilt in 3 Bereiche:
-\begin{itemize}%TODO: Hier kann man noch mehr schreiben
-    \item Model\\
-        Das Modell stellt den aktuellen Status bzw. den aktuellen Zustand der Anwendung dar.
-    \item View\\
-        Die Präsentation ist zuständig für die Darstellung der Daten und ermöglicht dem Benutzer die Interaktion mit diesen sowie die Steuerung der Anwendung.
-    \item Controller\\
-        Der Controller kümmert sich um die Steuerung der Anwendung. Er verwaltet die Präsentation und steuert den Datenfluss zwischen der Präsentation und dem Modell.
-\end{itemize}
+% Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgeteilt in 3 Bereiche:
+% \begin{itemize}%TODO: Hier kann man noch mehr schreiben
+%     \item Model\\
+%         Das Modell stellt den aktuellen Status bzw. den aktuellen Zustand der Anwendung dar.
+%     \item View\\
+%         Die Präsentation ist zuständig für die Darstellung der Daten und ermöglicht dem Benutzer die Interaktion mit diesen sowie die Steuerung der Anwendung.
+%     \item Controller\\
+%         Der Controller kümmert sich um die Steuerung der Anwendung. Er verwaltet die Präsentation und steuert den Datenfluss zwischen der Präsentation und dem Modell.
+% \end{itemize}
 
 
 \section{Konzeption der Funktionalitäten}
@@ -187,71 +187,7 @@ Der hierfür genutzte Service heißt \enquote{Firestore}.
 Dabei werden Daten nicht wie in einer klassischen relationalen Datenbank (\ac{RDB}) in Tabellen mit Spalten und Zeilen gespeichert, sondern in Collections aus Dokumenten.
 
 
-
-
-
-% \subsection{Studierende}
-% \subsection{Dozierende}
-% \subsection{Kurs erstellen}
-% \subsection{Karteikarten-Lernsystem}
-% \subsection{ToDo-Liste}
-% \section{Datensicherheit}
-% \section{Datenschutz}
-% \section{Grundlage für Datenauswertung}
-% % Hier Verweise auf Aubau und Bezug zum leichten Ausbau, etc.
-
-
-
-
-
-
-
-
-\section{Ich mach hier einen WIP Abschnitt :D}
-
-
-
-
-% TODO: Das besser mit den Anforderungen verknüpfen
-% TODO: Dokumentation über TODOS
-
-
-% TODO: Todos und index-cards auch löschbar und alles
-
-% TODO: Wie technisch?
-
-
-
-
-
-
-% TODO: Dokumentation über Authentifizierung
-% TODO: Dokumentation über Index-Cards
-% TODO: Screenshots
-% TODO: Aria?
-
-
-
-
-
-% Ein Dozent sollte dabei beispielshaft einen Kurs anlegen können
-
-
-
-
-
-
-
-% TODO: Caching
-
-
-% TODO: Lighthouse am schluss beschreiben, wenn wir alle unnötigen Abhängigkeiten entfernt haben?
-
-% TODO: Kann man nach offline machen?
-
-Der Ladefortschritt kann stets an der Leiste am oberen Bildschirmrand abgelesen werden.
-
-\section{TODO: Kurse}
+\section{Kurse}
 Wie bereits beschrieben werden die die Informationen in Kurse unterteilt.
 Aus diesem Grund wird eine Möglichkeit benötigt, wie Nutzer Kurse wechseln können und erkennen können zu welchem Kurs die Informationen gehören.
 Auch hier gibt es mehrere Möglichkeiten, wie eine solche \ac{UX} gestaltet werden kann, die jeweils verschiedenen Vor- und Nachteilen besitzen.
@@ -267,14 +203,8 @@ Auch Kursübergreifende Informationen, z.\,B. TODOs, können nur schwer abgebild
 Als zweite Möglichkeit kommt eine virtuelle Trennung zum Einsatz.
 Dabei sieht der Nutzer alle Informationen und eine Trennung dieser findet nur über die Navigation statt.
 So besitzt die Anwendung für jeden Kurs einen eigene Sektion, in der die Informationen dargestellt werden.
-% TODO: Bilder
 Dadurch kann der Nutzer stets alle Kurse sehen und die \ac{UX} wird vereinfacht.
-% TODO:
 
-
-
-
-% TODO: Offline erwähnen + Anforderungen
 
 \section{Offline Synchronisation}
 Studenten sind oft unterwegs beispielsweise in öffentlichen Verkehrsmitteln, in dehnen Internet nicht immer verfügbar ist.
