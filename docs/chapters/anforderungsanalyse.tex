@@ -105,9 +105,9 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Es soll verhindert werden, dass Studenten falsche Informationen bereitstellen können und so andere Studenten des gleichen Kurses schädigen.
         Aus diesem Grund sollen nur Dozenten Informationen bereitstellen können, die von mehreren Studenten eingesehen werden können.
     \item Übersichtliches Dashboard			\\
-   		Die Anwendung soll es leicht ermöglichen sich einen Überblick über die in nächster Zeit anstehenden Aufgaben und Tätigkeiten zu erhalten. Dies ermöglichen die anstehenden Klausuren, eingetragene ToDos und Karteikarten die am selben Tag empfohlen werden zu lernen.
+   		Die Anwendung soll erleichtern, den Überblick über die in nächster Zeit anstehenden Aufgaben und Tätigkeiten zu behalten. Dies ermöglichen die anstehenden Klausuren, eingetragene ToDos und Karteikarten, die am selben Tag zum Lernen empfohlen werden.
    	\item Barrierefreiheit		\\
-   		Um allen Nutzern unabhängig ihrer Einschränkungen oder technischen Möglichkeiten die uneingeschränkte Nutzung der Anwendung zu ermöglichen sind für diese Anwendung einige Überlegungen angestellt worden. So soll sich die Sprache der Anwendung an den Spracheinstellungen des Webbrowsers auf dem Gerät des jeweiligen Nutzers orientieren. Darüber hinaus soll diese auch in der Anwendung selbst umgestellt werden können. Hierbei sollen alle Nutzergruppen angesprochen werden. Als potenzielle Nutzer seien hier die Austausch Studenten oder Kommilitonen die lieber in einer anderen Sprache arbeiten weil sie damit zum Beispiel die Inhalte leichter verstehen können erwähnt. Das Standard-Design orientiert sich an dem Cooperate Design der Dualen Hochschule Württemberg. Diese soll jedoch einfach über ein Drop-Down Menü angepasst werden können, so dass auch Versionen mit erhöhten Kontrast, etc. vorliegen und das aussehen nach den eigenen Präferenzen und Bedürfnissen gestaltet werden kann.  
+   		Um allen Nutzern unabhängig von ihren Einschränkungen oder technischen Möglichkeiten die uneingeschränkte Nutzung der Anwendung zu ermöglichen, sind für diese Anwendung einige Überlegungen angestellt worden. So soll sich die Sprache der Anwendung an den Spracheinstellungen des Webbrowsers auf dem Gerät des jeweiligen Nutzers orientieren. Darüber hinaus soll diese auch in der Anwendung selbst umgestellt werden können. Hierbei sollen alle Nutzergruppen angesprochen werden. Als potenzielle Nutzer seien hier Austausch-Studenten oder diejeingen Kommilitonen, die lieber in einer anderen Sprache arbeiten möchten, weil sie damit zum Beispiel die Inhalte leichter verstehen können, erwähnt. Das Standard-Design orientiert sich am Corporate Design der Dualen Hochschule Württemberg. Es soll jedoch einfach über ein Drop-Down Menü angepasst werden können, so dass auch Versionen mit erhöhtem Kontrast etc. erzeugt werden können bzw. das Layout nach den eigenen Präferenzen und Bedürfnissen gestaltet werden kann.
 \end{itemize}
 
 % Das ist das was ich grad realistisch sehe. Wenn wir noch mehr implementiert haben, dann können wir das gerne noch erweitern
@@ -122,10 +122,10 @@ Neben den funktionalen Anforderungen gibt es auch einige nicht-funktionale Anfor
         Über lange Ladezeiten beschweren sich in einer Umfrage mehr als 70\%, wobei 25\% aller Nutzer bereits bei 4 Sekunden die Seite verlassen.\autocite{loadingTimes}
         Aus diesem Grund sollte die Ladezeit gering gehalten werden.
     \item Persistenter Speicher             \\
-        Informationen über Kurse müssen dauerhaft gespeichert sein und jederzeit abrufbar sein.
-        Besonders vor und nach Vorlesungen wird die Nutzung der Anwendung voraussichtlich deutlich ansteigen.
-        Auch bei Spitzenlast müssen stets alle Informationen abrufbar sein.
-    \item Responsive Design\\
+        Informationen über Kurse müssen dauerhaft gespeichert und jederzeit abrufbar sein.
+        Besonders kurz vor und nach einer Vorlesung wird die Nutzung der Anwendung voraussichtlich deutlich ansteigen.
+        Auch bei Spitzenlast müssen alle Informationen stets zügig abrufbar sein.
+    \item Responsives Design\\
         Die Anwendung sollte auf jeden Gerät vollständig funktional sein.
         Studenten nutzen häufig viele Geräte mit verschiedenen Bildschirmformaten.
         Besonders unterwegs oder in öffentlichen Verkehrsmitteln sind Mobilgeräte die primäre Wahl.
@@ -135,9 +135,8 @@ Neben den funktionalen Anforderungen gibt es auch einige nicht-funktionale Anfor
         Damit die Anwendung sich an die DHBW angliedert, sollte die Anwendung nahe an diesem Design sein.
         Besonders das Farbschema sollte dabei einheitlich sein. % TODO: Muss das wirklich sein, das sieht halt echt nicht gut aus. Ich mag das cosmic theme ganz gern
     \item Datenschutz\\
-        Das Thema Datenschutz ist so wichtig wie nie zuvor.
-        Besonders der Schutz von personenbezogenen Daten steht dabei im Vordergrund.
-        Wie oben bereits festgestellt wurde besitzen Anwendungen gegenwärtig problematische Datenschutzlagen.
+        Der Schutz von personenbezogenen Daten steht hier besonders im Vordergrund.
+        Wie oben bereits festgestellt wurde, besitzen Anwendungen gegenwärtig problematische Datenschutzlagen.
         Aus diesem Grund soll die entwickelte Anwendung einen hohen Wert auf den Datenschutz legen und die Verarbeitung personenbezogener Daten auf ein Minimum reduzieren.
 \end{itemize}
 
@@ -159,7 +158,7 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
         F6      & Informationen können allen Studenten mitgeteilt werden  \\
         F7      & Es gibt eine Unterscheidung zwischen Studenten und Dozenten  \\
         F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\
-        F9      & Die Anwendung soll möglichst Barrierefrei gestaltet werden\\
+        F9      & Die Anwendung soll möglichst barrierefrei gestaltet werden\\
         NF1     & Anwendung lädt schnell                    \\
         NF2     & Daten jederzeit einsehbar                 \\
         NF3     & Anwendung funktioniert auf allen Geräten  \\
@@ -199,7 +198,7 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
 \end{minipage}
 
 Stephan ist ein typisches Beispiel für einen Studenten an der DHBW.
-Er ist viel aktiv und und wohnt aufgrund des Standortes seines Dualen Partners nicht in der Metropolregion Rhein-Neckar. Aus diesem Grund pendelt er regelmäßig zu Präsenzveranstaltungen und Klausuren. Da er für die Anfahrt lange Zeit in öffentlichen Verkehrsmitteln verbringt, möchte er nicht auf ein bestimmtes Endgerät angewiesen sein und sowohl von daheim am PC als auch in der vollen Straßenbahn am Handy lernen können.  Demnach möchte er egal wo er ist stets eine Übersicht über seine anstehenden Klausuren haben und sich auch unterwegs auf diese Vorbereiten. Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht Weitergegeben werden und nicht zur Klausurbewertung oder Ähnliches herangezogen werden können.
+Er ist viel aktiv und wohnt aufgrund des Standortes seines Dualen Partners nicht in der Metropolregion Rhein-Neckar. Aus diesem Grund pendelt er regelmäßig zu Präsenzveranstaltungen und Klausuren. Da er für die Anfahrt lange Zeit in öffentlichen Verkehrsmitteln verbringt, möchte er nicht auf ein bestimmtes Endgerät angewiesen sein und sowohl von daheim am PC als auch in der vollen Straßenbahn am Handy lernen können.  Demnach möchte er ortsunabhängig stets eine Übersicht über seine anstehenden Klausuren erhalten und sich unterwegs auch auf diese vorbereiten können. Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht weitergegeben werden und nicht zur Klausurbewertung oder ähnlichen Bewertungen herangezogen werden können.
 
 Das möchte ich gerne haben:
 \begin{itemize}
@@ -230,8 +229,8 @@ Das möchte ich gerne haben:
 
 Dagmar ist eine Dozentin für Wirtschaftsthemen, vorrangig Finanzbuchhaltung.
 Als verantwortungsbewusste Person ist es ihr wichtig, dass Studenten auch außerhalb ihrer Vorlesung Unterstützung erhalten.
-Aus diesem Grund möchte sie gerne weiterführende Informationen an ihre Studenten weitergeben.
-Gleichzeitig möchte sie gerne Feedback zu ihrer Vorlesung erhalten um das Lernmaterial bestmöglich anzupassen.
+Aus diesem Grund möchte sie gerne weiterführende Informationen an ihre Studenten geben.
+Gleichzeitig möchte sie gerne Feedback zu ihrer Vorlesung erhalten, um das Lernmaterial bestmöglich anpassen zu können.
 Da sich allerdings ihre Kernkompetenzen außerhalb der IT befinden ist es ihr wichtig, dass sie die Anwendung unkompliziert und ohne lange Einführung nutzen kann. 
 
 
@@ -239,6 +238,6 @@ Das möchte ich gerne haben:
 \begin{itemize}
 	\item Informationen an alle Studenten des Kurses verteilen
 	\item Feedback zum Kurs erhalten
-	\item Intuitives Bedienung
+	\item Intuitive Bedienung
 \end{itemize}
 % Generell Umfragen, .... alles erst reinschreiben, wenn wir das auch implementiert haben :)
