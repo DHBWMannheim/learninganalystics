@@ -457,12 +457,12 @@
             }
         },
         "password": {
-            "label": "Password",
-            "forgot": "Password vergessen?",
-            "placeholder": "Password",
+            "label": "Passwort",
+            "forgot": "Passwort vergessen?",
+            "placeholder": "Passwort",
             "errors": {
-                "required": "Ein Password wird benötigt!",
-                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+                "required": "Ein Passwort wird benötigt!",
+                "minlength": "Das Passwort muss zwischen 6 und 50 Zeichen sein"
             }
         },
         "rememberMe": "Eingeloggt bleiben",
@@ -482,18 +482,18 @@
             }
         },
         "password": {
-            "label": "Password",
-            "placeholder": "Password",
+            "label": "Passwort",
+            "placeholder": "Passwort",
             "errors": {
-                "required": "Ein Password wird benötigt!",
-                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+                "required": "Ein Passwort wird benötigt!",
+                "minlength": "Das Passwort muss zwischen 6 und 50 Zeichen sein"
             }
         },
         "repeatPassword": {
-            "label": "Password wiederhohlen",
-            "placeholder": "Password wiederhohlen",
+            "label": "Passwort wiederhohlen",
+            "placeholder": "Passwort wiederhohlen",
             "errors": {
-                "required": "Ein Password wird benötigt!",
+                "required": "Ein Passwort wird benötigt!",
                 "same": "Das Passwort stimmt nicht überein"
             }
         },
@@ -505,7 +505,7 @@
         "message": "Der Logout wird bearbeitet. Bitte warten..."
     },
     "requestPassword": {
-        "title": "Password zurücksetzen",
+        "title": "Passwort zurücksetzen",
         "subTitle": "Geben Sie hier Ihre Email-Adresse ein, damit wir Ihnen einen Link zum zurücksetzen schicken können",
         "error": "Woops!",
         "email": {
@@ -521,22 +521,22 @@
         "submit": "Passwort zurücksetzen"
     },
     "resetPassword": {
-        "title": "Password ändern",
-        "subtitle": "Bitte setzen Sie ein neues Password",
+        "title": "Passwort ändern",
+        "subtitle": "Bitte setzen Sie ein neues Passwort",
         "error": "Woops",
         "password": {
-            "label": "Password",
-            "placeholder": "Password",
+            "label": "Passwort",
+            "placeholder": "Passwort",
             "errors": {
-                "required": "Ein Password wird benötigt!",
-                "minlength": "Das Password muss zwischen 6 und 50 Zeichen sein"
+                "required": "Ein Passwort wird benötigt!",
+                "minlength": "Das Passwort muss zwischen 6 und 50 Zeichen sein"
             }
         },
         "confirmPassword": {
-            "label": "Password wiederhohlen",
-            "placeholder": "Password wiederhohlen",
+            "label": "Passwort wiederhohlen",
+            "placeholder": "Passwort wiederhohlen",
             "errors": {
-                "required": "Ein Password wird benötigt!",
+                "required": "Ein Passwort wird benötigt!",
                 "same": "Das Passwort stimmt nicht überein"
             }
         },
