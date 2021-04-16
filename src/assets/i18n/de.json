@@ -248,7 +248,7 @@
         "all": "ALLE",
         "toast": {
             "noPermissions": {
-                "message": "Du bist nicht der Ersteller dieser Karteikarte. Frag the Kursersteller, ob er diese Karte anpassen kann.",
+                "message": "Sie sind nicht der Ersteller dieser Karteikarte. Bitte fragen sie Kursersteller, ob er diese Karte anpassen kann.",
                 "title": "Nicht berechtigt"
             }
         },
@@ -423,7 +423,7 @@
                 "title": "Beigetreten"
             },
             "conflict": {
-                "message": "Sie sind schon Teil dieses Kurses",
+                "message": "Sie sind bereits Teil dieses Kurses",
                 "title": "Schon beigetreten"
             }
         }
@@ -467,7 +467,7 @@
         },
         "rememberMe": "Eingeloggt bleiben",
         "login": "Login",
-        "register": "Sie haben noch keinen Account? Kein Problem! Registrieren Sie sich."
+        "register": "Sie haben noch keinen Account? Kein Problem! Hier gehts zur Registrierung."
     },
     "terms": {},
     "register": {
@@ -506,7 +506,7 @@
     },
     "requestPassword": {
         "title": "Password zurücksetzen",
-        "subTitle": "Gib hier deine Email-Adresse ein, damit wir die einen Link zum zurücksetzen schicken können",
+        "subTitle": "Geben Sie hier Ihre Email-Adresse ein, damit wir Ihnen einen Link zum zurücksetzen schicken können",
         "error": "Woops!",
         "email": {
             "label": "Email-Adresse",
@@ -553,7 +553,7 @@
     "onbording": {
         "welcome": "Willkommen",
         "text1": "Möchten Sie an einer freiwilligen Umfrage teilnehmen?",
-        "text2": "Die Beantwortung dieser Fragen uns Kursinhalte besser auf Sie abzustimmen."
+        "text2": "Die Beantwortung dieser Fragen ermöglichen uns Kursinhalte besser auf Sie abzustimmen."
     },
     "questionare": {
         "typ": {
