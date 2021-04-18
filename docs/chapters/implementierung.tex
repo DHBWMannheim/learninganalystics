@@ -133,3 +133,94 @@ Durch einen Button können Kurse verlassen werden.
 Verlässt der Kursbesitzer den Kurs geht ihm die Verwalter-Funktion verloren.
 Da es keinen Weg gibt zu validieren, ob der Nutzer einmal ein ersteller war, kann der Nutzer anschließend nur noch seinem Kurs beitreten.
 
+
+
+
+\section{Offline Synchronisation}
+Studenten sind oft unterwegs beispielsweise in öffentlichen Verkehrsmitteln, in dehnen Internet nicht immer verfügbar ist.
+Damit die Anwendung auch ohne Internet funktionsfähig ist, ist die Anwendung mit einer Offline-Synchronisation ausgestattet.
+
+Sobald sich der Nutzer angemeldet hat, kann die Anwendung vollständig offline genutzt werden.
+Sobald eine Internetverbindung besteht werden alle Änderungen synchronisiert.
+
+Sofern die Anwendung offline gleichzeitig auf mehreren Geräten mit dem gleichen Nutzer verwendet wurde können bei Datenspeicherungen Konflikte auftreten.
+Solche Konflikte werden nach dem Last-Write-Wins-Prinzip aufgelöst.
+Das heißt die letzte Änderung an einem Datensatz wird übernommen.
+% TODO: IndexDB
+
+
+\section{DevOps}
+Für die Entwicklung und der Betrieb werden üblicherweiße viele verschiedene Parteien benötigt.
+Beispielsweise werden Entwickler, Administratoren und Netzwertechniker benötigt.
+Durch den Einsatz von DevOps-Praktiken ändert sich die Art und Weise wie Anwendungen entwickelt werden.
+
+DevOps verbindet die beiden Bereiche \enquote{Development} und \enquote{Operations}.
+Ziel ist es, die Entwicklung und den Betrieb von Softwaresystemen zu kombinieren und so den Organisationsaufwand sowie die Zeit zwischen Auslieferungszeitpunkten zu minimieren.\autocite[][S. 156]{Artac2018}
+
+Im Rahmen von DevOps-Prozessen werden üblicherweiße \ac{CI}- und \ac{CD}-Pipelines erstellt, welche die Bereitstellung einer Anwendung automatisieren.
+So wurde im Rahmen der hier entwickelten Anwendung eine automatisierte Deployment-Strategie ausgearbeitet.
+
+% TODO: Github erwähnen?
+% TODO: Changelog?
+Sobald ein Release erstellt wird, beginnen automatisch Pipelines.
+Diese bauen die Anwendung und stellen diese anschließend auf der Infrastruktur bereit, sodass dies von Anwendern genutzt werden kann.
+Die Bereitstellung findet dabei Unterbrechungsfrei statt.
+Bei klassischen Anwendungen müssen im Regelfall Wartungsarbeiten angekündigt werden und die Anwendungen sind währenddessen nicht nutzbar.
+In der hier entwickelten Anwendung ist dies hingegen nicht notwendig.
+Auch während eine neue Version bereitgestellt wird ist die Anwendung dauerhaft nutzbar.
+
+Gleichzeitig wird als Teil der Pipelines die Dokumentation erstellt.
+
+Durch die Pipelines können Deployments mit wenigen Klicks von jedem Computer oder Mobilgerät durchgeführt werden, egal wo oder welches System genutzt wird.
+Gleichzeitig ist stets dokumentiert wann und von wem welche Version bereitgestellt wurde.
+
+
+\section{Datenschutz}
+Bei der Entwicklung der Anwendung haben wir großen Wert auf Datensicherheit und der Einhaltung der DSGVO gelegt.
+Ein wesentlicher Bestandteil der unternommenen Maßnahmen ist die Anonymität innerhalb der Anwendung.
+Die Anwendung speichert keinerlei Informationen, worüber Nutzer identifiziert werden können.
+Bei einer Registrierung muss lediglich eine Email angegeben werden.
+
+
+\section{Barrierefreiheit}
+
+Damit die Barrierefreiheit gegeben ist, ist die Übersetzungmöglichkeit notwendig, wie in den Anforderungen beschrieben. Damit dies 
+realisiert werden kann, ist es sinnvoll einen Übersetzungservice zu nutzen. Dieser Service sollte zunächst die beiden Sprachen Deutsch und 
+Englisch beinhalten, da auf der DHBW größtenteils in deutsch unterrichtet wird und Austauschstudenten, wenn sie kein deutsch sprechen, englisch 
+verstehen können. Somit sind für den Anfang diese beiden Sprachen ausreichend. Außerdem sollte noch die Möglichkeit bestehen, weitere Sprachen 
+in Zukunft hinzuzufügen, ohne den bisherigen Aufbau großartig umbauen zu müssen. 
+
+
+\section{Performance Optimierungen}
+% TODO: Irgendwo hab ich ja schon gesagt, das firebase spitzenlasten abfängt
+\subsection{Caching}
+In der Anwendung werden aus verschiedenen Gründen Caching eingesetzt.
+Caching beschreibt eine Methode, bei dem Daten in einem Puffer gehalten werden um Zugriffe auf langsame Ressourcen zu reduzieren.
+Im Falle der hier entwickelten Anwendung werden die Quelldaten für das Nutzerinterface lokal aufbewahrt um die Zugriffe auf den Server zu reduzieren.
+Dadurch wird die Ladezeit der Anwendung reduziert, mobile Daten gespart und die Serverlast reduziert.
+
+
+% \section{Verschlüsselung}
+% TODO:
+
+% Kompression
+
+% h2 protokol
+
+
+\subsection{Service-Worker}
+% Vielleicht kann sowas sagen wie: Wir haben weniger funktionalität, dafür läuft alles stabil und ist schon bereitgestellt + Technik generell viel besser
+Die Anwendung ist mit einem Service-Worker ausgestattet.
+Der Service-Worker agiert als Zwischeninstanz zwischen der Webanwendung und dem Server.
+Durch den Service-Worker ist es möglich die Website als eigene Anwendung auf einem Mobilgerät oder auf Desktop-Computern installiert werden kann.
+Dadurch kann die Anwendung wie jede andere App verwendet werden.
+
+
+
+\subsection{Lazy Loading}
+Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
+Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
+Besucht der Nutzer die Website der Anwendung werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
+Beispielsweise werden die Karteikarten, sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos nachschaut.
+
+

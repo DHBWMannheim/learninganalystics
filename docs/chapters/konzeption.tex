@@ -4,13 +4,26 @@ Bevor mit der Implementierung gestartet werden kann wird ein Konzept erstellt, w
 Ziel ist ein konkreter Entwurf, welcher die technischen und grundlegenden Funktionalitäten beschreibt.
 Dadurch soll verhindert werden, dass die aufwendige Implementierung fehlschlägt oder mehrfach Änderungen durchgeführt werden müssen, welche den Implementierungsaufwand vergrößern würden.
 
-% TODO: Wasserfall / Agile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Konzeption der Anwendungsarchitektur}
-
-% \subsection{Infrastruktur}
 Die Grundlage jeder Anwendung ist der Aufbau und die Struktur der Infrastruktur, auf welcher die Anwendung später ausgeführt werden soll.
-Aus diesem Grund wird diese als erstes betrachtet.
+Aus diesem Grund wird diese als Erstes betrachtet.
 
 % -TODO: Thin-Client --> Hier eingearbeitet
 
@@ -27,7 +40,7 @@ In \autoref{fig:clientServerAufbau} ist eine solche Architektur vereinfacht darg
     \label{fig:clientServerAufbau}
 \end{figure}
 
-Praktisch dargestellt ruft der Nutzer mithilfe seines Browsers die Webseite von einem Server ab.
+Praktisch dargestellt, ruft der Nutzer mithilfe seines Browsers die Webseite von einem Server ab.
 Der Browser verarbeitet mithilfe der implementierten Geschäftslogik die Anfrage des Nutzers und greift auf die Daten des Datenbankservers zu. Diese Daten werden schließlich dem Nutzer zur Verfügung gestellt, welche ihm in der Nutzerschnittstelle angezeigt werden und für ihn an  dieser Stelle aufbereitet einsehbar sind.\\
 Dabei greift der Nutzer über ein wohldefiniertes \ac{API} auf den Anwendungsserver zu, um diesen dargestellten Prozess abzusichern.
 
@@ -86,10 +99,47 @@ Dieses Serverless Commputing kann in \ac{BaaS} und \ac{FaaS} unterteilt werden \
 % \end{itemize}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Konzeption der Funktionalitäten}
 
 
-\subsection{Kurseinschreibung} %TODO: F2,   das hier vielleicht mit Rollenzuweisung tauschen von der Reihenfolge
+\subsection{Kurse}
+
+Informationen sollen in Kurse unterteilt werden.
+Aus diesem Grund wird eine Möglichkeit benötigt, wie Nutzer Kurse wechseln können und erkennen können zu welchem Kurs die Informationen gehören.
+Auch hier gibt es mehrere Möglichkeiten, wie eine solche \ac{UX} gestaltet werden kann, die jeweils verschiedenen Vor- und Nachteilen besitzen.
+
+Eine Möglichkeit ist die gesamte Anwendung innerhalb eines Kurses anzubieten.
+Das heißt, der Nutzer hat nach dem Login die Möglichkeit einen seiner Kurse auszuwählen.
+Dieser Kurs wird anschließend geladen und der Nutzer sieht nur die Informationen dieses Kurses.
+Möchte man den Kurs wechseln, gibt es ein Bento-Menü, über welches ein anderer Kurs ausgewählt werden kann.
+Eine solche \ac{UX} hat den Vorteil, dass sich ein Nutzer vollständig auf einen Kurs konzentrieren kann und so nicht Informationen zwischen verschiedenen Kursen durcheinander wirft.
+Gleichzeitig kann dies aber dazu führen, dass ein Nutzer eventuell den Überblick über seine Kurse verliert und so einen Kurs womöglich vernachlässigt.
+Auch Kursübergreifende Informationen, z.\,B. TODOs, können nur schwer abgebildet werden, ohne das die Nutzung der Anwendung erklärungsbedürftig wird.
+
+Als zweite Möglichkeit kommt eine virtuelle Trennung zum Einsatz.
+Dabei sieht der Nutzer alle Informationen und eine Trennung dieser findet nur über die Navigation statt.
+So besitzt die Anwendung für jeden Kurs einen eigene Sektion, in der die Informationen dargestellt werden.
+Dadurch kann der Nutzer stets alle Kurse sehen und die \ac{UX} wird vereinfacht.
+
+
+
+\subsection{Rollenzuweisung}
+
 Aus den Anforderungen geht hervor, dass es zwei Nutzerrollen gibt: Dozenten und Studenten.
 Dozenten sollen in der Anwendung ihre Kurse verwalten können.
 Ein Kurs orientiert sich dabei an der Organisation, die in der Realität vorliegen.
@@ -130,11 +180,8 @@ Aus diesem Grund ist dieser \enquote{Workflow} bereits für Studenten bekannt un
 In der Tat nutzen viele existierende Anwendungen ein solches System.
 Beispiele hierfür sind Zoom oder Google Meets.
 
-% TODO: Bei uns:
-Ein Einschreibeschlüssel besteht aus 6 Buchstaben, welche mehr als 300 Millionen Kurse zulassen und als ausreichend angesehen werden.
 
-
-\subsection{Rollenzuweisung} %TODO: Nochmal auf die Anforderungen F7 verweisen
+\subsection{Registrierung}
 Nutzer der Anwendung können sich selbst registrieren.
 Daraus ergibt sich die eine Rollen Problematik: Woran kann die Anwendung erkennen, welcher Nutzer ein Student ist und welcher Nutzer ein Dozent ist.
 Sofern Nutzer dies selber angeben können, bräuchte es gegebenenfalls eine Validierung durch die DHBW, wodurch erneut die oben genannten Nachteile einer Zuweisung durch einen Administrator greifen.
@@ -154,22 +201,54 @@ Ein Vorteil eines solchen Ansatzes ist es, dass auch Studenten Kurse erstellen k
 Denkbar ist beispielsweise ein Student, welcher Nachhilfe anbietet.
 Dadurch wird die Nutzung der Anwendung gefördert.
 
-\subsection{Übersetzung}
-
-Damit die Barrierefreiheit gegeben ist, ist die Übersetzungmöglichkeit notwendig, wie in den Anforderungen beschrieben. Damit dies 
-realisiert werden kann, ist es sinnvoll einen Übersetzungservice zu nutzen. Dieser Service sollte zunächst die beiden Sprachen Deutsch und 
-Englisch beinhalten, da auf der DHBW größtenteils in deutsch unterrichtet wird und Austauschstudenten, wenn sie kein deutsch sprechen, englisch 
-verstehen können. Somit sind für den Anfang diese beiden Sprachen ausreichend. Außerdem sollte noch die Möglichkeit bestehen, weitere Sprachen 
-in Zukunft hinzuzufügen, ohne den bisherigen Aufbau großartig umbauen zu müssen. 
-
-% TODO: Auch schreiben, dass damit die Verwaltung von Unis wegfällt
-% TODO: Mocks und alles
-
-% \section{Frontendarchitektur}
 
 
 
-% TODO: ER-Modell
+
+
+
+
+\subsection{TODOs}
+//TODO:
+
+\subsection{Karteikarten}
+//TODO
+
+\subsection{Informations}
+//TODO
+
+\subsection{Dashboard}
+//TODO
+
+\subsection{Auswertungen}
+//TODO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Datenstruktur} % TODO: Das nach den Funktionen hinschreiben
 In \autoref{fig:erDiagramm} ist das zugrundeliegende Datenmodell abgebildet, welches in der Implementierung verwendet wird.
@@ -184,107 +263,8 @@ In \autoref{fig:erDiagramm} ist das zugrundeliegende Datenmodell abgebildet, wel
 
 Die Datenspeicherung findet vollständig innerhalb von Firebase statt.
 Der hierfür genutzte Service heißt \enquote{Firestore}.
-Dabei werden Daten nicht wie in einer klassischen relationalen Datenbank (\ac{RDB}) in Tabellen mit Spalten und Zeilen gespeichert, sondern in Collections aus Dokumenten.
-
-
-\section{Kurse}
-Wie bereits beschrieben werden die die Informationen in Kurse unterteilt.
-Aus diesem Grund wird eine Möglichkeit benötigt, wie Nutzer Kurse wechseln können und erkennen können zu welchem Kurs die Informationen gehören.
-Auch hier gibt es mehrere Möglichkeiten, wie eine solche \ac{UX} gestaltet werden kann, die jeweils verschiedenen Vor- und Nachteilen besitzen.
-
-Eine Möglichkeit ist die gesamte Anwendung innerhalb eines Kurses anzubieten.
-Das heißt, der Nutzer hat nach dem Login die Möglichkeit einen seiner Kurse auszuwählen.
-Dieser Kurs wird anschließend geladen und der Nutzer sieht nur die Informationen dieses Kurses.
-Möchte man den Kurs wechseln, gibt es ein Bento-Menü, über welches ein anderer Kurs ausgewählt werden kann.
-Eine solche \ac{UX} hat den Vorteil, dass sich ein Nutzer vollständig auf einen Kurs konzentrieren kann und so nicht Informationen zwischen verschiedenen Kursen durcheinander wirft.
-Gleichzeitig kann dies aber dazu führen, dass ein Nutzer eventuell den Überblick über seine Kurse verliert und so einen Kurs womöglich vernachlässigt.
-Auch Kursübergreifende Informationen, z.\,B. TODOs, können nur schwer abgebildet werden, ohne das die Nutzung der Anwendung erklärungsbedürftig wird.
-
-Als zweite Möglichkeit kommt eine virtuelle Trennung zum Einsatz.
-Dabei sieht der Nutzer alle Informationen und eine Trennung dieser findet nur über die Navigation statt.
-So besitzt die Anwendung für jeden Kurs einen eigene Sektion, in der die Informationen dargestellt werden.
-Dadurch kann der Nutzer stets alle Kurse sehen und die \ac{UX} wird vereinfacht.
-
-
-\section{Offline Synchronisation}
-Studenten sind oft unterwegs beispielsweise in öffentlichen Verkehrsmitteln, in dehnen Internet nicht immer verfügbar ist.
-Damit die Anwendung auch ohne Internet funktionsfähig ist, ist die Anwendung mit einer Offline-Synchronisation ausgestattet.
-
-Sobald sich der Nutzer angemeldet hat, kann die Anwendung vollständig offline genutzt werden.
-Sobald eine Internetverbindung besteht werden alle Änderungen synchronisiert.
-
-Sofern die Anwendung offline gleichzeitig auf mehreren Geräten mit dem gleichen Nutzer verwendet wurde können bei Datenspeicherungen Konflikte auftreten.
-Solche Konflikte werden nach dem Last-Write-Wins-Prinzip aufgelöst.
-Das heißt die letzte Änderung an einem Datensatz wird übernommen.
-% TODO: IndexDB
-
-
-\section{DevOps}
-Für die Entwicklung und der Betrieb werden üblicherweiße viele verschiedene Parteien benötigt.
-Beispielsweise werden Entwickler, Administratoren und Netzwertechniker benötigt.
-Durch den Einsatz von DevOps-Praktiken ändert sich die Art und Weise wie Anwendungen entwickelt werden.
-
-DevOps verbindet die beiden Bereiche \enquote{Development} und \enquote{Operations}.
-Ziel ist es, die Entwicklung und den Betrieb von Softwaresystemen zu kombinieren und so den Organisationsaufwand sowie die Zeit zwischen Auslieferungszeitpunkten zu minimieren.\autocite[][S. 156]{Artac2018}
-
-Im Rahmen von DevOps-Prozessen werden üblicherweiße \ac{CI}- und \ac{CD}-Pipelines erstellt, welche die Bereitstellung einer Anwendung automatisieren.
-So wurde im Rahmen der hier entwickelten Anwendung eine automatisierte Deployment-Strategie ausgearbeitet.
-
-% TODO: Github erwähnen?
-% TODO: Changelog?
-Sobald ein Release erstellt wird, beginnen automatisch Pipelines.
-Diese bauen die Anwendung und stellen diese anschließend auf der Infrastruktur bereit, sodass dies von Anwendern genutzt werden kann.
-Die Bereitstellung findet dabei Unterbrechungsfrei statt.
-Bei klassischen Anwendungen müssen im Regelfall Wartungsarbeiten angekündigt werden und die Anwendungen sind währenddessen nicht nutzbar.
-In der hier entwickelten Anwendung ist dies hingegen nicht notwendig.
-Auch während eine neue Version bereitgestellt wird ist die Anwendung dauerhaft nutzbar.
-
-Gleichzeitig wird als Teil der Pipelines die Dokumentation erstellt.
-
-Durch die Pipelines können Deployments mit wenigen Klicks von jedem Computer oder Mobilgerät durchgeführt werden, egal wo oder welches System genutzt wird.
-Gleichzeitig ist stets dokumentiert wann und von wem welche Version bereitgestellt wurde.
+Dabei werden Daten nicht wie in einer klassischen relationalen Datenbank (\ac{RDB}) in Tabellen mit Spalten und Zeilen gespeichert, sondern in Collections aus Dokumenten. Dies erlaubt eine größere Flexibilität in der Entwicklung.
 
 
 
 
-
-
-
-\section{Performance Optimierungen}
-% TODO: Irgendwo hab ich ja schon gesagt, das firebase spitzenlasten abfängt
-\subsection{Caching}
-In der Anwendung werden aus verschiedenen Gründen Caching eingesetzt.
-Caching beschreibt eine Methode, bei dem Daten in einem Puffer gehalten werden um Zugriffe auf langsame Ressourcen zu reduzieren.
-Im Falle der hier entwickelten Anwendung werden die Quelldaten für das Nutzerinterface lokal aufbewahrt um die Zugriffe auf den Server zu reduzieren.
-Dadurch wird die Ladezeit der Anwendung reduziert, mobile Daten gespart und die Serverlast reduziert.
-
-
-% \section{Verschlüsselung}
-% TODO:
-
-% Kompression
-
-% h2 protokol
-
-
-\subsection{Service-Worker}
-% Vielleicht kann sowas sagen wie: Wir haben weniger funktionalität, dafür läuft alles stabil und ist schon bereitgestellt + Technik generell viel besser
-Die Anwendung ist mit einem Service-Worker ausgestattet.
-Der Service-Worker agiert als Zwischeninstanz zwischen der Webanwendung und dem Server.
-Durch den Service-Worker ist es möglich die Website als eigene Anwendung auf einem Mobilgerät oder auf Desktop-Computern installiert werden kann.
-Dadurch kann die Anwendung wie jede andere App verwendet werden.
-
-
-
-\subsection{Lazy Loading}
-Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
-Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
-Besucht der Nutzer die Website der Anwendung werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
-Beispielsweise werden die Karteikarten, sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos nachschaut.
-
-
-\section{Datenschutz}
-Bei der Entwicklung der Anwendung haben wir großen Wert auf Datensicherheit und der Einhaltung der DSGVO gelegt.
-Ein wesentlicher Bestandteil der unternommenen Maßnahmen ist die Anonymität innerhalb der Anwendung.
-Die Anwendung speichert keinerlei Informationen, worüber Nutzer identifiziert werden können.
-Bei einer Registrierung muss lediglich eine Email angegeben werden.

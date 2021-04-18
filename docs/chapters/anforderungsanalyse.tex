@@ -47,6 +47,119 @@ Zur Evaluierung von gehaltenen Vorlesungen kommt das System zur Automation von B
 % TODO: Hier noch einen Satz, alle anderen Anwendungen sind Käse, und dass wir das alles super toll machen
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Personas}
+
+
+% -------------------------------------------------------
+% 1. Student
+% 2. Dozent
+% -------------------------------------------------------
+% Keine Ahnung, irgendwelche Bilder halt :D
+% https://unsplash.com/photos/ZVo7vtXilCs
+\subsection{Beispiel Student}
+
+\begin{minipage}[t]{0.5\textwidth}
+	\vspace{-4cm}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{l l}
+		Name: & Stephan Student \\
+		Alter: & 21 \\
+		Tätigkeit: & Student Wirtschaftsinformatik \\
+		IT-Skills: & 4/5 \hspace{-1cm} \begin{barchart}{5.0}
+			\baritemNL{}{4}
+		\end{barchart} \\
+	\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+	\flushright
+	\includegraphics[width=0.70\textwidth]{img/carlos-lindner-ZVo7vtXilCs-unsplash.jpg}
+\end{minipage}
+
+Stephan ist ein typisches Beispiel für einen Studenten an der DHBW.
+Er ist viel aktiv und wohnt aufgrund des Standortes seines Dualen Partners nicht in der Metropolregion Rhein-Neckar. Aus diesem Grund pendelt er regelmäßig zu Präsenzveranstaltungen und Klausuren. Da er für die Anfahrt lange Zeit in öffentlichen Verkehrsmitteln verbringt, möchte er nicht auf ein bestimmtes Endgerät angewiesen sein und sowohl von daheim am PC als auch in der vollen Straßenbahn am Handy lernen können.  Demnach möchte er ortsunabhängig stets eine Übersicht über seine anstehenden Klausuren erhalten und sich unterwegs auch auf diese vorbereiten können. Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht weitergegeben werden und nicht zur Klausurbewertung oder ähnlichen Bewertungen herangezogen werden können.
+
+Das möchte ich gerne haben:
+\begin{itemize}
+	\item Übersicht über meine Klausuren
+	\item Auch unterwegs lernen können
+	\item Anonymität
+\end{itemize}
+
+\subsection{Beispiel Dozent}
+% https://unsplash.com/photos/TXxiFuQLBKQ
+\begin{minipage}[t]{0.5\textwidth}
+	\vspace{-4cm}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{l l}
+		Name: & Dagmar Dozent \\
+		Alter: & 35 \\
+		Tätigkeit: & Dozentin für Finanzbuchhaltung \\
+		IT-Skills: & 2/5 \hspace{-1cm} \begin{barchart}{5.0}
+			\baritemNL{}{2}
+		\end{barchart} \\
+	\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+	\flushright
+	\includegraphics[width=0.70\textwidth]{img/thisisengineering-raeng-TXxiFuQLBKQ-unsplash.jpg}
+\end{minipage}
+
+Dagmar ist eine Dozentin für Wirtschaftsthemen, vorrangig Finanzbuchhaltung.
+Als verantwortungsbewusste Person ist es ihr wichtig, dass Studenten auch außerhalb ihrer Vorlesung Unterstützung erhalten.
+Aus diesem Grund möchte sie gerne weiterführende Informationen an ihre Studenten geben.
+Gleichzeitig möchte sie gerne Feedback zu ihrer Vorlesung erhalten, um das Lernmaterial bestmöglich anpassen zu können.
+Da sich allerdings ihre Kernkompetenzen außerhalb der IT befinden ist es ihr wichtig, dass sie die Anwendung unkompliziert und ohne lange Einführung nutzen kann. 
+
+
+Das möchte ich gerne haben:
+\begin{itemize}
+	\item Informationen an alle Studenten des Kurses verteilen
+	\item Feedback zum Kurs erhalten
+	\item Intuitive Bedienung
+\end{itemize}
+% Generell Umfragen, .... alles erst reinschreiben, wenn wir das auch implementiert haben :)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Ist-Analyse}
 Bevor die eigentliche Entwicklung starten kann, müssen die aktuellen Probleme und Verbesserungspotenziale analysiert werden.
 
@@ -57,6 +170,9 @@ Sofern man \enquote{nicht in fragende Gesichter schaut}, ist es oft schwer zu wi
 Besonders die gegebene \enquote{Anonymität} der an der DHBW gehaltenen Online-Vorlesungen, bei denen im Regelfall kein Video der Teilnehmenden gestreamed wird, verschlechtert die Situation nochmals.
 Dadurch kann eine Differenz zwischen dem gefühlten und dem tatsächlichen Leistungsstand entstehen, die sich dann erst in Klausuren negativ zeigen kann.
 Aktuell (Dezember '20) finden das zweite Semester in Folge die Vorlesungen ausschließlich online statt. Wegen  der langen Dauer dieser Phase könnte eine Feedbackmöglichkeit für Dozierende nochmals relevanter sein.
+
+
+
 
 \section{Anforderungsformulierung}
 
@@ -157,87 +273,17 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
         F5      & Prüfungstermine können eingetragen werden  \\
         F6      & Informationen können allen Studenten mitgeteilt werden  \\
         F7      & Es gibt eine Unterscheidung zwischen Studenten und Dozenten  \\
-        F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\
-        F9      & Die Anwendung soll möglichst barrierefrei gestaltet werden\\
-        NF1     & Anwendung lädt schnell                    \\
-        NF2     & Daten jederzeit einsehbar                 \\
-        NF3     & Anwendung funktioniert auf allen Geräten  \\
-        NF4     & Anwendung ist am DHBW Design orientiert   \\
-        NF5     & Personenbezogene Daten werden geschützt  \\
+        F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\\hline
+        NF1      & Die Anwendung soll möglichst barrierefrei gestaltet werden\\
+        NF2     & Anwendung lädt schnell                    \\
+        NF3     & Daten jederzeit einsehbar                 \\
+        NF4     & Anwendung funktioniert auf allen Geräten  \\
+        NF5     & Anwendung ist am DHBW Design orientiert   \\
+        NF6     & Personenbezogene Daten werden geschützt  \\
     \end{tabularx}
     \caption{Zusammengefasste Anforderungen}
     \label{tab:anforderungen}
 \end{table}
-\section{Personas}
 
 
-% -------------------------------------------------------
-% 1. Student
-% 2. Dozent
-% -------------------------------------------------------
-% Keine Ahnung, irgendwelche Bilder halt :D
-% https://unsplash.com/photos/ZVo7vtXilCs
-\subsection{Beispiel Persona für Student}
 
-\begin{minipage}[t]{0.5\textwidth}
-	\vspace{-4cm}
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{l l}
-		Name: & Stephan Student \\
-		Alter: & 21 \\
-		Tätigkeit: & Student Wirtschaftsinformatik \\
-		IT-Skills: & 4/5 \hspace{-1cm} \begin{barchart}{5.0}
-			\baritemNL{}{4}
-		\end{barchart} \\
-	\end{tabular}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.4\textwidth}
-	\flushright
-	\includegraphics[width=0.70\textwidth]{img/carlos-lindner-ZVo7vtXilCs-unsplash.jpg}
-\end{minipage}
-
-Stephan ist ein typisches Beispiel für einen Studenten an der DHBW.
-Er ist viel aktiv und wohnt aufgrund des Standortes seines Dualen Partners nicht in der Metropolregion Rhein-Neckar. Aus diesem Grund pendelt er regelmäßig zu Präsenzveranstaltungen und Klausuren. Da er für die Anfahrt lange Zeit in öffentlichen Verkehrsmitteln verbringt, möchte er nicht auf ein bestimmtes Endgerät angewiesen sein und sowohl von daheim am PC als auch in der vollen Straßenbahn am Handy lernen können.  Demnach möchte er ortsunabhängig stets eine Übersicht über seine anstehenden Klausuren erhalten und sich unterwegs auch auf diese vorbereiten können. Dabei ist es ihm wichtig, dass seine persönlichen Daten nicht weitergegeben werden und nicht zur Klausurbewertung oder ähnlichen Bewertungen herangezogen werden können.
-
-Das möchte ich gerne haben:
-\begin{itemize}
-	\item Übersicht über meine Klausuren
-	\item Auch unterwegs lernen können
-	\item Anonymität
-\end{itemize}
-
-\subsection{Beispiel Persona für Dozent}
-% https://unsplash.com/photos/TXxiFuQLBKQ
-\begin{minipage}[t]{0.5\textwidth}
-	\vspace{-4cm}
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}{l l}
-		Name: & Dagmar Dozent \\
-		Alter: & 35 \\
-		Tätigkeit: & Dozentin für Finanzbuchhaltung \\
-		IT-Skills: & 2/5 \hspace{-1cm} \begin{barchart}{5.0}
-			\baritemNL{}{2}
-		\end{barchart} \\
-	\end{tabular}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.4\textwidth}
-	\flushright
-	\includegraphics[width=0.70\textwidth]{img/thisisengineering-raeng-TXxiFuQLBKQ-unsplash.jpg}
-\end{minipage}
-
-Dagmar ist eine Dozentin für Wirtschaftsthemen, vorrangig Finanzbuchhaltung.
-Als verantwortungsbewusste Person ist es ihr wichtig, dass Studenten auch außerhalb ihrer Vorlesung Unterstützung erhalten.
-Aus diesem Grund möchte sie gerne weiterführende Informationen an ihre Studenten geben.
-Gleichzeitig möchte sie gerne Feedback zu ihrer Vorlesung erhalten, um das Lernmaterial bestmöglich anpassen zu können.
-Da sich allerdings ihre Kernkompetenzen außerhalb der IT befinden ist es ihr wichtig, dass sie die Anwendung unkompliziert und ohne lange Einführung nutzen kann. 
-
-
-Das möchte ich gerne haben:
-\begin{itemize}
-	\item Informationen an alle Studenten des Kurses verteilen
-	\item Feedback zum Kurs erhalten
-	\item Intuitive Bedienung
-\end{itemize}
-% Generell Umfragen, .... alles erst reinschreiben, wenn wir das auch implementiert haben :)
