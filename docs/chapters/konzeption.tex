@@ -51,23 +51,15 @@ Nach den Anwendungsanforderungen wird eine hohe Leistungsfähigkeit benötigt, d
 Hierbei müssen sowohl die implementierte Serverlogik, als auch die zugrundeliegende Serverinfrastruktur konsistente Daten mit akzeptablen Antwortzeiten liefern. Diese Vorgänge fallen in den Bereich der Skalierung, welcher sowohl für die Serverlogik, als auch für Infrastruktur einen hohen Aufwand birgt.\\
 Um dieses Problem zu lösen gibt es zwei Lösungsansätze. In der ersten Lösung können permanent Serverressourcen bereitgestellt werden, die auch bei Leistungsspitzen nicht überlastet sind und ausfallen, jedoch würden bei dieser Lösung viele Ressourcen in \enquote{Ruhephasen} ungenutzt bleiben, was unökonomisch und kostspielig wäre.\\
 In der zweiten Lösung können notwendige Serverressourcen an Leistungsspitzen dynamisch hinzugezogen werden. Hierbei besteht jedoch die Schwierigkeit, diese Leistungsspitzen rechtzeitig zu erkennen, um frühzeitig Serverressourcen steigern zu können. Sofern diese Schwierigkeiten bei dem zweiten Lösungsansatz umgesetzt werden können, ist dies eine optimale Lösung, jedoch ohne weiteres nicht einfach umzusetzen.\\
+
+% FIXME: Das doppelt sich mit den Grundlagen
 Die Lösung dieses Problems hat sich vor Jahren unter dem Begriff des Cloud Computings \autocite{definitionOfCloudComputing} etabliert. Hierbei können je nach Nutzeranforderungen Ressourcen bereitgestellt und auch wieder entzogen werden. Der Entwickler einer Anwendung muss nur die verwendeten Ressourcen (somit Netzwerkverkehr, Prozessorrechenzeit und generelle Verarbeitungszeit) bezahlen. Ressourcen können hiermit dynamisch bei Leistungsspitzen in großem Umfang zur Verfügung stehen.% Das heißt, sobald eine Leistungsspitze entsteht müssen erst aufwändig zusätzliche Server hochgefahren werden, welches die Anwendung kurzzeitig für viele Nutzer unnutzbar macht. edit pdm: Im Absatz obendrüber behandelt
 
 Des Weiteren müssen diesen Ressourcen nicht in Form von eigenen, abgeschlossenen Servern zur Verfügung gestellt werden, sondern die Geschäftslogik von Entwicklern kann in einer Serverless Computing Umgebung \autocite{definitionOfServerlessComputing} ausgeführt werden. Hierbei wird lediglich die Anwendungslogik in der Cloud (zum Beispiel in Form einer Funktion) ausgeführt, ohne dabei auf einem dezidierten Server zu laufen.
 
 Dieses Serverless Commputing kann in \ac{BaaS} und \ac{FaaS} unterteilt werden \autocite{whatIsServerless}. Hierbei ist zu unterscheiden, dass bei \ac{BaaS} dem Entwickler weitere Backend-Funktionalitäten zur Verfügung gestellt werden, welche er in seiner Anwendungs- (und damit Geschäfts-)logik verwenden kann, womit die Skalierbarkeit der entwickelten Lösung nochmals an vielen Stellen verbessert werden kann. Aus diesem Grund haben wir uns für einen solchen \enquote{Serverless}-Ansatz entschieden.
 
-
-
-
-% TODO: Cloud Computing
-
-% TODO: Serverless Computing
-% TODO: Das vielleicht in Grundlagen verschieben
-% TODO: Hier kann man noch super viel schreiben
-
-% TODO: Hier noch vielmehr schreiben wie Nutzenanalyse? + viel überleitung
-
+In \autoref{sub:firebase}
 
 \begin{figure}[h]
     \centering
@@ -78,25 +70,6 @@ Dieses Serverless Commputing kann in \ac{BaaS} und \ac{FaaS} unterteilt werden \
 
 
 
-% \subsection{Anwendungsaufbau}
-% Für das Nutzerinterface werden verschiedene Technologien verwendet.
-% % Firebase
-% Die Frontend-Anwendung ist mit Angular, Nebular, Firebase, RxJS ... % TODO: Was muss hier tatsächlich erwähnt werden? Die anderen erzählen ja wirklich aaaallles
-
-
-% Angular ist ein von Google entwickeltes Javascript Framework zur Erstellung interaktiver 
-
-
-
-% Die Anwendung folgt dem \ac{MVC}-Pattern. Das heißt, die Anwendung ist aufgeteilt in 3 Bereiche:
-% \begin{itemize}%TODO: Hier kann man noch mehr schreiben
-%     \item Model\\
-%         Das Modell stellt den aktuellen Status bzw. den aktuellen Zustand der Anwendung dar.
-%     \item View\\
-%         Die Präsentation ist zuständig für die Darstellung der Daten und ermöglicht dem Benutzer die Interaktion mit diesen sowie die Steuerung der Anwendung.
-%     \item Controller\\
-%         Der Controller kümmert sich um die Steuerung der Anwendung. Er verwaltet die Präsentation und steuert den Datenfluss zwischen der Präsentation und dem Modell.
-% \end{itemize}
 
 
 
@@ -108,13 +81,7 @@ Dieses Serverless Commputing kann in \ac{BaaS} und \ac{FaaS} unterteilt werden \
 
 
 
-
-
-
-
-
-
-\section{Konzeption der Funktionalitäten}
+\section{Konzeption der Funktionalitäten}\label{sec:konzeptionFunktionalitaeten}
 
 
 \subsection{Kurse}
@@ -212,7 +179,20 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 //TODO:
 
 \subsection{Karteikarten}
-//TODO
+//TODO: Einleitung zu Anforderungen
+Für das Lernen mit den Karteikarten gibt es eine Vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung implementiert einen Algorithmus aus dem Bereich der \enquote{Spaced Repetition Systems}. In die deutsche Sprache übersetzt heißt das so viel wie "Wiederholen ohne Lücken". Das System hinter diesen Algorithmen besteht darin, die entsprechenden Informationen genau dann zu wiederholen, wenn das menschliche Gehirn sie fast schon vergessen hätte.\autocite[Vgl.][]{Tabibian3988} Die einzelnen Karteikarten werden nacheinander abgefragt und bei richtiger Antwort in zunehmenden Zeitintervallen immer wieder überprüft. Durch diesen Abstandseffekt soll gezielt das Langzeitgedächnis trainiert werden, damit die Inhalte auch über eine Prüfung hinaus im Gedächtnis behalten werden. Die unterschiedlichen Algorithmen dieser Klasse unterscheiden sich lediglich in der Wahl der Zeitabstände. 
+Diese Anwendung implementiert das Super-Memo System des polnischen Neurobiologen Piotr Wozniak. Es definiert folgende Zeitabstände:
+\begin{itemize}
+	\item 20 Minuten
+	\item 24 Stunden
+	\item 48 Stunden
+	\item 10 Tagen
+	\item 30 Tagen
+	\item 60 Tagen
+\end{itemize}  
+Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und durchläuft die definierten Zeitintervalle von vorn. \autocite[Vgl.][]{BaileyuDavey}
+
+
 
 \subsection{Informations}
 //TODO
@@ -250,10 +230,17 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 
 
 
-\section{Datenstruktur} % TODO: Das nach den Funktionen hinschreiben
+\section{Datenstruktur}
+Aus den in \autoref{sec:konzeptionFunktionalitaeten} entworfenen Funktionalitäten lässt sich ein Entwurf für die Datenhaltung erstellen.
+
+Die Datenspeicherung findet vollständig innerhalb von Firebase statt.
+Der hierfür genutzte Service heißt \enquote{Firestore}.
+Dabei werden Daten nicht wie in einer klassischen relationalen Datenbank (\ac{RDB}) in Tabellen mit Spalten und Zeilen gespeichert, sondern in Collections aus Dokumenten. Dies erlaubt eine größere Flexibilität in der Entwicklung.
+
+
 In \autoref{fig:erDiagramm} ist das zugrundeliegende Datenmodell abgebildet, welches in der Implementierung verwendet wird.
 
-\begin{figure}[h]%FIXME: Das hier erweitern, wenn alle Daten drin sind + das watermark abschneiden
+\begin{figure}[ht!] % TODO: Hier fehlen die streaks 
     \begin{center}
         \includegraphics[width=\textwidth]{img/Integrationsseminar ER.png}
         \caption{ER-Diagramm}
@@ -261,9 +248,6 @@ In \autoref{fig:erDiagramm} ist das zugrundeliegende Datenmodell abgebildet, wel
     \end{center}
 \end{figure}
 
-Die Datenspeicherung findet vollständig innerhalb von Firebase statt.
-Der hierfür genutzte Service heißt \enquote{Firestore}.
-Dabei werden Daten nicht wie in einer klassischen relationalen Datenbank (\ac{RDB}) in Tabellen mit Spalten und Zeilen gespeichert, sondern in Collections aus Dokumenten. Dies erlaubt eine größere Flexibilität in der Entwicklung.
 
 
 
