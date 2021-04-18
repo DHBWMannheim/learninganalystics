@@ -211,9 +211,8 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
     \item Kursübergreifende Informationen   \\
         Besitzt ein Nutzer einen Account, soll er Kurse anlegen können, zu denen er Informationen wie  Prüfungstermine erfassen kann.
         Um zu verhindern, dass dieser organisatorische Aufwand von jedem Studenten einzeln durchgeführt werden muß, soll es zusätzlich eine Funktion geben, mit der Dozenten einen Kurs anlegen können.
-        Den Kursen können initial bereits Prüfungstermine, TODOs und Karteikarten mitgegeben werden.
+        Den Kursen können initial bereits Prüfungstermine und Karteikarten mitgegeben werden.
         Somit entfällt die vielfache initiale Erstellung.
-        Die zu einem Kurs gehörenden Informationen können von den Studierenden weiterhin nach belieben angepasst und ergänzt werden ohne dabei für die anderen eingeschriebenen Kursteilnehmer Daten zu verändern.
         Das Erstellen eines Kurses hat für den Dozenten den Vorteil, dass für diesen Kurs Daten zur Verfügung gestellt bekommt, die er zur Anpassung oder Evaluation seiner Vorlesung nutzen kann.
         Beispiele hierfür können sein Lerntypen der Studenten, Fortschritt beim Lernen der Karteikarten, etc.
     \item Rollendifferenzierung             \\
@@ -222,8 +221,7 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Aus diesem Grund sollen nur Dozenten Informationen bereitstellen können, die von mehreren Studenten eingesehen werden können.
     \item Übersichtliches Dashboard			\\
    		Die Anwendung soll erleichtern, den Überblick über die in nächster Zeit anstehenden Aufgaben und Tätigkeiten zu behalten. Dies ermöglichen die anstehenden Klausuren, eingetragene ToDos und Karteikarten, die am selben Tag zum Lernen empfohlen werden.
-   	\item Barrierefreiheit		\\
-   		Um allen Nutzern unabhängig von ihren Einschränkungen oder technischen Möglichkeiten die uneingeschränkte Nutzung der Anwendung zu ermöglichen, sind für diese Anwendung einige Überlegungen angestellt worden. So soll sich die Sprache der Anwendung an den Spracheinstellungen des Webbrowsers auf dem Gerät des jeweiligen Nutzers orientieren. Darüber hinaus soll diese auch in der Anwendung selbst umgestellt werden können. Hierbei sollen alle Nutzergruppen angesprochen werden. Als potenzielle Nutzer seien hier Austausch-Studenten oder diejeingen Kommilitonen, die lieber in einer anderen Sprache arbeiten möchten, weil sie damit zum Beispiel die Inhalte leichter verstehen können, erwähnt. Das Standard-Design orientiert sich am Corporate Design der Dualen Hochschule Württemberg. Es soll jedoch einfach über ein Drop-Down Menü angepasst werden können, so dass auch Versionen mit erhöhtem Kontrast etc. erzeugt werden können bzw. das Layout nach den eigenen Präferenzen und Bedürfnissen gestaltet werden kann.
+  
 \end{itemize}
 
 % Das ist das was ich grad realistisch sehe. Wenn wir noch mehr implementiert haben, dann können wir das gerne noch erweitern
@@ -232,6 +230,8 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
 \subsection{Nicht-Funktionale Anforderungen}
 Neben den funktionalen Anforderungen gibt es auch einige nicht-funktionale Anforderungen, die beachtet werden müssen.
 \begin{itemize}
+    \item Barrierefreiheit		\\
+        Um allen Nutzern unabhängig von ihren Einschränkungen oder technischen Möglichkeiten die uneingeschränkte Nutzung der Anwendung zu ermöglichen, sind für diese Anwendung einige Überlegungen angestellt worden. So soll sich die Sprache der Anwendung an den Spracheinstellungen des Webbrowsers auf dem Gerät des jeweiligen Nutzers orientieren. Darüber hinaus soll diese auch in der Anwendung selbst umgestellt werden können. Hierbei sollen alle Nutzergruppen angesprochen werden. Als potenzielle Nutzer seien hier Austausch-Studenten oder diejeingen Kommilitonen, die lieber in einer anderen Sprache arbeiten möchten, weil sie damit zum Beispiel die Inhalte leichter verstehen können, erwähnt. Das Standard-Design orientiert sich am Corporate Design der Dualen Hochschule Württemberg. Es soll jedoch einfach über ein Drop-Down Menü angepasst werden können, so dass auch Versionen mit erhöhtem Kontrast etc. erzeugt werden können bzw. das Layout nach den eigenen Präferenzen und Bedürfnissen gestaltet werden kann.
     \item Geschwindigkeit\\
         Für Nutzer ist die Geschwindigkeit besonders wichtig.
         Lang ladende Anwendungen sind nicht nur nervig in der Benutzung, sondern könnten sich in der hier entwickelten Anwendung negativ auf den Lernfortschritt auswirken. Lange Ladezeiten lenken beispielsweise ab und demotivieren die Nutzung der Anwendung.
@@ -274,7 +274,7 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
         F6      & Informationen können allen Studenten mitgeteilt werden  \\
         F7      & Es gibt eine Unterscheidung zwischen Studenten und Dozenten  \\
         F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\\hline
-        NF1      & Die Anwendung soll möglichst barrierefrei gestaltet werden\\
+        NF1     & Die Anwendung soll möglichst barrierefrei gestaltet werden\\
         NF2     & Anwendung lädt schnell                    \\
         NF3     & Daten jederzeit einsehbar                 \\
         NF4     & Anwendung funktioniert auf allen Geräten  \\

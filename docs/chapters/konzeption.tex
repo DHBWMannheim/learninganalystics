@@ -59,7 +59,7 @@ Des Weiteren müssen diesen Ressourcen nicht in Form von eigenen, abgeschlossene
 
 Dieses Serverless Commputing kann in \ac{BaaS} und \ac{FaaS} unterteilt werden \autocite{whatIsServerless}. Hierbei ist zu unterscheiden, dass bei \ac{BaaS} dem Entwickler weitere Backend-Funktionalitäten zur Verfügung gestellt werden, welche er in seiner Anwendungs- (und damit Geschäfts-)logik verwenden kann, womit die Skalierbarkeit der entwickelten Lösung nochmals an vielen Stellen verbessert werden kann. Aus diesem Grund haben wir uns für einen solchen \enquote{Serverless}-Ansatz entschieden.
 
-In \autoref{sub:firebase}
+In \autoref{sub:firebase} %TODO:
 
 \begin{figure}[h]
     \centering
@@ -176,12 +176,19 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 
 
 \subsection{TODOs}
-//TODO:
+Aus den Anforderungen geht hervor, dass TODOs gespeichert werden sollen. In Einklang mit den anderen Konzeptionen können auch die TODOs an Kurse gebunden werden. Stattdessen haben wir uns dafür entschieden die TODOs zentral und Kursübergreifend zu gestalten. So hat der Nutzer stets Übersicht über alle Aufgaben und es geraten keine Informationen in den Hintergrund.
+
+Neue TODOs sollen einfach hinzugefügt werden können. Aus diesem Grund soll es nur notwendig sein den Namen einer Aufgabe zu definieren und alle anderen Attribute wie Fälligkeitsdaten optional zu gestalten.
+
+Gleichzeitig sollen alle TODOs grafisch dargestellt werden, um die Planung zu erleichtern.
+Opimalerweiße sollten die Termine in einem Kalender dargestellt werden.
+Je voller ein Tag ist, desto deutlicher soll der Backlog hervorgehoben werden, mit rot als Signalfarbe. Der Kalender soll prominent dargestellt werden, sodass der Nutzer sich sofort einen Überblick verschaffen kann. 
+
 
 \subsection{Karteikarten}
-//TODO: Einleitung zu Anforderungen
-Für das Lernen mit den Karteikarten gibt es eine Vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung implementiert einen Algorithmus aus dem Bereich der \enquote{Spaced Repetition Systems}. In die deutsche Sprache übersetzt heißt das so viel wie "Wiederholen ohne Lücken". Das System hinter diesen Algorithmen besteht darin, die entsprechenden Informationen genau dann zu wiederholen, wenn das menschliche Gehirn sie fast schon vergessen hätte.\autocite[Vgl.][]{Tabibian3988} Die einzelnen Karteikarten werden nacheinander abgefragt und bei richtiger Antwort in zunehmenden Zeitintervallen immer wieder überprüft. Durch diesen Abstandseffekt soll gezielt das Langzeitgedächnis trainiert werden, damit die Inhalte auch über eine Prüfung hinaus im Gedächtnis behalten werden. Die unterschiedlichen Algorithmen dieser Klasse unterscheiden sich lediglich in der Wahl der Zeitabstände. 
-Diese Anwendung implementiert das Super-Memo System des polnischen Neurobiologen Piotr Wozniak. Es definiert folgende Zeitabstände:
+In den Anforderungen wurde definiert, dass die Anwendung Karteikarten zur Untersützung von Lerninhalten unterstützen soll.
+Für das Lernen mit den Karteikarten gibt es eine Vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung soll einen Algorithmus aus dem Bereich der \enquote{Spaced Repetition Systems} implementieren. In die deutsche Sprache übersetzt heißt das so viel wie "Wiederholen ohne Lücken". Das System hinter diesen Algorithmen besteht darin, die entsprechenden Informationen genau dann zu wiederholen, wenn das menschliche Gehirn sie fast schon vergessen hätte.\autocite[Vgl.][]{Tabibian3988} Die einzelnen Karteikarten werden nacheinander abgefragt und bei richtiger Antwort in zunehmenden Zeitintervallen immer wieder überprüft. Durch diesen Abstandseffekt soll gezielt das Langzeitgedächnis trainiert werden, damit die Inhalte auch über eine Prüfung hinaus im Gedächtnis behalten werden. Die unterschiedlichen Algorithmen dieser Klasse unterscheiden sich lediglich in der Wahl der Zeitabstände. 
+Genutzt werden soll das Super-Memo System des polnischen Neurobiologen Piotr Wozniak. Es definiert folgende Zeitabstände:
 \begin{itemize}
 	\item 20 Minuten
 	\item 24 Stunden
@@ -194,8 +201,8 @@ Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und du
 
 
 
-\subsection{Informations}
-//TODO
+\subsection{Lernmaterialien}
+Um das Lernen zu unterstüzen sollen
 
 \subsection{Dashboard}
 //TODO
