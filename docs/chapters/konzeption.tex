@@ -126,7 +126,7 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung a
 \section{Konzeption der Funktionalitäten}\label{sec:konzeptionFunktionalitaeten}
 
 
-\subsection{Kurse}
+\subsection{Kurse}\label{sub:konzeptionKurse}
 
 Informationen sollen in Kurse unterteilt werden.
 Aus diesem Grund wird eine Möglichkeit benötigt, wie Nutzer Kurse wechseln können und erkennen können zu welchem Kurs die Informationen gehören.
@@ -244,13 +244,38 @@ Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und du
 
 
 \subsection{Lernmaterialien}
-Um das Lernen zu unterstüzen sollen
+Um das Lernen zu unterstüzen sollen Dozenten weitere Kursinhalte in der Anwendung bereitstellen können. Die Problematik mit der Informationsversorgung wurde bereits in den vorherigen Kapiteln angesprochen.
+
+Bei der Konzeption werden verschiedene Methoden betrachtet, mit der Dozenten Informationen an die Kursteilnehmer übergeben kann.
+Die einfachste Methode wäre es, wenn etwaige Skripte per Email an die Teilnehmer zu versenden.
+Hierbei würde die Anwendung wie ein Email-Verteiler wirken. Da Email-Adressen bereits für das Login benötigt werden, wären alle Informationen bereits vorhanden.
+Dadurch entsteht aber neue Problematiken. Zum einen müssten weitere Datenschutzrechtliche Bedenken geklärt werden. Wie beispielsweiße die Weitergabe und Verarbeitung von Email Adressen. Außerdem müsste sichergestellt werden, dass alle Email-Adressen gültig sind und Informationen auch zustellbar sind. Unter Umständen könnten dadurch einige Studenten Vorteile gegenüber anderen Studenten bekommen.
+Dazu kommt, dass Informationen erneut unübersichtlich für Studenten sind. So kommen beispielsweiße an verschiedenen Tagen Informationen wie Skripte an, die im Posteingang durcheinander geraten. Womöglich würden z.\,B. Informationen von verschiedenen Vorlesungen vermischt werden, was sich negativ auf den Lernerfolg auswirken würde.
+
+Stattdessen wäre es besser, wenn Informationen direkt in der Anwendung einsehbar wären. Informationen können hier wie in \autoref{sub:konzeptionKurse} beschrieben durch Dozenten der einzelnen Kurse erstellt werden und stehen dann allen Kursteilnehmern zur Verfügung.\\
+Auch hier stehen verschiedene Möglichkeiten zur Verfügung. Bei der Konzeption wurden verschiedene Ansätze betrachtet. Ein Beispiel hierbei ist die Überlegung einen Text-Editor wie bei diversen Email-Providern bereitzustellen, in dem Informationen erstellt und bearbeitet werden können. Dies hat den Vorteil, dass sich die Datenhaltung vereinfacht und dass es eine höhere Sicherheit bietet als alternative Methoden. Eine dieser alternativen Methoden ist das hochladen von Dateien durch den Dozenten. 
+Wir haben uns für letztere Methodik aus den folgenden Gründen entschieden:
+Durch Datei-uploads erhöht sich zwar der Entwicklungsaufwand, der Aufwand für Nutzer wird aber stark gesenkt. So können Bilddateien und existierende Skripte einfach bereitgestellt werden ohne dass der Dozent einen zusätzlichen Arbeitsaufwand betreiben muss.
+
+
+
 
 \subsection{Dashboard}
-//TODO
+Das Dashboard wird als Lösung für mehrere funktionale Anforderungen konzeptioniert.
+Ziel des Dashboards ist es die wichtigsten Informationen auf einen Blick zentral anzuzeigen.
+Demnach sollte das Dashboard alle Informationen unabhängig von den Kursen angezeigt werden, wenn diese unmittelbar wichtig für den Studenten sind.
+Aus den Personas, die bereits in \autoref{sec:persona} beschrieben wurden, und unserer persönlichen Erfahrung können wir einige Funktionalitäten auswählen, die wir als besonders wichtig identifizieren.
+Genauer gesagt sind besonders die Klausurtermine sowie die TODOs, die innerhalb einer Woche anstehen besonders wichtig.
+Aus diesem Grund sollte das Dashboard genau diese Informationen in zwei Abschnitten enthalten.
+Außerdem sollten keine weiteren Informationen dargestellt werden, um zu verhindern, dass das Dashboard unübersichtlich wird.
+
+\subsection{Prüfungen}
+//TODO:
 
 \subsection{Auswertungen}
-//TODO
+Als letztes funktionale //TODO:
+
+Hierzu eignet sich besonders das csv Format, da es in einer Vielzahl von Anwendungen wie zum Beispiel Excel als Eingabe genutzt und weiter bearbeitet werden kann.
 
 
 

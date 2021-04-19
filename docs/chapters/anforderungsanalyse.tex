@@ -38,7 +38,7 @@ Für Dozenten gibt es die Möglichkeit, Umfragen zu erstellen und die Ergebnisse
 
 Zur Evaluierung von gehaltenen Vorlesungen kommt das System zur Automation von Befragungen und Prüfungen evasys zum Einsatz. \autocite{evasys} Hier wird jedoch nur Feedback zu bereits gehaltenen Vorlesungen stichprobenartig eingeholt. Kurzfristige Anpassungen des Inhaltes, Vorgehens oder anderen Aspekten einer Vorlesung an die Anforderungen und Wünsche der Studenten sind aufgrund des Abfragezeitpunktes nicht mehr möglich. Insgesamt lässt sich feststellen, dass viele unterschiedliche Systeme zum Lernen und Erheben von Meinungsbildern an der DHBW Mannheim genutzt werden. Augenscheinlich sind diese aber weder miteinander verknüpft noch in ein übergeordnetes System integriert. Zumindest können wir aus unserem Studienalltag von mehreren Beispielen berichten, wo die gleichen Daten mehrfach abgegeben werden mussten.
 
-\section{Personas}
+\section{Personas}\label{sec:persona}
 
 % -------------------------------------------------------
 % 1. Student
@@ -148,8 +148,6 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Besonders die Vielzahl an Vorlesungen, die sich in ihrem Aufbau und in der Prüfungsweise unterscheiden, erfordern unterschiedliche Vorbereitungen und damit TODOs.
         TODOs können dabei optional ein Fälligkeitsdatum besitzen, welches zur besseren Organisation der eingetragenen TODOs graphisch anzeigbar ist.
         So entsteht ein Kalender, mit dessen Hilfe  Kapazitätsengpässe rechtzeitig erkannt und durch Umplanen verhindert werden können.
-	\item statistische Auswertungen         \\
-		Ein Dozent eines Kurses soll von den durch die Anwendung gesammelten Informationen profitieren können und diese in die Gestaltung seiner Vorlesungen einbringen und berücksichtigen können. Dazu sollen die vorhandenen Informationen für Dozenten aufbereitet werden, so dass diese sich einfach und schnell ein Bild über ihre Kurse verschaffen können und ggf. Inhalte oder Vorgehensweisen der Vorlesung anpassen können. Außerdem soll eine Möglichkeit gegeben sein, diese Informationen in einem auswertungstauglichen Format zu exportieren, damit Dozenten auch eigene Auswertungen oder Graphiken erstellen können. Hierzu eignet sich besonders das csv Format, da es in einer Vielzahl von Anwendungen wie zum Beispiel Excel als Eingabe genutzt und weiter bearbeitet werden kann. Dabei soll dennoch immer der Datenschutz an erster Stelle stehen. Eine Auswertung der Daten soll nur anonym möglich sein und es werden nie personenbezogenen Daten wie zum Beispiel Email-Adressen der Studenten zur Verfügung gestellt werden.  
     \item Karteikarten                      \\
         Für eine bessere Prüfungsvorbereitungen können Karteikarten angelegt werden. Unterschiedliche wissenschaftliche Untersuchungen zeigen die Vorteile dieser Methode. Die Karteikarten sollen direkt in der App gelernt werden, sodass kein zusätzlicher Aufwand für das Abschreiben der Karten notwendig ist.
 
@@ -171,6 +169,9 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Aus diesem Grund sollen nur Dozenten Informationen bereitstellen können, die von mehreren Studenten eingesehen werden können.
     \item Übersichtliches Dashboard			\\
    		Die Anwendung soll erleichtern, den Überblick über die in nächster Zeit anstehenden Aufgaben und Tätigkeiten zu behalten. Dies ermöglichen die anstehenden Klausuren, eingetragene ToDos und Karteikarten, die am selben Tag zum Lernen empfohlen werden.
+    \item statistische Auswertungen         \\
+        Ein Dozent eines Kurses soll von den durch die Anwendung gesammelten Informationen profitieren können und diese in die Gestaltung seiner Vorlesungen einbringen und berücksichtigen können. Dazu sollen die vorhandenen Informationen für Dozenten aufbereitet werden, so dass diese sich einfach und schnell ein Bild über ihre Kurse verschaffen können und ggf. Inhalte oder Vorgehensweisen der Vorlesung anpassen können. Außerdem soll eine Möglichkeit gegeben sein, diese Informationen in einem auswertungstauglichen Format zu exportieren, damit Dozenten auch eigene Auswertungen oder Graphiken erstellen können.
+        Dabei soll dennoch immer der Datenschutz an erster Stelle stehen. Eine Auswertung der Daten soll nur anonym möglich sein und es werden nie personenbezogenen Daten wie zum Beispiel Email-Adressen der Studenten zur Verfügung gestellt werden.  
   
 \end{itemize}
 
@@ -223,7 +224,8 @@ Die gerade beschriebenen funktionalen und nicht-funktionalen Anforderungen sind 
         F5      & Prüfungstermine können eingetragen werden  \\
         F6      & Informationen können allen Studenten mitgeteilt werden  \\
         F7      & Es gibt eine Unterscheidung zwischen Studenten und Dozenten  \\
-        F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\\hline
+        F8      & Anstehenden Aufgaben und Prüfungen sollen übersichtlich dargestellt werden  \\
+        F9      & Dozenten sollen statistische Auswertungsmöglichkeiten haben\\\hline
         NF1     & Die Anwendung soll möglichst barrierefrei gestaltet werden\\
         NF2     & Anwendung lädt schnell                    \\
         NF3     & Daten jederzeit einsehbar                 \\
