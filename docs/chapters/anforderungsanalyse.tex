@@ -1,5 +1,5 @@
 % !TEX root =  ../master.tex
-\chapter{Anforderungsanalyse} % TODO: Das hier ist noch etwas durcheinander
+\chapter{Anforderungsanalyse}
 \section{Abgrenzung}
 \subsection{Abgrenzung des Funktionsumfangs}\label{sub:abgrenzung}
 Im Bereich Bildung gibt es viele Möglichkeiten, wie Hochschulen und Studenten unterstützt werdem können.
@@ -16,14 +16,8 @@ Die Kursebene dient zur Weitergabe von Lernmaterialien, die eine Vorlesung ergä
 
 Durch diesen Fokus entfallen einige übergeordnete Auswertungsmöglichkeiten mit Methoden aus dem Bereich Data Mining, da für sie eine breitere Datengrundlage nötig wäre. Wir sind allerdings der Überzeugung, dass die Mgölichkeit der Auswertung von Lernfortschritten nicht der primäre Grund für die Entwicklung einer Anwendung sein sollte. Dies lässt sich vor allem damit begründen, dass die Quantität und Qualität der erhobenen Daten stark mit dem Mehrwert und dem damit verbunden Nutzerverhalten der Studenten zusammenhängt. Aus diesem Grund verfolgen wir das Ziel, eine auf die Anforderungen der Stundenten angepasste Anwendung zu liefern, die für die Studenten einen wirklichen Mehrwert darstellt und daher freiwillig und gerne von ihnen genutzt wird. Dadurch fallen implizit mehr Lerndaten an, die dann anonym ausgewertet werden können und eine höhere Repräsentativität ermöglichen. Sollte sich die Anwendung für Nutzer als vorteilhaft erweisen, kann die Anwendung aufgrund ihres technischen Designs ohne Probleme um Funktionalitäten aus anderen Ebenen erweitert werden und somit kontinuierlich wachsen.
 
-
-
-% TODO: Können Wir vielleicht noch einen User Acceptance Test machen?
-
-% TODO: Also bauen wir einen Export? Das wäre gut, dann können wir das schreiben. Aber da müssen wir mal schauen. Vordefinierte Auswertungen, Berechnungen wird es allerdings aufgrund der gewählten Abgrenzungen erst einmal nicht geben.
 Die von Beginn an zu Verfügung stehenden Daten sollen im Ersten Schritt in einem auswertungstauglichen Format zur Verfügung gestellt werden. Die genauen Details werden später im Abschnitt Konzeption betrachtet. Wichtig ist uns hierbei jedoch, dass die Anonymität der einzelnen Nutzer geschützt bleibt und keine personenbezogenen Daten weitergegeben werden. Außerdem soll der Export dieser Daten nur den Dozenten eines Kurses vorbehalten sein. Aufgrund der vorgenommenen Themenabgrenzung muss jedoch die Auswertung selbst, inklusive der Auswahl der Daten und Methoden, vorerst noch durch die Dozierenden vorgenommen werden. 
 
-% TODO: Abgrenzung zu anderen Werkzeugen
 \subsection{Abgrenzung zu anderen Anwendungen}
 Im Hochschulkontext kommen bereits mehrere Systeme zum Einsatz.
 Die primäre Plattform bildet \enquote{Moodle}.
@@ -44,32 +38,7 @@ Für Dozenten gibt es die Möglichkeit, Umfragen zu erstellen und die Ergebnisse
 
 Zur Evaluierung von gehaltenen Vorlesungen kommt das System zur Automation von Befragungen und Prüfungen evasys zum Einsatz. \autocite{evasys} Hier wird jedoch nur Feedback zu bereits gehaltenen Vorlesungen stichprobenartig eingeholt. Kurzfristige Anpassungen des Inhaltes, Vorgehens oder anderen Aspekten einer Vorlesung an die Anforderungen und Wünsche der Studenten sind aufgrund des Abfragezeitpunktes nicht mehr möglich. Insgesamt lässt sich feststellen, dass viele unterschiedliche Systeme zum Lernen und Erheben von Meinungsbildern an der DHBW Mannheim genutzt werden. Augenscheinlich sind diese aber weder miteinander verknüpft noch in ein übergeordnetes System integriert. Zumindest können wir aus unserem Studienalltag von mehreren Beispielen berichten, wo die gleichen Daten mehrfach abgegeben werden mussten.
 
-% TODO: Hier noch einen Satz, alle anderen Anwendungen sind Käse, und dass wir das alles super toll machen
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Personas}
-
 
 % -------------------------------------------------------
 % 1. Student
@@ -77,6 +46,7 @@ Zur Evaluierung von gehaltenen Vorlesungen kommt das System zur Automation von B
 % -------------------------------------------------------
 % Keine Ahnung, irgendwelche Bilder halt :D
 % https://unsplash.com/photos/ZVo7vtXilCs
+
 \subsection{Beispiel Student}
 
 \begin{minipage}[t]{0.5\textwidth}
@@ -138,27 +108,9 @@ Das möchte ich gerne haben:
 \begin{itemize}
 	\item Informationen an alle Studenten des Kurses verteilen
 	\item Feedback zum Kurs erhalten
+	\item Informationen über das Lernverhalten meiner Studenten erhalten
 	\item Intuitive Bedienung
 \end{itemize}
-% Generell Umfragen, .... alles erst reinschreiben, wenn wir das auch implementiert haben :)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \section{Ist-Analyse}
 Bevor die eigentliche Entwicklung starten kann, müssen die aktuellen Probleme und Verbesserungspotenziale analysiert werden.
@@ -170,9 +122,6 @@ Sofern man \enquote{nicht in fragende Gesichter schaut}, ist es oft schwer zu wi
 Besonders die gegebene \enquote{Anonymität} der an der DHBW gehaltenen Online-Vorlesungen, bei denen im Regelfall kein Video der Teilnehmenden gestreamed wird, verschlechtert die Situation nochmals.
 Dadurch kann eine Differenz zwischen dem gefühlten und dem tatsächlichen Leistungsstand entstehen, die sich dann erst in Klausuren negativ zeigen kann.
 Aktuell (Dezember '20) finden das zweite Semester in Folge die Vorlesungen ausschließlich online statt. Wegen  der langen Dauer dieser Phase könnte eine Feedbackmöglichkeit für Dozierende nochmals relevanter sein.
-
-
-
 
 \section{Anforderungsformulierung}
 
@@ -199,7 +148,8 @@ Wir konnten die folgenden funktionalen Anforderungen definieren:
         Besonders die Vielzahl an Vorlesungen, die sich in ihrem Aufbau und in der Prüfungsweise unterscheiden, erfordern unterschiedliche Vorbereitungen und damit TODOs.
         TODOs können dabei optional ein Fälligkeitsdatum besitzen, welches zur besseren Organisation der eingetragenen TODOs graphisch anzeigbar ist.
         So entsteht ein Kalender, mit dessen Hilfe  Kapazitätsengpässe rechtzeitig erkannt und durch Umplanen verhindert werden können.
-	% TODO: Hier ist ein Teil reingerutscht der eigentlich mehr Theorei als ANforderung ist!
+	\item statistische Auswertungen         \\
+		Ein Dozent eines Kurses soll von den durch die Anwendung gesammelten Informationen profitieren können und diese in die Gestaltung seiner Vorlesungen einbringen und berücksichtigen können. Dazu sollen die vorhandenen Informationen für Dozenten aufbereitet werden, so dass diese sich einfach und schnell ein Bild über ihre Kurse verschaffen können und ggf. Inhalte oder Vorgehensweisen der Vorlesung anpassen können. Außerdem soll eine Möglichkeit gegeben sein, diese Informationen in einem auswertungstauglichen Format zu exportieren, damit Dozenten auch eigene Auswertungen oder Graphiken erstellen können. Hierzu eignet sich besonders das csv Format, da es in einer Vielzahl von Anwendungen wie zum Beispiel Excel als Eingabe genutzt und weiter bearbeitet werden kann. Dabei soll dennoch immer der Datenschutz an erster Stelle stehen. Eine Auswertung der Daten soll nur anonym möglich sein und es werden nie personenbezogenen Daten wie zum Beispiel Email-Adressen der Studenten zur Verfügung gestellt werden.  
     \item Karteikarten                      \\
         Für eine bessere Prüfungsvorbereitungen können Karteikarten angelegt werden. Unterschiedliche wissenschaftliche Untersuchungen zeigen die Vorteile dieser Methode. Die Karteikarten sollen direkt in der App gelernt werden, sodass kein zusätzlicher Aufwand für das Abschreiben der Karten notwendig ist.
 
