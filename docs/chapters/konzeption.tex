@@ -270,12 +270,45 @@ Aus diesem Grund sollte das Dashboard genau diese Informationen in zwei Abschnit
 Außerdem sollten keine weiteren Informationen dargestellt werden, um zu verhindern, dass das Dashboard unübersichtlich wird.
 
 \subsection{Prüfungen}
-//TODO:
+Prüfungstermine sind essentiell, um eine gute Planung zu ermöglichen.
+Aus diesem Grund wurden in den Anforderungen definiert, dass Prüfungstermine einsehbar sind.
+Um zu verhindern, dass weitere Anwendungen benötigt werden und Misskommunikationspotenzial vorzubeugen sollten alle relevanten Informationen direkt in der Anwendung editierbar sein.
+Aus unserer persönlichen Erfahrung haben wir uns für die folgenden Informationen entschieden, die eintragbar sein sollten:
+\begin{itemize}
+    \item Name der Prüfung
+    \item Beschreibung der Prüfungsleistung
+    \item Datum und Uhrzeit
+    \item Dauer der Prüfung
+    \item Raum
+    \item Zugelassene Hilfsmittel
+    \item Weitere Informationen
+\end{itemize} 
 
 \subsection{Auswertungen}
-Als letztes funktionale //TODO:
+Als letztes funktionale Anforderung wurde wurde die Auswertbarkeit von statistischen Informationen definiert. Diese sollen dem Dozenten Informationen über ihre Kurse geben.
 
-Hierzu eignet sich besonders das csv Format, da es in einer Vielzahl von Anwendungen wie zum Beispiel Excel als Eingabe genutzt und weiter bearbeitet werden kann.
+Um ein möglichst umfängliches Stimmungsbild zu erhalten wird sollte ein aktiver und ein passiver Ansatz gewählt werden.
+Beim aktiven Ansatz können Stundenten aktiv Feedback hinterlassen und so direkt Feedback zu Vorlesungen zu geben. Dadurch kann der Vorlesungsinhalt direkt mitgestaltet werden. Betrachtet werden sollen dabei die folgenden 4 Kategorien:
+\begin{itemize}
+    \item Spaß\\
+        Ist die Vorlesung interessant gestaltet?
+    \item Informationsversorgung\\
+        Wie werden weiterführende Informationen wie Übungsaufgaben angeboten?
+    \item Verständlichkeit\\
+        Sind die dargestellten Vorlesungsinhalte verständlich dargestellt?
+    \item Neue Informationen\\
+        Wie viele Informationen vermittelt die Vorlesung?
+\end{itemize}
+
+
+Durch einen passiven Ansatz soll der dozent einen Einblick bekommen, welche Lernbedürfnisse Studenten eines Kurses haben.
+Betrachtet werden hierbei besonders welcher Lerntyp ein Student ist, wie Affin er zu online Unterricht ist, die Nutzungsfrequenz von Lernapps und wie hoch die Erfahrung mit online Unterricht ist.
+Diese Fragen sollten idealerweise vom Studenten beantwortet werden. Da diese Informationen Kursübergreifend sind, sollten diese bereits zu Beginnn, beispielsweise nach der Registrierung, erfragt werden.
+Gleichzeitig sollte aber eine Beantwortung optional sein, damit diese nicht abschreckend wirken.
+
+Der Dozent sollte anschließend direkt innerhalb einer Anwendung eine Auswertung durchführen können um schnell eine Übersicht zu bekommen. Gleichzeitig sollten aber alle Daten exportierbar sein. Dies würde es Nutzern ermöglichen weitere Analysen mit anderen Hilfsmitteln durchzuführen. So können beispielsweise IBMs SQSS verwendet werden.
+Aus diesem Grund sollte ein gängiges Datenformat verwählt werden. 
+Besonders geeignet ist das csv Format, da es in einer Vielzahl von Anwendungen wie zum Beispiel Excel als Eingabe genutzt und weiter bearbeitet werden kann und gleichzeitig eine geringe Fehleranfälligkeit besitzt.
 
 
 
