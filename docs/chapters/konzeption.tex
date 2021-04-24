@@ -41,16 +41,16 @@ In \autoref{fig:clientServerAufbau} ist eine solche Architektur vereinfacht darg
 \end{figure}
 
 Praktisch dargestellt, ruft der Nutzer mithilfe seines Browsers die Webseite von einem Server ab.
-Der Browser verarbeitet mithilfe der implementierten Geschäftslogik die Anfrage des Nutzers und greift auf die Daten des Datenbankservers zu. Diese Daten werden schließlich dem Nutzer zur Verfügung gestellt, welche ihm in der Nutzerschnittstelle angezeigt werden und für ihn an  dieser Stelle aufbereitet einsehbar sind.\\
+Der Browser verarbeitet mithilfe der implementierten Geschäftslogik die Anfrage des Nutzers und greift auf die Daten des Datenbankservers zu. Diese Daten werden schließlich dem Nutzer zur Verfügung gestellt, durch Anzeige in der Nutzerschnittstelle aufbereitet.\\
 Dabei greift der Nutzer über ein wohldefiniertes \ac{API} auf den Anwendungsserver zu, um diesen dargestellten Prozess abzusichern.
 
 %Dieser läd die notwendigen Informationen auf ähnliche Weise von einem Datenbankserver und bereitet diese gegebenenfalls auf. edit pdm: im Absatz obendrüber bearbeitet
 %Der Nachteil von Client-Server-Modellen ist der hohe Aufwand im Bereich der Skalierung. edit pdm: im Absatz untendrunter bearbeitet
 
-Nach den Anwendungsanforderungen wird eine hohe Leistungsfähigkeit benötigt, die auch mit Leistungsspitzen klar kommen muss. Da anzunehmen ist, dass der Großteil der Nutzer in der Mitteleuropäischen Zeitzone vorzufinden sein wird, können solche Leistungsspitzen morgen zu Vorlesungsbeginn, nach der Mittagspause oder am frühen Abend auftreten. Bei diesen Leistungsspitzen ist eine hohe Serverkapazität notwendig.
+Nach den Anwendungsanforderungen wird eine hohe Leistungsfähigkeit benötigt, die auch mit Leistungsspitzen klar kommen muss. Da anzunehmen ist, dass der Großteil der Nutzer in der Mitteleuropäischen Zeitzone vorzufinden sein wird, können solche Leistungsspitzen morgens zu Vorlesungsbeginn, nach der Mittagspause oder am frühen Abend auftreten. Bei diesen Leistungsspitzen ist eine hohe Serverkapazität notwendig.
 Hierbei müssen sowohl die implementierte Serverlogik, als auch die zugrundeliegende Serverinfrastruktur konsistente Daten mit akzeptablen Antwortzeiten liefern. Diese Vorgänge fallen in den Bereich der Skalierung, welcher sowohl für die Serverlogik, als auch für Infrastruktur einen hohen Aufwand birgt.\\
 Um dieses Problem zu lösen gibt es zwei Lösungsansätze. In der ersten Lösung können permanent Serverressourcen bereitgestellt werden, die auch bei Leistungsspitzen nicht überlastet sind und ausfallen, jedoch würden bei dieser Lösung viele Ressourcen in \enquote{Ruhephasen} ungenutzt bleiben, was unökonomisch und kostspielig wäre.\\
-In der zweiten Lösung können notwendige Serverressourcen an Leistungsspitzen dynamisch hinzugezogen werden. Hierbei besteht jedoch die Schwierigkeit, diese Leistungsspitzen rechtzeitig zu erkennen, um frühzeitig Serverressourcen steigern zu können. Sofern diese Schwierigkeiten bei dem zweiten Lösungsansatz umgesetzt werden können, ist dies eine optimale Lösung, jedoch ohne weiteres nicht einfach umzusetzen.\\
+In der zweiten Lösung können notwendige Serverressourcen bei Leistungsspitzen dynamisch hinzugezogen werden. Hierbei besteht jedoch die Schwierigkeit, diese Leistungsspitzen rechtzeitig zu erkennen, um frühzeitig Serverressourcen steigern zu können. Sofern diese Schwierigkeiten bei dem zweiten Lösungsansatz überwunden werden können, ist dies eine optimale Lösung, jedoch ohne weiteres nicht einfach umzusetzen.\\
 
 
 
@@ -101,7 +101,7 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung a
         Nicht nur entfallen Kosten für die Wartung der Server und Hardwareressourcen, sondern der gesamte Betrieb ist im \enquote{Spark}-Plan kostenlos.
     \item Skalierung \\
         Firebase kümmert sich um die gesamte Bereitstellung und Skalierung der Serverleistung.
-        Das heißt, sofern mehr Rechenleistung benötigt wird (wie beispielsweise in Lastspitzen), wird die Rechenleistung automatisch erhöht ohne so das fehlschlagen von Anfragen vermieden.
+        Das heißt, sofern mehr Rechenleistung benötigt wird (wie beispielsweise in Lastspitzen), wird die Rechenleistung automatisch erhöht und so das Fehlschlagen von Anfragen vermieden.
 \end{itemize}
 
 
@@ -129,16 +129,16 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung a
 \subsection{Kurse}\label{sub:konzeptionKurse}
 
 Informationen sollen in Kurse unterteilt werden.
-Aus diesem Grund wird eine Möglichkeit benötigt, wie Nutzer Kurse wechseln können und erkennen können zu welchem Kurs die Informationen gehören.
-Auch hier gibt es mehrere Möglichkeiten, wie eine solche \ac{UX} gestaltet werden kann, die jeweils verschiedenen Vor- und Nachteilen besitzen.
+Aus diesem Grund wird eine Möglichkeit benötigt, wie Nutzer Kurse wechseln können und wie sie erkennen können, zu welchem Kurs die Informationen gehören.
+Auch hier gibt es mehrere Möglichkeiten, wie eine solche \ac{UX} gestaltet werden kann, die jeweils verschiedenen Vor- und Nachteile besitzen.
 
-Eine Möglichkeit ist die gesamte Anwendung innerhalb eines Kurses anzubieten.
+Eine Möglichkeit ist, die gesamte Anwendung innerhalb eines Kurses anzubieten.
 Das heißt, der Nutzer hat nach dem Login die Möglichkeit einen seiner Kurse auszuwählen.
 Dieser Kurs wird anschließend geladen und der Nutzer sieht nur die Informationen dieses Kurses.
 Möchte man den Kurs wechseln, gibt es ein Bento-Menü, über welches ein anderer Kurs ausgewählt werden kann.
 Eine solche \ac{UX} hat den Vorteil, dass sich ein Nutzer vollständig auf einen Kurs konzentrieren kann und so nicht Informationen zwischen verschiedenen Kursen durcheinander wirft.
 Gleichzeitig kann dies aber dazu führen, dass ein Nutzer eventuell den Überblick über seine Kurse verliert und so einen Kurs womöglich vernachlässigt.
-Auch Kursübergreifende Informationen, z.\,B. TODOs, können nur schwer abgebildet werden, ohne das die Nutzung der Anwendung erklärungsbedürftig wird.
+Auch Kurs-übergreifende Informationen, z.\,B. TODOs, können nur schwer abgebildet werden, ohne dass die Nutzung der Anwendung erklärungsbedürftig wird.
 
 Als zweite Möglichkeit kommt eine virtuelle Trennung zum Einsatz.
 Dabei sieht der Nutzer alle Informationen und eine Trennung dieser findet nur über die Navigation statt.
@@ -151,39 +151,39 @@ Dadurch kann der Nutzer stets alle Kurse sehen und die \ac{UX} wird vereinfacht.
 
 Aus den Anforderungen geht hervor, dass es zwei Nutzerrollen gibt: Dozenten und Studenten.
 Dozenten sollen in der Anwendung ihre Kurse verwalten können.
-Ein Kurs orientiert sich dabei an der Organisation, die in der Realität vorliegen.
+Ein Kurs orientiert sich dabei an der Organisation, die in der Realität vorliegt.
 Auch in vorhandenen Tools wie beispielsweise \enquote{Moodle} sind Studenten anhand von Kursen organisiert.
 Aufgrund der Vielzahl an solchen Lösungen scheint sich eine solche Organisation zu bewähren.
 Aus diesem Grund liegt es nahe, das auch die zu entwickelnde Anwendung eine solche Struktur nutzen sollte.
 % TODO: Wie Werden Kurse erstellt
 
-Nachdem nun geklärt wurde, wie die Organisation von Studenten und Dozenten stattfindet, muss nun die Zuweisung von Studenten zu Kursen die Zuweisung von Dozenten konzipiert werden.
+Nachdem nun geklärt wurde, wie die Organisation von Studenten und Dozenten stattfindet, muss nun die Zuweisung von Studenten zu Kursen und die Zuweisung von Dozenten konzipiert werden.
 Zunächst wird die Studentenzuweisung betrachtet.
-Für die Zuweisung von Studenten kommen mehrere Ansätze in betracht, die sich in der Person unterscheiden, die die Zuweisung durchführt:
+Für die Zuweisung von Studenten kommen mehrere Ansätze in Betracht, die sich in der Person unterscheiden, die die Zuweisung durchführt:
 \begin{enumerate}
     \item Zuweisung durch Anwendungsadministrator
     \item Zuweisung durch Dozenten
     \item Zuweisung durch Studenten
 \end{enumerate}
-Als erster Ansatz kommt die Zuweisung durch einen Anwendungsadministrator in betracht.
+Als erster Ansatz kommt die Zuweisung durch einen Anwendungsadministrator in Betracht.
 Ein solcher Administrator ist ein zentraler Mitarbeiter der DHBW, welcher komplette Autorität über die Anwendung besitzt.
-Von einem solchen Ansatz wird abgesehen, da der Verwaltungsaufwand sehr hoch ausfällt.
+Von einem solchen Ansatz wird abgesehen, da der Verwaltungsaufwand sehr hoch wäre.
 Für jeden Kurs über 20 Studenten zuzuweisen, und das für mehrere Kurse pro Semester und Vorlesung, scheint nicht realistisch.
 
 Der zweite ist der Ansatz der Zuweisung durch einen Dozenten.
 In der aktuellen DHBW-Organisation besitzen Dozenten bereits eine Liste an Studenten für ihre Vorlesung.
-Diese Liste dient zur Anwesendheitskontrolle.
+Diese Liste dient zur Anwesenheitskontrolle.
 Demnach können Dozenten diese Liste für die Zuweisung in der Anwendung nutzen.
 Der Nachteil eines solchen Ansatzes ist es aber, dass Studenten ihre Daten in der Anwendung hinterlassen müssen und diese durch andere Dozenten gegebenenfalls einsehbar wären.
-Zusätzlich geht die Anonymität, welche durch Matrikelnummern gegeben ist eventuell verloren.
+Zusätzlich geht die Anonymität, welche durch Matrikelnummern gegeben ist, eventuell verloren.
 Insgesamt ist dieser Ansatz aus Datenschutzaspekten besonders kritisch. % TODO: Beim Admin nicht so, weil dhbw
 
-Als Letzter Ansatz ist die Zuweisung durch den Studenten.
-Denkbar sind hier mehrere Ansätze: Eine Liste aus Kursen oder über einen Kursidentifikator.
+Als letzter Ansatz ist die Zuweisung durch den Studenten denkbar.
+Denkbar sind hier wieder umehrere Fälle: Eine Liste aus Kursen oder über einen Kursidentifikator.
 Eine Liste mit Kursen vereinfacht die Zuweisung durch den Studenten, da Kurse schnell entdeckt werden können und eventuell zusätzliches Wissen vermittelt werden kann, wenn der Student sich für mehrere ähnliche Kurse einträgt.
 Nachteil ist aber die unmittelbare Verwaltung und Übersicht über die Kurse.
 Eine Zuweisung über einen Kursidentifikator (kurz: Schlüssel) hat den Nachteil, dass diese Schlüssel erst aufwändig über einen weiteren Kommunikationsweg (z.\,B. Email oder direkt in einer Vorlesung) mitgeteilt werden muss.
-Dafür besitzen Studenten aber nur Zugriff auf die für sie relevanten Vorlesungen.
+Dafür wüeden die  Studenten aber nur Zugriff auf die für sie relevanten Vorlesungen besitzen.
 In \enquote{Moodle} ist die Zuweisung zu Kursen auf freiwilliger Basis anhand von Einschreibeschlüsseln gelöst.
 Aus diesem Grund ist dieser \enquote{Workflow} bereits für Studenten bekannt und eine Anpassung an die neue Anwendung ist schnell möglich.
 In der Tat nutzen viele existierende Anwendungen ein solches System.
@@ -192,18 +192,18 @@ Beispiele hierfür sind Zoom oder Google Meets.
 
 \subsection{Registrierung}
 Nutzer der Anwendung können sich selbst registrieren.
-Daraus ergibt sich die eine Rollen Problematik: Woran kann die Anwendung erkennen, welcher Nutzer ein Student ist und welcher Nutzer ein Dozent ist.
-Sofern Nutzer dies selber angeben können, bräuchte es gegebenenfalls eine Validierung durch die DHBW, wodurch erneut die oben genannten Nachteile einer Zuweisung durch einen Administrator greifen.
+Daraus ergibt sich aber eine Rollen-Problematik: Woran kann die Anwendung erkennen, welcher Nutzer ein Student ist und welcher Nutzer ein Dozent ist?
+Sofern Nutzer dies selber angeben können, bräuchte es gegebenenfalls eine Validierung durch die DHBW, wodurch erneut die oben genannten Nachteile einer Zuweisung durch einen Administrator greifen würden.
 Ein Ansatz, bei dem Nutzer dies selber verwalten können wird auch hier als besser angesehen.
 Aus diesem Grund wird der folgende Ansatz verwendet:
-Statt festdefinierte Rollen (Student und Dozent) zu besitzen, kann jeder Student selbst sowohl Student, als auch Dozent sein.
+Statt festdefinierte Rollen (Student und Dozent) zu besitzen, kann jeder Student selbst sowohl Student als auch Dozent sein.
 
 Jeder Nutzer ist zunächst keiner Rolle zugeordnet.
-Jeder Nutzer kann einen Kurs erstellen, wodurch dieser Nutzer automatisch zu einem Dozent für diesen Kurse.
+Jeder Nutzer kann einen Kurs erstellen, wodurch dieser Nutzer automatisch zu einem Dozent für diesen Kurs wird.
 Sobald sich ein Nutzer mithilfe des Einschreibeschlüssels für einen Kurs anmeldet wird der Nutzer automatisch für diesen Kurs zu einem Studenten.
 Dadurch können auch zuvor nicht vorgesehene Nutzerbeziehungen entstehen.
-Beispielsweise kann ein Dozent sich in einen weiteren Kurs einschreiben, falls er sich in einer weiteren Richtung weiterbilden möchte.
-Oder die DHBW kann sich in für einen Kurs einschreiben um die Qualität einer Vorlesung zu validieren.
+Beispielsweise kann ein Dozent sich in einen weiteren Kurs einschreiben, falls er sich in einer bestimmten Richtung weiterbilden möchte.
+Oder die DHBW kann sich für einen Kurs einschreiben, um die Qualität einer Vorlesung zu validieren.
 
 
 Ein Vorteil eines solchen Ansatzes ist es, dass auch Studenten Kurse erstellen können und so Lerngruppen gefördert werden.
@@ -218,17 +218,17 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 
 
 \subsection{TODOs}
-Aus den Anforderungen geht hervor, dass TODOs gespeichert werden sollen. In Einklang mit den anderen Konzeptionen können auch die TODOs an Kurse gebunden werden. Stattdessen haben wir uns dafür entschieden die TODOs zentral und Kursübergreifend zu gestalten. So hat der Nutzer stets Übersicht über alle Aufgaben und es geraten keine Informationen in den Hintergrund.
+Aus den Anforderungen geht hervor, dass TODOs gespeichert werden sollen. In Einklang mit den anderen Konzeptionen können auch die TODOs an Kurse gebunden werden. Stattdessen haben wir uns aber dafür entschieden, die TODOs zentral und Kurs-übergreifend zu gestalten. So hat der Nutzer stets Übersicht über alle Aufgaben und es geraten keine Informationen in den Hintergrund.
 
-Neue TODOs sollen einfach hinzugefügt werden können. Aus diesem Grund soll es nur notwendig sein den Namen einer Aufgabe zu definieren und alle anderen Attribute wie Fälligkeitsdaten optional zu gestalten.
+Neue TODOs sollen einfach hinzugefügt werden können. Aus diesem Grund soll es nur notwendig sein den Namen einer Aufgabe zu definieren und alle anderen Attribute wie Fälligkeitsdaten lediglich optional zu gestalten.
 
 Gleichzeitig sollen alle TODOs grafisch dargestellt werden, um die Planung zu erleichtern.
-Opimalerweiße sollten die Termine in einem Kalender dargestellt werden.
+Optimalerweiße sollten die Termine in einem Kalender dargestellt werden.
 Je voller ein Tag ist, desto deutlicher soll der Backlog hervorgehoben werden, mit rot als Signalfarbe. Der Kalender soll prominent dargestellt werden, sodass der Nutzer sich sofort einen Überblick verschaffen kann. 
 
 
 \subsection{Karteikarten}
-In den Anforderungen wurde definiert, dass die Anwendung Karteikarten zur Untersützung von Lerninhalten unterstützen soll.
+In den Anforderungen wurde definiert, dass die Anwendung Karteikarten zur Untersützung von Lerninhalten anbieten soll.
 Für das Lernen mit den Karteikarten gibt es eine Vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung soll einen Algorithmus aus dem Bereich der \enquote{Spaced Repetition Systems} implementieren. In die deutsche Sprache übersetzt heißt das so viel wie "Wiederholen ohne Lücken". Das System hinter diesen Algorithmen besteht darin, die entsprechenden Informationen genau dann zu wiederholen, wenn das menschliche Gehirn sie fast schon vergessen hätte.\autocite[Vgl.][]{Tabibian3988} Die einzelnen Karteikarten werden nacheinander abgefragt und bei richtiger Antwort in zunehmenden Zeitintervallen immer wieder überprüft. Durch diesen Abstandseffekt soll gezielt das Langzeitgedächnis trainiert werden, damit die Inhalte auch über eine Prüfung hinaus im Gedächtnis behalten werden. Die unterschiedlichen Algorithmen dieser Klasse unterscheiden sich lediglich in der Wahl der Zeitabstände. 
 Genutzt werden soll das Super-Memo System des polnischen Neurobiologen Piotr Wozniak. Es definiert folgende Zeitabstände:
 \begin{itemize}
@@ -246,33 +246,33 @@ Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und du
 \subsection{Lernmaterialien}
 Um das Lernen zu unterstüzen sollen Dozenten weitere Kursinhalte in der Anwendung bereitstellen können. Die Problematik mit der Informationsversorgung wurde bereits in den vorherigen Kapiteln angesprochen.
 
-Bei der Konzeption werden verschiedene Methoden betrachtet, mit der Dozenten Informationen an die Kursteilnehmer übergeben kann.
-Die einfachste Methode wäre es, wenn etwaige Skripte per Email an die Teilnehmer zu versenden.
+Bei der Konzeption werden verschiedene Methoden betrachtet, mit der Dozenten Informationen an die Kursteilnehmer übergeben können.
+Die einfachste Methode wäre es, Skripte per Email an die Teilnehmer zu versenden.
 Hierbei würde die Anwendung wie ein Email-Verteiler wirken. Da Email-Adressen bereits für das Login benötigt werden, wären alle Informationen bereits vorhanden.
-Dadurch entsteht aber neue Problematiken. Zum einen müssten weitere Datenschutzrechtliche Bedenken geklärt werden. Wie beispielsweiße die Weitergabe und Verarbeitung von Email Adressen. Außerdem müsste sichergestellt werden, dass alle Email-Adressen gültig sind und Informationen auch zustellbar sind. Unter Umständen könnten dadurch einige Studenten Vorteile gegenüber anderen Studenten bekommen.
-Dazu kommt, dass Informationen erneut unübersichtlich für Studenten sind. So kommen beispielsweiße an verschiedenen Tagen Informationen wie Skripte an, die im Posteingang durcheinander geraten. Womöglich würden z.\,B. Informationen von verschiedenen Vorlesungen vermischt werden, was sich negativ auf den Lernerfolg auswirken würde.
+Dadurch entstünden aber neue Problematiken. Zum einen müssten weitere datenschutzrechtliche Bedenken geklärt werden, beispielsweiße die Weitergabe und Verarbeitung der Email-Adressen. Außerdem müsste sichergestellt werden, dass alle Email-Adressen gültig sind und Informationen auch zustellbar sind. Unter Umständen könnten dadurch einige Studenten Vorteile gegenüber anderen Studenten bekommen.
+Dazu kommt, dass Informationen erneut unübersichtlich für Studenten wären. So kamen beispielsweiße an verschiedenen Tagen Informationen wie Skripte an, die im Posteingang durcheinander geraten würden. Womöglich würden z.\,B. Informationen von verschiedenen Vorlesungen vermischt werden, was sich negativ auf den Lernerfolg auswirken könnte.
 
-Stattdessen wäre es besser, wenn Informationen direkt in der Anwendung einsehbar wären. Informationen können hier wie in \autoref{sub:konzeptionKurse} beschrieben durch Dozenten der einzelnen Kurse erstellt werden und stehen dann allen Kursteilnehmern zur Verfügung.\\
-Auch hier stehen verschiedene Möglichkeiten zur Verfügung. Bei der Konzeption wurden verschiedene Ansätze betrachtet. Ein Beispiel hierbei ist die Überlegung einen Text-Editor wie bei diversen Email-Providern bereitzustellen, in dem Informationen erstellt und bearbeitet werden können. Dies hat den Vorteil, dass sich die Datenhaltung vereinfacht und dass es eine höhere Sicherheit bietet als alternative Methoden. Eine dieser alternativen Methoden ist das hochladen von Dateien durch den Dozenten. 
+Stattdessen wäre es besser, wenn Informationen direkt in der Anwendung einsehbar wären. Informationen können hier wie in \autoref{sub:konzeptionKurse} beschrieben durch Dozenten der einzelnen Kurse erstellt werden und stünden dann allen Kursteilnehmern zur Verfügung.\\
+Auch hier stehen verschiedene Möglichkeiten zur Verfügung. Bei der Konzeption wurden verschiedene Ansätze betrachtet. Ein Beispiel hierbei ist die Überlegung, einen Text-Editor wie bei diversen Email-Providern bereitzustellen, in dem Informationen erstellt und bearbeitet werden können. Dies hat den Vorteil, dass sich die Datenhaltung vereinfacht und eine höhere Sicherheit gewährleistet würde als bei alternativen Methoden. Eine dieser alternativen Methoden ist das Hochladen von Dateien durch den Dozenten. 
 Wir haben uns für letztere Methodik aus den folgenden Gründen entschieden:
-Durch Datei-uploads erhöht sich zwar der Entwicklungsaufwand, der Aufwand für Nutzer wird aber stark gesenkt. So können Bilddateien und existierende Skripte einfach bereitgestellt werden ohne dass der Dozent einen zusätzlichen Arbeitsaufwand betreiben muss.
+Durch Datei-uploads erhöht sich zwar der Entwicklungsaufwand, der Aufwand für Nutzer wird aber stark gesenkt. So können Bilddateien und existierende Skripte einfach bereitgestellt werden, ohne dass der Dozent einen zusätzlichen Arbeitsaufwand betreiben muss.
 
 
 
 
 \subsection{Dashboard}
 Das Dashboard wird als Lösung für mehrere funktionale Anforderungen konzeptioniert.
-Ziel des Dashboards ist es die wichtigsten Informationen auf einen Blick zentral anzuzeigen.
-Demnach sollte das Dashboard alle Informationen unabhängig von den Kursen angezeigt werden, wenn diese unmittelbar wichtig für den Studenten sind.
+Ziel des Dashboards ist es, die wichtigsten Informationen auf einen Blick zentral anzuzeigen.
+Demnach sollte das Dashboard alle Informationen unabhängig von den Kursen angezeigen, sofern diese unmittelbar wichtig für den Studenten sind.
 Aus den Personas, die bereits in \autoref{sec:persona} beschrieben wurden, und unserer persönlichen Erfahrung können wir einige Funktionalitäten auswählen, die wir als besonders wichtig identifizieren.
-Genauer gesagt sind besonders die Klausurtermine sowie die TODOs, die innerhalb einer Woche anstehen besonders wichtig.
+Genauer gesagt sind besonders die Klausurtermine sowie die TODOs, die innerhalb einer Woche anstehen, besonders wichtig.
 Aus diesem Grund sollte das Dashboard genau diese Informationen in zwei Abschnitten enthalten.
 Außerdem sollten keine weiteren Informationen dargestellt werden, um zu verhindern, dass das Dashboard unübersichtlich wird.
 
 \subsection{Prüfungen}
 Prüfungstermine sind essentiell, um eine gute Planung zu ermöglichen.
-Aus diesem Grund wurden in den Anforderungen definiert, dass Prüfungstermine einsehbar sind.
-Um zu verhindern, dass weitere Anwendungen benötigt werden und Misskommunikationspotenzial vorzubeugen sollten alle relevanten Informationen direkt in der Anwendung editierbar sein.
+Aus diesem Grund wurde in den Anforderungen definiert, dass Prüfungstermine einsehbar sind.
+Um zu verhindern, dass weitere Anwendungen benötigt werden und um Miskommunikationspotenzial vorzubeugen sollten alle relevanten Informationen direkt in der Anwendung editierbar sein.
 Aus unserer persönlichen Erfahrung haben wir uns für die folgenden Informationen entschieden, die eintragbar sein sollten:
 \begin{itemize}
     \item Name der Prüfung
@@ -285,15 +285,15 @@ Aus unserer persönlichen Erfahrung haben wir uns für die folgenden Information
 \end{itemize} 
 
 \subsection{Auswertungen}
-Als letztes funktionale Anforderung wurde wurde die Auswertbarkeit von statistischen Informationen definiert. Diese sollen dem Dozenten Informationen über ihre Kurse geben.
+Als letzte funktionale Anforderung wurde die Auswertbarkeit von statistischen Informationen definiert. Diese sollen den Dozenten Informationen über ihre Kurse geben.
 
-Um ein möglichst umfängliches Stimmungsbild zu erhalten wird sollte ein aktiver und ein passiver Ansatz gewählt werden.
-Beim aktiven Ansatz können Stundenten aktiv Feedback hinterlassen und so direkt Feedback zu Vorlesungen zu geben. Dadurch kann der Vorlesungsinhalt direkt mitgestaltet werden. Betrachtet werden sollen dabei die folgenden 4 Kategorien:
+Damit ein möglichst umfängliches Stimmungsbild erhalten wird sollte ein aktiver und ein passiver Ansatz gewählt werden.
+Beim aktiven Ansatz können Stundenten aktiv Feedback hinterlassen und so direkt Feedback zu Vorlesungen geben. Dadurch kann der Vorlesungsinhalt direkt mitgestaltet werden. Betrachtet werden sollen dabei die folgenden 4 Kategorien:
 \begin{itemize}
     \item Spaß\\
         Ist die Vorlesung interessant gestaltet?
     \item Informationsversorgung\\
-        Wie werden weiterführende Informationen wie Übungsaufgaben angeboten?
+        Werden weiterführende Informationen wie Übungsaufgaben angeboten?
     \item Verständlichkeit\\
         Sind die dargestellten Vorlesungsinhalte verständlich dargestellt?
     \item Neue Informationen\\
@@ -301,14 +301,14 @@ Beim aktiven Ansatz können Stundenten aktiv Feedback hinterlassen und so direkt
 \end{itemize}
 
 
-Durch einen passiven Ansatz soll der dozent einen Einblick bekommen, welche Lernbedürfnisse Studenten eines Kurses haben.
-Betrachtet werden hierbei besonders welcher Lerntyp ein Student ist, wie Affin er zu online Unterricht ist, die Nutzungsfrequenz von Lernapps und wie hoch die Erfahrung mit online Unterricht ist.
-Diese Fragen sollten idealerweise vom Studenten beantwortet werden. Da diese Informationen Kursübergreifend sind, sollten diese bereits zu Beginnn, beispielsweise nach der Registrierung, erfragt werden.
-Gleichzeitig sollte aber eine Beantwortung optional sein, damit diese nicht abschreckend wirken.
+Durch einen passiven Ansatz soll ein Dozent Einblick bekommen, welche Lernbedürfnisse Studenten des Kurses haben.
+Betrachtet werden hierbei besonders, welcher Lerntyp ein Student ist, wie Affin er zu Online-Unterricht ist, die Nutzungsfrequenz von Lernapps und wie hoch die Erfahrung mit Online-Unterricht ist.
+Diese Fragen sollten idealerweise vom Studenten beantwortet werden. Da diese Informationen Kurs-übergreifend sind, sollten diese bereits zu Beginnn, beispielsweise nach der Registrierung, erfragt werden.
+Gleichzeitig sollte aber eine Beantwortung optional sein, damit die Fragen nicht abschreckend wirken.
 
-Der Dozent sollte anschließend direkt innerhalb einer Anwendung eine Auswertung durchführen können um schnell eine Übersicht zu bekommen. Gleichzeitig sollten aber alle Daten exportierbar sein. Dies würde es Nutzern ermöglichen weitere Analysen mit anderen Hilfsmitteln durchzuführen. So können beispielsweise IBMs SQSS verwendet werden.
+Der Dozent sollte anschließend direkt innerhalb einer Anwendung eine Auswertung durchführen können, um schnell eine Übersicht zu bekommen. Gleichzeitig sollten aber alle Daten exportierbar sein. Dies würde es Nutzern ermöglichen, weitere Analysen mit anderen Hilfsmitteln durchzuführen. So können beispielsweise IBM's SQSS verwendet werden.
 Aus diesem Grund sollte ein gängiges Datenformat verwählt werden. 
-Besonders geeignet ist das csv Format, da es in einer Vielzahl von Anwendungen wie zum Beispiel Excel als Eingabe genutzt und weiter bearbeitet werden kann und gleichzeitig eine geringe Fehleranfälligkeit besitzt.
+Besonders geeignet ist das csv Format, da es in einer Vielzahl von Anwendungen, zum Beispiel Excel, als Eingabe genutzt und weiter bearbeitet werden kann und gleichzeitig eine geringe Fehleranfälligkeit besitzt.
 
 
 

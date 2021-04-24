@@ -1,13 +1,13 @@
 % !TEX root =  ../master.tex
 \chapter{Nutzerhandbuch} %TODO: Das hier eventuell nochmal überarbeiten und kürzen?
-Bei der Endwicklung der Anwendung haben wir großen Wert auf eine intuitive Gestaltung der \ac{GUI} und der \ac{UX} gelegt. Ziel war es, eine Anwendung zu gestalten, deren Nutzer die Anwendung ohne Erklärung verstehen.
+Bei der Endwicklung der Anwendung haben wir großen Wert auf eine intuitive Gestaltung des \ac{GUI} und der \ac{UX} gelegt. Ziel war es, eine Anwendung zu gestalten, deren Nutzer die Anwendung ohne Erklärung verstehen können.
 Dennoch möchten wir in diesem Kapitel ein Referenzhandbuch erstellen.
-In diesem Kapitel wird beschrieben, wie Nutzer die Anwendung verwenden können.
+In diesem Kapitel wird beschrieben, wie Nutzer die Anwendung handhaben können.
 
 % TODO: Bilder müssen überall rein
 \section{Öffnen der Anwendung}
-Die Anwendung kann jederzeit \href{https://dhbwlearning.web.app}{\enquote{dhbwlearning.web.app}} geöffnet werden.
-Wie jede andere Webapplikation kann dies über jedes Gerät, welches über eine Internetverbindung verfügt durch einen Webbrowser geöffnet werden. Das heißt, die Anwendung steht den 24\,h pro Tag bereit und kann von allen Studenten und Dozenten verwendet werden.
+Die Anwendung kann jederzeit unter \href{https://dhbwlearning.web.app}{\enquote{dhbwlearning.web.app}} geöffnet werden.
+Wie bei jeder anderen Webapplikation kann sie über jedes Gerät, welches über eine Internetverbindung verfügt, durch einen Webbrowser geöffnet werden. Das heißt, die Anwendung steht 24\,h pro Tag bereit und kann von allen Studenten und Dozenten rund um die Uhr verwendet werden.
 
 \section{Login}
 Nach dem Öffnen der Anwendung wird der Nutzer in der Regel aufgefordert sich einzuloggen.
@@ -20,14 +20,14 @@ In \autoref{fig:login} ist die Anmeldeseite dargestellt.
     \label{fig:login}
 \end{figure}
 
-Für die Anmeldung muss der Nutzer die Email-Adresse zu seinem Account, sowie das entsprechende Passwort angeben.
+Für die Anmeldung muss der Nutzer die Email-Adresse zu seinem Account sowie das entsprechende Passwort eingeben.
 Setzt der Nutzer einen Hacken bei \enquote{Remember me}, so wird der Nutzer beim nächsten Starten der Anwendung nicht um ein Passwort gebeten und wird automatisch in seinen Account eingeloggt.
 
-Sollte der Nutzer noch keinen Account haben kann er auf \enquote{Hier gehts zur Registrieurng} klick, um sich selbst für die Nutzung der Anwendung zu registrieren.
-Genaueres zur Registrierung sind in \autoref{sec:registrierung} beschrieben.
+Sollte der Nutzer noch keinen Account haben, kann er auf \enquote{Hier gehts zur Registrieurng} klicken, um sich selbst für die Nutzung der Anwendung zu registrieren.
+Genaueres zur Registrierung ist in \autoref{sec:registrierung} beschrieben.
 
-Sollte der Nutzer bereits einen Account haben und nur das Passwort zu diesem vergessen haben gibt es neben dem Passwort-Feld einen \enquote{Passwort vergessen?}-Button.
-Dieser leitet den Nutzer zu einem Passwort-Vergessen-Formular weiter, welches in \autoref{sec:passwordVergessen} beschrieben ist.
+Sollte der Nutzer bereits einen Account haben und nur das Passwort zu diesem vergessen haben, gibt es neben dem Passwort-Feld einen \enquote{Passwort vergessen?}-Button.
+Dieser leitet den Nutzer zu einem Passwort-Vergessen-Formular weiter, welches in \autoref{sec:passwordVergessen} beschrieben wird.
 
 Hat der Nutzer eine korrekte Email- und Passwortkombination eingetragen und auf \enquote{Login} geklickt, wird der Nutzer auf das Dashboard (vgl. \autoref{sec:dashboard}) weitergeleitet.
 Andernfalls wird der Nutzer freundlich darauf hingewiesen, dass das Passwort nicht korrekt ist.
@@ -39,21 +39,21 @@ Die Registrierungs-Maske dient dazu, einen neuen Nutzer in der Anwendung anzuleg
 Damit sich Nutzer registrieren können müssen sie eine Email-Adresse sowie ein Passwort wählen.
 Der Nutzer kann hierbei eine beliebige, sogar eine Wegwerf-Email verwenden.
 Die Email wird intern lediglich für Authentifizierungszwecke benötigt.
-Das heißt die Email wird nur für das Login und für den Fall, dass ein Nutzer sein Passwort vergessen hat benötigt (vgl \autoref{sec:passwordVergessen}).
-Verwendet der Nutzer eine Wegwerf-Email kann der die Anwendung wie gewohnt nutzen, verliert aber die Möglichkeit sein Passwort zurückzusetzen.
+Das heißt die Email wird nur für das Login und für den Fall, dass ein Nutzer sein Passwort vergessen hat, benötigt (vgl \autoref{sec:passwordVergessen}).
+Verwendet der Nutzer eine Wegwerf-Email, kann er die Anwendung wie gewohnt nutzen, verliert aber die Möglichkeit sein Passwort zurückzusetzen.
 
 Das Passwort kann frei gewählt werden, solange es mindestens 6 und maximal 50 Zeichen hat.
-Es gibt keine weiteren Einschränkungen, da wir der Meinung sind, dass aufwändige Passwortvorgaben eine schlechte \ac{UX} ergibt.
+Es gibt keine weiteren Einschränkungen, da wir der Meinung sind, dass aufwändige Passwortvorgaben eine schlechte \ac{UX} ergeben.
 Dennoch sollten Nutzer Passwörter verwenden, die allgemein als sicher gelten. Dies bringt zusammen mit dem genutzten OAuth 2.0 Standard eine hohe Sicherheit mit sich. Um zu verhindern, dass sich der Nutzer bei seinem Passwort vertippt hat, muss das Passwort ein zweites Mal bestätigt werden.
 
 Schließlich muss der User den Nutzungsbedingungen zustimmen.
 
-Sollte der Nutzer bereits einen Useraccount besitzen kann er jederzeit durch einen klick auf \enquote{Log in} zur Login-Maske zurückkehren.
+Sollte der Nutzer bereits einen Useraccount besitzen, kann er jederzeit durch einen Klick auf \enquote{Log in} zur Login-Maske zurückkehren.
 
-Ist alles korrekt ausgefüllt kann der Nutzer durch klick auf \enquote{Registrieren} die Anmeldung abschließen und wird automatisch eingeloggt.
+Ist alles korrekt ausgefüllt, kann der Nutzer durch einen Klick auf \enquote{Registrieren} die Anmeldung abschließen und wird automatisch eingeloggt.
 
 Direkt nach der Registrierung wird der Nutzer auf eine Seite mit verschiedenen Fragen weitergeleitet. Diese Seite beinhaltet Fragen zu seinem Lerntypen. 
-Der Nutzer kann die Fragen freiwillig beantworten. Sie helfen dem Dozenten einen Überblick zu bekommen, welche verschiedenen Lerntypen in einem Kurs enthalten sind und ermöglichen so die Adaption der Vorlesung und der angewannten Methoden an die Wünsche und Interessen des Kurses. Die Auswertung der Lerntypen wird unter dem Punkt \autoref{sec:Feedback} weiter behandelt.
+Der Nutzer kann die Fragen freiwillig beantworten. Sie helfen dem Dozenten, einen Überblick zu bekommen, welche verschiedenen Lerntypen in seinem Kurs enthalten sind und ermöglichen so die Adaption der Vorlesung und der angewannten Methoden an die Wünsche und Interessen des Kurses. Die Auswertung der Lerntypen wird unter dem Punkt \autoref{sec:Feedback} weiter behandelt.
 
 \begin{figure}[h]
     \centering
