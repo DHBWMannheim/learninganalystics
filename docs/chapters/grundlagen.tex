@@ -1,10 +1,6 @@
 % !TEX root =  ../master.tex
-\chapter{Grundlage} % TODO: Kein Plan wo das hingehört
-
-\section{Theoretische Grundlagen - Learning Analytics}
-
-% TODO 2.1.2 Abgrenzungen zu anderen Anwendungen beachten
-\subsection{Darlegung des Learning Analytics Konzepts}
+\chapter{Grundlage}
+\section{Darlegung des Learning Analytics Konzepts}
 
 %Begriff: Learning Analytics System 
 Ein \ac{LMS} hat die grundlegenden Aufgaben, Lernaktivitäten zu verwalten, aufzuzeichnen und über diese zu berichten. Diese \ac{LMS} können aus unterschiedlichsten Komponenten bestehen, die sich mit verschiedenen Aspekten dieser Aufgaben befassen \autocite[S.1]{learningManagementSystemsFieldGuide}. Zusätzlich sind entsprechende Nutzerdaten von Studierenden und Dozierenden zusammen mit den dazugehörigen Lernmaterialien innerhalb des \ac{LMS} zu verwalten. \autocite{learningManagementSystemDefinition}\\
@@ -46,7 +42,7 @@ Mithilfe von diesen unterschiedlichen Datenbezugsebenen kann die datengesteuerte
 
 
 
-\subsection{Thematische Einordnung dieser Arbeit}
+\section{Thematische Einordnung dieser Arbeit}
 
 %Learning management System (parallel zu Moodle)
 
@@ -80,66 +76,4 @@ Soviel zu dem grundlegenden fachlichen Kontext, im folgenden Kapitel sind diese 
 %Zu \autocite[S.247]{SCHOONENBOOM2014247} Koexistenz mit Moodle darstellen und anführen, dass "wichtige" Funktionalitäten schon Moodle abgedenkt sind und eine Symbiose angestrebt ist
 
 
-\subsection{Lernen mit Karteikarten}
-Für das Lernen mit den Karteikarten gibt es eine Vielzahl an unterschiedlichen Algorithmen. Unsere Anwendung implementiert einen Algorithmus aus dem Bereich der \enquote{Spaced Repetition Systems}. In die deutsche Sprache übersetzt heißt das so viel wie "Wiederholen ohne Lücken". Das System hinter diesen Algorithmen besteht darin, die entsprechenden Informationen genau dann zu wiederholen, wenn das menschliche Gehirn sie fast schon vergessen hätte.\autocite[Vgl.][]{Tabibian3988} Die einzelnen Karteikarten werden nacheinander abgefragt und bei richtiger Antwort in zunehmenden Zeitintervallen immer wieder überprüft. Durch diesen Abstandseffekt soll gezielt das Langzeitgedächnis trainiert werden, damit die Inhalte auch über eine Prüfung hinaus im Gedächtnis behalten werden. Die unterschiedlichen Algorithmen dieser Klasse unterscheiden sich lediglich in der Wahl der Zeitabstände. 
-Diese Anwendung implementiert das Super-Memo System des polnischen Neurobiologen Piotr Wozniak. Es definiert folgende Zeitabstände:
-\begin{itemize}
-	\item 20 Minuten
-	\item 24 Stunden
-	\item 48 Stunden
-	\item 10 Tagen
-	\item 30 Tagen
-	\item 60 Tagen
-\end{itemize}  
-Kann eine Frage nicht beantwortet werden, so wird diese direkt wiederholt und durchläuft die definierten Zeitintervalle von vorn. \autocite[Vgl.][]{BaileyuDavey}
 
-
-
-\section{Technische Grundlagen}
-
-\subsection{Backend as a Service}
-\ac{BaaS} ist ein relativ neuer Ansatz, mit dem die Entwicklung von Web- und Mobilanwendungen beschleunigt werden soll.
-Bei \ac{BaaS} handelt es sich um ein Cloud-Service-Modell, welches sich aus der steigenden Nutzung von Cloud-Computing und Serverless-Ansätzen ableitet.
-Dabei geht \ac{BaaS} einen Schritt weiter als andere Cloud-Ansätze wie \ac{IaaS}, \ac{CaaS} oder \ac{FaaS}.
-Stattdessen orientiert sich \ac{BaaS} mehr an einem \ac{SaaS}-Ansatz. % :D xD O: (:
-So wird in \ac{BaaS} nicht nur die gesamte Infrastruktur und Laufzeitumgebung, sondern sogar Teile der Serverlogik von einem Cloud-Provider verwaltet.\autocite[Vgl.][]{cloudflareBaaS}
-So können sich Anwendungsentwickler auf die Entwicklung der Nutzeranwendungen und die Geschäftslogik kümmern, ohne umfangreichen Boiler-Plate-Code schreiben zu müssen.
-Typische Beispiele für Services, die von einem \ac{BaaS}-Anbieter übernommen werden, sind die Bereitstellung von Speicherressourcen, Nutzerauthentifizierung und das Hosting einer Website.
-Diese Themenbereiche sind Services, die in fast jeder Anwendung benötigt werden, wodurch ein großer Teil der Entwicklung eingespart werden kann.
-Dadurch spart es Kosten in Form von Serverequipment, Know-How und Entwicklungsressourcen.
-% TODO:?
-
-
-\subsection{Firebase}
-% TODO: hier irgendwie bei konzeption drauf verweisen?
-Firebase ist ein \ac{BaaS}-Dienst von Google LLC.
-Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung genutzt:
-\begin{itemize}
-    \item Datensicherheit\\
-        Nach einer Befragung von Tang und Liu stimmen 48\% zu, dass Cloud-Provider eine bessere Sicherheit liefern als eigene Implementierungen.\autocite[S. 63]{TANG}
-        Google als einer der größten IT-Dienstleister ist dabei weit vorne und ist konform mit den europäischen Datenschutzverordnungen.\autocite{firebaseDataprotection}
-        Die Authentifizierung ist sicher, da aktuelle Standards wie OAuth 2.0 verwendet werden.
-    \item Ausfallsicherheit\\
-        Da Server nicht mehr einzeln betrieben werden müssen entfällt die Gefahr eines \enquote{Single Point of Failure}. %TODO: in die Anforderungen
-        Dieser wäre dafür verantwortlich, dass die Anwendung ausfällt, sofern der Server abstürzen würde.
-        Firebase und Google bieten stattdessen ein \ac{SLA} an, das eine Ausfallsicherheit von mehr als 99,9\% garantiert.\autocite{firebaseSLA}
-    \item Komplexität\\
-        Da Entwickler nun nur noch das Frontend entwickeln müssen und sich nicht mehr um das Backend oder die Kommunikation zwischen den Komponenten kümmern müssen, wird die Entwicklung vereinfacht und beschleunigt.
-        Die Entwicklung des Frontends kann vorranschreiten, ohne auf die Entwicklung des Backends warten zu müssen.
-    \item Kosten \\
-        Google bietet attraktive Preismodelle an, welche die Bereitstellung der Anwendung sehr kostengünstig machen.
-        Nicht nur entfallen Kosten für die Wartung der Server und Hardwareressourcen, sondern der gesamte Betrieb ist im \enquote{Spark}-Plan kostenlos.
-    \item Skalierung \\
-        Firebase kümmert sich um die gesamte Bereitstellung und Skalierung der Serverleistung.
-        Das heißt, sofern mehr Rechenleistung benötigt wird (wie beispielsweise in Lastspitzen), wird die Rechenleistung automatisch erhöht ohne so das fehlschlagen von Anfragen vermieden.
-\end{itemize}
-% TODO: Nochmal auf die Anfoderungen verweißen
-
-
-
-
-
-
-
-
-% TODO: Was soll noch alles in die Dokumentation? Auch sowas wie Quickstart und Ordneraufbau?

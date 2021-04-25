@@ -1,34 +1,24 @@
 % !TEX root =  ../master.tex
 \chapter{Implementierung}
-% \section{Backend}
-% \subsection{Firebase}
-% \subsection{Datenhaltung}
 
-
-
-% \section{Frontend}
-% \section{Tools}
-% \section{Datenauswertung für Dozenten}
-
-
-
-\section{Allgemeine Implementierungsdetails}
+In \autoref{cha:konzeption} wurde bereits ein Konzept für die Implementierung erstellt. In der Implementierung wurden die Anforderungen wie konzipiert umgesetzt.
+Dennoch gibt es einige nicht-funktionale Anforderungen und allgemeine Implementierungsdetails, die noch nicht angesprochen wurden. In diesem Kapitel werden diese genauer beleuchtet.
 
 \section{Dateistruktur}
 
-Auf der obersten Ebene sind finden sich alle Dateien, die allgemeine Konfigurationen enthalten. Beispielsweise liegen dort die Firebase-Konfigurationen, die Angular-Konfigurationen und 
-weitere technischen Konfigurationendateien. Des Weieren sind die folgenden zwei Ordner relevant: \enquote{src} und \enquote{docs}. Im docs-Ordner ist die Dokumentation im \LaTeX-Format 
+Auf der obersten Ebene befinden sich alle Dateien, die allgemeine Konfigurationen enthalten. Beispielsweise liegen dort die Firebase-Konfigurationen, die Angular-Konfigurationen und 
+weitere technische Konfigurationsdateien. Des Weiteren sind die folgenden zwei Ordner relevant: \enquote{src} und \enquote{docs}. Im docs-Ordner ist die Dokumentation im \LaTeX-Format 
 und im src-Ordner ist der gesamte Code enthalten. \\
 Im src-Ordner ist nochmal eine weitere Unterteilung in \enquote{assets}, \enquote{environments} und \enquote{app}. Im assets-Ordner sind alle Icons, Designs und Übersetzungen und im environments-Ordner 
-liegen die Dateien mit den Daten, welche für das bauen der Applikation notwendig sind. Im app-Ordner sind zwei wichtige Ordner enthalten, zum einen den auth-Ordner, der den gesamten Code rund um das 
-Thema Authentifizierung enthält und den pages-Ordner, der den restlichen Code für alle Seiten auf der Learning Analytics App enthält. \\
+liegen die Dateien mit den Daten, welche für das Bauen der Applikation notwendig sind. Im app-Ordner sind zwei wichtige Ordner enthalten, zum einen den auth-Ordner, der den gesamten Code rund um das 
+Thema Authentifizierung enthält und dem pages-Ordner, der den restlichen Code für alle Seiten auf der Learning Analytics App enthält. \\
 
 \section{Responsive Design} % NF3
 Nach den nicht-funktionalen Anforderungen ist ein responsive Design pflicht.  
 Bei der Entwicklung wurde auf die responsive Darstellung geachtet.
 So verhalten sich alle Funktionalitäten einer Anwendung wie es von einer nativen Anwendung erwartet wird.
-Dies macht sich besonders in der optimierten Darstellung bemerkbar, bei der der Nutzer nicht zu scrollen oder zoomen verpflichtet ist bemerkbar.
-Aber auch andere Funktionalitäten, wie das Wischen der Karteikarten funktioniert auf Geräten mit einem Touchscreen genauso, wie auf Geräten, welche eine Maus verwenden.
+Dies macht sich besonders in der optimierten Darstellung bemerkbar, bei der der Nutzer nicht zu scrollen oder zoomen verpflichtet ist.
+Aber auch andere Funktionalitäten, wie das Wischen der Karteikarten, funktioniert auf Geräten mit einem Touchscreen genauso wie auf Geräten, welche eine Maus verwenden.
 
 
 % TODO: Vielleicht eher UX schreiben und dann alles sagen, wie z.B. Kontrast, ...
@@ -37,14 +27,14 @@ Aber auch andere Funktionalitäten, wie das Wischen der Karteikarten funktionier
 
 
 \section{Zugangskontrolle}
-Nach der Anforderungen müssen zwei Rollen unterschieden werden: Studenten und Dozenten.
+Nach den Anforderungen müssen zwei Rollen unterschieden werden: Studenten und Dozenten.
 Die Zugangskontrolle findet an mehrere Komponenten statt: Eine Zugangskontrolle auf Serverseite und eine Navigationskontrolle innerhalb des Nutzerinterfaces.
 
 
 \subsubsection*{Serverside}
-Eine Serverseitige Zugangskontrolle ist notwendig, da Nutzer das Nutzerinterface und den Netzwerkverkehr manipulieren kann und dadurch Zugang bekommen könnten.
+Eine Server-seitige Zugangskontrolle ist notwendig, da Nutzer das Nutzerinterface und den Netzwerkverkehr manipulieren und so Zugang bekommen könnten.
 Aus diesem Grund werden sämtliche Serveranfragen validiert.
-Dafür sind auf dem Server Regeln hinterlegt, die die Authorität des Nutzers überprüfen.
+Dafür sind auf dem Server Regeln hinterlegt, die die Authorisierung des Nutzers überprüfen.
 Die Regeln werden bei jeder Anfrage vor der Bearbeitung dieser überprüft.
 
 \begin{lstlisting}[caption={Einfaches Beispiel der Serverside Regeln}, label=lst:firestoreRules]
@@ -63,8 +53,8 @@ service cloud.firestore {
 
 
 \subsubsection*{Userside}
-Auf der Nutzerseite existiert eine Zugangskontrolle, die verhindert, dass Nutzer Interfacezustände hervorrufen kann, für die er nicht authorisiert ist.
-Ein Beispiel hierfür ist die Navigation auf eine Maske, für deren Daten er Serverseitig nicht berechtigt ist.
+Auf der Nutzerseite existiert eine Zugangskontrolle, die verhindert, dass ein Nutzer Interfacezustände hervorrufen kann, für die er nicht authorisiert ist.
+Ein Beispiel hierfür ist die Navigation auf eine Maske, für deren Daten er Server-seitig nicht berechtigt ist.
 In diesem Fall würde der Nutzer Fehlermeldungen und eine schlechte User Experience erleben.
 Im Nutzerinterface ist dafür ein \enquote{Router-Guard} implementiert.
 Dieser Guard überprüft bei jedem Navigationsversuch, ob der Nutzer für die Zielroute berechtigt ist.
@@ -83,19 +73,19 @@ Nutzer ohne die notwendigen Berechtigungen werden automatisch auf das Dashboard 
 
 \section{Übersetzung}
 
-An der DHBW studieren viele verschiedene Studenten mit verschiedenen Hintergründen.
+An der DHBW studieren viele Studenten aus unterschiedlichen Ländern.
 Nicht immer ist Deutsch die Muttersprache.
-Besonders für Studenten des Erasmus+ Programms ist Englisch oft präferiert.
+Besonders für Studenten des rasmus+ Programms ist Englisch oft präferiert.
 
 Aus diesem Grund ist die Anwendung sowohl in Deutsch, als auch in Englisch verfügbar.
-Neue Sprachen können mithilfe einfach mithilfe von JSON-Dateien hinzugefügt werden.
-Diese JSON-Dateien enthalten alle HTML-Labels und die Übersetzung in der jeweiligen Sprache. 
-Verfügbare Sprachen werden in der Navigation im Globus-Menu angezeigt.
+Neue Sprachen können einfach mithilfe von JSON-Dateien hinzugefügt werden.
+Diese JSON-Dateien enthalten alle HTML-Labels und die Übersetzung in die jeweilige Sprache. 
+Verfügbare Sprachen werden in der Navigation im Globus-Menue angezeigt.
 Durch Klick auf eine Sprache wird sofort die gesamte Anwendung übersetzt, ohne das neu geladen werden muss.
 Dabei wird einfach die jeweilige JSON-Datei mit den Labels in der richitgen Sprache verwendet.
 
 Die Anwendung fragt beim initialen Aufruf der Anwendung ab, auf welche Sprache das Gerät des Nutzers eingestellt ist.
-Wird eine kompatible Sprache gefunden wird die Anwendung auf diese übersetzt.
+Wird eine kompatible Sprache gefunden, so wird die Anwendung in diese übersetzt.
 Andernfalls wird Englisch als internationale Sprache gewählt.
 
 
@@ -105,11 +95,11 @@ Andernfalls wird Englisch als internationale Sprache gewählt.
 
 
 % TODO:
-Wurde die Registrierung erfolgreich abgeschlossen wird der Nutzer auf eine freiwillige Umfrage geleitet.
-Der Nutzer kann dabei angeben, welcher Lerntyp er ist, wie affine er für die Nutzung von online Lernplattformen ist und welche Erfahrung er mit diesen bisher hat.
-Besitzer von Kursen, in dem dieser Nutzer eingeschrieben ist, können anschließend diese Informationen anonym einsehen.
+Wurde die Registrierung erfolgreich abgeschlossen, wird der Nutzer auf eine freiwillige Umfrage geleitet.
+Der Nutzer kann dabei angeben, welcher Lerntyp er ist, wie affin er für die Nutzung von online-Lernplattformen ist und welche Erfahrung er mit diesen bisher gemacht hat.
+Leiter von Kursen, in denen dieser Nutzer eingeschrieben ist, können anschließend diese Informationen anonym einsehen.
 Dabei existiert ein separater Abschnitt im Feedback, welcher einen Einblick über alle Studenten gibt.
-Dies erlaubt es Kursbesitzern bzw. Dozenten ihren Lerninhalt auf die Studenten besser abzustimmen und die Kursqualität zu erhöhen.
+Dies erlaubt es Kursbesitzern bzw. Dozenten, ihren Lerninhalt besser auf die Studenten abzustimmen und die Kursqualität zu erhöhen.
 Nutzer können jederzeit über das Profil-Kontextmenü ihre Angaben ändern.
 
 % TODO: Feedback noch genauer erklären
@@ -119,17 +109,106 @@ Todos können sowohl ein Start-, als auch ein Enddatum haben.
 Existiert nur eines dieser Daten, wird das andere auf den gleichen Tag terminiert.
 Somit können auch langfristige Aufgaben wie Assignments oder andere alternative Prüfungsformen in die Zeitplanung einbezogen werden.
 Die Zeitspannen werden anschließend in einem Diagramm angezeigt.
-Je dunkler eine Zelle ist, desto mehr Aufgaben sind an diesem Tag zu bearbeiten, bzw. abzugeben.
+Je dunkler eine Zelle ist, desto mehr Aufgaben sind an diesem Tag zu bearbeiten bzw. abzugeben.
 
 
 
 % TODO:
 Im Kursmanagement können Nutzer ihre gesamten Kurse einsehen.
-Das Management zeigt alle bereits erstellen und alle bereits beigetretenen Kurse an.
+Das Management zeigt alle bereits erstellen Kurse an sowie diejenigen, denen der Nutzer bereits beigetreten ist.
 Der Nutzer kann durch Eingabe eines Kurs-Einschreibeschlüssels einem Kurs beitreten.
-Alternativ kann er auch einen neuen erstellen.
+Alternativ kann er auch einen neuen Kurs erstellen.
 Die Tabelle zeigt stets alle Kurse, mit ihren Schlüsseln und der Anzahl an Teilnehmern an.
 Durch einen Button können Kurse verlassen werden.
-Verlässt der Kursbesitzer den Kurs geht ihm die Verwalter-Funktion verloren.
-Da es keinen Weg gibt zu validieren, ob der Nutzer einmal ein ersteller war, kann der Nutzer anschließend nur noch seinem Kurs beitreten.
+Verlässt der Kursbesitzer den Kurs, geht ihm die Verwalter-Funktion verloren.
+Da es keinen Weg gibt zu validieren, ob der Nutzer einmal ein Ersteller war, kann der Nutzer anschließend nur noch seinem Kurs beitreten.
+
+
+
+
+\section{Offline Synchronisation}
+Studenten sind oft unterwegs beispielsweise in öffentlichen Verkehrsmitteln, in dehnen Internet nicht immer verfügbar ist.
+Damit die Anwendung auch ohne Internet funktionsfähig ist, ist die Anwendung mit einer Offline-Synchronisation ausgestattet.
+
+Sobald sich der Nutzer angemeldet hat, kann die Anwendung vollständig offline genutzt werden.
+Sobald eine Internetverbindung besteht werden alle Änderungen synchronisiert.
+
+Sofern die Anwendung offline gleichzeitig auf mehreren Geräten mit dem gleichen Nutzer verwendet wurde können bei Datenspeicherungen Konflikte auftreten.
+Solche Konflikte werden nach dem Last-Write-Wins-Prinzip aufgelöst.
+Das heißt die letzte Änderung an einem Datensatz wird übernommen.
+% TODO: IndexDB
+
+
+\section{DevOps}
+Für die Entwicklung und den Betrieb werden üblicherweiße viele verschiedene Parteien benötigt.
+Beispielsweise werden Entwickler, Administratoren und Netzwertechniker benötigt.
+Durch den Einsatz von DevOps-Praktiken ändert sich die Art und Weise wie Anwendungen entwickelt werden.
+
+DevOps verbindet die beiden Bereiche \enquote{Development} und \enquote{Operations}.
+Ziel ist es, die Entwicklung und den Betrieb von Softwaresystemen zu kombinieren und so den Organisationsaufwand sowie die Zeit zwischen Auslieferungszeitpunkten zu minimieren.\autocite[][S. 156]{Artac2018}
+
+Im Rahmen von DevOps-Prozessen werden üblicherweiße \ac{CI}- und \ac{CD}-Pipelines erstellt, welche die Bereitstellung einer Anwendung automatisieren.
+So wurde im Rahmen der hier entwickelten Anwendung eine automatisierte Deployment-Strategie ausgearbeitet.
+
+% TODO: Github erwähnen?
+% TODO: Changelog?
+Sobald ein Release erstellt wird, beginnen automatisch Pipelines mit ihrer Ausführung. Sie bauen die Anwendung und stellen diese anschließend auf der Infrastruktur bereit, sodass diese von Anwendern genutzt werden kann.
+Die Bereitstellung findet dabei unterbrechungsfrei statt.
+Bei klassischen Anwendungen müssen im Regelfall Wartungsarbeiten angekündigt werden und die Anwendungen sind währenddessen nicht nutzbar.
+In der hier entwickelten Anwendung ist dies hingegen nicht notwendig.
+Auch während eine neue Version bereitgestellt wird ist die Anwendung dauerhaft nutzbar.
+
+Gleichzeitig wird als Teil der Pipelines die Dokumentation erstellt.
+
+Durch die Pipelines können Deployments mit wenigen Klicks von jedem Computer oder Mobilgerät durchgeführt werden, egal wo oder welches System genutzt wird.
+Gleichzeitig ist stets dokumentiert wann und von wem welche Version bereitgestellt wurde.
+
+
+\section{Datenschutz}
+Bei der Entwicklung der Anwendung haben wir großen Wert auf Datensicherheit und der Einhaltung der DSGVO gelegt.
+Ein wesentlicher Bestandteil der unternommenen Maßnahmen ist die Anonymität innerhalb der Anwendung.
+Die Anwendung speichert keinerlei Informationen, mit denen Nutzer identifiziert werden könnten.
+Bei einer Registrierung muss lediglich eine Email angegeben werden.
+
+
+\section{Barrierefreiheit}
+
+Damit die Barrierefreiheit gegeben ist, ist die Übersetzungsmöglichkeit notwendig, wie in den Anforderungen beschrieben. Damit dies 
+realisiert werden kann, ist es sinnvoll einen Übersetzungsservice zu nutzen. Dieser Service sollte zunächst die beiden Sprachen Deutsch und 
+Englisch beinhalten, da auf der DHBW größtenteils in deutsch unterrichtet wird und Austauschstudenten, wenn sie kein deutsch sprechen, zumindest englisch 
+verstehen können. Somit sind für den Anfang diese beiden Sprachen ausreichend. Außerdem sollte noch die Möglichkeit bestehen, weitere Sprachen 
+in Zukunft hinzuzufügen, ohne den bisherigen Aufbau großartig umbauen zu müssen. 
+
+
+\section{Performance Optimierungen}
+\subsection{Caching}
+In der Anwendung wird aus verschiedenen Gründen Caching eingesetzt.
+Caching beschreibt eine Methode, bei der Daten in einem Puffer gehalten werden, um Zugriffe auf langsame Ressourcen zu reduzieren.
+Im Falle der hier entwickelten Anwendung werden die Quelldaten für das Nutzerinterface lokal aufbewahrt um die Zugriffe auf den Server zu reduzieren.
+Dadurch wird die Ladezeit der Anwendung reduziert, mobile Daten gespart und die Serverlast reduziert.
+
+
+% \section{Verschlüsselung}
+% TODO:
+
+% Kompression
+
+% h2 protokol
+
+
+\subsection{Service-Worker}
+% Vielleicht kann sowas sagen wie: Wir haben weniger funktionalität, dafür läuft alles stabil und ist schon bereitgestellt + Technik generell viel besser
+Die Anwendung ist mit einem Service-Worker ausgestattet.
+Der Service-Worker agiert als Zwischeninstanz zwischen der Webanwendung und dem Server.
+Durch den Service-Worker ist es möglich die Website als eigene Anwendung auf einem Mobilgerät oder auf Desktop-Computern zu installieren.
+Dadurch kann die Anwendung wie jede andere App verwendet werden.
+
+
+
+\subsection{Lazy Loading}
+Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
+Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
+Besucht der Nutzer die Website der Anwendung, so werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
+Beispielsweise werden die Karteikarten sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos aufruft.
+
 
