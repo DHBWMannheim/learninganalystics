@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
 import { NbDialogService } from '@nebular/theme';
@@ -11,12 +11,13 @@ import { Exam, ExamService } from '../../@core/data/exams.service';
 import { EditComponent } from '../exams/edit/edit.component';
 import { DeleteComponent } from '../exams/delete/delete.component';
 import { Todo, TodosService } from '../../@core/data/todos.service';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-dashboard',
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnDestroy {
   a: {};
   a2: {};
 
@@ -42,7 +43,7 @@ export class DashboardComponent {
     },
   ];
 
-  events: CalendarEvent[];
+  events: CalendarEvent[] = [];
 
   private currentCourses: Course[] = [];
 
@@ -70,60 +71,69 @@ export class DashboardComponent {
     });
   }
 
+  ngOnDestroy(): void {
+    this.alive = false;
+  }
+
   formatTime(time: string): string {
     return this.datepipe.transform(time, 'HH:mm');
   }
+
+  alive = true;
 
   async reload() {
     this.loadingExams = true;
     this.loadingTodos = true;
 
-    this.courseService.currentCourses.subscribe(async (courses) => {
-      if (!courses) return;
-      this.currentCourses = courses.creations.concat(courses.participations);
+    this.courseService.currentCourses
+      .pipe(takeWhile((_) => this.alive))
+      .subscribe(async (courses) => {
+        if (!courses || !this.a2) return;
+        this.currentCourses = courses.creations.concat(courses.participations);
 
-      this.todosService.get().then((v) => {
-        this.loadingTodos = false;
-        this.todos = v
-          .filter(({ endDate }) => endDate)
-          .filter((todo) => {
-            const difference = this.getDeadlineDiffernce(todo);
-            return difference < 7 && difference > 0;
-          })
-          .sort((a, b) => a.endDate.getTime() - b.endDate.getTime());
+        this.todosService.get().then((v) => {
+          this.loadingTodos = false;
+          this.todos = v
+            .filter(({ endDate }) => endDate)
+            .filter((todo) => {
+              const difference = this.getDeadlineDiffernce(todo);
+              return difference < 7 && difference > 0;
+            })
+            .sort((a, b) => a.endDate.getTime() - b.endDate.getTime());
+        });
+
+        this.exams = await this.examService.getChunked(
+          this.currentCourses,
+          (chunk) =>
+            this.examService
+              .getCollection()
+              .where(
+                'course',
+                'in',
+                chunk.map(({ id }) => this.courseService.createRef(id)),
+              )
+              .get(),
+          (snap) => this.examService.getData(snap),
+        );
+
+        this.events = this.exams.map((exam: Exam) => ({
+          start: exam.date as any,
+          end: exam.date as any,
+          title: `${exam.title} - ${this.formatTime(exam.time)} - ${exam.room}`,
+          actions: this.actions,
+          color: {
+            primary: '#e10217',
+            secondary: '#e10217',
+          },
+          exam: exam,
+        }));
+
+        this.loadingExams = false;
       });
-
-      this.exams = await this.examService.getChunked(
-        this.currentCourses,
-        (chunk) =>
-          this.examService
-            .getCollection()
-            .where(
-              'course',
-              'in',
-              chunk.map(({ id }) => this.courseService.createRef(id)),
-            )
-            .get(),
-        (snap) => this.examService.getData(snap),
-      );
-
-      this.events = this.exams.map((exam: Exam) => ({
-        start: exam.date as any,
-        end: exam.date as any,
-        title: `${exam.title} - ${this.formatTime(exam.time)} - ${exam.room}`,
-        actions: this.actions,
-        color: {
-          primary: '#e10217',
-          secondary: '#e10217',
-        },
-        exam: exam,
-      }));
-
-      this.loadingExams = false;
-    });
   }
 
   async ngOnInit(): Promise<void> {
+    this.alive = true;
     await this.reload();
   }
 
