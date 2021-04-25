@@ -65,7 +65,7 @@ Der Nutzer kann die Fragen freiwillig beantworten. Sie helfen dem Dozenten, eine
 
 \section{Passwort-Vergessen}\label{sec:passwordVergessen}
 Die Passwort-Vergessen-Funktion dient zum Zurücksetzen des Passwortes.
-Möchte der Nutzer sein Passwort zurücksetzen und erneut Zugang zu seinem Account bekommen kann der Nutzer jederzeit seine Email in das Passwort-Vergessen-Feld eingeben.
+Möchte der Nutzer sein Passwort zurücksetzen und erneut Zugang zu seinem Account bekommen, kann der Nutzer jederzeit seine Email in das Passwort-Vergessen-Feld eingeben.
 
 \begin{figure}[h]
     \centering
@@ -75,12 +75,12 @@ Möchte der Nutzer sein Passwort zurücksetzen und erneut Zugang zu seinem Accou
 \end{figure}
 
 Nachdem der Nutzer auf \enquote{Request Passwort} geklickt hat wird automatisch eine Email an die angegebene Email-Adresse gesendet.
-Die Email enthält einen Link, mit welchen der Nutzer sein Passwort ändern kann.
-Der Link leitet den Nutzer auf die in \autoref{fig:passwordVergessen} dargestellte Maske in der der Nutzer ein neues  Passwort festlegen kann. Hat der Nutzer sein Passwort geändert wird der zu einem erneuten Login auf die Login-Maske geleitet.
+Die Email enthält einen Link, mit dem der Nutzer sein Passwort ändern kann.
+Der Link leitet den Nutzer auf die in \autoref{fig:passwordVergessen} dargestellte Maske, in der der Nutzer ein neues  Passwort festlegen kann. Hat der Nutzer sein Passwort erfolgreich geändert, wird er zu einem erneuten Login auf die Login-Maske geleitet.
 
-Anzumerken ist, dass der Link zum Passwort ändern nur einmal gültig ist.
+Anzumerken ist, dass der Link zum ändern des Passworts nur einmal gültig ist.
 Sollte das Passwort bereits geändert worden sein, muss eine neue Email angefordert werden.
-Dies verhindert, dass unberechtigte Personen die Email mitlesen können und das Passwort erneut ändern können.
+Dies verhindert, dass unberechtigte Personen, welche die Email mitgelesen haben, das Passwort erneut ändern können.
 
 
 \begin{figure}[h]
@@ -91,16 +91,16 @@ Dies verhindert, dass unberechtigte Personen die Email mitlesen können und das 
 \end{figure}
 
 \section{Dashboard}\label{sec:dashboard}
-Das Dashboard ist die erste Seite, die der Nutzer sieht, wenn er sich erfolgreich eingeloggt hat. Es soll einen Überblick über alle bevorstehenden Ereignisse geben.
-Die nächsten anstehenden Prüfungen werden in einem Kalender angezeigt und Gesamtanzahl an Prüfungen wird auch eingeblendet. In der Übersicht können nochmal die wichtigsten 
-Informationen zu der Prüfung eingesehen werden, wie zum Beispiel die Uhrzeit und der Raum. 
+Das Dashboard ist die erste Seite, die der Nutzer sieht, wenn er sich erfolgreich eingeloggt hat. Es gibt einen Überblick über alle bevorstehenden Ereignisse.
+Die nächsten anstehenden Prüfungen werden in einem Kalender angezeigt und auch die Gesamtanzahl an Prüfungen wird eingeblendet. In der Übersicht können nochmal die wichtigsten 
+Informationen zu der Prüfung eingesehen werden, beispielsweise die Uhrzeit und der Raum. 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.7\textwidth]{img/Dashboard_3.png}
     \caption{Dashboard-Prüfung}
     \label{fig:Dashboardansicht}
 \end{figure}
-Zusätzlich zu den nächsten Prüfungen werden auch bald fällige Aufgaben angezeigt. Der Benutzer sieht auf einen Blick, wie viele Tage er noch für welche Aufgabe hat.
+Zusätzlich zu den nächsten Prüfungen werden auch bald fällige Aufgaben angezeigt. Der Nutzer sieht auf einen Blick, wie viele Tage er noch für welche Aufgabe hat.
 \begin{figure}[h]
     \centering
     \includegraphics[width=.7\textwidth]{img/Dashboard_4.png}
@@ -108,12 +108,12 @@ Zusätzlich zu den nächsten Prüfungen werden auch bald fällige Aufgaben angez
     \label{fig:Dashboardaufgaben}
 \end{figure}
 
-\section{Karteikarten}\label{sec:Karteikarten} % TODO: Bilder
-Index-Cards stellen eine Karteikarten-Funktion dar. Dabei können Dozenten neue Karteikarten erstellen, die die Kursteilnehmer bearbeiten können.
+\section{Karteikarten}\label{sec:Karteikarten}
+Index-Cards stellen eine Karteikarten-Funktion dar. Dabei können Dozenten neue Karteikarten erstellen, die die Kursteilnehmer dann bearbeiten können.
 Im Nutzer-Interface werden diese Karten ähnlich zu einem realen Karteikasten hintereinander dargestellt.
 Jede Karte zeigt zunächst die Frage an.
-Solle man die Antwort zu der Frage nicht wissen oder sich kontrollieren wollen, kann man mithilfe des Pfeils im Eck einer jeden Karte die Antwort einblenden.
-Anschließend können die Karten mit den Buttons am unteren Bildschirmrand als gewusst und nicht gewusst markiert werden.
+Sollte man die Antwort zu der Frage nicht wissen oder sich kontrollieren wollen, kann man mithilfe des Pfeils im Eck einer jeden Karte die Antwort einblenden.
+Anschließend können die Karten mit den Buttons am unteren Bildschirmrand als gewusst oder nicht gewusst markiert werden.
 Durch die Zahlen an diesen Buttons kann der Nutzer leicht ablesen, wie viele Karten er bereits wusste.
 Karten können aber auch durch einfaches ziehen der Karten zu gewusst oder nicht gewusst verschoben werden.
 Dies erleichtert die Handhabung vor allem auf mobilen Geräten mit Toucheingabe. In der Abbildung \autoref{fig:Karteikarten} ist die Ansicht zu sehen, die ein Teilnehmer bekommt, wenn er die Karteikarten durcharbeitet.
@@ -124,25 +124,20 @@ Dies erleichtert die Handhabung vor allem auf mobilen Geräten mit Toucheingabe.
     \label{fig:Karteikarten}
 \end{figure}
 
-Wurden alle Karteikarten beantwortet bekommt der Student direkt Feedback, wie viel Prozent aller Fragen er richtig beantworten konnte. Durch die in den unterschiedlichen Register angezeigten Zahlen, hat er einen direkten Überblick, wie viele Karteikarten er noch einmal auffrischen sollte.
+Wurden alle Karteikarten beantwortet bekommt der Student direkt Feedback, wie viel Prozent aller Fragen er richtig beantworten konnte. Durch die in den unterschiedlichen Registern angezeigten Zahlen hat er einen direkten Überblick, wie viele Karteikarten er noch einmal auffrischen sollte.
 
 
 \section{Aufgaben}\label{sec:Aufgaben}
-Aufgaben stellen einen elementaren Bestandteil einer Ausbildung dar.
-Schon in der Schule mussten Schüler eine Hausaufgabenheft oder Ähnliches führen um einen Überblick über ihre Aufgaben zu haben. Auch im Studium gibt es unzählige Aufgaben, wie zum Beispiel das Erstellen von Zusammenfassungen.
+Aufgaben können mithilfe des Buttons im rechten unterem Eck erstellt werden.
 
-Aufgaben können mithilfe des \enquote{Floating Action Button (FAB)} im rechten unterem Eck erstellt werden. % https://material.io/components/buttons-floating-action-button#usage
-Fabs stellen die primäre Action einer Ansicht, die konstruktiv ist und zu dem Inhalt der Ansicht passt.
-
-% TODO: Die Material Principien besser herausarbeiten  https://material.io/components/dialogs#usage
 Nach dem Klick öffnet sich ein Modal, in dem alle relevanten Aufgaben eingetragen werden können.
-Aufgaben zeichnen sich durch einen Titel und eine optionale Beschreibung, sowie eine optionale Deadline aus.
-Sofern eine Deadline angegeben ist, wird dieses Aufgabe in dem Kalender über der Aufgaben Übersicht dargestellt.
+Aufgaben zeichnen sich durch einen Titel und eine optionale Beschreibung sowie eine optionale Deadline aus.
+Sofern eine Deadline angegeben ist, wird dieses Aufgabe in dem Kalender über der Aufgaben-Übersicht dargestellt.
 Je roter ein Tag ist, desto mehr Aufgaben müssen an diesem Tag erledigt sein.
 Der Kalender zeigt stets den Zeitraum zwischen Anfang des letzten Monates und Ende der nächsten zwei Monate  an.
-% TODO: ?
+
 Aufgaben können schnell und einfach durch klicken auf die Checkbox vor einer Aufgabe abgehackt werden.
-In der Abbildung \autoref{fig:Aufgabeanlegen} ist bereits eine Aufgabe angelegt und es ist zu sehen in welchem Zeitraum diese Aufgabe erledigt werden muss.
+In \autoref{fig:Aufgabeanlegen} ist bereits eine Aufgabe angelegt und es ist zu sehen, in welchem Zeitraum diese Aufgabe erledigt werden muss.
 \begin{figure}[h]
     \centering
     \includegraphics[width=.7\textwidth]{img/Aufgabe_angelegt.png}
@@ -153,25 +148,8 @@ In der Abbildung \autoref{fig:Aufgabeanlegen} ist bereits eine Aufgabe angelegt 
 
 
 
-% TODO: Das hier schreiben, wenn da tatsächlich was implementiert ist
-
-% TODO: Kurs einschreibung, ...
-
-
-
 \section{Dateien}
 Die \enquote{Dateien}-Maske dient zur Verwaltung von Dokumenten.
-% TODO: Das in Konzeption verschieben?
-Momentan müssen Dokumente umständlich an Studenten weitergegeben werden.
-In der Regel werden Dokumente an die Studiengangsleiter geschickt, welche die Dokumente anschließend weiterverteilen.
-Das Problem ist, dass zuerst die Email-Adressen dieser ausgetauscht werden müssen und diese einen zusätzlichen Aufwand haben.
-So sind neue oder korrigierte Dokumente nur schwer auszutauschen.
-Auch Dokumente, die während einer Vorlesung verteilt werden müssen, erzeugen eine Zeitdifferenz.
-Dazu kommt, das dieser Workflow nicht immer gleich ist.
-Oft bekommen verschiedene Schüler unterschiedliche Informationen.
-In einigen Fällen wird auch Moodle für die Dateiablage verwendet.
-
-Aus diesem Grund wird ein einheitliches System benötigt, in dem Dateien abgelegt werden können.
 
 \begin{figure}[h] 
     \centering
