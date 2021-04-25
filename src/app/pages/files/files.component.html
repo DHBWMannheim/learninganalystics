@@ -6,7 +6,7 @@
         <div class="col">
           {{ item.filename }}
         </div>
-        <div class="col-end" *ngIf="isLecturer">
+        <div class="col-end">
           <nb-icon
             icon="cloud-download-outline"
             style="margin-right: 16px"
@@ -19,6 +19,7 @@
             [options]="{ animation: { type: 'pulse' } }"
             class="pointer"
             (click)="del(item)"
+            *ngIf="isLecturer"
           ></nb-icon>
         </div>
       </div>
