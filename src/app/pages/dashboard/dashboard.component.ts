@@ -6,7 +6,11 @@ import { NbDialogService } from '@nebular/theme';
 import { CalendarEvent, CalendarEventAction } from 'angular-calendar';
 import { differenceInCalendarDays, isSameDay, isSameMonth } from 'date-fns';
 
-import { Course, CoursesService } from '../../@core/data/course.service';
+import {
+  Course,
+  CoursesService,
+  RelevantCourses,
+} from '../../@core/data/course.service';
 import { Exam, ExamService } from '../../@core/data/exams.service';
 import { EditComponent } from '../exams/edit/edit.component';
 import { DeleteComponent } from '../exams/delete/delete.component';
@@ -87,53 +91,56 @@ export class DashboardComponent implements OnDestroy {
 
     this.courseService.currentCourses
       .pipe(takeWhile((_) => this.alive))
-      .subscribe(async (courses) => {
-        if (!courses || !this.a2) return;
-        this.currentCourses = courses.creations.concat(courses.participations);
+      .subscribe((courses) => this.refresh(courses));
+  }
 
-        this.todosService.get().then((v) => {
-          this.loadingTodos = false;
-          this.todos = v
-            .filter(({ endDate }) => endDate)
-            .filter((todo) => {
-              const difference = this.getDeadlineDiffernce(todo);
-              return difference < 7 && difference > 0;
-            })
-            .sort((a, b) => a.endDate.getTime() - b.endDate.getTime());
-        });
+  private async refresh(courses: RelevantCourses) {
+    if (!courses || !this.a2) return;
+    this.currentCourses = courses.creations.concat(courses.participations);
 
-        this.exams = await this.examService.getChunked(
-          this.currentCourses,
-          (chunk) =>
-            this.examService
-              .getCollection()
-              .where(
-                'course',
-                'in',
-                chunk.map(({ id }) => this.courseService.createRef(id)),
-              )
-              .get(),
-          (snap) => this.examService.getData(snap),
-        );
+    this.todosService.get().then((v) => {
+      this.loadingTodos = false;
+      this.todos = v
+        .filter(({ endDate }) => endDate)
+        .filter((todo) => {
+          const difference = this.getDeadlineDiffernce(todo);
+          return difference < 7 && difference > 0;
+        })
+        .sort((a, b) => a.endDate.getTime() - b.endDate.getTime());
+    });
 
-        this.events = this.exams.map((exam: Exam) => ({
-          start: exam.date as any,
-          end: exam.date as any,
-          title: `${exam.title} - ${this.formatTime(exam.time)} - ${exam.room}`,
-          actions: this.actions,
-          color: {
-            primary: '#e10217',
-            secondary: '#e10217',
-          },
-          exam: exam,
-        }));
+    this.exams = await this.examService.getChunked(
+      this.currentCourses,
+      (chunk) =>
+        this.examService
+          .getCollection()
+          .where(
+            'course',
+            'in',
+            chunk.map(({ id }) => this.courseService.createRef(id)),
+          )
+          .get(),
+      (snap) => this.examService.getData(snap),
+    );
 
-        this.loadingExams = false;
-      });
+    this.events = this.exams.map((exam: Exam) => ({
+      start: exam.date as any,
+      end: exam.date as any,
+      title: `${exam.title} - ${this.formatTime(exam.time)} - ${exam.room}`,
+      actions: this.actions,
+      color: {
+        primary: '#e10217',
+        secondary: '#e10217',
+      },
+      exam: exam,
+    }));
+
+    this.loadingExams = false;
   }
 
   async ngOnInit(): Promise<void> {
     this.alive = true;
+    await this.courseService.refreshCourses()
     await this.reload();
   }
 

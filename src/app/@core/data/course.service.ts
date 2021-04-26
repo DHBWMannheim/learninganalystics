@@ -102,7 +102,7 @@ export class CoursesService extends CommonFirestoreService<Course> {
     return course.id;
   }
 
-  private async refreshCourses() {
+  async refreshCourses() {
     const currentUser = await this.userService.currentUser;
     const currentUserRef = this.userService.createRef(currentUser.id);
     const ownedCourses = await this.getCollection()
