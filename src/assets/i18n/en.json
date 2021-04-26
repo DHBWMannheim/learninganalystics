@@ -469,7 +469,7 @@
     },
     "terms": {},
     "register": {
-        "title": "Register",
+        "title": "Registration",
         "error": "Oh snap!",
         "email": {
             "label": "Email address",
