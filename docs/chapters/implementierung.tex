@@ -13,18 +13,12 @@ Im src-Ordner ist nochmal eine weitere Unterteilung in \enquote{assets}, \enquot
 liegen die Dateien mit den Daten, welche für das Bauen der Applikation notwendig sind. Im app-Ordner sind zwei wichtige Ordner enthalten, zum einen den auth-Ordner, der den gesamten Code rund um das 
 Thema Authentifizierung enthält und dem pages-Ordner, der den restlichen Code für alle Seiten auf der Learning Analytics App enthält. \\
 
-\section{Responsive Design} % NF3
+\section{Responsive Design} 
 Nach den nicht-funktionalen Anforderungen ist ein responsive Design pflicht.  
 Bei der Entwicklung wurde auf die responsive Darstellung geachtet.
 So verhalten sich alle Funktionalitäten einer Anwendung wie es von einer nativen Anwendung erwartet wird.
 Dies macht sich besonders in der optimierten Darstellung bemerkbar, bei der der Nutzer nicht zu scrollen oder zoomen verpflichtet ist.
 Aber auch andere Funktionalitäten, wie das Wischen der Karteikarten, funktioniert auf Geräten mit einem Touchscreen genauso wie auf Geräten, welche eine Maus verwenden.
-
-
-% TODO: Vielleicht eher UX schreiben und dann alles sagen, wie z.B. Kontrast, ...
-
-
-
 
 \section{Zugangskontrolle}
 Nach den Anforderungen müssen zwei Rollen unterschieden werden: Studenten und Dozenten.
@@ -62,15 +56,6 @@ Nur wenn der Nutzer die notwendigen Berechtigungen besitzt, wird die Navigation 
 Nutzer ohne die notwendigen Berechtigungen werden automatisch auf das Dashboard bzw. die Login-Maske geleitet.
 
 
-
-
-% TODO: Die haben auch noch den ganzen Lebenszyklus von React erklärt wtf=
-% TODO: Wir sollten vielleicht was zum Thema accessibility schreiben (unterschiedliche Sprachen, Design, etc.)
-
-
-
-
-
 \section{Übersetzung}
 
 An der DHBW studieren viele Studenten aus unterschiedlichen Ländern.
@@ -88,13 +73,6 @@ Die Anwendung fragt beim initialen Aufruf der Anwendung ab, auf welche Sprache d
 Wird eine kompatible Sprache gefunden, so wird die Anwendung in diese übersetzt.
 Andernfalls wird Englisch als internationale Sprache gewählt.
 
-
-% TODO: Angular differential loading und so  zeug?
-
-% Registrierungskontingent 
-
-
-% TODO:
 Wurde die Registrierung erfolgreich abgeschlossen, wird der Nutzer auf eine freiwillige Umfrage geleitet.
 Der Nutzer kann dabei angeben, welcher Lerntyp er ist, wie affin er für die Nutzung von online-Lernplattformen ist und welche Erfahrung er mit diesen bisher gemacht hat.
 Leiter von Kursen, in denen dieser Nutzer eingeschrieben ist, können anschließend diese Informationen anonym einsehen.
@@ -102,18 +80,12 @@ Dabei existiert ein separater Abschnitt im Feedback, welcher einen Einblick übe
 Dies erlaubt es Kursbesitzern bzw. Dozenten, ihren Lerninhalt besser auf die Studenten abzustimmen und die Kursqualität zu erhöhen.
 Nutzer können jederzeit über das Profil-Kontextmenü ihre Angaben ändern.
 
-% TODO: Feedback noch genauer erklären
-
-% TODO:
-Todos können sowohl ein Start-, als auch ein Enddatum haben.
+Aufgaben können sowohl ein Start-, als auch ein Enddatum haben.
 Existiert nur eines dieser Daten, wird das andere auf den gleichen Tag terminiert.
 Somit können auch langfristige Aufgaben wie Assignments oder andere alternative Prüfungsformen in die Zeitplanung einbezogen werden.
 Die Zeitspannen werden anschließend in einem Diagramm angezeigt.
 Je dunkler eine Zelle ist, desto mehr Aufgaben sind an diesem Tag zu bearbeiten bzw. abzugeben.
 
-
-
-% TODO:
 Im Kursmanagement können Nutzer ihre gesamten Kurse einsehen.
 Das Management zeigt alle bereits erstellen Kurse an sowie diejenigen, denen der Nutzer bereits beigetreten ist.
 Der Nutzer kann durch Eingabe eines Kurs-Einschreibeschlüssels einem Kurs beitreten.
@@ -136,8 +108,6 @@ Sobald eine Internetverbindung besteht werden alle Änderungen synchronisiert.
 Sofern die Anwendung offline gleichzeitig auf mehreren Geräten mit dem gleichen Nutzer verwendet wurde können bei Datenspeicherungen Konflikte auftreten.
 Solche Konflikte werden nach dem Last-Write-Wins-Prinzip aufgelöst.
 Das heißt die letzte Änderung an einem Datensatz wird übernommen.
-% TODO: IndexDB
-
 
 \section{DevOps}
 Für die Entwicklung und den Betrieb werden üblicherweiße viele verschiedene Parteien benötigt.
@@ -150,8 +120,6 @@ Ziel ist es, die Entwicklung und den Betrieb von Softwaresystemen zu kombinieren
 Im Rahmen von DevOps-Prozessen werden üblicherweiße \ac{CI}- und \ac{CD}-Pipelines erstellt, welche die Bereitstellung einer Anwendung automatisieren.
 So wurde im Rahmen der hier entwickelten Anwendung eine automatisierte Deployment-Strategie ausgearbeitet.
 
-% TODO: Github erwähnen?
-% TODO: Changelog?
 Sobald ein Release erstellt wird, beginnen automatisch Pipelines mit ihrer Ausführung. Sie bauen die Anwendung und stellen diese anschließend auf der Infrastruktur bereit, sodass diese von Anwendern genutzt werden kann.
 Die Bereitstellung findet dabei unterbrechungsfrei statt.
 Bei klassischen Anwendungen müssen im Regelfall Wartungsarbeiten angekündigt werden und die Anwendungen sind währenddessen nicht nutzbar.
@@ -188,16 +156,7 @@ Im Falle der hier entwickelten Anwendung werden die Quelldaten für das Nutzerin
 Dadurch wird die Ladezeit der Anwendung reduziert, mobile Daten gespart und die Serverlast reduziert.
 
 
-% \section{Verschlüsselung}
-% TODO:
-
-% Kompression
-
-% h2 protokol
-
-
 \subsection{Service-Worker}
-% Vielleicht kann sowas sagen wie: Wir haben weniger funktionalität, dafür läuft alles stabil und ist schon bereitgestellt + Technik generell viel besser
 Die Anwendung ist mit einem Service-Worker ausgestattet.
 Der Service-Worker agiert als Zwischeninstanz zwischen der Webanwendung und dem Server.
 Durch den Service-Worker ist es möglich die Website als eigene Anwendung auf einem Mobilgerät oder auf Desktop-Computern zu installieren.
@@ -209,6 +168,6 @@ Dadurch kann die Anwendung wie jede andere App verwendet werden.
 Die Anwendung unterstützt Code-Splitting mit Lazy-Loading.
 Das bedeutet, die Anwendung ist modular aufgebaut und wird zum Zeitpunkt der Bereitstellung automatisch in verschiedene Module aufgespalten.
 Besucht der Nutzer die Website der Anwendung, so werden nur die Teile der Anwendung heruntergeladen, die für ihn tatsächlich notwenig sind.
-Beispielsweise werden die Karteikarten sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Todos aufruft.
+Beispielsweise werden die Karteikarten sowie die gesamte Funktionalität und Darstellung dieser nicht geladen, wenn der Nutzer nur seine Aufgaben aufruft.
 
 

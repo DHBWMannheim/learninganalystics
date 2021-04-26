@@ -62,11 +62,11 @@
 % PERSÖNLICHE ANGABEN (BITTE VOLLSTÄNDIG EINGEBEN zwischen den Klammern: {...})
 %
 \ArtDerArbeit{Studien} % "Bachelor" oder "Projekt" wählen
-\TitelDerArbeit{Learninganalystics - Nutzerhandbuch}
+\TitelDerArbeit{Learninganalystics}
 \Kurs{WWI18SEA/C}
 \Studienrichtung{Software Engineering}
 
-\newcommand{\NameDerAnwendung}[0]{\enquote{DHBW Learning - Nutzerhandbuch}} 
+\newcommand{\NameDerAnwendung}[0]{\enquote{DHBW Learning}} 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -119,32 +119,11 @@
 
 \newcommand{\imagedir}{img}
 
-
 \makeindex
 
 \begin{document}
 
-
 \setTitlepage
-
-\chapter*{Abkürzungsverzeichnis}
-
-\begin{acronym}[XXXXXXX]
-	\acro{API}[API]{Application Programming Interface}
-	\acro{BaaS}[BaaS]{Backend as a Service}
-	\acro{CaaS}[CaaS]{Container as a Service}
-	\acro{CD}[CD]{Continuous Deployment}
-	\acro{CI}[CI]{Continuous Integration}
-	\acro{FaaS}[FaaS]{Function as a Service}
-	\acro{GUI}[GUI]{Graphical User Interface}
-	\acro{IaaS}[IaaS]{Infrastructure as a Service}
-	\acro{LMS}{Learning Management System}
-	\acro{MVC}[MVC]{Model-View-Controller}
-	\acro{RDB}[RDB]{Relational Database}
-	\acro{SaaS}[SaaS]{Software as a Service}
-	\acro{SLA}[SLA]{Service Level Agreement}
-	\acro{UX}[UX]{User Experience}
-\end{acronym}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % KAPITEL UND ANHÄNGE
@@ -177,7 +156,7 @@
 %
 % @stud: abstract.tex bearbeiten
 %
-%\input{abstract} 
+\input{abstract} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,7 +164,7 @@
 %
 % @stud: ggf. nicht benötigte Verzeichnisse auskommentieren/löschen in Def. von \settingLists in config.tex
 %
-%\settingLists
+\settingLists
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -193,7 +172,7 @@
 %
 % @stud: acronyms.tex bearbeiten
 %
-% \input{acronyms} 
+\input{acronyms} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \initializeText
@@ -205,31 +184,31 @@
 % @stud: einzelne Kapitel bearbeiten und eigene Kapitel hier einfügen
 %
 % Einleitung
-%\input{introduction}
+\input{introduction}
 
 % mehrere Grundlagen- und Forschungs-Kapitel
-%\input{chapters/grundlagen.tex}
-%\input{chapters/anforderungsanalyse.tex}
+\input{chapters/grundlagen.tex}
+\input{chapters/anforderungsanalyse.tex}
 
-%\input{chapters/konzeption.tex}
-%\input{chapters/implementierung.tex}
-%\input{chapters/prozesse.tex}
+\input{chapters/konzeption.tex}
+\input{chapters/implementierung.tex}
+\input{chapters/prozesse.tex}
 \input{chapters/nutzerhandbuch.tex}
 
 % Fazit und Ausblick
-%\input{conclusion}
+\input{conclusion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EHRENWÖRTLICHE ERKLÄRUNG
 %
 % @stud: ewerkl.tex bearbeiten
 %
-%\input{ewerkl} 
+\input{ewerkl} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\initializeAppendix
+\initializeAppendix
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ANHÄNGE

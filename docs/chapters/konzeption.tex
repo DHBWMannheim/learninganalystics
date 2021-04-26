@@ -27,7 +27,7 @@ Aus diesem Grund wird diese als Erstes betrachtet.
 
 \subsection{Traditionelle Architektur}
 
-Webanwendungen werden üblicherweise in einem Client-Server-Modell entwickelt. Im Konkreten kann hier von einer Thin-Client Architektur gesprochen werden, da jegliche Anwendungsdatenverarbeitung Server-seitig durchgeführt wird \autocite{definitionOfThinClient}. % TODO: \autocite{Leff} --> ?
+Webanwendungen werden üblicherweise in einem Client-Server-Modell entwickelt. Im Konkreten kann hier von einer Thin-Client Architektur gesprochen werden, da jegliche Anwendungsdatenverarbeitung Server-seitig durchgeführt wird \autocite{definitionOfThinClient}.
 Der Client übernimmt dabei sämtliche Funktionalitäten, die das Nutzerinterface betreffen. Über diese Aufteilung von Verantwortlichkeiten können Wartung und Sicherheit durch die zentrale serverseitige Verwaltung in einem Rechenzentrum einfacher gesichert werden. Falls der Client selbst Daten verarbeiten und speichern würde, könnte dies zu inkonsistenten Daten und Sicherheitslücken führen, da unterschiedliche Datenbestände zwischen Client und Server entstehen könnten. 
 Visualisierung und die Interaktion mit dem Nutzer fallen hierbei in die Aspekte des Nutzerinterfaces, worüber diesem die Interaktion mit den zentralen Datenbeständen ermöglicht wird. Dabei wird jedoch keine Anwendungslogik ausgeführt \autocite{thinClientArchitectureOverview}. Es ist allerdings wichtig zu betonen, dass diese Nutzerschnittstelle essentiell für den Erfolg der Anwendung ist. Eine maximale User Experience \autocite{definitionUserExperience} zu bieten ist ein kritischer Faktor für die Qualität der Nutzerschnittstelle \autocite{thinClientArchitectureOverview}.\\
 Entsprechend wird die gesamte Geschäftslogik, Datenhaltung und der Datenaustausch von einem zentralen Server verwaltet. 
@@ -90,7 +90,7 @@ Firebase wurde aus einer Reihe von Gründen für die Entwicklung der Anwendung a
         Google als einer der größten IT-Dienstleister ist dabei weit vorne und ist konform mit den europäischen Datenschutzverordnungen.\autocite{firebaseDataprotection}
         Die Authentifizierung ist sicher, da aktuelle Standards wie OAuth 2.0 verwendet werden.
     \item Ausfallsicherheit\\
-        Da Server nicht mehr einzeln betrieben werden müssen entfällt die Gefahr eines \enquote{Single Point of Failure}. %TODO: in die Anforderungen
+        Da Server nicht mehr einzeln betrieben werden müssen entfällt die Gefahr eines \enquote{Single Point of Failure}. 
         Dieser wäre dafür verantwortlich, dass die Anwendung ausfällt, sofern der Server abstürzen würde.
         Firebase und Google bieten stattdessen ein \ac{SLA} an, das eine Ausfallsicherheit von mehr als 99,9\% garantiert.\autocite{firebaseSLA}
     \item Komplexität\\
@@ -138,7 +138,7 @@ Dieser Kurs wird anschließend geladen und der Nutzer sieht nur die Informatione
 Möchte man den Kurs wechseln, gibt es ein Bento-Menü, über welches ein anderer Kurs ausgewählt werden kann.
 Eine solche \ac{UX} hat den Vorteil, dass sich ein Nutzer vollständig auf einen Kurs konzentrieren kann und so nicht Informationen zwischen verschiedenen Kursen durcheinander wirft.
 Gleichzeitig kann dies aber dazu führen, dass ein Nutzer eventuell den Überblick über seine Kurse verliert und so einen Kurs womöglich vernachlässigt.
-Auch Kurs-übergreifende Informationen, z.\,B. TODOs, können nur schwer abgebildet werden, ohne dass die Nutzung der Anwendung erklärungsbedürftig wird.
+Auch Kurs-übergreifende Informationen, z.\,B. Aufgaben, können nur schwer abgebildet werden, ohne dass die Nutzung der Anwendung erklärungsbedürftig wird.
 
 Als zweite Möglichkeit kommt eine virtuelle Trennung zum Einsatz.
 Dabei sieht der Nutzer alle Informationen und eine Trennung dieser findet nur über die Navigation statt.
@@ -155,7 +155,6 @@ Ein Kurs orientiert sich dabei an der Organisation, die in der Realität vorlieg
 Auch in vorhandenen Tools wie beispielsweise \enquote{Moodle} sind Studenten anhand von Kursen organisiert.
 Aufgrund der Vielzahl an solchen Lösungen scheint sich eine solche Organisation zu bewähren.
 Aus diesem Grund liegt es nahe, das auch die zu entwickelnde Anwendung eine solche Struktur nutzen sollte.
-% TODO: Wie Werden Kurse erstellt
 
 Nachdem nun geklärt wurde, wie die Organisation von Studenten und Dozenten stattfindet, muss nun die Zuweisung von Studenten zu Kursen und die Zuweisung von Dozenten konzipiert werden.
 Zunächst wird die Studentenzuweisung betrachtet.
@@ -176,7 +175,7 @@ Diese Liste dient zur Anwesenheitskontrolle.
 Demnach können Dozenten diese Liste für die Zuweisung in der Anwendung nutzen.
 Der Nachteil eines solchen Ansatzes ist es aber, dass Studenten ihre Daten in der Anwendung hinterlassen müssen und diese durch andere Dozenten gegebenenfalls einsehbar wären.
 Zusätzlich geht die Anonymität, welche durch Matrikelnummern gegeben ist, eventuell verloren.
-Insgesamt ist dieser Ansatz aus Datenschutzaspekten besonders kritisch. % TODO: Beim Admin nicht so, weil dhbw
+Insgesamt ist dieser Ansatz aus Datenschutzaspekten besonders kritisch. 
 
 Als letzter Ansatz ist die Zuweisung durch den Studenten denkbar.
 Denkbar sind hier wieder umehrere Fälle: Eine Liste aus Kursen oder über einen Kursidentifikator.
@@ -217,12 +216,12 @@ Dadurch wird die Nutzung der Anwendung gefördert.
 
 
 
-\subsection{TODOs}
-Aus den Anforderungen geht hervor, dass TODOs gespeichert werden sollen. In Einklang mit den anderen Konzeptionen können auch die TODOs an Kurse gebunden werden. Stattdessen haben wir uns aber dafür entschieden, die TODOs zentral und Kurs-übergreifend zu gestalten. So hat der Nutzer stets Übersicht über alle Aufgaben und es geraten keine Informationen in den Hintergrund.
+\subsection{Aufgaben}
+Aus den Anforderungen geht hervor, dass Aufgaben gespeichert werden sollen. In Einklang mit den anderen Konzeptionen können auch die Aufgaben an Kurse gebunden werden. Stattdessen haben wir uns aber dafür entschieden, die Aufgaben zentral und Kurs-übergreifend zu gestalten. So hat der Nutzer stets Übersicht über alle Aufgaben und es geraten keine Informationen in den Hintergrund.
 
-Neue TODOs sollen einfach hinzugefügt werden können. Aus diesem Grund soll es nur notwendig sein den Namen einer Aufgabe zu definieren und alle anderen Attribute wie Fälligkeitsdaten lediglich optional zu gestalten.
+Neue Aufgaben sollen einfach hinzugefügt werden können. Aus diesem Grund soll es nur notwendig sein den Namen einer Aufgabe zu definieren und alle anderen Attribute wie Fälligkeitsdaten lediglich optional zu gestalten.
 
-Gleichzeitig sollen alle TODOs grafisch dargestellt werden, um die Planung zu erleichtern.
+Gleichzeitig sollen alle Aufgaben grafisch dargestellt werden, um die Planung zu erleichtern.
 Optimalerweiße sollten die Termine in einem Kalender dargestellt werden.
 Je voller ein Tag ist, desto deutlicher soll der Backlog hervorgehoben werden, mit rot als Signalfarbe. Der Kalender soll prominent dargestellt werden, sodass der Nutzer sich sofort einen Überblick verschaffen kann. 
 
@@ -276,7 +275,7 @@ Das Dashboard wird als Lösung für mehrere funktionale Anforderungen konzeption
 Ziel des Dashboards ist es, die wichtigsten Informationen auf einen Blick zentral anzuzeigen.
 Demnach sollte das Dashboard alle Informationen unabhängig von den Kursen angezeigen, sofern diese unmittelbar wichtig für den Studenten sind.
 Aus den Personas, die bereits in \autoref{sec:persona} beschrieben wurden, und unserer persönlichen Erfahrung können wir einige Funktionalitäten auswählen, die wir als besonders wichtig identifizieren.
-Genauer gesagt sind besonders die Klausurtermine sowie die TODOs, die innerhalb einer Woche anstehen, besonders wichtig.
+Genauer gesagt sind besonders die Klausurtermine sowie die Aufgaben, die innerhalb einer Woche anstehen, besonders wichtig.
 Aus diesem Grund sollte das Dashboard genau diese Informationen in zwei Abschnitten enthalten.
 Außerdem sollten keine weiteren Informationen dargestellt werden, um zu verhindern, dass das Dashboard unübersichtlich wird.
 
@@ -366,7 +365,7 @@ Dabei werden Daten nicht wie in einer klassischen relationalen Datenbank (\ac{RD
 
 In \autoref{fig:erDiagramm} ist das zugrundeliegende Datenmodell abgebildet, welches in der Implementierung verwendet wird.
 
-\begin{figure}[ht!] % TODO: Hier fehlen die streaks 
+\begin{figure}[ht!] 
     \begin{center}
         \includegraphics[width=\textwidth]{img/Integrationsseminar ER.png}
         \caption{ER-Diagramm}
