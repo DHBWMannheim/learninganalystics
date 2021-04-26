@@ -19,18 +19,18 @@ jobs:
           path: docs/master.pdf
   handbuch:
     runs-on: ubuntu-latest
-      steps:
-        - name: Set up Git repository
-          uses: actions/checkout@v2
-        - name: Compile LaTeX document
-          uses: xu-cheng/latex-action@v2
-          with:
-            root_file: "Nutzerhandbuch master.tex"
-            working_directory: 'docs'
-        - uses: actions/upload-artifact@v2
-          with:
-            name: handbuch
-            path: "docs/Nutzerhandbuch master.pdf"
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "Nutzerhandbuch master.tex"
+          working_directory: 'docs'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: handbuch
+          path: "docs/Nutzerhandbuch master.pdf"
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
